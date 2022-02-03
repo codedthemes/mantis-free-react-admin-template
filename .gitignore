@@ -105,3 +105,6 @@ dist
 
 # Backup file
 *.bak
+
+#output
+build
