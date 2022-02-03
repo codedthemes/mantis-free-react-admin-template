@@ -2,6 +2,9 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
+// scroll bar
+import 'simplebar/src/simplebar.css';
+
 // third-party
 import { Provider as ReduxProvider } from 'react-redux';
 
@@ -18,7 +21,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
     <StrictMode>
         <ReduxProvider store={store}>
-            <BrowserRouter>
+            <BrowserRouter basename="free">
                 <App />
             </BrowserRouter>
         </ReduxProvider>

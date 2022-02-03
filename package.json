@@ -1,6 +1,6 @@
 {
-    "name": "mantis-react-ts",
-    "version": "0.1.0",
+    "name": "mantis-free-react-admin-template",
+    "version": "1.0.0",
     "private": true,
     "dependencies": {
         "@ant-design/colors": "^4.0.0-alpha.0",
