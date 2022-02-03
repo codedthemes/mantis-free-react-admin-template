@@ -108,7 +108,7 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 ## More Free React Material Admin Templates
 
 -   [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
--   [Free Berry](https://codedthemes.com/item/berry-free-react-admin-template/)
+-   [Free Berry](https://material-ui.com/store/items/berry-react-material-admin-free/)
 
 ## More Premium React Material Admin Templates
 
