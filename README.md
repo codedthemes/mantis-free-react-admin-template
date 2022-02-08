@@ -1,36 +1,43 @@
-# Mantis Free React Material Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20Berry%20React%20-%20The%20most%20beautiful%20Material%20designed%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.io&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
+# Mantis Free React Material-UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Download%20Mantis%20React%20-%20The%20professional%20Material%20designed%20React%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.io&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/main/LICENSE)
-[![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/berry-free-react-admin-template)](https://github.com/codedthemes/berry-free-react-admin-template/)
+[![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template)](https://github.com/codedthemes/mantis-free-react-admin-template/)
 
-Web theme with name as 'Mantis'. Its name of insect but we derived it from two popular UI framework, Material-UI and Ant Design (M-Ant-is). It provides best features from each. Follows design principle of AntDesign and uses the Component of Material-UI.
+Mantis is a free and open source react redux dashboard template made using MUI React component library with aim of flexibility and better customizability.
+
+### Name Derived From Nature
+
+Mantis Logo inspired from the Insect name -'Mantises' as They have Triangular heads with Flexible Necks. Also, Name is derived from two popular UI framework, Material-UI and Ant Design (M-Ant-is).
+
+Mantis has Ant Design principal on top of MUI React component library.
 
 :star: :star: :star: Do not forget to star (Top right of this page) it if you like the theme :star: :star: :star:
 
-![IMG_8566.jpg](https://mantisdashboard.io/imp-images/berry-github-free-repo-1.jpg)
+![mantis-free-react-dashboard-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social.png)
 
 [Pro version](https://mantisdashboard.io) of Mantis react template contains features like TypeScript, Apps, Authentication Methods (i.e. JWT, Auth0, Firebase), Advance Components, Form Plugins, Layouts, Widgets, and many more.
 
-| [Mantis Free](https://mantisdashboard.io/free) | [Berry](https://material-ui.com/store/items/mantis-react-material-admin/) |
+| [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io) |
 | ---------------------------------------------- | :------------------------------------------------------------------------ |
-| **9** Demo pages                               | **45+** demo pages                                                        |
+| **9** Demo pages                               | **130+** Demo pages                                                       |
 | -                                              | ✓ Multi-language                                                          |
-| -                                              | ✓ Dark/Light Mode 🌓                                                      |
+| -                                              | ✓ Dark/Light Mode 🌓                                                     |
 | -                                              | ✓ TypeScript version                                                      |
 | -                                              | ✓ Design files (Figma)                                                    |
 | -                                              | ✓ Multiple color Options                                                  |
 | -                                              | ✓ RTL                                                                     |
 | -                                              | ✓ JWT, Firebase, Auth0, AWS authentications                               |
 | -                                              | ✓ [More components](https://mantisdashboard.io/dashboard/default)         |
+| ✓  MIT License                                 | ✓ [Pro License](https://material-ui.com/store/license)                    |
 
 ## Why Mantis?
 
-Mantis brings everything you need for dashboard development. We have added the following high-end features in the initial release.
+Mantis offers everything needed to build an advanced dashboard application. In the initial release, we added following high-end features,
 
--   Modern aesthetics UI design
--   Material-UI components
--   Fully Responsive, all modern browser supported
+-   Professional User Interface.
+-   MUI (Material-UI) React components.
+-   Fully Responsive, all modern browser supported.
 -   Easy to use code structure
 -   Flexible & High-Performance code
 -   Easy Documentation Guide
@@ -47,7 +54,7 @@ Mantis brings everything you need for dashboard development. We have added the f
 
 ## Mantis Pro version
 
-Mantis will be soon available for purchase.
+Mantis will soon available for purchase.
 
 #### Preview
 
@@ -55,7 +62,7 @@ Mantis will be soon available for purchase.
 
 #### Purchase
 
-Mantis will be soon available for purchase from MUI.
+Mantis will soon available for purchase from MUI.
 
 ## Table of contents
 
@@ -85,13 +92,13 @@ yarn start
 ## Technology Stack
 
 -   [Material UI V5](https://mui.com/)
--   Built with React Hooks API
--   Redux & React Context API for State Management
--   Redux toolkit
--   React Router for Navigation Routing
--   Support of react-script
--   Code Splitting
--   CSS-in-JS where CSS is composed using JavaScript instead of defined in external files
+-   Built with React Hooks API.
+-   Redux & React Context API for State Management.
+-   Redux toolkit.
+-   React Router for Navigation Routing.
+-   Support of react-script.
+-   Code Splitting.
+-   CSS-in-JS where CSS is composed using JavaScript instead of defined in external files.
 
 ## Author
 
@@ -105,12 +112,12 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 
 -   Licensed cover under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
 
-## More Free React Material Admin Templates
+## Checkout Free React Material Admin Templates
 
 -   [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
 -   [Free Berry](https://material-ui.com/store/items/berry-react-material-admin-free/)
 
-## More Premium React Material Admin Templates
+## Checkout Premium React Material Admin Templates
 
 -   [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/)
 -   [Berry](https://material-ui.com/store/items/berry-react-material-admin/)
