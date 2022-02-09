@@ -18,18 +18,18 @@ Mantis has Ant Design principal on top of MUI React component library.
 
 [Pro version](https://mantisdashboard.io) of Mantis react template contains features like TypeScript, Apps, Authentication Methods (i.e. JWT, Auth0, Firebase), Advance Components, Form Plugins, Layouts, Widgets, and many more.
 
-| [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io) |
-| ---------------------------------------------- | :------------------------------------------------------------------------ |
-| **9** Demo pages                               | **130+** Demo pages                                                       |
-| -                                              | ✓ Multi-language                                                          |
-| -                                              | ✓ Dark/Light Mode 🌓                                                     |
-| -                                              | ✓ TypeScript version                                                      |
-| -                                              | ✓ Design files (Figma)                                                    |
-| -                                              | ✓ Multiple color Options                                                  |
-| -                                              | ✓ RTL                                                                     |
-| -                                              | ✓ JWT, Firebase, Auth0, AWS authentications                               |
-| -                                              | ✓ [More components](https://mantisdashboard.io/dashboard/default)         |
-| ✓  MIT License                                 | ✓ [Pro License](https://material-ui.com/store/license)                    |
+| [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io)                          |
+| ---------------------------------------------- | :---------------------------------------------------------------- |
+| **9** Demo pages                               | **130+** Demo pages                                               |
+| -                                              | ✓ Multi-language                                                  |
+| -                                              | ✓ Dark/Light Mode 🌓                                              |
+| -                                              | ✓ TypeScript version                                              |
+| -                                              | ✓ Design files (Figma)                                            |
+| -                                              | ✓ Multiple color Options                                          |
+| -                                              | ✓ RTL                                                             |
+| -                                              | ✓ JWT, Firebase, Auth0, AWS authentications                       |
+| -                                              | ✓ [More components](https://mantisdashboard.io/dashboard/default) |
+| ✓ MIT License                                  | ✓ [Pro License](https://material-ui.com/store/license)            |
 
 ## Why Mantis?
 
@@ -87,7 +87,7 @@ yarn start
 
 ## Documentation
 
-[Mantis documentation](https://codedthemes.gitbook.io/mantis/) helps you out in all aspects from Installation to deployment.
+[Mantis documentation](https://codedthemes.gitbook.io/mantis-react/) helps you out in all aspects from Installation to deployment.
 
 ## Technology Stack
 

@@ -25,7 +25,7 @@ const support = {
             id: 'documentation',
             title: 'Documentation',
             type: 'item',
-            url: 'https://codedthemes.gitbook.io/mantis/',
+            url: 'https://codedthemes.gitbook.io/mantis-react/',
             icon: icons.QuestionOutlined,
             external: true,
             target: true

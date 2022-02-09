@@ -15,9 +15,9 @@ const AuthFooter = () => {
                 textAlign={matchDownSM ? 'center' : 'inherit'}
             >
                 <Typography variant="subtitle2" color="secondary" component="span">
-                    This site is protected by{' '}
-                    <Typography component={Link} variant="subtitle2" href="https://berrydashboard.io" target="_blank" underline="hover">
-                        Privacy Policy
+                    &copy; Mantis React Dashboard Template By&nbsp;
+                    <Typography component={Link} variant="subtitle2" href="https://codedthemes.com" target="_blank" underline="hover">
+                        CodedThemes
                     </Typography>
                 </Typography>
 
@@ -30,11 +30,11 @@ const AuthFooter = () => {
                         variant="subtitle2"
                         color="secondary"
                         component={Link}
-                        href="https://codedthemes.com"
+                        href="https://material-ui.com/store/contributors/codedthemes/"
                         target="_blank"
                         underline="hover"
                     >
-                        Terms and Conditions
+                        MUI Templates
                     </Typography>
                     <Typography
                         variant="subtitle2"
@@ -50,11 +50,11 @@ const AuthFooter = () => {
                         variant="subtitle2"
                         color="secondary"
                         component={Link}
-                        href="https://codedthemes.com"
+                        href="https://codedthemes.support-hub.io/"
                         target="_blank"
                         underline="hover"
                     >
-                        CA Privacy Notice
+                        Support
                     </Typography>
                 </Stack>
             </Stack>
