@@ -12,7 +12,7 @@ Mantis Logo inspired from the Insect name -'Mantises' as They have Triangular he
 
 Mantis has Ant Design principal on top of MUI React component library.
 
-:star: :star: :star: Do not forget to star (Top right of this page) it if you like the theme :star: :star: :star:
+:star: :star: :star: Support us by giving star (Top right of this page) if you like the theme :star: :star: :star:
 
 ![mantis-free-react-dashboard-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social.png)
 
