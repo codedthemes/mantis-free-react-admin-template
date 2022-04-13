@@ -29,7 +29,7 @@ Mantis has Ant Design principal on top of MUI React component library.
 | -                                              | ✓ RTL                                                             |
 | -                                              | ✓ JWT, Firebase, Auth0, AWS authentications                       |
 | -                                              | ✓ [More components](https://mantisdashboard.io/dashboard/default) |
-| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license)            |
+| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license/)            |
 
 ## Why Mantis?
 
