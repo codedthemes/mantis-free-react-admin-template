@@ -1,4 +1,4 @@
-# Mantis Free React Material-UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Download%20Mantis%20React%20-%20The%20professional%20Material%20designed%20React%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.io&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
+# Mantis Free React Material UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Download%20Mantis%20React%20-%20The%20professional%20Material%20designed%20React%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.io&via=codedthemes&hashtags=reactjs,webdev,developers,javascript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/main/LICENSE)
@@ -8,7 +8,7 @@ Mantis is a free and open source react redux dashboard template made using MUI R
 
 ### Name Derived From Nature
 
-Mantis Logo inspired from the Insect name -'Mantises' as They have Triangular heads with Flexible Necks. Also, Name is derived from two popular UI framework, Material-UI and Ant Design (M-Ant-is).
+Mantis Logo inspired from the Insect name -'Mantises' as They have Triangular heads with Flexible Necks. Also, Name is derived from two popular UI framework, Material UI and Ant Design (M-Ant-is).
 
 Mantis has Ant Design principal on top of MUI React component library.
 
@@ -29,14 +29,14 @@ Mantis has Ant Design principal on top of MUI React component library.
 | -                                              | ✓ RTL                                                             |
 | -                                              | ✓ JWT, Firebase, Auth0, AWS authentications                       |
 | -                                              | ✓ [More components](https://mantisdashboard.io/dashboard/default) |
-| ✓ MIT License                                  | ✓ [Pro License](https://material-ui.com/store/license)            |
+| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license)            |
 
 ## Why Mantis?
 
 Mantis offers everything needed to build an advanced dashboard application. In the initial release, we added following high-end features,
 
 -   Professional User Interface.
--   MUI (Material-UI) React components.
+-   MUI (Material UI) React components.
 -   Fully Responsive, all modern browser supported.
 -   Easy to use code structure
 -   Flexible & High-Performance code
@@ -115,12 +115,12 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 ## Checkout Free React Material Admin Templates
 
 -   [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
--   [Free Berry](https://material-ui.com/store/items/berry-react-material-admin-free/)
+-   [Free Berry](https://mui.com/store/items/berry-react-material-admin-free/)
 
 ## Checkout Premium React Material Admin Templates
 
 -   [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/)
--   [Berry](https://material-ui.com/store/items/berry-react-material-admin/)
+-   [Berry](https://mui.com/store/items/berry-react-material-admin/)
 
 ## Follow us
 
