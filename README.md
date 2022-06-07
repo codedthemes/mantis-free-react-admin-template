@@ -54,15 +54,13 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 ## Mantis Pro version
 
-Mantis will soon available for purchase.
-
 #### Preview
 
 -   [Demo](https://mantisdashboard.io)
 
 #### Purchase
 
-Mantis will soon available for purchase from MUI.
+-   [Buy Now](https://mui.com/store/items/mantis-react-admin-dashboard-template/)
 
 ## Table of contents
 
