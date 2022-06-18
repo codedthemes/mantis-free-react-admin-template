@@ -4,19 +4,19 @@
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/main/LICENSE)
 [![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template)](https://github.com/codedthemes/mantis-free-react-admin-template/)
 
-Mantis is a free and open source react redux dashboard template made using MUI React component library with aim of flexibility and better customizability.
+Mantis is a free and open source React redux dashboard template made using the Material UI React component library with aim of flexibility and better customizability.
 
 ### Name Derived From Nature
 
-Mantis Logo inspired from the Insect name -'Mantises' as They have Triangular heads with Flexible Necks. Also, Name is derived from two popular UI framework, Material UI and Ant Design (M-Ant-is).
+Mantis Logo is inspired from the insect name - 'Mantises' as they have triangular heads with flexible Necks. Also, the name is derived from two popular UI frameworks, Material UI and Ant Design (M-Ant-is).
 
-Mantis has Ant Design principal on top of MUI React component library.
+Mantis has Ant Design principal on top of the MAterial UI React component library.
 
 :star: :star: :star: Support us by giving star (Top right of this page) if you like the theme :star: :star: :star:
 
 ![mantis-free-react-dashboard-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social.png)
 
-[Pro version](https://mantisdashboard.io) of Mantis react template contains features like TypeScript, Apps, Authentication Methods (i.e. JWT, Auth0, Firebase), Advance Components, Form Plugins, Layouts, Widgets, and many more.
+The [Pro version](https://mantisdashboard.io) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
 
 | [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io)                          |
 | ---------------------------------------------- | :---------------------------------------------------------------- |
@@ -25,22 +25,22 @@ Mantis has Ant Design principal on top of MUI React component library.
 | -                                              | ✓ Dark/Light Mode 🌓                                              |
 | -                                              | ✓ TypeScript version                                              |
 | -                                              | ✓ Design files (Figma)                                            |
-| -                                              | ✓ Multiple color Options                                          |
+| -                                              | ✓ Multiple color options                                          |
 | -                                              | ✓ RTL                                                             |
-| -                                              | ✓ JWT, Firebase, Auth0, AWS authentications                       |
+| -                                              | ✓ JWT, Firebase, Auth0, AWS authentication                        |
 | -                                              | ✓ [More components](https://mantisdashboard.io/dashboard/default) |
-| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license/)            |
+| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license/)                   |
 
 ## Why Mantis?
 
-Mantis offers everything needed to build an advanced dashboard application. In the initial release, we added following high-end features,
+Mantis offers everything needed to build an advanced dashboard application. In the initial release, we included following high-end features,
 
--   Professional User Interface.
--   MUI (Material UI) React components.
--   Fully Responsive, all modern browser supported.
+-   Professional user interface.
+-   Material UI React components.
+-   Fully responsive, all modern browser supported.
 -   Easy to use code structure
--   Flexible & High-Performance code
--   Easy Documentation Guide
+-   Flexible & high-Performance code
+-   Simple documentation
 
 ## Free Mantis React version
 
@@ -50,7 +50,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 #### Download
 
--   [Download from Github](https://github.com/codedthemes/mantis-free-react-admin-template)
+-   [Download from GitHub](https://github.com/codedthemes/mantis-free-react-admin-template)
 
 ## Mantis Pro version
 
@@ -60,22 +60,22 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 #### Purchase
 
--   [Buy Now](https://mui.com/store/items/mantis-react-admin-dashboard-template/)
+-   [Buy now](https://mui.com/store/items/mantis-react-admin-dashboard-template/)
 
 ## Table of contents
 
--   [Getting Started](#getting-started)
+-   [Getting started](#getting-started)
 -   [Documentation](#documentation)
--   [Technology Stack](#technology-stack)
+-   [Technology stack](#technology-stack)
 -   [Author](#author)
 -   [Issues?](#issues)
 -   [License](#license)
--   [More Products](#more-free-react-material-admin-templates)
+-   [More products](#more-free-react-material-admin-templates)
 -   [Follow us](#follow-us)
 
-## Getting Started
+## Getting started
 
-Clone from Github
+Clone from GitHub
 
 ```
 git clone https://github.com/codedthemes/mantis-free-react-admin-template.git
@@ -87,35 +87,35 @@ yarn start
 
 [Mantis documentation](https://codedthemes.gitbook.io/mantis-react/) helps you out in all aspects from Installation to deployment.
 
-## Technology Stack
+## Technology stack
 
--   [Material UI V5](https://mui.com/)
+-   [Material UI V5](https://mui.com/core/)
 -   Built with React Hooks API.
--   Redux & React Context API for State Management.
+-   Redux & React context API for state management.
 -   Redux toolkit.
--   React Router for Navigation Routing.
--   Support of react-script.
--   Code Splitting.
--   CSS-in-JS where CSS is composed using JavaScript instead of defined in external files.
+-   React Router for navigation routing.
+-   Support for react-script.
+-   Code splitting.
+-   CSS-in-JS.
 
 ## Author
 
-Mantis is managed by Team [CodedThemes](https://codedthemes.com).
+Mantis is managed by team [CodedThemes](https://codedthemes.com).
 
 ## Issues
 
-Please generate a [Github issue](https://github.com/codedthemes/mantis-free-react-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
+Please generate a [GitHub issue](https://github.com/codedthemes/mantis-free-react-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
 
 ## License
 
--   Licensed cover under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
+-   Licensed under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
 
-## Checkout Free React Material Admin Templates
+## Checkout free React Material admin templates
 
 -   [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
 -   [Free Berry](https://mui.com/store/items/berry-react-material-admin-free/)
 
-## Checkout Premium React Material Admin Templates
+## Checkout premium React Material admin templates
 
 -   [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/)
 -   [Berry](https://mui.com/store/items/berry-react-material-admin/)
