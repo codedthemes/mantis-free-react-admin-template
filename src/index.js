@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 // scroll bar
@@ -18,15 +18,16 @@ import reportWebVitals from './reportWebVitals';
 
 // ==============================|| MAIN - REACT DOM RENDER  ||============================== //
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
     <StrictMode>
         <ReduxProvider store={store}>
             <BrowserRouter basename="/free">
                 <App />
             </BrowserRouter>
         </ReduxProvider>
-    </StrictMode>,
-    document.getElementById('root')
+    </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
