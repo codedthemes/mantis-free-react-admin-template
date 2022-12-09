@@ -15,7 +15,7 @@
 
 ## Credits
 
-Fingerprint logo: <a href="https://www.flaticon.com/free-icons/identification" title="identification icons">Identification icons created by Pixel perfect - Flaticon</a>
+Fingerprint logo: <a href="https://www.flaticon.com/free-icons/touch-id" title="touch id icons">Touch id icons created by Pixel perfect - Flaticon</a>
 
 
 Website template: [Mantis]((https://mantisdashboard.io)) and [CodedThemes](https://codedthemes.com), licensed under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
