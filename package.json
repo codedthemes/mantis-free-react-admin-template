@@ -1,8 +1,8 @@
 {
-    "name": "mantis-free-react-admin-template",
-    "version": "1.1.0",
-    "private": true,
-    "homepage": "https://mantisdashboard.io/free",
+    "name": "nanoswap",
+    "version": "1.0.0",
+    "private": false,
+    "homepage": "https://nanoswap.finance",
     "dependencies": {
         "@ant-design/colors": "^6.0.0",
         "@ant-design/icons": "^4.7.0",
@@ -11,7 +11,6 @@
         "@emotion/styled": "^11.10.4",
         "@mui/lab": "^5.0.0-alpha.100",
         "@mui/material": "^5.10.6",
-        "@mui/styles": "^5.10.6",
         "@reduxjs/toolkit": "^1.8.5",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
