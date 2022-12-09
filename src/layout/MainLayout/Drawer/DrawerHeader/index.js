@@ -23,7 +23,7 @@ const DrawerHeader = ({ open }) => {
                     size="small"
                     sx={{ height: 16, '& .MuiChip-label': { fontSize: '0.625rem', py: 0.25 } }}
                     component="a"
-                    href="https://github.com/codedthemes/mantis-free-react-admin-template"
+                    href="https://github.com/nanobank-finance/web"
                     target="_blank"
                     clickable
                 />
