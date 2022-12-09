@@ -80,16 +80,16 @@ const DashboardDefault = () => {
                 <Typography variant="h5">Dashboard</Typography>
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-                <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
+                <AnalyticEcommerce title="Median time to fully fund a loan" count="2 days" isLoss percentage={59.3} extra="35,000" />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-                <AnalyticEcommerce title="Total Users" count="78,250" percentage={70.5} extra="8,900" />
+                <AnalyticEcommerce title="Median APY" count="4%" percentage={27.4} isLoss color="warning" extra="1,943" />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-                <AnalyticEcommerce title="Total Order" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
+                <AnalyticEcommerce title="Percent of missed loan payments" count="0.1%" percentage={70.5} extra="8,900" />
             </Grid>
             <Grid item xs={12} sm={6} md={4} lg={3}>
-                <AnalyticEcommerce title="Total Sales" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" />
+                <AnalyticEcommerce title="TVL in loans" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" />
             </Grid>
 
             <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
@@ -98,7 +98,7 @@ const DashboardDefault = () => {
             <Grid item xs={12} md={7} lg={8}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
-                        <Typography variant="h5">Unique Visitor</Typography>
+                        <Typography variant="h5">Unique Loans</Typography>
                     </Grid>
                     <Grid item>
                         <Stack direction="row" alignItems="center" spacing={0}>
@@ -130,7 +130,7 @@ const DashboardDefault = () => {
             <Grid item xs={12} md={5} lg={4}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
-                        <Typography variant="h5">Income Overview</Typography>
+                        <Typography variant="h5">Profit Overview</Typography>
                     </Grid>
                     <Grid item />
                 </Grid>
@@ -138,7 +138,7 @@ const DashboardDefault = () => {
                     <Box sx={{ p: 3, pb: 0 }}>
                         <Stack spacing={2}>
                             <Typography variant="h6" color="textSecondary">
-                                This Week Statistics
+                                Interest Paid This Week
                             </Typography>
                             <Typography variant="h3">$7,650</Typography>
                         </Stack>
@@ -159,65 +159,8 @@ const DashboardDefault = () => {
                     <OrdersTable />
                 </MainCard>
             </Grid>
-            <Grid item xs={12} md={5} lg={4}>
-                <Grid container alignItems="center" justifyContent="space-between">
-                    <Grid item>
-                        <Typography variant="h5">Analytics Report</Typography>
-                    </Grid>
-                    <Grid item />
-                </Grid>
-                <MainCard sx={{ mt: 2 }} content={false}>
-                    <List sx={{ p: 0, '& .MuiListItemButton-root': { py: 2 } }}>
-                        <ListItemButton divider>
-                            <ListItemText primary="Company Finance Growth" />
-                            <Typography variant="h5">+45.14%</Typography>
-                        </ListItemButton>
-                        <ListItemButton divider>
-                            <ListItemText primary="Company Expenses Ratio" />
-                            <Typography variant="h5">0.58%</Typography>
-                        </ListItemButton>
-                        <ListItemButton>
-                            <ListItemText primary="Business Risk Cases" />
-                            <Typography variant="h5">Low</Typography>
-                        </ListItemButton>
-                    </List>
-                    <ReportAreaChart />
-                </MainCard>
-            </Grid>
 
             {/* row 4 */}
-            <Grid item xs={12} md={7} lg={8}>
-                <Grid container alignItems="center" justifyContent="space-between">
-                    <Grid item>
-                        <Typography variant="h5">Sales Report</Typography>
-                    </Grid>
-                    <Grid item>
-                        <TextField
-                            id="standard-select-currency"
-                            size="small"
-                            select
-                            value={value}
-                            onChange={(e) => setValue(e.target.value)}
-                            sx={{ '& .MuiInputBase-input': { py: 0.5, fontSize: '0.875rem' } }}
-                        >
-                            {status.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                    </Grid>
-                </Grid>
-                <MainCard sx={{ mt: 1.75 }}>
-                    <Stack spacing={1.5} sx={{ mb: -12 }}>
-                        <Typography variant="h6" color="secondary">
-                            Net Profit
-                        </Typography>
-                        <Typography variant="h4">$1560</Typography>
-                    </Stack>
-                    <SalesColumnChart />
-                </MainCard>
-            </Grid>
             <Grid item xs={12} md={5} lg={4}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
