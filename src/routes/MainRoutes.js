@@ -31,10 +31,14 @@ const MainRoutes = {
             element: <Color />
         },
         {
-            path: 'dashboard',
+            path: 'marketplace',
             children: [
                 {
-                    path: 'default',
+                    path: 'loan',
+                    element: <DashboardDefault />
+                },
+                {
+                    path: 'stake',
                     element: <DashboardDefault />
                 }
             ]
@@ -48,11 +52,7 @@ const MainRoutes = {
             element: <Shadow />
         },
         {
-            path: 'marketplace',
-            element: <Typography />
-        },
-        {
-            path: 'icons/ant',
+            path: 'wallets',
             element: <AntIcons />
         }
     ]

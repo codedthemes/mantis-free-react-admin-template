@@ -29,14 +29,14 @@ const utilities = {
             id: 'util-marketplace',
             title: 'Loan Market',
             type: 'item',
-            url: '/marketplace',
+            url: '/marketplace/loan',
             icon: icons.FontSizeOutlined
         },
         {
             id: 'util-secondary-marketplace',
             title: 'Stake Market',
             type: 'item',
-            url: '/marketplace',
+            url: '/marketplace/stake',
             icon: icons.FontSizeOutlined
         },
         {
