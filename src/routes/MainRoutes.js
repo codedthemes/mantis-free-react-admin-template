@@ -27,7 +27,7 @@ const MainRoutes = {
             element: <DashboardDefault />
         },
         {
-            path: 'color',
+            path: 'wallets',
             element: <Color />
         },
         {
@@ -48,7 +48,7 @@ const MainRoutes = {
             element: <Shadow />
         },
         {
-            path: 'typography',
+            path: 'marketplace',
             element: <Typography />
         },
         {

@@ -26,31 +26,46 @@ const utilities = {
     type: 'group',
     children: [
         {
-            id: 'util-typography',
-            title: 'Typography',
+            id: 'util-marketplace',
+            title: 'Loan Market',
             type: 'item',
-            url: '/typography',
+            url: '/marketplace',
             icon: icons.FontSizeOutlined
         },
         {
-            id: 'util-color',
-            title: 'Color',
+            id: 'util-secondary-marketplace',
+            title: 'Stake Market',
             type: 'item',
-            url: '/color',
+            url: '/marketplace',
+            icon: icons.FontSizeOutlined
+        },
+        {
+            id: 'util-wallets',
+            title: 'Wallets',
+            type: 'item',
+            url: '/wallets',
             icon: icons.BgColorsOutlined
         },
         {
-            id: 'util-shadow',
-            title: 'Shadow',
+            id: 'bill_pay',
+            title: 'Bill Pay',
             type: 'item',
             url: '/shadow',
             icon: icons.BarcodeOutlined
         },
         {
-            id: 'ant-icons',
-            title: 'Ant Icons',
+            id: 'loan',
+            title: 'Loan XNO',
             type: 'item',
             url: '/icons/ant',
+            icon: icons.AntDesignOutlined,
+            breadcrumbs: false
+        },
+        {
+            id: 'stake',
+            title: 'Stake XNO',
+            type: 'item',
+            url: '/stake',
             icon: icons.AntDesignOutlined,
             breadcrumbs: false
         }
