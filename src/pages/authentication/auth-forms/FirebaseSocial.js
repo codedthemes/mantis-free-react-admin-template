@@ -21,6 +21,7 @@ import {
 
 // react
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
 
@@ -81,13 +82,19 @@ const FirebaseSocial = () => {
     const auth = getAuth(app);
     auth.useDeviceLanguage();
 
-    // get current user to tell if we're already logged in
-    const user = auth.getCurrentUser;
-    const already_logged_in = user != null;
-    console.log(already_logged_in ? 'User is already logged in' : 'User is not currently logged in');
+    // useEffect(() => {
+    //     // get current user to tell if we're already logged in
+    //     let user = auth.getCurrentUser;
+    //     let already_logged_in = user != null;
+    //     console.log(user);
+    //     console.log(already_logged_in ? 'User is already logged in' : 'User is not currently logged in');
+    // }, [auth.getCurrentUser]);
 
     getRedirectResult(auth)
         .then((result) => {
+            if (result == undefined) return;
+
+            console.log(result);
             // This gives you a Google Access Token. You can use it to access Google APIs.
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
@@ -99,6 +106,7 @@ const FirebaseSocial = () => {
             console.log(token);
         })
         .catch((error) => {
+            console.log(error);
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -112,7 +120,13 @@ const FirebaseSocial = () => {
         });
 
     const googleHandler = async () => {
-        await signInWithPopup(auth, googleProvider);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     const twitterHandler = async () => {
