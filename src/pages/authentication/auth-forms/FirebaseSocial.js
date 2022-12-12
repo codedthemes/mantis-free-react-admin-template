@@ -24,19 +24,6 @@ import { useNavigate } from 'react-router-dom';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
 
-// the firebase auth api key is intended to be public
-// https://stackoverflow.com/a/37484053
-// https://firebase.google.com/docs/web/setup#available-libraries
-const firebaseConfig = {
-    apiKey: 'AIzaSyBQ8rb3jkIsusGKhGwGm-ri9VAjoof1OKA',
-    authDomain: 'nanocryptobank.firebaseapp.com',
-    projectId: 'nanocryptobank',
-    storageBucket: 'nanocryptobank.appspot.com',
-    messagingSenderId: '950014241040',
-    appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
-    measurementId: 'G-H4F5Z43EKN'
-};
-
 const error_message = {
     'auth/email-already-in-use': 'Email already in use',
     'auth/invalid-email': 'Error: Invalid Email',
