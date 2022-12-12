@@ -12,9 +12,7 @@ import {
     ListItemButton,
     ListItemSecondaryAction,
     ListItemText,
-    MenuItem,
     Stack,
-    TextField,
     Typography
 } from '@mui/material';
 
@@ -22,8 +20,6 @@ import {
 import OrdersTable from './OrdersTable';
 import IncomeAreaChart from './IncomeAreaChart';
 import MonthlyBarChart from './MonthlyBarChart';
-import ReportAreaChart from './ReportAreaChart';
-import SalesColumnChart from './SalesColumnChart';
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 
@@ -33,6 +29,34 @@ import avatar1 from 'assets/images/users/avatar-1.png';
 import avatar2 from 'assets/images/users/avatar-2.png';
 import avatar3 from 'assets/images/users/avatar-3.png';
 import avatar4 from 'assets/images/users/avatar-4.png';
+
+// firebase
+import { initializeApp } from 'firebase/app';
+import {
+    getAuth,
+    getRedirectResult,
+    sendEmailVerification,
+    signInWithPopup,
+    GoogleAuthProvider,
+    TwitterAuthProvider,
+    GithubAuthProvider
+} from 'firebase/auth';
+
+// react
+import { useNavigate } from 'react-router-dom';
+
+// the firebase auth api key is intended to be public
+// https://stackoverflow.com/a/37484053
+// https://firebase.google.com/docs/web/setup#available-libraries
+const firebaseConfig = {
+    apiKey: 'AIzaSyBQ8rb3jkIsusGKhGwGm-ri9VAjoof1OKA',
+    authDomain: 'nanocryptobank.firebaseapp.com',
+    projectId: 'nanocryptobank',
+    storageBucket: 'nanocryptobank.appspot.com',
+    messagingSenderId: '950014241040',
+    appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
+    measurementId: 'G-H4F5Z43EKN'
+};
 
 // avatar style
 const avatarSX = {
@@ -72,6 +96,12 @@ const status = [
 const DashboardDefault = () => {
     const [value, setValue] = useState('today');
     const [slot, setSlot] = useState('week');
+    const navigate = useNavigate();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    auth.useDeviceLanguage();
+    const user = auth.getCurrentUser;
+    console.log(user);
 
     return (
         <Grid container rowSpacing={4.5} columnSpacing={2.75}>

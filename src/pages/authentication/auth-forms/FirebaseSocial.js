@@ -66,6 +66,8 @@ const FirebaseSocial = () => {
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     auth.useDeviceLanguage();
+    const user = auth.getCurrentUser;
+    console.log(user);
 
     getRedirectResult(auth)
         .then((result) => {
