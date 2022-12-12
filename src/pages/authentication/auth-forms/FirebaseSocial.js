@@ -24,6 +24,16 @@ import { useNavigate } from 'react-router-dom';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
 
+const firebaseConfig = {
+    apiKey: 'AIzaSyBQ8rb3jkIsusGKhGwGm-ri9VAjoof1OKA',
+    authDomain: 'nanocryptobank.firebaseapp.com',
+    projectId: 'nanocryptobank',
+    storageBucket: 'nanocryptobank.appspot.com',
+    messagingSenderId: '950014241040',
+    appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
+    measurementId: 'G-H4F5Z43EKN'
+};
+
 const error_message = {
     'auth/email-already-in-use': 'Email already in use',
     'auth/invalid-email': 'Error: Invalid Email',
@@ -50,11 +60,31 @@ const FirebaseSocial = () => {
     const theme = useTheme();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
     const navigate = useNavigate();
+
+    const googleProvider = new GoogleAuthProvider();
+    const twitterProvider = new TwitterAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    googleProvider.setCustomParameters({
+        prompt: 'select_account'
+    });
+
+    twitterProvider.setCustomParameters({
+        prompt: 'select_account'
+    });
+
+    githubProvider.setCustomParameters({
+        prompt: 'select_account'
+    });
+
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     auth.useDeviceLanguage();
+
+    // get current user to tell if we're already logged in
     const user = auth.getCurrentUser;
-    console.log(user);
+    const already_logged_in = user != null;
+    console.log(already_logged_in ? 'User is already logged in' : 'User is not currently logged in');
 
     getRedirectResult(auth)
         .then((result) => {
@@ -65,6 +95,8 @@ const FirebaseSocial = () => {
             // The signed-in user info.
             const user = result.user;
             console.log('success');
+            console.log(user);
+            console.log(token);
         })
         .catch((error) => {
             // Handle Errors here.
@@ -73,21 +105,22 @@ const FirebaseSocial = () => {
             // The email of the user's account used.
             // const email = error.customData.email;
             // The AuthCredential type that was used.
-            const credential = GoogleAuthProvider.credentialFromError(error);
+            // const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
             console.log(errorMessage);
+            console.log(errorCode);
         });
 
     const googleHandler = async () => {
-        await signInWithPopup(auth, new GoogleAuthProvider());
+        await signInWithPopup(auth, googleProvider);
     };
 
     const twitterHandler = async () => {
-        await signInWithPopup(auth, new TwitterAuthProvider());
+        await signInWithPopup(auth, twitterProvider);
     };
 
     const githubHandler = async () => {
-        await signInWithPopup(auth, new GithubAuthProvider());
+        await signInWithPopup(auth, githubProvider);
     };
 
     // const authCallbackFailure = async (error) => {
