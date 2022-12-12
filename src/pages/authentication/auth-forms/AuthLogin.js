@@ -29,6 +29,9 @@ import AnimateButton from 'components/@extended/AnimateButton';
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
+// firebase
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
