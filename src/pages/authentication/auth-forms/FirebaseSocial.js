@@ -72,12 +72,9 @@ const FirebaseSocial = () => {
     auth.useDeviceLanguage();
 
     const handleLoginSuccess = (result) => {
-        if (result == undefined) return;
-
-        console.log(result);
-        // This gives you a Google Access Token. You can use it to access Google APIs.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         setAccessToken(credential.accessToken);
+        navigate('wallets', { state: { accessToken: accessToken } });
     };
 
     const handleLoginFailure = (error) => {
