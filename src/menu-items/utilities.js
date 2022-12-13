@@ -52,22 +52,6 @@ const utilities = {
             type: 'item',
             url: '/shadow',
             icon: icons.BarcodeOutlined
-        },
-        {
-            id: 'loan',
-            title: 'Loan XNO',
-            type: 'item',
-            url: '/icons/ant',
-            icon: icons.AntDesignOutlined,
-            breadcrumbs: false
-        },
-        {
-            id: 'stake',
-            title: 'Stake XNO',
-            type: 'item',
-            url: '/stake',
-            icon: icons.AntDesignOutlined,
-            breadcrumbs: false
         }
     ]
 };

@@ -20,7 +20,7 @@ const MainRoutes = {
         },
         {
             path: 'wallets',
-            element: <Color />
+            element: <WalletDefault />
         },
         {
             path: 'marketplace',

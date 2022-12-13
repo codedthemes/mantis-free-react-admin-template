@@ -74,7 +74,7 @@ const FirebaseSocial = () => {
     const handleLoginSuccess = (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         setAccessToken(credential.accessToken);
-        navigate('wallets', { state: { accessToken: accessToken } });
+        navigate('../wallets', { state: { accessToken: accessToken } });
     };
 
     const handleLoginFailure = (error) => {
