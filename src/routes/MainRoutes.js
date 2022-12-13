@@ -8,7 +8,6 @@ import MainLayout from 'layout/MainLayout';
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const WalletDefault = Loadable(lazy(() => import('pages/wallet')));
 const UserVerification = Loadable(lazy(() => import('pages/user-verification')));
-const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 

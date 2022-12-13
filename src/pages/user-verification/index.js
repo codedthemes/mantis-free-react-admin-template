@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 // material-ui
 import {
     Avatar,
@@ -43,7 +41,8 @@ import {
 } from 'firebase/auth';
 
 // react
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 // the firebase auth api key is intended to be public
 // https://stackoverflow.com/a/37484053
@@ -96,12 +95,25 @@ const status = [
 const UserVerification = () => {
     const [value, setValue] = useState('today');
     const [slot, setSlot] = useState('week');
+    const accessToken = sessionStorage.getItem('accessToken');
     const navigate = useNavigate();
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    auth.useDeviceLanguage();
-    const user = auth.getCurrentUser;
-    console.log(user);
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/sumsub', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'WWW-Authenticate': accessToken
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
 
     return (
         <Grid container rowSpacing={4.5} columnSpacing={2.75}>

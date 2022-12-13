@@ -8,7 +8,13 @@ import MinimalLayout from 'layout/MinimalLayout';
 const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
 const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));
 
+// navigator
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 // ==============================|| AUTH ROUTING ||============================== //
+
+// const Stack = createNativeStackNavigator();
 
 const LoginRoutes = {
     path: '/',

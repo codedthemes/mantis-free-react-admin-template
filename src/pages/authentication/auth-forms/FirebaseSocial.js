@@ -47,7 +47,6 @@ const error_message = {
 
 const FirebaseSocial = () => {
     const theme = useTheme();
-    const [accessToken, setAccessToken] = useState();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
     const navigate = useNavigate();
 
@@ -73,8 +72,8 @@ const FirebaseSocial = () => {
 
     const handleLoginSuccess = (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        setAccessToken(credential.accessToken);
-        navigate('../verify', { state: { accessToken: accessToken } });
+        sessionStorage.setItem('accessToken', credential.accessToken);
+        navigate('../verify');
     };
 
     const handleLoginFailure = (error) => {
