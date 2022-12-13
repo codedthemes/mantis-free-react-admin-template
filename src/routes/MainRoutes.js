@@ -6,6 +6,8 @@ import MainLayout from 'layout/MainLayout';
 
 // render pages
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
+const WalletDefault = Loadable(lazy(() => import('pages/wallet')));
+const UserVerification = Loadable(lazy(() => import('pages/user-verification')));
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -21,6 +23,10 @@ const MainRoutes = {
         {
             path: 'wallets',
             element: <WalletDefault />
+        },
+        {
+            path: 'verify',
+            element: <UserVerification />
         },
         {
             path: 'marketplace',
