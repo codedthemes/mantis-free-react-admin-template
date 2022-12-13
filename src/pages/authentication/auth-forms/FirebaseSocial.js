@@ -45,20 +45,9 @@ const error_message = {
     'auth/weak-password': 'Your password must be at least 6 characters, containing letters and numbers'
 };
 
-// const authCallback = async (result) => {
-//     // This gives you a Google Access Token. You can use it to access Google APIs.
-//     if (result) {
-//         const credential = GoogleAuthProvider.credentialFromResult(result);
-//         console.log(credential.accessToken);
-//     }
-//     // const token = credential.accessToken;
-
-//     // sendEmailVerification(result.user);
-//     // navigate('/', { state: { access_token: token } });
-// };
-
 const FirebaseSocial = () => {
     const theme = useTheme();
+    const [accessToken, setAccessToken] = useState();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
     const navigate = useNavigate();
 
@@ -82,73 +71,39 @@ const FirebaseSocial = () => {
     const auth = getAuth(app);
     auth.useDeviceLanguage();
 
-    // useEffect(() => {
-    //     // get current user to tell if we're already logged in
-    //     let user = auth.getCurrentUser;
-    //     let already_logged_in = user != null;
-    //     console.log(user);
-    //     console.log(already_logged_in ? 'User is already logged in' : 'User is not currently logged in');
-    // }, [auth.getCurrentUser]);
+    const handleLoginSuccess = (result) => {
+        if (result == undefined) return;
 
-    getRedirectResult(auth)
-        .then((result) => {
-            if (result == undefined) return;
+        console.log(result);
+        // This gives you a Google Access Token. You can use it to access Google APIs.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        setAccessToken(credential.accessToken);
+    };
 
-            console.log(result);
-            // This gives you a Google Access Token. You can use it to access Google APIs.
-            const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-
-            // The signed-in user info.
-            const user = result.user;
-            console.log('success');
-            console.log(user);
-            console.log(token);
-        })
-        .catch((error) => {
-            console.log(error);
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            // const email = error.customData.email;
-            // The AuthCredential type that was used.
-            // const credential = GoogleAuthProvider.credentialFromError(error);
-            // ...
-            console.log(errorMessage);
-            console.log(errorCode);
-        });
+    const handleLoginFailure = (error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+        console.log(errorMessage);
+        console.log(errorCode);
+        // TODO: lock account after too many failed attempts?
+    };
 
     const googleHandler = async () => {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                console.log(result);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        signInWithPopup(auth, googleProvider).then(handleLoginSuccess).catch(handleLoginFailure);
     };
 
     const twitterHandler = async () => {
-        await signInWithPopup(auth, twitterProvider);
+        signInWithPopup(auth, twitterProvider).then(handleLoginSuccess).catch(handleLoginFailure);
     };
 
     const githubHandler = async () => {
-        await signInWithPopup(auth, githubProvider);
+        signInWithPopup(auth, githubProvider).then(handleLoginSuccess).catch(handleLoginFailure);
     };
-
-    // const authCallbackFailure = async (error) => {
-    //     // Handle Errors here.
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // The email of the user's account used.
-    //     // const email = error.customData.email;
-    //     // The AuthCredential type that was used.
-    //     const credential = GoogleAuthProvider.credentialFromError(error);
-
-    //     // TODO: display errors
-    //     console.log(errorCode);
-    // };
 
     return (
         <Stack
