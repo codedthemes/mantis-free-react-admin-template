@@ -95,15 +95,15 @@ const status = [
 const UserVerification = () => {
     const [value, setValue] = useState('today');
     const [slot, setSlot] = useState('week');
-    const accessToken = sessionStorage.getItem('accessToken');
+    const idToken = sessionStorage.getItem('idToken');
     const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://127.0.0.1:8000/sumsub', {
-            method: 'POST',
+            method: 'GET',
             mode: 'cors',
             headers: {
-                'WWW-Authenticate': accessToken
+                Authorization: 'Bearer ' + idToken
             }
         })
             .then((res) => res.json())

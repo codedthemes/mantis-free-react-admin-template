@@ -72,7 +72,7 @@ const FirebaseSocial = () => {
 
     const handleLoginSuccess = (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
-        sessionStorage.setItem('accessToken', credential.accessToken);
+        sessionStorage.setItem('idToken', credential.idToken);
         navigate('../verify');
     };
 
