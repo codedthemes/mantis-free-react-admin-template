@@ -98,6 +98,8 @@ const UserVerification = () => {
     const idToken = sessionStorage.getItem('idToken');
     const navigate = useNavigate();
 
+    console.log(idToken);
+
     useEffect(() => {
         fetch('http://127.0.0.1:8000/sumsub', {
             method: 'GET',

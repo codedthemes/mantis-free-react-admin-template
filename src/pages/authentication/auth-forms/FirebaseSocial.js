@@ -8,6 +8,7 @@ import Twitter from 'assets/images/icons/twitter.svg';
 import Github from 'assets/images/icons/github.svg';
 
 // firebase
+import { getAppAuth } from 'utils/firebase';
 import { initializeApp } from 'firebase/app';
 import {
     getAuth,
@@ -24,16 +25,6 @@ import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 // ==============================|| FIREBASE - SOCIAL BUTTON ||============================== //
-
-const firebaseConfig = {
-    apiKey: 'AIzaSyBQ8rb3jkIsusGKhGwGm-ri9VAjoof1OKA',
-    authDomain: 'nanocryptobank.firebaseapp.com',
-    projectId: 'nanocryptobank',
-    storageBucket: 'nanocryptobank.appspot.com',
-    messagingSenderId: '950014241040',
-    appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
-    measurementId: 'G-H4F5Z43EKN'
-};
 
 const error_message = {
     'auth/email-already-in-use': 'Email already in use',
@@ -66,13 +57,12 @@ const FirebaseSocial = () => {
         prompt: 'select_account'
     });
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    auth.useDeviceLanguage();
+    const auth = getAppAuth();
 
     const handleLoginSuccess = (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         sessionStorage.setItem('idToken', credential.idToken);
+        sessionStorage.setItem('accessToken', credential.accessToken);
         navigate('../verify');
     };
 

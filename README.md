@@ -13,6 +13,15 @@
 -   Code splitting.
 -   CSS-in-JS.
 
+## Usage
+
+Start the local firebase emulator
+```
+firebase emulators:start
+```
+
+Start the web app with `npm start` or `yarn start`
+
 ## Credits
 
 Fingerprint logo: <a href="https://www.flaticon.com/free-icons/touch-id" title="touch id icons">Touch id icons created by Pixel perfect - Flaticon</a>
