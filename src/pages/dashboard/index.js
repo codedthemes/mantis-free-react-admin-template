@@ -5,7 +5,6 @@ import {
     Avatar,
     AvatarGroup,
     Box,
-    Button,
     Grid,
     List,
     ListItemAvatar,
@@ -17,8 +16,7 @@ import {
 } from '@mui/material';
 
 // ant design
-import { Tabs } from 'antd';
-import { Table } from 'antd';
+import { Tabs, Table, Input, Button, Space } from 'antd';
 
 // project import
 import OrdersTable from './OrdersTable';
@@ -99,6 +97,14 @@ const status = [
 
 const columns = [
     {
+        title: 'Wallet',
+        dataIndex: 'wallet'
+    },
+    {
+        title: 'Staked',
+        dataIndex: 'staked'
+    },
+    {
         title: 'Name',
         dataIndex: 'name'
     },
@@ -115,6 +121,8 @@ const data = [];
 for (let i = 0; i < 46; i++) {
     data.push({
         key: i,
+        wallet: <Button>Deposit</Button>,
+        staked: <Input placeholder="0 XNO"></Input>,
         name: `Edward King ${i}`,
         age: 32,
         address: `London, Park Lane no. ${i}`
@@ -131,14 +139,6 @@ const StakeDashboard = () => {
             setSelectedRowKeys([]);
             setLoading(false);
         }, 1000);
-    };
-    const onSelectChange = (newSelectedRowKeys) => {
-        console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-        setSelectedRowKeys(newSelectedRowKeys);
-    };
-    const rowSelection = {
-        selectedRowKeys,
-        onChange: onSelectChange
     };
     const hasSelected = selectedRowKeys.length > 0;
     return (
@@ -159,7 +159,7 @@ const StakeDashboard = () => {
                     {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
                 </span>
             </div>
-            <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={data} />
         </div>
     );
 };
