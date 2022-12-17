@@ -96,13 +96,71 @@ const status = [
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const { Meta } = Card;
-const Cards = () => {
+const LoadingCards = (walletData) => {
     // https://ant.design/components/card/#
-    const [walletData, setWalletData] = useState({});
+    const loading = true;
+    return (
+        <>
+            <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
+                <Meta
+                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                    title="Card title"
+                    description="This is the description"
+                />
+            </Card>
+
+            <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
+                <Meta
+                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                    title="Card title"
+                    description="This is the description"
+                />
+            </Card>
+        </>
+    );
+};
+
+const Cards = (params) => {
+    const filtered = params.walletData.filter((wallet) => wallet.type == params.walletType);
+    const mapped = filtered.map((wallet) => {
+        return (
+            <>
+                <Card
+                    style={{
+                        width: 300,
+                        marginTop: 16
+                    }}
+                    actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}
+                >
+                    <Skeleton loading={false} avatar active>
+                        <Meta
+                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                            title={wallet.name}
+                            description={wallet.address}
+                        />
+                    </Skeleton>
+                </Card>
+            </>
+        );
+    });
+
+    return mapped;
+};
+
+const WalletDefault = () => {
+    const [walletData, setWalletData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const idToken = sessionStorage.getItem('idToken');
+
+    const navigate = useNavigate();
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    auth.useDeviceLanguage();
+    const user = auth.getCurrentUser;
+    console.log(user);
 
     useEffect(() => {
+        const idToken = sessionStorage.getItem('idToken');
         fetch('http://127.0.0.1:8000/wallets', {
             method: 'GET',
             mode: 'cors',
@@ -121,50 +179,27 @@ const Cards = () => {
     }, []);
 
     return (
-        <>
-            <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
-                <Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                    title="Card title"
-                    description="This is the description"
-                />
-            </Card>
-
-            <Card
-                style={{
-                    width: 300,
-                    marginTop: 16
-                }}
-                actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}
-            >
-                <Skeleton loading={loading} avatar active>
-                    <Meta
-                        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                        title="Card title"
-                        description="This is the description"
-                    />
-                </Skeleton>
-            </Card>
-        </>
-    );
-};
-
-const WalletDefault = () => {
-    const [value, setValue] = useState('today');
-    const [slot, setSlot] = useState('week');
-    const navigate = useNavigate();
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    auth.useDeviceLanguage();
-    const user = auth.getCurrentUser;
-    console.log(user);
-
-    return (
         <Grid container>
+            {/* row 1 */}
+            <MainCard title="Personal Wallets" style={{ margin: '1%' }}>
+                <Grid item xs={12} md={7} lg={8}>
+                    {loading ? <LoadingCards /> : <Cards walletData={walletData} walletType={1} />}
+                </Grid>
+            </MainCard>
+
+            {/* row 2 */}
+            <MainCard title="Payment Wallets" style={{ margin: '1%' }}>
+                <Grid item xs={12} md={7} lg={8}>
+                    {loading ? <LoadingCards /> : <Cards walletData={walletData} walletType={2} />}
+                </Grid>
+            </MainCard>
+
             {/* row 3 */}
-            <Grid item xs={12} md={7} lg={8}>
-                <Cards />
-            </Grid>
+            <MainCard title="Yield Wallets" style={{ margin: '1%' }}>
+                <Grid item xs={12} md={7} lg={8}>
+                    {loading ? <LoadingCards /> : <Cards walletData={walletData} walletType={3} />}
+                </Grid>
+            </MainCard>
         </Grid>
     );
 };
