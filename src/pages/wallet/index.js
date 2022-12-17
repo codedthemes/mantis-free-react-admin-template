@@ -16,21 +16,11 @@ import {
 } from '@mui/material';
 
 // ant design
-import { EditOutlined, EllipsisOutlined, GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Avatar, Card, Skeleton, Switch } from 'antd';
 
 // project import
-import OrdersTable from './OrdersTable';
-import IncomeAreaChart from './IncomeAreaChart';
-import MonthlyBarChart from './MonthlyBarChart';
 import MainCard from 'components/MainCard';
-import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
-
-// assets
-import avatar1 from 'assets/images/users/avatar-1.png';
-import avatar2 from 'assets/images/users/avatar-2.png';
-import avatar3 from 'assets/images/users/avatar-3.png';
-import avatar4 from 'assets/images/users/avatar-4.png';
 
 // firebase
 import { initializeApp } from 'firebase/app';
@@ -100,23 +90,15 @@ const LoadingCards = (walletData) => {
     // https://ant.design/components/card/#
     const loading = true;
     return (
-        <>
+        <Grid container>
             <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
-                <Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                    title="Card title"
-                    description="This is the description"
-                />
+                <Meta title="Card title" description="This is the description" />
             </Card>
 
             <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
-                <Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                    title="Card title"
-                    description="This is the description"
-                />
+                <Meta title="Card title" description="This is the description" />
             </Card>
-        </>
+        </Grid>
     );
 };
 
@@ -124,7 +106,7 @@ const Cards = (params) => {
     const filtered = params.walletData.filter((wallet) => wallet.type == params.walletType);
     const mapped = filtered.map((wallet) => {
         return (
-            <>
+            <Grid container key={Math.random()}>
                 <Card
                     style={{
                         width: 300,
@@ -133,14 +115,10 @@ const Cards = (params) => {
                     actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}
                 >
                     <Skeleton loading={false} avatar active>
-                        <Meta
-                            avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                            title={wallet.name}
-                            description={wallet.address}
-                        />
+                        <Meta title={wallet.name} description={wallet.address} />
                     </Skeleton>
                 </Card>
-            </>
+            </Grid>
         );
     });
 
