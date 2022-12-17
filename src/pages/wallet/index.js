@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // material-ui
 import {
@@ -98,10 +98,28 @@ const status = [
 const { Meta } = Card;
 const Cards = () => {
     // https://ant.design/components/card/#
+    const [walletData, setWalletData] = useState({});
     const [loading, setLoading] = useState(true);
-    const onChange = (checked) => {
-        setLoading(!checked);
-    };
+    const idToken = sessionStorage.getItem('idToken');
+
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/wallets', {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                Authorization: 'Bearer ' + idToken
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setWalletData(data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    }, []);
+
     return (
         <>
             <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
