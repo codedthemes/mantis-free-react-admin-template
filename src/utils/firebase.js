@@ -17,7 +17,7 @@ const getEmulatorAuth = () => {
         appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
         measurementId: 'G-H4F5Z43EKN'
     });
-    const auth = getAuth(app);
+    const auth = getAuth();
     connectAuthEmulator(auth, 'http://localhost:9099');
     auth.useDeviceLanguage();
     return auth;
