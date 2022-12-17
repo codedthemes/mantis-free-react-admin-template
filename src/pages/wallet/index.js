@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 // material-ui
 import {
-    Avatar,
     AvatarGroup,
     Box,
     Button,
@@ -16,6 +15,10 @@ import {
     Typography
 } from '@mui/material';
 
+// ant design
+import { EditOutlined, EllipsisOutlined, GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import { Avatar, Card, Skeleton, Switch } from 'antd';
+
 // project import
 import OrdersTable from './OrdersTable';
 import IncomeAreaChart from './IncomeAreaChart';
@@ -24,7 +27,6 @@ import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 
 // assets
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
 import avatar1 from 'assets/images/users/avatar-1.png';
 import avatar2 from 'assets/images/users/avatar-2.png';
 import avatar3 from 'assets/images/users/avatar-3.png';
@@ -93,6 +95,42 @@ const status = [
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
+const { Meta } = Card;
+const Cards = () => {
+    // https://ant.design/components/card/#
+    const [loading, setLoading] = useState(true);
+    const onChange = (checked) => {
+        setLoading(!checked);
+    };
+    return (
+        <>
+            <Card style={{ width: 300, marginTop: 16 }} loading={loading}>
+                <Meta
+                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                    title="Card title"
+                    description="This is the description"
+                />
+            </Card>
+
+            <Card
+                style={{
+                    width: 300,
+                    marginTop: 16
+                }}
+                actions={[<SettingOutlined key="setting" />, <EditOutlined key="edit" />, <EllipsisOutlined key="ellipsis" />]}
+            >
+                <Skeleton loading={loading} avatar active>
+                    <Meta
+                        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                        title="Card title"
+                        description="This is the description"
+                    />
+                </Skeleton>
+            </Card>
+        </>
+    );
+};
+
 const WalletDefault = () => {
     const [value, setValue] = useState('today');
     const [slot, setSlot] = useState('week');
@@ -107,9 +145,7 @@ const WalletDefault = () => {
         <Grid container>
             {/* row 3 */}
             <Grid item xs={12} md={7} lg={8}>
-                <MainCard sx={{ mt: 2 }} content={false}>
-                    <OrdersTable />
-                </MainCard>
+                <Cards />
             </Grid>
         </Grid>
     );
