@@ -1,6 +1,6 @@
 {
     "name": "mantis-free-react-admin-template",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "private": true,
     "homepage": "https://mantisdashboard.io/free",
     "dependencies": {
@@ -11,7 +11,6 @@
         "@emotion/styled": "^11.10.4",
         "@mui/lab": "^5.0.0-alpha.100",
         "@mui/material": "^5.10.6",
-        "@mui/styles": "^5.10.6",
         "@reduxjs/toolkit": "^1.8.5",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",

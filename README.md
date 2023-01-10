@@ -18,18 +18,18 @@ Mantis has Ant Design principal on top of the MAterial UI React component librar
 
 The [Pro version](https://mantisdashboard.io) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
 
-| [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io)                          |
-| ---------------------------------------------- | :---------------------------------------------------------------- |
-| **7** Demo pages                               | **85+** Demo pages                                               |
-| -                                              | ✓ Multi-language                                                  |
-| -                                              | ✓ Dark/Light Mode 🌓                                              |
-| -                                              | ✓ TypeScript version                                              |
-| -                                              | ✓ Design files (Figma)                                            |
-| -                                              | ✓ Multiple color options                                          |
-| -                                              | ✓ RTL                                                             |
-| -                                              | ✓ JWT, Firebase, Auth0, AWS authentication                        |
+| [Mantis Free](https://mantisdashboard.io/free) | [Mantis Pro](https://mantisdashboard.io)                                         |
+| ---------------------------------------------- | :------------------------------------------------------------------------------- |
+| **7** Demo pages                               | **85+** Demo pages                                                               |
+| -                                              | ✓ Multi-language                                                                 |
+| -                                              | ✓ Dark/Light Mode 🌓                                                             |
+| -                                              | ✓ TypeScript version                                                             |
+| -                                              | ✓ Design files (Figma)                                                           |
+| -                                              | ✓ Multiple color options                                                         |
+| -                                              | ✓ RTL                                                                            |
+| -                                              | ✓ JWT, Firebase, Auth0, AWS authentication                                       |
 | -                                              | ✓ [More components](https://mantisdashboard.io/components-overview/autocomplete) |
-| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license/)                   |
+| ✓ MIT License                                  | ✓ [Pro License](https://mui.com/store/license/)                                  |
 
 ## Why Mantis?
 
