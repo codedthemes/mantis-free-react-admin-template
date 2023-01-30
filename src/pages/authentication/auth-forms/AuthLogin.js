@@ -5,7 +5,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import {
     Button,
     Checkbox,
-    Divider,
     FormControlLabel,
     FormHelperText,
     Grid,
@@ -23,7 +22,6 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 // project import
-import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
@@ -35,6 +33,36 @@ const AuthLogin = () => {
     const [checked, setChecked] = React.useState(false);
 
     const [showPassword, setShowPassword] = React.useState(false);
+    const login = async (email, password, token = null) => {
+        //`//${apiConfig.api_prefix}/lead/${brokerId}/${leadId}?token=ec6d365f4b9b4ab942ec7ab0f328aa6a`
+        const response = (await axios.post) < { accessToken, user, err } > (`/${apiConfig.api_prefix}/login`, { email, password, token });
+        const accessToken = response.data.user.accessToken;
+        const user = response.data.user.user;
+
+        if (user && user.name && user.email) {
+            LogRocket.identify(logRocket.key, {
+                name: user.name,
+                email: user.email
+            });
+        }
+
+        const err = response.data.err;
+        setSession(accessToken);
+        dispatch({
+            type: 'LOGIN',
+            payload: {
+                user,
+                err
+            }
+        });
+    };
+
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user && user.accessToken) {
+        return { 'x-access-token': user.accessToken };
+    }
+
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
@@ -45,10 +73,17 @@ const AuthLogin = () => {
 
     return (
         <>
+            {/* <AuthLogin.Provider
+                value={{
+                    login
+                }}
+            >
+                {children}
+            </AuthLogin.Provider> */}
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: '',
+                    password: '',
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
@@ -163,14 +198,6 @@ const AuthLogin = () => {
                                         Login
                                     </Button>
                                 </AnimateButton>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Divider>
-                                    <Typography variant="caption"> Login with</Typography>
-                                </Divider>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FirebaseSocial />
                             </Grid>
                         </Grid>
                     </form>
