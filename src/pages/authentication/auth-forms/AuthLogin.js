@@ -72,7 +72,7 @@ const AuthLogin = () => {
                 if (accessToken && isValidToken(accessToken)) {
                     setSession(accessToken);
 
-                    const response = (await axios.get) < { user, err } > `//${apiConfig.api_prefix}/account/me`;
+                    const response = (await axios.get) < { user, err } > `//api.property.eastwood.docker.localhost:8001/account/me`;
                     const user = response.data.user.user;
 
                     if (user && user.name && user.email) {
@@ -228,6 +228,7 @@ const AuthLogin = () => {
                                         type="submit"
                                         variant="contained"
                                         color="primary"
+                                        onClick={login}
                                     >
                                         Login
                                     </Button>
