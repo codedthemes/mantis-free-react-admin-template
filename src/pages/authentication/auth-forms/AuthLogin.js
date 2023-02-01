@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
@@ -34,7 +34,10 @@ const AuthLogin = () => {
 
     const [showPassword, setShowPassword] = React.useState(false);
     const login = async (email, password, token = null) => {
-        const response = (await axios.post) < { accessToken, user, err } > (`/${apiConfig.api_prefix}/login`, { email, password, token });
+        const response =
+            (await axios.post) <
+            { accessToken, user, err } >
+            (`/api.property.eastwood.docker.localhost:8001/login`, { email, password, token });
         const accessToken = response.data.user.accessToken;
         const user = response.data.user.user;
 
@@ -55,6 +58,44 @@ const AuthLogin = () => {
             }
         });
     };
+
+    const logout = () => {
+        setSession(null);
+        dispatch({ type: 'LOGOUT' });
+    };
+
+    useEffect(() => {
+        const initialise = async () => {
+            try {
+                const accessToken = window.localStorage.getItem('accessToken');
+
+                if (accessToken && isValidToken(accessToken)) {
+                    setSession(accessToken);
+
+                    const response = (await axios.get) < { user, err } > `//${apiConfig.api_prefix}/account/me`;
+                    const user = response.data.user.user;
+
+                    if (user && user.name && user.email) {
+                        LogRocket.identify(logRocket.key, {
+                            name: user.name,
+                            email: user.email
+                        });
+                    }
+                    const err = response.data.err;
+
+                    // add an error check if the above request throws an error
+                    // Added because a user would see a blank login page if the token has expired
+                    if (err && err.status) {
+                        throw err;
+                    }
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        initialise();
+    }, []);
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -82,8 +123,9 @@ const AuthLogin = () => {
                     email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
                     password: Yup.string().max(255).required('Password is required')
                 })}
-                onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+                onSubmit={async (values, { setErrors, setStatus, setSubmitting, login }) => {
                     try {
+                        login;
                         setStatus({ success: false });
                         setSubmitting(false);
                     } catch (err) {
