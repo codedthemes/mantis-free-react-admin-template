@@ -34,7 +34,6 @@ const AuthLogin = () => {
 
     const [showPassword, setShowPassword] = React.useState(false);
     const login = async (email, password, token = null) => {
-        //`//${apiConfig.api_prefix}/lead/${brokerId}/${leadId}?token=ec6d365f4b9b4ab942ec7ab0f328aa6a`
         const response = (await axios.post) < { accessToken, user, err } > (`/${apiConfig.api_prefix}/login`, { email, password, token });
         const accessToken = response.data.user.accessToken;
         const user = response.data.user.user;
@@ -73,13 +72,6 @@ const AuthLogin = () => {
 
     return (
         <>
-            {/* <AuthLogin.Provider
-                value={{
-                    login
-                }}
-            >
-                {children}
-            </AuthLogin.Provider> */}
             <Formik
                 initialValues={{
                     email: '',
