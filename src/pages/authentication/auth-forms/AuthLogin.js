@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
+import React, { useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
@@ -28,35 +29,37 @@ import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
+import { AuthContext } from 'services/AuthContext';
+import { useNavigate } from '../../../../node_modules/react-router-dom/dist/index';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
     const [checked, setChecked] = React.useState(false);
+    const { adminLogin } = useContext(AuthContext);
+
+    const navigate = React.useNavigate();
 
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
+    const handleMouseDownPassword = (ev) => {
+        ev.preventDefault();
     };
 
     return (
         <>
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
-                    submit: null
+                    username: 'admin@rfq.co.ke',
+                    password: '123456'
                 }}
-                validationSchema={Yup.object().shape({
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    password: Yup.string().max(255).required('Password is required')
-                })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
+                        const response = await adminLogin(values);
+                        console.log(response);
                         setStatus({ success: false });
                         setSubmitting(false);
                     } catch (err) {
@@ -71,21 +74,20 @@ const AuthLogin = () => {
                         <Grid container spacing={3}>
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="email-login">Email Address</InputLabel>
+                                    <InputLabel htmlFor="email-login">Email Address or Username</InputLabel>
                                     <OutlinedInput
                                         id="email-login"
-                                        type="email"
-                                        value={values.email}
-                                        name="email"
+                                        value={values.username}
+                                        name="username"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder="Enter email address"
+                                        placeholder="Enter email address or username"
                                         fullWidth
-                                        error={Boolean(touched.email && errors.email)}
+                                        error={Boolean(touched.username && errors.username)}
                                     />
-                                    {touched.email && errors.email && (
+                                    {touched.username && errors.username && (
                                         <FormHelperText error id="standard-weight-helper-text-email-login">
-                                            {errors.email}
+                                            {errors.username}
                                         </FormHelperText>
                                     )}
                                 </Stack>
@@ -125,7 +127,7 @@ const AuthLogin = () => {
                                 </Stack>
                             </Grid>
 
-                            <Grid item xs={12} sx={{ mt: -1 }}>
+                            {/* <Grid item xs={12} sx={{ mt: -1 }}>
                                 <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
                                     <FormControlLabel
                                         control={
@@ -143,7 +145,7 @@ const AuthLogin = () => {
                                         Forgot Password?
                                     </Link>
                                 </Stack>
-                            </Grid>
+                            </Grid> */}
                             {errors.submit && (
                                 <Grid item xs={12}>
                                     <FormHelperText error>{errors.submit}</FormHelperText>
@@ -163,14 +165,6 @@ const AuthLogin = () => {
                                         Login
                                     </Button>
                                 </AnimateButton>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Divider>
-                                    <Typography variant="caption"> Login with</Typography>
-                                </Divider>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FirebaseSocial />
                             </Grid>
                         </Grid>
                     </form>
