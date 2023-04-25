@@ -29,21 +29,28 @@ const utilities = {
             id: 'util-marketplace',
             title: 'Loan Market',
             type: 'item',
-            url: '/marketplace/loan',
+            url: '/marketplace',
             icon: icons.FontSizeOutlined
         },
         {
-            id: 'util-secondary-marketplace',
+            id: 'util-my-loans',
             title: 'My Loans',
             type: 'item',
-            url: '/loan',
+            url: '/loans',
             icon: icons.BgColorsOutlined
         },
         {
-            id: 'bill_pay',
+            id: 'util-bill-pay',
             title: 'Bill Pay',
             type: 'item',
-            url: '/shadow',
+            url: '/bills',
+            icon: icons.BarcodeOutlined
+        },
+        {
+            id: 'util-credit-rating',
+            title: 'Credit Rating',
+            type: 'item',
+            url: '/credit',
             icon: icons.BarcodeOutlined
         }
     ]

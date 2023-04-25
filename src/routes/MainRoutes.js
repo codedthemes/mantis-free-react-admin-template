@@ -5,9 +5,10 @@ import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 
 // render pages
-const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
-const WalletDefault = Loadable(lazy(() => import('pages/wallet')));
-const UserVerification = Loadable(lazy(() => import('pages/user-verification')));
+const LoanMarketplace = Loadable(lazy(() => import('pages/loan-marketplace')));
+const MyLoans = Loadable(lazy(() => import('pages/my-loans')));
+const BillPay = Loadable(lazy(() => import('pages/bill-pay')));
+const Credit = Loadable(lazy(() => import('pages/credit')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -17,24 +18,23 @@ const MainRoutes = {
     children: [
         {
             path: '/',
-            element: <DashboardDefault />
+            element: <LoanMarketplace />
         },
         {
-            path: 'wallets',
-            element: <WalletDefault />
+            path: '/marketplace',
+            element: <LoanMarketplace />
         },
         {
-            path: 'verify',
-            element: <UserVerification />
+            path: '/loans',
+            element: <MyLoans />
         },
         {
-            path: 'marketplace',
-            children: [
-                {
-                    path: 'loan',
-                    element: <DashboardDefault />
-                }
-            ]
+            path: '/bills',
+            element: <BillPay />
+        },
+        {
+            path: '/credit',
+            element: <Credit />
         }
     ]
 };
