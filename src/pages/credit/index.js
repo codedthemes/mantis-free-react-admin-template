@@ -202,8 +202,13 @@ const DashboardDefault = () => {
                         children: `Content of Tab Pane 3`
                     },
                     {
-                        label: `NanoSwap Credit Rating`,
+                        label: `Application Activity`,
                         key: '4',
+                        children: `Content of Tab Pane 3`
+                    },
+                    {
+                        label: `NanoSwap Credit Rating`,
+                        key: '5',
                         children: `Content of Tab Pane 4`
                     }
                 ]}
