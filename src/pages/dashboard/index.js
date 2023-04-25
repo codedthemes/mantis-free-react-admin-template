@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // material-ui
 import {
@@ -97,49 +97,54 @@ const status = [
 
 const columns = [
     {
-        title: 'Wallet',
-        dataIndex: 'wallet'
+        title: 'Borrower',
+        dataIndex: 'borrower'
     },
     {
-        title: 'Staked',
-        dataIndex: 'staked'
+        title: 'Lender',
+        dataIndex: 'lender'
     },
     {
-        title: 'Name',
-        dataIndex: 'name'
+        title: 'Created',
+        dataIndex: 'created'
     },
     {
-        title: 'Age',
-        dataIndex: 'age'
+        title: 'Principal',
+        dataIndex: 'principal'
     },
     {
-        title: 'Address',
-        dataIndex: 'address'
+        title: 'Payment Count',
+        dataIndex: 'payments'
     }
 ];
-const data = [];
-for (let i = 0; i < 46; i++) {
-    data.push({
-        key: i,
-        wallet: <Button>Deposit</Button>,
-        staked: <Input placeholder="0 XNO"></Input>,
-        name: `Edward King ${i}`,
-        age: 32,
-        address: `London, Park Lane no. ${i}`
-    });
-}
 
 const StakeDashboard = () => {
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
     const start = () => {
         setLoading(true);
         // ajax request after empty completing
-        setTimeout(() => {
-            setSelectedRowKeys([]);
-            setLoading(false);
-        }, 1000);
+        fetch('http://127.0.0.1:8000/loans/open?recent=True')
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    setItems(result);
+                    setLoading(false);
+                },
+                (error) => {
+                    setLoading(false);
+                    console.log(error);
+                }
+            );
     };
+
+    useEffect(() => {
+        start();
+    }, []);
+
     const hasSelected = selectedRowKeys.length > 0;
     return (
         <div>
@@ -159,7 +164,7 @@ const StakeDashboard = () => {
                     {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
                 </span>
             </div>
-            <Table columns={columns} dataSource={data} />
+            <Table columns={columns} dataSource={items} />
         </div>
     );
 };
