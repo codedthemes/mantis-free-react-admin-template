@@ -34,16 +34,9 @@ const utilities = {
         },
         {
             id: 'util-secondary-marketplace',
-            title: 'Stake Market',
+            title: 'My Loans',
             type: 'item',
-            url: '/marketplace/stake',
-            icon: icons.FontSizeOutlined
-        },
-        {
-            id: 'util-wallets',
-            title: 'Wallets',
-            type: 'item',
-            url: '/wallets',
+            url: '/loan',
             icon: icons.BgColorsOutlined
         },
         {

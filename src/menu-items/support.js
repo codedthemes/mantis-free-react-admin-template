@@ -31,27 +31,6 @@ const support = {
             icon: icons.QuestionOutlined,
             external: true,
             target: true
-        },
-        {
-            id: 'about_us',
-            title: 'About Us',
-            type: 'item',
-            url: '/sample-page',
-            icon: icons.ChromeOutlined
-        },
-        {
-            id: 'contact',
-            title: 'Contact Us',
-            type: 'item',
-            url: '/sample-page',
-            icon: icons.ChromeOutlined
-        },
-        {
-            id: 'ir',
-            title: 'Investor Relations',
-            type: 'item',
-            url: '/sample-page',
-            icon: icons.ChromeOutlined
         }
     ]
 };
