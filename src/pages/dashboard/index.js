@@ -187,17 +187,17 @@ const DashboardDefault = () => {
                 onChange={console.log}
                 items={[
                     {
-                        label: `Pre Stake`,
+                        label: `Loans`,
                         key: '1',
                         children: <StakeDashboard></StakeDashboard>
                     },
                     {
-                        label: `Stake`,
+                        label: `Applications`,
                         key: '2',
                         children: `Content of Tab Pane 2`
                     },
                     {
-                        label: `Post Stake`,
+                        label: `Vouches`,
                         key: '3',
                         children: `Content of Tab Pane 3`
                     }
