@@ -118,52 +118,110 @@ const columns = [
     }
 ];
 
-const StakeDashboard = () => {
-    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+const load_endpoint = (url, success_callback, failure_callback) => {
+    fetch(url)
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                success_callback(result);
+            },
+            (error) => {
+                failure_callback(error);
+            }
+        );
+};
+
+const Bills = () => {
     const [loading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
 
-    const start = () => {
-        setLoading(true);
-        // ajax request after empty completing
-        fetch('http://127.0.0.1:8000/loans/open?recent=True')
-            .then((res) => res.json())
-            .then(
-                (result) => {
-                    console.log(result);
-                    setItems(result);
-                    setLoading(false);
-                },
-                (error) => {
-                    setLoading(false);
-                    console.log(error);
-                }
-            );
-    };
-
     useEffect(() => {
-        start();
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/accepted?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
     }, []);
 
-    const hasSelected = selectedRowKeys.length > 0;
     return (
         <div>
-            <div
-                style={{
-                    marginBottom: 16
-                }}
-            >
-                <Button type="primary" onClick={start} disabled={!hasSelected} loading={loading}>
-                    Reload
-                </Button>
-                <span
-                    style={{
-                        marginLeft: 8
-                    }}
-                >
-                    {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-                </span>
-            </div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const Interest = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/accepted?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const BillHistory = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/accepted?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const InterestHistory = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/accepted?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
             <Table columns={columns} dataSource={items} />
         </div>
     );
@@ -189,17 +247,22 @@ const DashboardDefault = () => {
                     {
                         label: `Upcoming Bills Due`,
                         key: '1',
-                        children: <StakeDashboard></StakeDashboard>
+                        children: <Bills></Bills>
                     },
                     {
                         label: `Upcoming Interest Payments`,
                         key: '2',
-                        children: `Content of Tab Pane 2`
+                        children: <Interest></Interest>
                     },
                     {
-                        label: `Payment History`,
+                        label: `Bill Payment History`,
                         key: '3',
-                        children: `Content of Tab Pane 3`
+                        children: <BillHistory></BillHistory>
+                    },
+                    {
+                        label: `Interest Payment History`,
+                        key: '4',
+                        children: <InterestHistory></InterestHistory>
                     }
                 ]}
             />
