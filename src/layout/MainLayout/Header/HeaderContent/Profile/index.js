@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
+import nanobyte from 'nanobyte-provider';
+
 // material-ui
 import { useTheme, styled } from '@mui/material/styles';
 import {
@@ -126,6 +128,22 @@ const Profile = () => {
 
     const iconBackColorOpen = 'grey.300';
 
+    const connectWallet = async () => {
+        try {
+            const data = await nanobyte.connect('hUDPS3l9vvtX85fSGGaGxxDHmrgUVtCE');
+            console.log(data);
+            const connectedData = {
+                nonce: data.nonce,
+                signature: data.signature,
+                status: data.status,
+                account: data.account,
+                sessionKey: data.sessionKey
+            };
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <Box sx={{ flexShrink: 0, ml: 0.75 }}>
             <ButtonBase
@@ -187,9 +205,6 @@ const Profile = () => {
                                                         <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
                                                         <Stack>
                                                             <Typography variant="h6">John Doe</Typography>
-                                                            <Typography variant="body2" color="textSecondary">
-                                                                UI/UX Designer
-                                                            </Typography>
                                                         </Stack>
                                                     </Stack>
                                                 </Grid>
@@ -203,8 +218,8 @@ const Profile = () => {
                                         {open && (
                                             <>
                                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                                    <Box sx={{ margin: '25px' }}>
-                                                        <StyledButton>Connect Nano Wallet</StyledButton>
+                                                    <Box sx={{ marginRight: '25px', marginLeft: '25px', marginBottom: '25px' }}>
+                                                        <StyledButton onClick={connectWallet}>Connect Nano Wallet</StyledButton>
                                                     </Box>
                                                     <Tabs
                                                         variant="fullWidth"
