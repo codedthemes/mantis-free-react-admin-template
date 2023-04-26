@@ -118,52 +118,134 @@ const columns = [
     }
 ];
 
-const StakeDashboard = () => {
-    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+const load_endpoint = (url, success_callback, failure_callback) => {
+    fetch(url)
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                success_callback(result);
+            },
+            (error) => {
+                failure_callback(error);
+            }
+        );
+};
+
+const Borrowing = () => {
     const [loading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
 
-    const start = () => {
-        setLoading(true);
-        // ajax request after empty completing
-        fetch('http://127.0.0.1:8000/loans/open?recent=True')
-            .then((res) => res.json())
-            .then(
-                (result) => {
-                    console.log(result);
-                    setItems(result);
-                    setLoading(false);
-                },
-                (error) => {
-                    setLoading(false);
-                    console.log(error);
-                }
-            );
-    };
-
     useEffect(() => {
-        start();
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/user/self/accepted?perspective=borrower&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
     }, []);
 
-    const hasSelected = selectedRowKeys.length > 0;
     return (
         <div>
-            <div
-                style={{
-                    marginBottom: 16
-                }}
-            >
-                <Button type="primary" onClick={start} disabled={hasSelected} loading={loading}>
-                    Reload
-                </Button>
-                <span
-                    style={{
-                        marginLeft: 8
-                    }}
-                >
-                    {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-                </span>
-            </div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const Lending = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/user/self/accepted?perspective=lender&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const Applications = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loan/application/user/self?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const OffersToMe = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/user/self/open?perspective=borrower&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const OffersFromMe = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/user/self/open?perspective=lender&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
             <Table columns={columns} dataSource={items} />
         </div>
     );
@@ -189,22 +271,27 @@ const DashboardDefault = () => {
                     {
                         label: `Active Borrowing`,
                         key: '1',
-                        children: <StakeDashboard></StakeDashboard>
+                        children: <Borrowing></Borrowing>
                     },
                     {
                         label: `Active Lending`,
                         key: '2',
-                        children: `Content of Tab Pane 2`
+                        children: <Lending></Lending>
                     },
                     {
-                        label: `Loan Applications`,
+                        label: `Open Loan Applications`,
                         key: '3',
-                        children: `Content of Tab Pane 3`
+                        children: <Applications></Applications>
                     },
                     {
-                        label: `Loan Offers`,
+                        label: `Loan Offers Received`,
                         key: '4',
-                        children: `Content of Tab Pane 4`
+                        children: <OffersToMe></OffersToMe>
+                    },
+                    {
+                        label: `Loan Offers Sent`,
+                        key: '5',
+                        children: <OffersFromMe></OffersFromMe>
                     }
                 ]}
             />
