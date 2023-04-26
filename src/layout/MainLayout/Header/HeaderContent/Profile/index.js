@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme, styled } from '@mui/material/styles';
 import {
     Avatar,
     Box,
     ButtonBase,
+    Button,
     CardContent,
     ClickAwayListener,
     Grid,
@@ -69,6 +70,22 @@ const firebaseConfig = {
     appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
     measurementId: 'G-H4F5Z43EKN'
 };
+
+const StyledButton = styled(Button)({
+    backgroundColor: '#4CAF50',
+    border: 'none',
+    color: 'white',
+    textAlign: 'center',
+    textDecoration: 'none',
+    display: 'inline-flex',
+    fontSize: '14px',
+    transition: 'background-color 0.3s ease', // Add transition property for smooth color change
+    whiteSpace: 'nowrap',
+    width: '100%',
+    ':hover': {
+        backgroundColor: '#2196F3' // Change background color when hovered
+    }
+});
 
 const Profile = () => {
     const theme = useTheme();
@@ -186,6 +203,9 @@ const Profile = () => {
                                         {open && (
                                             <>
                                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                                    <Box sx={{ margin: '25px' }}>
+                                                        <StyledButton>Connect Nano Wallet</StyledButton>
+                                                    </Box>
                                                     <Tabs
                                                         variant="fullWidth"
                                                         value={value}

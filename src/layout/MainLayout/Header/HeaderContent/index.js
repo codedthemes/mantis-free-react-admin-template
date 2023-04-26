@@ -17,10 +17,9 @@ const HeaderContent = () => {
         <>
             {!matchesXs && <Search />}
             {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />}
-
             <IconButton
                 component={Link}
-                href="https://github.com/nanobank-finance/web"
+                href="https://github.com/nanoswap/web"
                 target="_blank"
                 disableRipple
                 color="secondary"
