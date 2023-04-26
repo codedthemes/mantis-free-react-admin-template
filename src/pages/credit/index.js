@@ -118,52 +118,182 @@ const columns = [
     }
 ];
 
-const StakeDashboard = () => {
-    const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+const load_endpoint = (url, success_callback, failure_callback) => {
+    fetch(url)
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                success_callback(result);
+            },
+            (error) => {
+                failure_callback(error);
+            }
+        );
+};
+
+const VoucherActivity = () => {
     const [loading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
 
-    const start = () => {
-        setLoading(true);
-        // ajax request after empty completing
-        fetch('http://127.0.0.1:8000/loans/open?recent=True')
-            .then((res) => res.json())
-            .then(
-                (result) => {
-                    console.log(result);
-                    setItems(result);
-                    setLoading(false);
-                },
-                (error) => {
-                    setLoading(false);
-                    console.log(error);
-                }
-            );
-    };
-
     useEffect(() => {
-        start();
+        load_endpoint(
+            'http://127.0.0.1:8000/vouch/user/self?perspective=voucher&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
     }, []);
 
-    const hasSelected = selectedRowKeys.length > 0;
     return (
         <div>
-            <div
-                style={{
-                    marginBottom: 16
-                }}
-            >
-                <Button type="primary" onClick={start} disabled={hasSelected} loading={loading}>
-                    Reload
-                </Button>
-                <span
-                    style={{
-                        marginLeft: 8
-                    }}
-                >
-                    {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
-                </span>
-            </div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const VoucheeActivity = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/vouch/user/self?perspective=vouchee&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const LendingActivity = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/user/self/accepted?perspective=lender&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const BorrowingActivity = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/user/self/accepted?perspective=borrower&recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const PaymentActivity = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/accepted?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const ApplicationActivity = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loan/application/user/self?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
+            <Table columns={columns} dataSource={items} />
+        </div>
+    );
+};
+
+const CreditRating = () => {
+    const [loading, setLoading] = useState(false);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        load_endpoint(
+            'http://127.0.0.1:8000/loans/accepted?recent=True',
+            (result) => {
+                setItems(result);
+                setLoading(false);
+            },
+            (error) => {
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    return (
+        <div>
             <Table columns={columns} dataSource={items} />
         </div>
     );
@@ -187,29 +317,39 @@ const DashboardDefault = () => {
                 onChange={console.log}
                 items={[
                     {
-                        label: `Vouch Activity`,
+                        label: `Voucher Activity`,
                         key: '1',
-                        children: <StakeDashboard></StakeDashboard>
+                        children: <VoucherActivity></VoucherActivity>
                     },
                     {
-                        label: `Loan Activity`,
+                        label: `Vouchee Activity`,
                         key: '2',
-                        children: `Content of Tab Pane 2`
+                        children: <VoucheeActivity></VoucheeActivity>
+                    },
+                    {
+                        label: `Lending Activity`,
+                        key: '3',
+                        children: <LendingActivity></LendingActivity>
+                    },
+                    {
+                        label: `Borrowing Activity`,
+                        key: '4',
+                        children: <BorrowingActivity></BorrowingActivity>
                     },
                     {
                         label: `Payment Activity`,
-                        key: '3',
-                        children: `Content of Tab Pane 3`
+                        key: '5',
+                        children: <PaymentActivity></PaymentActivity>
                     },
                     {
-                        label: `Application Activity`,
-                        key: '4',
-                        children: `Content of Tab Pane 3`
+                        label: `Loan Application Activity`,
+                        key: '6',
+                        children: <ApplicationActivity></ApplicationActivity>
                     },
                     {
                         label: `NanoSwap Credit Rating`,
-                        key: '5',
-                        children: `Content of Tab Pane 4`
+                        key: '7',
+                        children: <CreditRating></CreditRating>
                     }
                 ]}
             />
