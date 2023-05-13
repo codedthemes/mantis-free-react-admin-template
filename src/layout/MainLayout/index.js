@@ -19,7 +19,7 @@ import { openDrawer } from 'store/reducers/menu';
 
 const MainLayout = () => {
     const theme = useTheme();
-    const matchDownLG = useMediaQuery(theme.breakpoints.down('xl'));
+    const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'));
     const dispatch = useDispatch();
 
     const { drawerOpen } = useSelector((state) => state.menu);

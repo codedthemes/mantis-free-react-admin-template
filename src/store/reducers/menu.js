@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // initial state
 const initialState = {
     openItem: ['dashboard'],
+    defaultId: 'dashboard',
     openComponent: 'buttons',
     drawerOpen: false,
     componentDrawerOpen: true

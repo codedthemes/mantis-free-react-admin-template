@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
@@ -15,8 +15,9 @@ import { activeItem } from 'store/reducers/menu';
 const NavItem = ({ item, level }) => {
     const theme = useTheme();
     const dispatch = useDispatch();
-    const menu = useSelector((state) => state.menu);
-    const { drawerOpen, openItem } = menu;
+    const { pathname } = useLocation();
+
+    const { drawerOpen, openItem } = useSelector((state) => state.menu);
 
     let itemTarget = '_self';
     if (item.target) {
@@ -36,18 +37,13 @@ const NavItem = ({ item, level }) => {
     const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} /> : false;
 
     const isSelected = openItem.findIndex((id) => id === item.id) > -1;
-
     // active menu item on page load
     useEffect(() => {
-        const currentIndex = document.location.pathname
-            .toString()
-            .split('/')
-            .findIndex((id) => id === item.id);
-        if (currentIndex > -1) {
+        if (pathname.includes(item.url)) {
             dispatch(activeItem({ openItem: [item.id] }));
         }
         // eslint-disable-next-line
-    }, []);
+    }, [pathname]);
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
