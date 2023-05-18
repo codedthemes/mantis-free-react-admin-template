@@ -13,24 +13,24 @@ import { activeItem } from 'store/reducers/menu';
 // ==============================|| MAIN LOGO ||============================== //
 
 const LogoSection = ({ sx, to }) => {
-    const { defaultId } = useSelector((state) => state.menu);
-    const dispatch = useDispatch();
-    return (
-        <ButtonBase
-            disableRipple
-            component={Link}
-            onClick={() => dispatch(activeItem({ openItem: [defaultId] }))}
-            to={!to ? config.defaultPath : to}
-            sx={sx}
-        >
-            <Logo />
-        </ButtonBase>
-    );
+  const { defaultId } = useSelector((state) => state.menu);
+  const dispatch = useDispatch();
+  return (
+    <ButtonBase
+      disableRipple
+      component={Link}
+      onClick={() => dispatch(activeItem({ openItem: [defaultId] }))}
+      to={!to ? config.defaultPath : to}
+      sx={sx}
+    >
+      <Logo />
+    </ButtonBase>
+  );
 };
 
 LogoSection.propTypes = {
-    sx: PropTypes.object,
-    to: PropTypes.string
+  sx: PropTypes.object,
+  to: PropTypes.string
 };
 
 export default LogoSection;
