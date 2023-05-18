@@ -7,5 +7,5 @@ import MainRoutes from './MainRoutes';
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
-    return useRoutes([MainRoutes, LoginRoutes]);
+  return useRoutes([MainRoutes, LoginRoutes]);
 }

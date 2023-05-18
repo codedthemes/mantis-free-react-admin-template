@@ -7,7 +7,7 @@ import reducers from './reducers';
 // ==============================|| REDUX TOOLKIT - MAIN STORE ||============================== //
 
 const store = configureStore({
-    reducer: reducers
+  reducer: reducers
 });
 
 const { dispatch } = store;

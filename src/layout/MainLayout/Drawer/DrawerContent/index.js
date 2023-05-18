@@ -6,17 +6,17 @@ import SimpleBar from 'components/third-party/SimpleBar';
 // ==============================|| DRAWER CONTENT ||============================== //
 
 const DrawerContent = () => (
-    <SimpleBar
-        sx={{
-            '& .simplebar-content': {
-                display: 'flex',
-                flexDirection: 'column'
-            }
-        }}
-    >
-        <Navigation />
-        <NavCard />
-    </SimpleBar>
+  <SimpleBar
+    sx={{
+      '& .simplebar-content': {
+        display: 'flex',
+        flexDirection: 'column'
+      }
+    }}
+  >
+    <Navigation />
+    <NavCard />
+  </SimpleBar>
 );
 
 export default DrawerContent;
