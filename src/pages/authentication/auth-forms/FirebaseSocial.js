@@ -59,8 +59,8 @@ const FirebaseSocial = () => {
 
     const auth = getAppAuth();
 
-    const handleLoginSuccess = (result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
+    const handleLoginSuccess = (result, provider) => {
+        const credential = provider.credentialFromResult(result);
         sessionStorage.setItem('idToken', credential.idToken);
         sessionStorage.setItem('accessToken', credential.accessToken);
         navigate('../verify');
@@ -80,15 +80,21 @@ const FirebaseSocial = () => {
     };
 
     const googleHandler = async () => {
-        signInWithPopup(auth, googleProvider).then(handleLoginSuccess).catch(handleLoginFailure);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => handleLoginSuccess(result, googleProvider))
+            .catch(handleLoginFailure);
     };
 
     const twitterHandler = async () => {
-        signInWithPopup(auth, twitterProvider).then(handleLoginSuccess).catch(handleLoginFailure);
+        signInWithPopup(auth, twitterProvider)
+            .then((result) => handleLoginSuccess(result, twitterProvider))
+            .catch(handleLoginFailure);
     };
 
     const githubHandler = async () => {
-        signInWithPopup(auth, githubProvider).then(handleLoginSuccess).catch(handleLoginFailure);
+        signInWithPopup(auth, githubProvider)
+            .then((result) => handleLoginSuccess(result, githubProvider))
+            .catch(handleLoginFailure);
     };
 
     return (
