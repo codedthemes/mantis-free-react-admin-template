@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
-import PrivateRoute from './PrivateRoutes';
 
 const LoanMarketplace = Loadable(lazy(() => import('pages/loan-marketplace')));
 const MyLoans = Loadable(lazy(() => import('pages/my-loans')));
@@ -11,7 +10,7 @@ const Credit = Loadable(lazy(() => import('pages/credit')));
 const MainRoutes = [
     {
         path: '/',
-        element: <PrivateRoute />,
+        element: <MainLayout />,
         children: [
             {
                 path: '/',

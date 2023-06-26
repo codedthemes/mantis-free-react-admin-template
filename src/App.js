@@ -7,18 +7,20 @@ import ScrollTop from 'components/ScrollTop';
 import { AuthProvider, useAuth } from 'pages/authentication/auth-forms/AuthProvider';
 
 const App = () => {
-    const user = useAuth();
-    const routing = useRoutes(user ? MainRoutes : LoginRoutes);
-
     return (
         <AuthProvider>
             <ThemeCustomization>
                 <ScrollTop>
-                    <Router>{routing}</Router>
+                    <AppRoutes />
                 </ScrollTop>
             </ThemeCustomization>
         </AuthProvider>
     );
+};
+
+const AppRoutes = () => {
+    const { user } = useAuth();
+    return useRoutes(user ? MainRoutes : LoginRoutes);
 };
 
 export default App;
