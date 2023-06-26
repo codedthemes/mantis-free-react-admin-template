@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 
@@ -20,23 +19,22 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export default function AuthProvider({ children }) {
-    const [currentUser, setCurrentUser] = useState(null);
-    const navigate = useNavigate();
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     const auth = getAuth();
 
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
-            if (!user) {
-                navigate('/login');
-            }
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+            setLoading(false);
         });
-    }, [auth, navigate]);
 
-    return <AuthContext.Provider value={{ currentUser }}>{children}</AuthContext.Provider>;
-}
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
+    }, [auth]);
 
-export function useAuth() {
-    return useContext(AuthContext);
-}
+    return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = () => useContext(AuthContext);

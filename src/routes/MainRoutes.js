@@ -1,17 +1,12 @@
 import { lazy } from 'react';
-
-// project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 import PrivateRoute from './PrivateRoutes';
 
-// render pages
 const LoanMarketplace = Loadable(lazy(() => import('pages/loan-marketplace')));
 const MyLoans = Loadable(lazy(() => import('pages/my-loans')));
 const BillPay = Loadable(lazy(() => import('pages/bill-pay')));
 const Credit = Loadable(lazy(() => import('pages/credit')));
-
-// ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = [
     {
