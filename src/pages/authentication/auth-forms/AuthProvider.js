@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
@@ -20,7 +20,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const AuthProvider = ({ children }) => {
+export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState(null);
     const navigate = useNavigate();
     const auth = getAuth();
@@ -35,6 +35,8 @@ const AuthProvider = ({ children }) => {
     }, [auth, navigate]);
 
     return <AuthContext.Provider value={{ currentUser }}>{children}</AuthContext.Provider>;
-};
+}
 
-export default AuthProvider;
+export function useAuth() {
+    return useContext(AuthContext);
+}

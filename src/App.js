@@ -1,19 +1,29 @@
-// project import
-import Routes from 'routes';
+import React from 'react';
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import LoginRoutes from 'routes/LoginRoutes';
+import MainRoutes from 'routes/MainRoutes';
 import ThemeCustomization from 'themes';
 import ScrollTop from 'components/ScrollTop';
-import AuthProvider from 'pages/authentication/auth-forms/AuthProvider';
+import AuthProvider, { useAuth } from 'pages/authentication/auth-forms/AuthProvider';
 
-// ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
+const App = () => {
+    const { user } = useAuth();
 
-const App = () => (
-    <ThemeCustomization>
-        <ScrollTop>
-            <AuthProvider>
-                <Routes />
-            </AuthProvider>
-        </ScrollTop>
-    </ThemeCustomization>
-);
+    const element = user ? (
+        <AuthProvider>
+            <MainRoutes />
+        </AuthProvider>
+    ) : (
+        <LoginRoutes />
+    );
+
+    return (
+        <ThemeCustomization>
+            <ScrollTop>
+                <Router>{element}</Router>
+            </ScrollTop>
+        </ThemeCustomization>
+    );
+};
 
 export default App;
