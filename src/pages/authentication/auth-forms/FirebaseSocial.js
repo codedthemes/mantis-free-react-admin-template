@@ -59,11 +59,18 @@ const FirebaseSocial = () => {
 
     const auth = getAppAuth();
 
-    const handleLoginSuccess = (result, provider) => {
-        const credential = provider.credentialFromResult(result);
-        sessionStorage.setItem('idToken', credential.idToken);
-        sessionStorage.setItem('accessToken', credential.accessToken);
-        navigate('../verify');
+    const handleLoginSuccess = async (result) => {
+        // Get idToken
+        const idToken = await result.user.getIdToken(true);
+
+        // Save user information to sessionStorage
+        const { displayName, email, photoURL } = result.user;
+        sessionStorage.setItem('idToken', idToken);
+        sessionStorage.setItem('displayName', displayName);
+        sessionStorage.setItem('email', email);
+        sessionStorage.setItem('photoURL', photoURL);
+
+        navigate('/');
     };
 
     const handleLoginFailure = (error) => {
