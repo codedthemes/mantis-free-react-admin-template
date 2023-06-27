@@ -4,23 +4,22 @@ import LoginRoutes from 'routes/LoginRoutes';
 import MainRoutes from 'routes/MainRoutes';
 import ThemeCustomization from 'themes';
 import ScrollTop from 'components/ScrollTop';
-import { AuthProvider, useAuth } from 'pages/authentication/auth-forms/AuthProvider';
+import AuthProvider from 'pages/authentication/auth-forms/AuthProvider';
 
 const App = () => {
+    const publicRoutes = useRoutes(LoginRoutes);
+    const privateRoutes = useRoutes(MainRoutes);
+
     return (
         <AuthProvider>
             <ThemeCustomization>
                 <ScrollTop>
-                    <AppRoutes />
+                    {publicRoutes}
+                    {privateRoutes}
                 </ScrollTop>
             </ThemeCustomization>
         </AuthProvider>
     );
-};
-
-const AppRoutes = () => {
-    const { user } = useAuth();
-    return useRoutes(user ? MainRoutes : LoginRoutes);
 };
 
 export default App;
