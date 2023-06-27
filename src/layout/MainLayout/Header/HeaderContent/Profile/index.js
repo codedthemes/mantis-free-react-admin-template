@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import nanobyte from 'nanobyte-provider';
 
@@ -31,6 +32,8 @@ import SettingTab from './SettingTab';
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { useAuth } from 'pages/authentication/auth-forms/AuthProvider';
+import { signOut } from 'firebase/auth';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -75,15 +78,17 @@ const StyledButton = styled(Button)({
 const Profile = () => {
     const theme = useTheme();
 
-    const handleLogout = async () => {
-        auth.signOut()
-            .then(function () {
-                // Sign-out successful.
-                console.log('logged out');
+    const { user } = useAuth(); // Retrieve the user object from the AuthContext
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        signOut(user.auth)
+            .then(() => {
+                console.log('User logged out');
+                navigate('/login', { replace: true });
             })
-            .catch(function (error) {
-                // An error happened
-                console.log(error);
+            .catch((error) => {
+                console.error('Logout error:', error);
             });
     };
 
