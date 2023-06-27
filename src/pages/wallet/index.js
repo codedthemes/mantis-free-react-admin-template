@@ -128,14 +128,7 @@ const Cards = (params) => {
 const WalletDefault = () => {
     const [walletData, setWalletData] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const navigate = useNavigate();
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    auth.useDeviceLanguage();
-    const user = auth.getCurrentUser;
-    console.log(user);
 
     useEffect(() => {
         const idToken = sessionStorage.getItem('idToken');
