@@ -9,7 +9,6 @@ import Github from 'assets/images/icons/github.svg';
 
 // firebase
 import { getAppAuth } from 'utils/firebase';
-import { initializeApp } from 'firebase/app';
 import {
     getAuth,
     getRedirectResult,

@@ -22,18 +22,6 @@ import { Avatar, Card, Skeleton, Switch } from 'antd';
 // project import
 import MainCard from 'components/MainCard';
 
-// firebase
-import { initializeApp } from 'firebase/app';
-import {
-    getAuth,
-    getRedirectResult,
-    sendEmailVerification,
-    signInWithPopup,
-    GoogleAuthProvider,
-    TwitterAuthProvider,
-    GithubAuthProvider
-} from 'firebase/auth';
-
 // react
 import { useNavigate } from 'react-router-dom';
 
