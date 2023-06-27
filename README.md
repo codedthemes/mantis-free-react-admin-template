@@ -20,6 +20,12 @@ Start the local firebase emulator
 firebase emulators:start
 ```
 
+Environment variables you might need:
+```
+export FIREBASE_AUTH_EMULATOR_HOST="127.0.0.1:9099"
+export NODE_ENV=development
+```
+
 Start the web app with `npm start` or `yarn start`
 
 ## Credits

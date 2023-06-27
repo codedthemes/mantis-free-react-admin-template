@@ -10,13 +10,16 @@ export const AuthProvider = ({ children }) => {
     const auth = getAppAuth();
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-            setLoading(false);
-        });
+        const auth = getAppAuth();
+        if (auth !== undefined) {
+            const unsubscribe = onAuthStateChanged(auth, (user) => {
+                setUser(user);
+                setLoading(false);
+            });
 
-        // Cleanup subscription on unmount
-        return () => unsubscribe();
+            // Cleanup subscription on unmount
+            return () => unsubscribe();
+        }
     }, [auth]);
 
     return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;

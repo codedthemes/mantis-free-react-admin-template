@@ -15,17 +15,16 @@ const app = initializeApp({
     measurementId: 'G-H4F5Z43EKN'
 });
 
-const getEmulatorAuth = async () => {
+const getEmulatorAuth = () => {
     try {
         const auth = getAuth();
         const authEmulatorUrl = 'http://127.0.0.1:9099';
-        await fetch(authEmulatorUrl);
-        connectAuthEmulator(auth, authEmulatorUrl, {
-            disableWarnings: true
-        });
+        connectAuthEmulator(auth, authEmulatorUrl);
         auth.useDeviceLanguage();
+        console.info('Firebase Auth: emulated!');
         return auth;
     } catch (e) {
+        console.info(e);
         console.info('🔥 Firebase Auth: not emulated');
     }
 };
