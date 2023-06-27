@@ -15,20 +15,28 @@ const app = initializeApp({
     measurementId: 'G-H4F5Z43EKN'
 });
 
-const getEmulatorAuth = () => {
-    // https://firebase.google.com/docs/emulator-suite/connect_auth
-    const auth = getAuth();
-    connectAuthEmulator(auth, 'http://localhost:9099');
-    auth.useDeviceLanguage();
-    return auth;
+const getEmulatorAuth = async () => {
+    try {
+        const auth = getAuth();
+        const authEmulatorUrl = 'http://127.0.0.1:9099';
+        await fetch(authEmulatorUrl);
+        connectAuthEmulator(auth, authEmulatorUrl, {
+            disableWarnings: true
+        });
+        auth.useDeviceLanguage();
+        return auth;
+    } catch (e) {
+        console.info('🔥 Firebase Auth: not emulated');
+    }
 };
 
 const getProductionAuth = () => {
+    const auth = getAuth(app);
     auth.useDeviceLanguage();
     return auth;
 };
 
-export const getAppAuth = () => {
+const getAppAuth = () => {
     if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
         return getEmulatorAuth();
     } else {
@@ -36,6 +44,4 @@ export const getAppAuth = () => {
     }
 };
 
-const auth = !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? getEmulatorAuth() : getProductionAuth();
-
-export { app, auth };
+export { app, getAppAuth };
