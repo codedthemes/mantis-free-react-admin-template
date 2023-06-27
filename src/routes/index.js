@@ -6,6 +6,6 @@ import MainRoutes from './MainRoutes';
 
 // ==============================|| ROUTING RENDER ||============================== //
 
-export default function ThemeRoutes() {
+export default function Routes() {
     return useRoutes([MainRoutes, LoginRoutes]);
 }

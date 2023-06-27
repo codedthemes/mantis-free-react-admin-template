@@ -22,18 +22,6 @@ import { Avatar, Card, Skeleton, Switch } from 'antd';
 // project import
 import MainCard from 'components/MainCard';
 
-// firebase
-import { initializeApp } from 'firebase/app';
-import {
-    getAuth,
-    getRedirectResult,
-    sendEmailVerification,
-    signInWithPopup,
-    GoogleAuthProvider,
-    TwitterAuthProvider,
-    GithubAuthProvider
-} from 'firebase/auth';
-
 // react
 import { useNavigate } from 'react-router-dom';
 
@@ -128,14 +116,7 @@ const Cards = (params) => {
 const WalletDefault = () => {
     const [walletData, setWalletData] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const navigate = useNavigate();
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    auth.useDeviceLanguage();
-    const user = auth.getCurrentUser;
-    console.log(user);
 
     useEffect(() => {
         const idToken = sessionStorage.getItem('idToken');

@@ -9,7 +9,6 @@ import Github from 'assets/images/icons/github.svg';
 
 // firebase
 import { getAppAuth } from 'utils/firebase';
-import { initializeApp } from 'firebase/app';
 import {
     getAuth,
     getRedirectResult,
@@ -59,11 +58,18 @@ const FirebaseSocial = () => {
 
     const auth = getAppAuth();
 
-    const handleLoginSuccess = (result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        sessionStorage.setItem('idToken', credential.idToken);
-        sessionStorage.setItem('accessToken', credential.accessToken);
-        navigate('../verify');
+    const handleLoginSuccess = async (result) => {
+        // Get idToken
+        const idToken = await result.user.getIdToken(true);
+
+        // Save user information to sessionStorage
+        const { displayName, email, photoURL } = result.user;
+        sessionStorage.setItem('idToken', idToken);
+        sessionStorage.setItem('displayName', displayName);
+        sessionStorage.setItem('email', email);
+        sessionStorage.setItem('photoURL', photoURL);
+
+        navigate('/');
     };
 
     const handleLoginFailure = (error) => {
@@ -80,15 +86,21 @@ const FirebaseSocial = () => {
     };
 
     const googleHandler = async () => {
-        signInWithPopup(auth, googleProvider).then(handleLoginSuccess).catch(handleLoginFailure);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => handleLoginSuccess(result, googleProvider))
+            .catch(handleLoginFailure);
     };
 
     const twitterHandler = async () => {
-        signInWithPopup(auth, twitterProvider).then(handleLoginSuccess).catch(handleLoginFailure);
+        signInWithPopup(auth, twitterProvider)
+            .then((result) => handleLoginSuccess(result, twitterProvider))
+            .catch(handleLoginFailure);
     };
 
     const githubHandler = async () => {
-        signInWithPopup(auth, githubProvider).then(handleLoginSuccess).catch(handleLoginFailure);
+        signInWithPopup(auth, githubProvider)
+            .then((result) => handleLoginSuccess(result, githubProvider))
+            .catch(handleLoginFailure);
     };
 
     return (

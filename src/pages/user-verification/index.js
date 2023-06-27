@@ -28,18 +28,6 @@ import avatar2 from 'assets/images/users/avatar-2.png';
 import avatar3 from 'assets/images/users/avatar-3.png';
 import avatar4 from 'assets/images/users/avatar-4.png';
 
-// firebase
-import { initializeApp } from 'firebase/app';
-import {
-    getAuth,
-    getRedirectResult,
-    sendEmailVerification,
-    signInWithPopup,
-    GoogleAuthProvider,
-    TwitterAuthProvider,
-    GithubAuthProvider
-} from 'firebase/auth';
-
 // react
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
