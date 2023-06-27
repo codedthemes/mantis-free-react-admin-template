@@ -63,11 +63,7 @@ const FirebaseSocial = () => {
         const idToken = await result.user.getIdToken(true);
 
         // Save user information to sessionStorage
-        const { displayName, email, photoURL } = result.user;
         sessionStorage.setItem('idToken', idToken);
-        sessionStorage.setItem('displayName', displayName);
-        sessionStorage.setItem('email', email);
-        sessionStorage.setItem('photoURL', photoURL);
 
         navigate('/');
     };
