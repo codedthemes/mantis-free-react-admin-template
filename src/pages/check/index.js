@@ -9,9 +9,9 @@ const CheckPage = () => {
 
     useEffect(() => {
         async function checkStatus() {
-            // Show a loading indicator while waiting for the user
+            // Check if the user is loaded
             if (loading) {
-                return <div>Loading...</div>; // TODO: Replace this with your preferred loading indicator
+                return; // Don't do anything if the user is not yet loaded
             }
 
             if (!user) {
@@ -39,14 +39,9 @@ const CheckPage = () => {
         }
 
         checkStatus();
-    }, [firebase, history]);
+    }, [loading, user, navigate]); // Add loading, user, and navigate as dependencies
 
-    return (
-        <div>
-            <h1>Checking onboarding status...</h1>
-            <Loader />
-        </div>
-    );
+    return <div>{loading ? <Loader /> : <h1>Checking onboarding status...</h1>}</div>;
 };
 
 export default CheckPage;

@@ -15,12 +15,6 @@ export default function PrivateRoute({ children }) {
         return <Navigate to="/login" replace />;
     }
 
-    const isUserOnboarded = false; // TODO: Replace this with your logic to detect if the user has completed onboarding
-    if (!isUserOnboarded) {
-        // TODO: also verify server side that the user has completed onboarding
-        return <Navigate to="/onboarding" replace />;
-    }
-
     // Once loaded, either show the children or navigate to login
     return children;
 }
