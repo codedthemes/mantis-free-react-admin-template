@@ -62,10 +62,15 @@ const FirebaseSocial = () => {
         // Get idToken
         const idToken = await result.user.getIdToken(true);
 
+        // Get uid
+        const uid = result.user.uid;
+
         // Save user information to sessionStorage
         sessionStorage.setItem('idToken', idToken);
+        sessionStorage.setItem('uid', uid);
 
-        navigate('/');
+        // Redirect to check page to check if user is onboarded yet
+        navigate('/check');
     };
 
     const handleLoginFailure = (error) => {

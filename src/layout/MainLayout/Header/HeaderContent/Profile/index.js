@@ -78,7 +78,7 @@ const StyledButton = styled(Button)({
 const Profile = () => {
     const theme = useTheme();
 
-    const { user } = useAuth(); // Retrieve the user object from the AuthContext
+    const { user, loading } = useAuth(); // Retrieve the user object from the AuthContext
     const navigate = useNavigate();
 
     const handleLogout = () => {

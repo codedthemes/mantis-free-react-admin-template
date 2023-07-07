@@ -3040,6 +3040,11 @@
   resolved "https://registry.npmjs.org/@sumsub/react-native-mobilesdk-module/-/react-native-mobilesdk-module-1.25.0.tgz"
   integrity sha512-rJKwtkatsKo4/D/L2tALXgx/yfpODh8HB6DkzZ4kn/sOAeUAGvxFGiwAI7zAuob+zW6kpYJf3ZT3GncYkShMkQ==
 
+"@sumsub/websdk@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@sumsub/websdk/-/websdk-2.0.1.tgz"
+  integrity sha512-uNwBKX97+dnmLQfi7DnaHVaqbSSgpwdBWyPjGEpPpBI2/jgE6qGTwki6b4qg4etno6yucjGlDqFL65SdcyFk8w==
+
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"
   resolved "https://registry.npmjs.org/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-2.2.3.tgz"
