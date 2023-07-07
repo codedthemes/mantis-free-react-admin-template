@@ -27,17 +27,15 @@ const CheckPage = () => {
                     }
                 });
 
-                const { data } = await response.json();
+                const data = await response.json();
 
-                console.log(data);
-
-                // if (data.onboarded) {
-                //     // if the user is already onboarded, redirect to the homepage
-                //     navigate('/', { replace: true });
-                // } else {
-                //     // else, redirect to the onboard page
-                //     navigate('/onboard', { replace: true });
-                // }
+                if (data && data['reviewStatus'] && data['reviewStatus'] !== 'init') {
+                    // if the user is already onboarded, redirect to the homepage
+                    navigate('/', { replace: true });
+                } else {
+                    // else, redirect to the onboard page
+                    navigate('/onboard', { replace: true });
+                }
             }
         }
 
