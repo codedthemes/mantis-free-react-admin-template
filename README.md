@@ -28,6 +28,13 @@ export NODE_ENV=development
 
 Start the web app with `npm start` or `yarn start`
 
+## Ports
+(subject to change)
+
+ - localhost:8000 --> server
+ - localhost:9099 --> firebase emulator
+ - localhost:3000 --> web UI
+
 ## Credits
 
 Fingerprint logo: <a href="https://www.flaticon.com/free-icons/touch-id" title="touch id icons">Touch id icons created by Pixel perfect - Flaticon</a>

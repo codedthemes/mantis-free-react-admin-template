@@ -18,7 +18,7 @@ const CheckPage = () => {
                 // redirect to login page if user is not logged in
                 navigate('/login', { replace: true });
             } else {
-                const response = await fetch('/onboard/status', {
+                const response = await fetch('http://localhost:8000/onboard/status', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -28,13 +28,15 @@ const CheckPage = () => {
 
                 const { data } = await response.json();
 
-                if (data.onboarded) {
-                    // if the user is already onboarded, redirect to the homepage
-                    navigate('/', { replace: true });
-                } else {
-                    // else, redirect to the onboard page
-                    navigate('/onboard', { replace: true });
-                }
+                console.log(data);
+
+                // if (data.onboarded) {
+                //     // if the user is already onboarded, redirect to the homepage
+                //     navigate('/', { replace: true });
+                // } else {
+                //     // else, redirect to the onboard page
+                //     navigate('/onboard', { replace: true });
+                // }
             }
         }
 
