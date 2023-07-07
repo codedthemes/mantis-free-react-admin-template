@@ -22,7 +22,8 @@ const CheckPage = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${user.token}`
+                        Authorization: `Bearer ${user.token}`,
+                        'X-User-Uid': `${user.uid}`
                     }
                 });
 
