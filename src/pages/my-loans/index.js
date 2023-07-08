@@ -107,7 +107,7 @@ const columns = [
     }
 ];
 
-const load_endpoint = (url, success_callback, failure_callback) => {
+const load_endpoint = (user, url, success_callback, failure_callback) => {
     fetch(url, {
         method: 'GET',
         headers: {
@@ -122,7 +122,8 @@ const load_endpoint = (url, success_callback, failure_callback) => {
                 success_callback(result);
             },
             (error) => {
-                failure_callback(error);
+                console.log(error);
+                // failure_callback(error);
             }
         );
 };
@@ -134,9 +135,10 @@ const Borrowing = () => {
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loans/user/self/accepted?perspective=borrower&recent=True',
             (result) => {
-                setItems(result);
+                // setItems(result);
                 setLoading(false);
             },
             (error) => {
@@ -147,7 +149,7 @@ const Borrowing = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} /> {/* items */}
         </div>
     );
 };
@@ -161,7 +163,7 @@ const Lending = () => {
         load_endpoint(
             'http://127.0.0.1:8000/loans/user/self/accepted?perspective=lender&recent=True',
             (result) => {
-                setItems(result);
+                // setItems(result);
                 setLoading(false);
             },
             (error) => {
@@ -172,7 +174,7 @@ const Lending = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} /> {/* items */}
         </div>
     );
 };
@@ -184,9 +186,10 @@ const Applications = () => {
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loan/application/user/self?recent=True',
             (result) => {
-                setItems(result);
+                // setItems(result);
                 setLoading(false);
             },
             (error) => {
@@ -197,7 +200,7 @@ const Applications = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} /> {/* items */}
         </div>
     );
 };
@@ -209,9 +212,10 @@ const OffersToMe = () => {
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loans/user/self/open?perspective=borrower&recent=True',
             (result) => {
-                setItems(result);
+                // setItems(result);
                 setLoading(false);
             },
             (error) => {
@@ -222,7 +226,7 @@ const OffersToMe = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} /> {/* items */}
         </div>
     );
 };
@@ -234,9 +238,10 @@ const OffersFromMe = () => {
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loans/user/self/open?perspective=lender&recent=True',
             (result) => {
-                setItems(result);
+                // setItems(result);
                 setLoading(false);
             },
             (error) => {
@@ -247,7 +252,7 @@ const OffersFromMe = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} /> {/* items */}
         </div>
     );
 };
@@ -256,7 +261,6 @@ const DashboardDefault = () => {
     const [value, setValue] = useState('today');
     const [slot, setSlot] = useState('week');
     const navigate = useNavigate();
-    const { user, loading } = useAuth();
 
     return (
         <Grid container>
