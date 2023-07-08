@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 
 // ant design
-import { Tabs, Table, Input, Button, Modal, Form } from 'antd';
+import { Tabs, Table, InputNumber, Button, Modal, Form } from 'antd';
 
 // project import
 import OrdersTable from './OrdersTable';
@@ -250,11 +250,11 @@ const Applications = () => {
             <Modal title="New Application" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} destroyOnClose={true}>
                 <Form form={form} layout="vertical">
                     <Form.Item
-                        name="fieldName1"
-                        label="Field Name 1"
-                        rules={[{ required: true, message: 'Please input your Field Name 1!' }]}
+                        name="asking"
+                        label="Amount Requested"
+                        rules={[{ required: true, message: 'Please input the asking amount' }]}
                     >
-                        <Input />
+                        <InputNumber min={0} />
                     </Form.Item>
                 </Form>
             </Modal>

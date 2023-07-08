@@ -129,6 +129,10 @@ const Profile = () => {
         }
     };
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <Box sx={{ flexShrink: 0, ml: 0.75 }}>
             <ButtonBase
