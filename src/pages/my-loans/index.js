@@ -107,6 +107,30 @@ const columns = [
     }
 ];
 
+const loanApplicationColumns = [
+    {
+        title: 'Application ID',
+        dataIndex: 'application'
+    },
+    {
+        title: 'Borrower',
+        dataIndex: 'borrower'
+    },
+    {
+        title: 'Asking',
+        dataIndex: 'amount_asking'
+    },
+    {
+        title: 'Created',
+        dataIndex: 'created'
+    },
+    {
+        title: 'Closed',
+        dataIndex: 'closed',
+        render: (text, record) => (record.closed ? 'Yes' : 'No')
+    }
+];
+
 const load_endpoint = (user, url, success_callback, failure_callback) => {
     fetch(url, {
         method: 'GET',
@@ -233,7 +257,8 @@ const Applications = () => {
             user,
             'http://127.0.0.1:8000/loan/application/user/self?recent=True',
             (result) => {
-                // setItems(result);
+                setItems(result);
+                console.log(result);
                 setLoading(false);
             },
             (error) => {
@@ -258,7 +283,7 @@ const Applications = () => {
                     </Form.Item>
                 </Form>
             </Modal>
-            <Table columns={columns} dataSource={[]} /> {/* items */}
+            <Table columns={loanApplicationColumns} dataSource={items} />
         </div>
     );
 };
