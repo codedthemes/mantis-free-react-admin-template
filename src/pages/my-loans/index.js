@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 
 // ant design
-import { Tabs, Table, Input, Button, Space } from 'antd';
+import { Tabs, Table, Input, Button, Modal, Form } from 'antd';
 
 // project import
 import OrdersTable from './OrdersTable';
@@ -183,6 +183,50 @@ const Applications = () => {
     const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
     const { user, loading } = useAuth();
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [form] = Form.useForm();
+
+    const createApplication = (values) => {
+        console.log(values);
+        fetch('http://localhost:8000/loan/application/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`,
+                'X-User-Uid': `${user.uid}`
+            },
+            body: JSON.stringify(values)
+        })
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    setIsModalVisible(false);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    };
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        form.validateFields()
+            .then((values) => {
+                form.resetFields();
+                createApplication(values); //TODO: implement this function
+            })
+            .catch((info) => {
+                console.log('Validate Failed:', info);
+            });
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
 
     useEffect(() => {
         load_endpoint(
@@ -200,6 +244,20 @@ const Applications = () => {
 
     return (
         <div>
+            <Button type="primary" onClick={showModal}>
+                New Application
+            </Button>
+            <Modal title="New Application" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} destroyOnClose={true}>
+                <Form form={form} layout="vertical">
+                    <Form.Item
+                        name="fieldName1"
+                        label="Field Name 1"
+                        rules={[{ required: true, message: 'Please input your Field Name 1!' }]}
+                    >
+                        <Input />
+                    </Form.Item>
+                </Form>
+            </Modal>
             <Table columns={columns} dataSource={[]} /> {/* items */}
         </div>
     );
