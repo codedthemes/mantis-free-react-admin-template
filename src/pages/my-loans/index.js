@@ -188,7 +188,7 @@ const Applications = () => {
 
     const createApplication = (values) => {
         console.log(values);
-        fetch('http://localhost:8000/loan/application/', {
+        fetch('http://localhost:8000/loan/application', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
