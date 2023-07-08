@@ -5,6 +5,7 @@ import PrivateRoute from 'routes/PrivateRoutes';
 
 const LoanMarketplace = Loadable(lazy(() => import('pages/loan-marketplace')));
 const CheckPage = Loadable(lazy(() => import('pages/check')));
+const OnboardPage = Loadable(lazy(() => import('pages/onboard')));
 const MyLoans = Loadable(lazy(() => import('pages/my-loans')));
 const BillPay = Loadable(lazy(() => import('pages/bill-pay')));
 const Credit = Loadable(lazy(() => import('pages/credit')));
@@ -27,6 +28,14 @@ const MainRoutes = [
                 element: (
                     <PrivateRoute>
                         <CheckPage />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: 'onboard',
+                element: (
+                    <PrivateRoute>
+                        <OnboardPage />
                     </PrivateRoute>
                 )
             },

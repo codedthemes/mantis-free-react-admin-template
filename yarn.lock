@@ -3040,6 +3040,11 @@
   resolved "https://registry.npmjs.org/@sumsub/react-native-mobilesdk-module/-/react-native-mobilesdk-module-1.25.0.tgz"
   integrity sha512-rJKwtkatsKo4/D/L2tALXgx/yfpODh8HB6DkzZ4kn/sOAeUAGvxFGiwAI7zAuob+zW6kpYJf3ZT3GncYkShMkQ==
 
+"@sumsub/websdk-react@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@sumsub/websdk-react/-/websdk-react-2.0.1.tgz"
+  integrity sha512-PLbbGqTHvpGRjotytmNUl3AJOH6OVVo73UZtqmgBtX0OAT2REzwWjNDLjby3i3tFMCB8fxEgPW318NrgjCSBFA==
+
 "@sumsub/websdk@^2.0.1":
   version "2.0.1"
   resolved "https://registry.npmjs.org/@sumsub/websdk/-/websdk-2.0.1.tgz"
@@ -11018,7 +11023,7 @@ react-devtools-core@^4.27.2:
     shell-quote "^1.6.1"
     ws "^7"
 
-react-dom@*, "react-dom@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0", "react-dom@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 0.14.0", "react-dom@>= 16.3.0", react-dom@>=16.0.0, react-dom@>=16.11.0, react-dom@>=16.3.3, react-dom@>=16.6.0, react-dom@>=16.8, react-dom@>=16.9.0:
+react-dom@*, "react-dom@^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0", "react-dom@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0 || ^17.0 || ^18.0.0", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^17.0.0 || ^18.0.0", react-dom@^18.0.0, react-dom@^18.2.0, "react-dom@>= 0.14.0", "react-dom@>= 16.3.0", react-dom@>=16.0.0, react-dom@>=16.11.0, react-dom@>=16.3.3, react-dom@>=16.6.0, react-dom@>=16.8, react-dom@>=16.8.0, react-dom@>=16.9.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==

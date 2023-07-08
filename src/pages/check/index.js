@@ -31,10 +31,10 @@ const CheckPage = () => {
 
                 if (data && data['reviewStatus'] && data['reviewStatus'] !== 'init') {
                     // if the user is already onboarded, redirect to the homepage
-                    navigate('/', { replace: true });
+                    navigate('/', { replace: false });
                 } else {
                     // else, redirect to the onboard page
-                    navigate('/onboard', { replace: true });
+                    navigate('/onboard', { replace: false });
                 }
             }
         }
