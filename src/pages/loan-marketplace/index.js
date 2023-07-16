@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
 // material-ui
-import {
-    Grid,
-} from '@mui/material';
+import { Grid } from '@mui/material';
 
 // ant design
-import { Tabs, Table, Input, Button, Space, Form, InputNumber, Modal, DatePicker } from 'antd';
-import moment from 'moment';
+import { Tabs, Table, Button, Form, InputNumber, Modal, DatePicker, Tooltip } from 'antd';
+import dayjs from 'dayjs';
 
 // project import
 import { useAuth } from 'pages/authentication/auth-forms/AuthProvider';
@@ -128,6 +126,27 @@ const Applications = () => {
     };
 
     const handleOfferOk = () => {
+        const values = form.getFieldsValue();
+        const startDate = dayjs(values.start);
+        const expiryDate = dayjs(values.expiry);
+        const maturityDate = dayjs(values.maturity);
+
+        if (expiryDate.isAfter(startDate)) {
+            Modal.error({
+                title: 'Error',
+                content: 'The start date must be after the offer expiry date.'
+            });
+            return;
+        }
+
+        if (startDate.isAfter(maturityDate)) {
+            Modal.error({
+                title: 'Error',
+                content: 'The start date must be before the maturity date.'
+            });
+            return;
+        }
+
         form.validateFields()
             .then((values) => {
                 form.resetFields();
@@ -258,46 +277,68 @@ const Applications = () => {
                 destroyOnClose={true}
             >
                 <Form form={form} layout="vertical">
-                    <Form.Item name="start" label="Start Date" rules={[{ required: true, message: 'Date that the loan starts' }]}>
+                    <Form.Item
+                        name="start"
+                        label={<Tooltip title="Date that the loan starts">Start Date</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
+                    >
                         <DatePicker
                             showTime
                             format="YYYY-MM-DD HH:mm:ss"
                             onChange={handleStartDateChange}
-                            value={expiryDate ? [moment(expiryDate)] : []}
+                            value={expiryDate ? [expiryDate] : []}
                         />
                     </Form.Item>
                     <Form.Item
                         name="maturity"
-                        label="Maturity Date"
-                        rules={[{ required: true, message: "Date that the borrower's final loan payment is due" }]}
+                        label={<Tooltip title="Date that the borrower's final loan payment is due">Maturity Date</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
                     >
                         <DatePicker
                             showTime
                             format="YYYY-MM-DD HH:mm:ss"
                             onChange={handleMaturityDateChange}
-                            value={maturityDate ? [moment(maturityDate)] : []}
+                            value={maturityDate ? [maturityDate] : []}
                         />
                     </Form.Item>
                     <Form.Item
                         name="payments"
-                        label="Number of Payments"
-                        rules={[{ required: true, message: 'Number of payment intervals for the borrower' }]}
+                        label={<Tooltip title="Number of payment intervals for the borrower">Number of Payments</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
                     >
                         <InputNumber min={0} />
                     </Form.Item>
                     <Form.Item
                         name="interest"
-                        label="Interest Rate"
-                        rules={[{ required: true, message: 'Amount of interest on the loan' }]}
+                        label={<Tooltip title="Amount of interest on the loan">Interest Rate</Tooltip>}
+                        initialValue={5}
+                        rules={[
+                            { required: true, message: 'Required' },
+                            {
+                                validator: (_, value) =>
+                                    value > 0 ? Promise.resolve() : Promise.reject(new Error('Interest Rate must be greater than 0'))
+                            }
+                        ]}
                     >
-                        <InputNumber min={0} max={100} />
+                        <InputNumber
+                            min={0.01}
+                            max={100}
+                            step={0.01}
+                            precision={2}
+                            formatter={(value) => `${Number(value).toFixed(2)}%`}
+                            parser={(value) => value.replace('%', '')}
+                        />
                     </Form.Item>
-                    <Form.Item name="expiry" label="Offer Expiry" rules={[{ required: true, message: 'Date that the offer will expire' }]}>
+                    <Form.Item
+                        name="expiry"
+                        label={<Tooltip title="Date that the offer will expire">Offer Expiry</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
+                    >
                         <DatePicker
                             showTime
                             format="YYYY-MM-DD HH:mm:ss"
                             onChange={handleOfferExpiryDateChange}
-                            value={expiryDate ? [moment(expiryDate)] : []}
+                            value={expiryDate ? [expiryDate] : []}
                         />
                     </Form.Item>
                 </Form>
