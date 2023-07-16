@@ -24,6 +24,7 @@ import IncomeAreaChart from './IncomeAreaChart';
 import MonthlyBarChart from './MonthlyBarChart';
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
+import { useAuth } from 'pages/authentication/auth-forms/AuthProvider';
 
 // assets
 import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
@@ -107,7 +108,14 @@ const columns = [
 ];
 
 const load_endpoint = (url, success_callback, failure_callback) => {
-    fetch(url)
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.token}`,
+            'X-User-Uid': `${user.uid}`
+        }
+    })
         .then((res) => res.json())
         .then(
             (result) => {
@@ -120,8 +128,9 @@ const load_endpoint = (url, success_callback, failure_callback) => {
 };
 
 const VoucherActivity = () => {
-    const [loading, setLoading] = useState(false);
+    const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         load_endpoint(

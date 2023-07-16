@@ -1,85 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // material-ui
-import {
-    Avatar,
-    AvatarGroup,
-    Box,
-    Grid,
-    List,
-    ListItemAvatar,
-    ListItemButton,
-    ListItemSecondaryAction,
-    ListItemText,
-    Stack,
-    Typography
-} from '@mui/material';
+import { Grid } from '@mui/material';
 
 // ant design
-import { Tabs, Table, Input, Button, Space } from 'antd';
+import { Tabs, Table, Button, Form, InputNumber, Modal, DatePicker, Tooltip } from 'antd';
+import dayjs from 'dayjs';
 
 // project import
-import OrdersTable from './OrdersTable';
-import IncomeAreaChart from './IncomeAreaChart';
-import MonthlyBarChart from './MonthlyBarChart';
-import MainCard from 'components/MainCard';
-import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
-
-// assets
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-import avatar1 from 'assets/images/users/avatar-1.png';
-import avatar2 from 'assets/images/users/avatar-2.png';
-import avatar3 from 'assets/images/users/avatar-3.png';
-import avatar4 from 'assets/images/users/avatar-4.png';
+import { useAuth } from 'pages/authentication/auth-forms/AuthProvider';
 
 // react
 import { useNavigate } from 'react-router-dom';
-
-// the firebase auth api key is intended to be public
-// https://stackoverflow.com/a/37484053
-// https://firebase.google.com/docs/web/setup#available-libraries
-const firebaseConfig = {
-    apiKey: 'AIzaSyBQ8rb3jkIsusGKhGwGm-ri9VAjoof1OKA',
-    authDomain: 'nanocryptobank.firebaseapp.com',
-    projectId: 'nanocryptobank',
-    storageBucket: 'nanocryptobank.appspot.com',
-    messagingSenderId: '950014241040',
-    appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
-    measurementId: 'G-H4F5Z43EKN'
-};
-
-// avatar style
-const avatarSX = {
-    width: 36,
-    height: 36,
-    fontSize: '1rem'
-};
-
-// action style
-const actionSX = {
-    mt: 0.75,
-    ml: 1,
-    top: 'auto',
-    right: 'auto',
-    alignSelf: 'flex-start',
-    transform: 'none'
-};
-
-// sales report status
-const status = [
-    {
-        value: 'today',
-        label: 'Today'
-    },
-    {
-        value: 'month',
-        label: 'This Month'
-    },
-    {
-        value: 'year',
-        label: 'This Year'
-    }
-];
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
@@ -106,8 +38,15 @@ const columns = [
     }
 ];
 
-const load_endpoint = (url, success_callback, failure_callback) => {
-    fetch(url)
+const load_endpoint = (user, url, success_callback, failure_callback) => {
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.token}`,
+            'X-User-Uid': `${user.uid}`
+        }
+    })
         .then((res) => res.json())
         .then(
             (result) => {
@@ -120,11 +59,13 @@ const load_endpoint = (url, success_callback, failure_callback) => {
 };
 
 const ActiveLoans = () => {
-    const [loading, setLoading] = useState(false);
+    const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loans/accepted?recent=True',
             (result) => {
                 setItems(result);
@@ -138,17 +79,19 @@ const ActiveLoans = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} />
         </div>
     );
 };
 
 const LoanOffers = () => {
-    const [loading, setLoading] = useState(false);
+    const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loans/open?recent=True',
             (result) => {
                 setItems(result);
@@ -162,17 +105,126 @@ const LoanOffers = () => {
 
     return (
         <div>
-            <Table columns={columns} dataSource={items} />
+            <Table columns={columns} dataSource={[]} />
         </div>
     );
 };
 
 const Applications = () => {
-    const [loading, setLoading] = useState(false);
+    const rootRef = useRef(null);
+    const [isOfferModalVisible, setIsOfferModalVisible] = useState(false);
+    const [form] = Form.useForm();
+    const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
+    const [expiryDate, setExpiryDate] = useState(null);
+    const [maturityDate, setMaturityDate] = useState(null);
+    const [startDate, setStartDate] = useState(null);
+    const { user, loading } = useAuth();
+
+    const handleOfferCancel = () => {
+        setIsOfferModalVisible(false);
+    };
+
+    const handleOfferOk = () => {
+        const values = form.getFieldsValue();
+        const startDate = dayjs(values.start);
+        const expiryDate = dayjs(values.expiry);
+        const maturityDate = dayjs(values.maturity);
+
+        if (expiryDate.isAfter(startDate)) {
+            Modal.error({
+                title: 'Error',
+                content: 'The start date must be after the offer expiry date.'
+            });
+            return;
+        }
+
+        if (startDate.isAfter(maturityDate)) {
+            Modal.error({
+                title: 'Error',
+                content: 'The start date must be before the maturity date.'
+            });
+            return;
+        }
+
+        form.validateFields()
+            .then((values) => {
+                form.resetFields();
+                createLoanOffer(values, user);
+            })
+            .catch((info) => {
+                console.log('Validate Failed:', info);
+            });
+    };
+
+    // Create loan offer function
+    const createLoanOffer = (values, user) => {
+        console.log(values);
+        fetch('http://localhost:8000/loan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`,
+                'X-User-Uid': `${user.uid}`
+            },
+            body: JSON.stringify(values)
+        })
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    setIsOfferModalVisible(false);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    };
+
+    const handleButtonClick = (record) => {
+        console.log('Button was clicked for record: ', record);
+        setIsOfferModalVisible(true); // show the modal
+    };
+
+    const loanApplicationColumns = [
+        {
+            title: 'Application ID',
+            dataIndex: 'application',
+            key: 'application'
+        },
+        {
+            title: 'Borrower',
+            dataIndex: 'borrower',
+            key: 'borrower'
+        },
+        {
+            title: 'Asking',
+            dataIndex: 'amount_asking',
+            key: 'amount_asking'
+        },
+        {
+            title: 'Created',
+            dataIndex: 'created',
+            key: 'created'
+        },
+        {
+            title: 'Closed',
+            dataIndex: 'closed',
+            render: (text, record) => (record.closed ? 'Yes' : 'No'),
+            key: 'closed'
+        },
+        {
+            title: 'Action',
+            dataIndex: '',
+            key: 'x',
+            render: (text, record) => <Button onClick={() => handleButtonClick(record)}>Fund</Button>,
+            key: 'action'
+        }
+    ];
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/loan/application?recent=True',
             (result) => {
                 setItems(result);
@@ -184,19 +236,126 @@ const Applications = () => {
         );
     }, []);
 
+    const addKeys = (items) => {
+        // Add key prop to each item in the array
+        return items.map((item, index) => {
+            return { ...item, key: index };
+        });
+    };
+
+    const handleOfferExpiryDateChange = (dates) => {
+        if (dates && dates.length > 0) {
+            setExpiryDate(dates[0]);
+        } else {
+            setExpiryDate(null);
+        }
+    };
+
+    const handleMaturityDateChange = (dates) => {
+        if (dates && dates.length > 0) {
+            setMaturityDate(dates[0]);
+        } else {
+            setMaturityDate(null);
+        }
+    };
+
+    const handleStartDateChange = (dates) => {
+        if (dates && dates.length > 0) {
+            setStartDate(dates[0]);
+        } else {
+            setStartDate(null);
+        }
+    };
+
     return (
-        <div>
-            <Table columns={columns} dataSource={items} />
+        <div ref={rootRef}>
+            <Modal
+                title="Create Loan Offer"
+                visible={isOfferModalVisible}
+                onOk={handleOfferOk}
+                onCancel={handleOfferCancel}
+                destroyOnClose={true}
+            >
+                <Form form={form} layout="vertical">
+                    <Form.Item
+                        name="start"
+                        label={<Tooltip title="Date that the loan starts">Start Date</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
+                    >
+                        <DatePicker
+                            showTime
+                            format="YYYY-MM-DD HH:mm:ss"
+                            onChange={handleStartDateChange}
+                            value={expiryDate ? [expiryDate] : []}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="maturity"
+                        label={<Tooltip title="Date that the borrower's final loan payment is due">Maturity Date</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
+                    >
+                        <DatePicker
+                            showTime
+                            format="YYYY-MM-DD HH:mm:ss"
+                            onChange={handleMaturityDateChange}
+                            value={maturityDate ? [maturityDate] : []}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="payments"
+                        label={<Tooltip title="Number of payment intervals for the borrower">Number of Payments</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
+                    >
+                        <InputNumber min={0} />
+                    </Form.Item>
+                    <Form.Item
+                        name="interest"
+                        label={<Tooltip title="Amount of interest on the loan">Interest Rate</Tooltip>}
+                        initialValue={5}
+                        rules={[
+                            { required: true, message: 'Required' },
+                            {
+                                validator: (_, value) =>
+                                    value > 0 ? Promise.resolve() : Promise.reject(new Error('Interest Rate must be greater than 0'))
+                            }
+                        ]}
+                    >
+                        <InputNumber
+                            min={0.01}
+                            max={100}
+                            step={0.01}
+                            precision={2}
+                            formatter={(value) => `${Number(value).toFixed(2)}%`}
+                            parser={(value) => value.replace('%', '')}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="expiry"
+                        label={<Tooltip title="Date that the offer will expire">Offer Expiry</Tooltip>}
+                        rules={[{ required: true, message: 'Required' }]}
+                    >
+                        <DatePicker
+                            showTime
+                            format="YYYY-MM-DD HH:mm:ss"
+                            onChange={handleOfferExpiryDateChange}
+                            value={expiryDate ? [expiryDate] : []}
+                        />
+                    </Form.Item>
+                </Form>
+            </Modal>
+            <Table columns={loanApplicationColumns} dataSource={addKeys(items)} />
         </div>
     );
 };
 
 const Vouches = () => {
-    const [loading, setLoading] = useState(false);
+    const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         load_endpoint(
+            user,
             'http://127.0.0.1:8000/vouch?recent=True',
             (result) => {
                 setItems(result);
