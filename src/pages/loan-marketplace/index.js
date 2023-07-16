@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 // material-ui
 import {
@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 
 // ant design
-import { Tabs, Table, Input, Button, Space } from 'antd';
+import { Tabs, Table, Input, Button, Space, Form, InputNumber, Modal } from 'antd';
 
 // project import
 import OrdersTable from './OrdersTable';
@@ -107,30 +107,6 @@ const columns = [
     }
 ];
 
-const loanApplicationColumns = [
-    {
-        title: 'Application ID',
-        dataIndex: 'application'
-    },
-    {
-        title: 'Borrower',
-        dataIndex: 'borrower'
-    },
-    {
-        title: 'Asking',
-        dataIndex: 'amount_asking'
-    },
-    {
-        title: 'Created',
-        dataIndex: 'created'
-    },
-    {
-        title: 'Closed',
-        dataIndex: 'closed',
-        render: (text, record) => (record.closed ? 'Yes' : 'No')
-    }
-];
-
 const load_endpoint = (user, url, success_callback, failure_callback) => {
     fetch(url, {
         method: 'GET',
@@ -204,9 +180,92 @@ const LoanOffers = () => {
 };
 
 const Applications = () => {
+    const rootRef = useRef(null);
+    const [isOfferModalVisible, setIsOfferModalVisible] = useState(false);
+    const [form] = Form.useForm();
     const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
     const { user, loading } = useAuth();
+
+    const handleOfferOk = () => {
+        form.validateFields()
+            .then((values) => {
+                form.resetFields();
+                createLoanOffer(values, user);
+            })
+            .catch((info) => {
+                console.log('Validate Failed:', info);
+            });
+    };
+
+    const handleOfferCancel = () => {
+        setIsOfferModalVisible(false);
+    };
+
+    // Create loan offer function
+    const createLoanOffer = (values, user) => {
+        console.log(values);
+        fetch('http://localhost:8000/loan', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${user.token}`,
+                'X-User-Uid': `${user.uid}`
+            },
+            body: JSON.stringify(values)
+        })
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    console.log(result);
+                    setIsOfferModalVisible(false);
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+    };
+
+    const handleButtonClick = (record) => {
+        console.log('Button was clicked for record: ', record);
+        setIsOfferModalVisible(true); // show the modal
+    };
+
+    const loanApplicationColumns = [
+        {
+            title: 'Application ID',
+            dataIndex: 'application',
+            key: 'application'
+        },
+        {
+            title: 'Borrower',
+            dataIndex: 'borrower',
+            key: 'borrower'
+        },
+        {
+            title: 'Asking',
+            dataIndex: 'amount_asking',
+            key: 'amount_asking'
+        },
+        {
+            title: 'Created',
+            dataIndex: 'created',
+            key: 'created'
+        },
+        {
+            title: 'Closed',
+            dataIndex: 'closed',
+            render: (text, record) => (record.closed ? 'Yes' : 'No'),
+            key: 'closed'
+        },
+        {
+            title: 'Action',
+            dataIndex: '',
+            key: 'x',
+            render: (text, record) => <Button onClick={() => handleButtonClick(record)}>Fund</Button>,
+            key: 'action'
+        }
+    ];
 
     useEffect(() => {
         load_endpoint(
@@ -222,9 +281,43 @@ const Applications = () => {
         );
     }, []);
 
+    const addKeys = (items) => {
+        // Add key prop to each item in the array
+        return items.map((item, index) => {
+            return { ...item, key: index };
+        });
+    };
+
     return (
-        <div>
-            <Table columns={loanApplicationColumns} dataSource={items} />
+        <div ref={rootRef}>
+            <Modal
+                title="Create Loan Offer"
+                visible={isOfferModalVisible}
+                onOk={handleOfferOk}
+                onCancel={handleOfferCancel}
+                destroyOnClose={true}
+            >
+                <Form form={form} layout="vertical">
+                    <Form.Item
+                        key="borrower"
+                        name="borrower"
+                        label="Borrower"
+                        rules={[{ required: true, message: 'Please input the borrower ID' }]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        name="principal"
+                        label="Principal Amount"
+                        key="principal"
+                        rules={[{ required: true, message: 'Please input the principal amount' }]}
+                    >
+                        <InputNumber min={0} />
+                    </Form.Item>
+                    {/* repeat this for the rest of the fields */}
+                </Form>
+            </Modal>
+            <Table columns={loanApplicationColumns} dataSource={addKeys(items)} />
         </div>
     );
 };
