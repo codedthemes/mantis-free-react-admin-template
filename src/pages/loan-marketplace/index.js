@@ -16,7 +16,8 @@ import {
 } from '@mui/material';
 
 // ant design
-import { Tabs, Table, Input, Button, Space, Form, InputNumber, Modal } from 'antd';
+import { Tabs, Table, Input, Button, Space, Form, InputNumber, Modal, DatePicker } from 'antd';
+import moment from 'moment';
 
 // project import
 import OrdersTable from './OrdersTable';
@@ -35,19 +36,6 @@ import avatar4 from 'assets/images/users/avatar-4.png';
 
 // react
 import { useNavigate } from 'react-router-dom';
-
-// the firebase auth api key is intended to be public
-// https://stackoverflow.com/a/37484053
-// https://firebase.google.com/docs/web/setup#available-libraries
-const firebaseConfig = {
-    apiKey: 'AIzaSyBQ8rb3jkIsusGKhGwGm-ri9VAjoof1OKA',
-    authDomain: 'nanocryptobank.firebaseapp.com',
-    projectId: 'nanocryptobank',
-    storageBucket: 'nanocryptobank.appspot.com',
-    messagingSenderId: '950014241040',
-    appId: '1:950014241040:web:16e7f8fa0f59bcaf7b5d95',
-    measurementId: 'G-H4F5Z43EKN'
-};
 
 // avatar style
 const avatarSX = {
@@ -185,7 +173,14 @@ const Applications = () => {
     const [form] = Form.useForm();
     const [dataLoading, setLoading] = useState(false);
     const [items, setItems] = useState([]);
+    const [expiryDate, setExpiryDate] = useState(null);
+    const [maturityDate, setMaturityDate] = useState(null);
+    const [startDate, setStartDate] = useState(null);
     const { user, loading } = useAuth();
+
+    const handleOfferCancel = () => {
+        setIsOfferModalVisible(false);
+    };
 
     const handleOfferOk = () => {
         form.validateFields()
@@ -196,10 +191,6 @@ const Applications = () => {
             .catch((info) => {
                 console.log('Validate Failed:', info);
             });
-    };
-
-    const handleOfferCancel = () => {
-        setIsOfferModalVisible(false);
     };
 
     // Create loan offer function
@@ -288,6 +279,30 @@ const Applications = () => {
         });
     };
 
+    const handleOfferExpiryDateChange = (dates) => {
+        if (dates && dates.length > 0) {
+            setExpiryDate(dates[0]);
+        } else {
+            setExpiryDate(null);
+        }
+    };
+
+    const handleMaturityDateChange = (dates) => {
+        if (dates && dates.length > 0) {
+            setMaturityDate(dates[0]);
+        } else {
+            setMaturityDate(null);
+        }
+    };
+
+    const handleStartDateChange = (dates) => {
+        if (dates && dates.length > 0) {
+            setStartDate(dates[0]);
+        } else {
+            setStartDate(null);
+        }
+    };
+
     return (
         <div ref={rootRef}>
             <Modal
@@ -298,23 +313,48 @@ const Applications = () => {
                 destroyOnClose={true}
             >
                 <Form form={form} layout="vertical">
-                    <Form.Item
-                        key="borrower"
-                        name="borrower"
-                        label="Borrower"
-                        rules={[{ required: true, message: 'Please input the borrower ID' }]}
-                    >
-                        <Input />
+                    <Form.Item name="start" label="Start Date" rules={[{ required: true, message: 'Date that the loan starts' }]}>
+                        <DatePicker
+                            showTime
+                            format="YYYY-MM-DD HH:mm:ss"
+                            onChange={handleStartDateChange}
+                            value={expiryDate ? [moment(expiryDate)] : []}
+                        />
                     </Form.Item>
                     <Form.Item
-                        name="principal"
-                        label="Principal Amount"
-                        key="principal"
-                        rules={[{ required: true, message: 'Please input the principal amount' }]}
+                        name="maturity"
+                        label="Maturity Date"
+                        rules={[{ required: true, message: "Date that the borrower's final loan payment is due" }]}
+                    >
+                        <DatePicker
+                            showTime
+                            format="YYYY-MM-DD HH:mm:ss"
+                            onChange={handleMaturityDateChange}
+                            value={maturityDate ? [moment(maturityDate)] : []}
+                        />
+                    </Form.Item>
+                    <Form.Item
+                        name="payments"
+                        label="Number of Payments"
+                        rules={[{ required: true, message: 'Number of payment intervals for the borrower' }]}
                     >
                         <InputNumber min={0} />
                     </Form.Item>
-                    {/* repeat this for the rest of the fields */}
+                    <Form.Item
+                        name="interest"
+                        label="Interest Rate"
+                        rules={[{ required: true, message: 'Amount of interest on the loan' }]}
+                    >
+                        <InputNumber min={0} max={100} />
+                    </Form.Item>
+                    <Form.Item name="expiry" label="Offer Expiry" rules={[{ required: true, message: 'Date that the offer will expire' }]}>
+                        <DatePicker
+                            showTime
+                            format="YYYY-MM-DD HH:mm:ss"
+                            onChange={handleOfferExpiryDateChange}
+                            value={expiryDate ? [moment(expiryDate)] : []}
+                        />
+                    </Form.Item>
                 </Form>
             </Modal>
             <Table columns={loanApplicationColumns} dataSource={addKeys(items)} />
