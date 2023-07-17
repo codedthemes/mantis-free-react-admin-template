@@ -119,6 +119,7 @@ const Applications = () => {
     const [expiryDate, setExpiryDate] = useState(null);
     const [maturityDate, setMaturityDate] = useState(null);
     const [startDate, setStartDate] = useState(null);
+    const [record, setRecord] = useState(null);
     const { user, loading } = useAuth();
 
     const handleOfferCancel = () => {
@@ -160,6 +161,22 @@ const Applications = () => {
     // Create loan offer function
     const createLoanOffer = (values, user) => {
         console.log(values);
+        const borrower = record.borrower; // Pull borrower from record
+        const principal = record.amount_asking; // Pull principal from record
+        const startDate = dayjs(values.start).valueOf();
+        const expiryDate = dayjs(values.expiry).valueOf();
+        const maturityDate = dayjs(values.maturity).valueOf();
+
+        const loanOffer = {
+            borrower,
+            principal,
+            interest: values.interest * 1.0, // Convert to float
+            payments: values.payments,
+            start: startDate,
+            expiry: expiryDate,
+            maturity: maturityDate
+        };
+
         fetch('http://localhost:8000/loan', {
             method: 'POST',
             headers: {
@@ -167,7 +184,7 @@ const Applications = () => {
                 Authorization: `Bearer ${user.token}`,
                 'X-User-Uid': `${user.uid}`
             },
-            body: JSON.stringify(values)
+            body: JSON.stringify(loanOffer)
         })
             .then((res) => res.json())
             .then(
@@ -183,6 +200,7 @@ const Applications = () => {
 
     const handleButtonClick = (record) => {
         console.log('Button was clicked for record: ', record);
+        setRecord(record); // set the record
         setIsOfferModalVisible(true); // show the modal
     };
 
