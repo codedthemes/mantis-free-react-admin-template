@@ -9,6 +9,8 @@ import Checkbox from './Checkbox';
 import Chip from './Chip';
 import IconButton from './IconButton';
 import InputLabel from './InputLabel';
+import MuiFormControl from './MuiFormControl';
+import MuiCard from './MuiCard';
 import LinearProgress from './LinearProgress';
 import Link from './Link';
 import ListItemIcon from './ListItemIcon';
@@ -28,6 +30,8 @@ export default function ComponentsOverrides(theme) {
     Checkbox(theme),
     Chip(theme),
     IconButton(theme),
+    MuiFormControl(),
+    MuiCard(),
     InputLabel(theme),
     LinearProgress(),
     Link(),

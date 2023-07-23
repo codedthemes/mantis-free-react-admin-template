@@ -24,7 +24,7 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: <DashboardDefault />
+      element: <SamplePage />
     },
     {
       path: 'color',
@@ -41,7 +41,7 @@ const MainRoutes = {
     },
     {
       path: 'sample-page',
-      element: <SamplePage />
+      element: <DashboardDefault />
     },
     {
       path: 'shadow',

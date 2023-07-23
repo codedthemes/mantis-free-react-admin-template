@@ -5,7 +5,15 @@ export default function InputLabel(theme) {
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: theme.palette.grey[600]
+          color: theme.palette.grey[600],
+          transition: 'unset',
+          position: 'relative',
+          transformOrigin: 'unset',
+          transform: 'unset',
+          top: 'unset',
+          left: 'unset',
+          maxWidth: '100%',
+          marginBottom: theme.spacing(1)
         },
         outlined: {
           lineHeight: '0.8em',
