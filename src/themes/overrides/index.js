@@ -9,6 +9,9 @@ import Checkbox from './Checkbox';
 import Chip from './Chip';
 import IconButton from './IconButton';
 import InputLabel from './InputLabel';
+import FormControl from './FormControl';
+import TextField from './TextField';
+import MuiCard from './MuiCard';
 import LinearProgress from './LinearProgress';
 import Link from './Link';
 import ListItemIcon from './ListItemIcon';
@@ -17,6 +20,7 @@ import Tab from './Tab';
 import TableCell from './TableCell';
 import Tabs from './Tabs';
 import Typography from './Typography';
+import FormHelperText from './FormHelperText';
 
 // ==============================|| OVERRIDES - MAIN ||============================== //
 
@@ -28,6 +32,10 @@ export default function ComponentsOverrides(theme) {
     Checkbox(theme),
     Chip(theme),
     IconButton(theme),
+    FormControl(),
+    TextField(),
+    FormHelperText(),
+    MuiCard(),
     InputLabel(theme),
     LinearProgress(),
     Link(),

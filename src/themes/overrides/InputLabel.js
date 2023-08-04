@@ -5,7 +5,16 @@ export default function InputLabel(theme) {
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: theme.palette.grey[600]
+          color: theme.palette.grey[600],
+          transition: 'unset',
+          position: 'relative',
+          transformOrigin: 'unset',
+          transform: 'unset',
+          top: 'unset',
+          left: 'unset',
+          maxWidth: '100%',
+          marginBottom: theme.spacing(1),
+          padding: 'none'
         },
         outlined: {
           lineHeight: '0.8em',
@@ -14,8 +23,9 @@ export default function InputLabel(theme) {
           },
           '&.MuiInputLabel-shrink': {
             background: theme.palette.background.paper,
-            padding: '0 8px',
-            marginLeft: -6,
+            padding: 'none',
+            margin: 'none',
+            marginBottom: theme.spacing(1),
             lineHeight: '1.4375em'
           }
         }

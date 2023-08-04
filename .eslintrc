@@ -68,9 +68,10 @@
       }
     ],
     "no-unused-vars": [
-      "error",
+      "warn",
       {
-        "ignoreRestSiblings": false
+        "ignoreRestSiblings": true,
+        "varsIgnorePattern": "^_"
       }
     ],
     "prettier/prettier": [

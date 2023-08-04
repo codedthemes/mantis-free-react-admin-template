@@ -47,6 +47,8 @@ export default function ThemeCustomization({ children }) {
   );
 
   const themes = createTheme(themeOptions);
+  console.log('themes', themes);
+  console.log('themes.spacing', themes.spacing());
   themes.components = componentsOverride(themes);
 
   return (
