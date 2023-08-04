@@ -1,8 +1,8 @@
 {
-  "name": "mantis-free-react-admin-template",
+  "name": "stundensatzrechner",
   "version": "1.1.2",
   "private": true,
-  "homepage": "https://mantisdashboard.io/free",
+  "homepage": "/",
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons": "^4.7.0",
