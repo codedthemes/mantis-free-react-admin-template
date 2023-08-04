@@ -13,7 +13,8 @@ export default function InputLabel(theme) {
           top: 'unset',
           left: 'unset',
           maxWidth: '100%',
-          marginBottom: theme.spacing(1)
+          marginBottom: theme.spacing(1),
+          padding: 'none'
         },
         outlined: {
           lineHeight: '0.8em',
@@ -22,8 +23,9 @@ export default function InputLabel(theme) {
           },
           '&.MuiInputLabel-shrink': {
             background: theme.palette.background.paper,
-            padding: '0 8px',
-            marginLeft: -6,
+            padding: 'none',
+            margin: 'none',
+            marginBottom: theme.spacing(1),
             lineHeight: '1.4375em'
           }
         }

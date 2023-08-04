@@ -19,8 +19,9 @@ const form = createSlice({
     activeStep(state, action) {
       state.activeStep = action.payload;
     },
-    currentFormValues(state, action) {
+    setCurrentFormValues(state, action) {
       state.currentFormValues = action.payload;
+      console.log('saved', action.payload);
     },
     createForm(state, action) {
       const newFormId = uid();
@@ -48,4 +49,4 @@ const form = createSlice({
 
 export default form.reducer;
 
-export const { activeStep, currentFormValues, createForm, removeForm } = form.actions;
+export const { activeStep, currentFormValues, setCurrentFormValues, createForm, removeForm } = form.actions;

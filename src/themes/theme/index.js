@@ -85,19 +85,7 @@ const Theme = (colors) => {
       darker: green[9],
       contrastText
     },
-    grey: greyColors,
-    light: {
-      main: greyColors[0],
-      dark: greyColors[100],
-      darker: greyColors[200],
-      contrastText: greyColors[900]
-    },
-    dark: {
-      main: greyColors[900],
-      light: greyColors[800],
-      lighter: greyColors[700],
-      contrastText: greyColors[0]
-    }
+    grey: greyColors
   };
 };
 
