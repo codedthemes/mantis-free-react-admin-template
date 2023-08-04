@@ -16,16 +16,18 @@ const support = {
   children: [
     {
       id: 'sample-page',
-      title: 'Sample Page',
+      title: 'Kontakt',
       type: 'item',
-      url: '/sample-page',
+      url: '/',
+      // url: '/sample-page',
       icon: icons.ChromeOutlined
     },
     {
       id: 'documentation',
-      title: 'Documentation',
+      title: 'Dokumentation',
       type: 'item',
-      url: 'https://codedthemes.gitbook.io/mantis/',
+      url: '/',
+      // url: 'https://codedthemes.gitbook.io/mantis/',
       icon: icons.QuestionOutlined,
       external: true,
       target: true
