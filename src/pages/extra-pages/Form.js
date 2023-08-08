@@ -8,11 +8,10 @@ import { Typography, Grid, TextField, Button, CircularProgress } from '@mui/mate
 import { Formik, Form, FieldArray, Field } from 'formik';
 import FieldTemplate from '../../components/formComponents/FieldTemplate/index';
 import { useTranslation } from 'react-i18next';
-import jsonLogic from '../../formConfigs/jsonLogic';
 import validationRules from '../../formConfigs/testForm/rules/validation/index';
 import conditionalRules from '../../formConfigs/testForm/rules/conditional/index';
-import getVisibleFieldKeys from '../../utils/formUtils/getVisibleFieldKeys';
 import StundensatzRechnerValueUpdater from '../../components/formComponents/CalculationUpdater/index';
+import validateFields from 'utils/formUtils/validateFields';
 
 // project import
 import MainCard from 'components/MainCard';
@@ -51,21 +50,7 @@ const FormComponent = () => {
           <Formik
             initialValues={currentFormValues}
             onSubmit={async (values, formikBag) => {
-              const visibleKeys = getVisibleFieldKeys(conditionalRules, values);
-              const errors = {};
-              visibleKeys.forEach((fieldKey) => {
-                const ruleSettings = validationRules[fieldKey];
-
-                if (ruleSettings?.length > 0) {
-                  ruleSettings.forEach((ruleSetting) => {
-                    const validatedValue = jsonLogic.apply(ruleSetting.rule, values);
-
-                    if (validatedValue !== true && validatedValue !== undefined) {
-                      errors[fieldKey] = validatedValue;
-                    }
-                  });
-                }
-              });
+              const { errors } = validateFields(values, conditionalRules, validationRules);
               formikBag.setErrors(errors);
               return new Promise((res) => setTimeout(res, 2500));
             }}
