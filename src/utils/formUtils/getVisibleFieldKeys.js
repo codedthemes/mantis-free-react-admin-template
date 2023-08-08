@@ -1,4 +1,4 @@
-import jsonLogic from "../../formConfigs/jsonLogic";
+import jsonLogic from '../../formConfigs/jsonLogic';
 
 const getVisibleFieldKeys = (conditionalConfig, values) => {
   const visibleFieldKeys = [];
@@ -6,14 +6,12 @@ const getVisibleFieldKeys = (conditionalConfig, values) => {
   const conditionalFieldKeys = Object.keys(conditionalConfig);
   const valueKeys = Object.keys(values);
 
-  console.log("keys", valueKeys, conditionalFieldKeys);
+  console.log('keys', valueKeys, conditionalFieldKeys);
 
   const uniqueKeys = [...new Set([...valueKeys, ...conditionalFieldKeys])];
 
   uniqueKeys.forEach((fieldKey) => {
-    const isVisible =
-      !conditionalConfig[fieldKey] ||
-      jsonLogic.apply(conditionalConfig[fieldKey], values);
+    const isVisible = !conditionalConfig[fieldKey] || jsonLogic.apply(conditionalConfig[fieldKey], values);
     if (isVisible !== false) {
       visibleFieldKeys.push(fieldKey);
     }
@@ -21,5 +19,4 @@ const getVisibleFieldKeys = (conditionalConfig, values) => {
 
   return visibleFieldKeys;
 };
-
 export default getVisibleFieldKeys;
