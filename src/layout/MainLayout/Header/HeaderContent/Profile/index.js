@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout, selectUser } from '../../../../../store/reducers/user';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -26,8 +28,8 @@ import ProfileTab from './ProfileTab';
 import SettingTab from './SettingTab';
 
 // assets
-import avatar1 from 'assets/images/users/avatar-1.png';
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined, SettingOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons';
+import { signOut, auth } from 'auth/firebase';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -55,9 +57,13 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme();
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
   const handleLogout = async () => {
-    // logout
+    setOpen(false);
+    dispatch(logout());
+    signOut(auth);
   };
 
   const anchorRef = useRef(null);
@@ -80,13 +86,14 @@ const Profile = () => {
   };
 
   const iconBackColorOpen = 'grey.300';
+  const loginBackColor = 'grey.100';
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>
       <ButtonBase
         sx={{
           p: 0.25,
-          bgcolor: open ? iconBackColorOpen : 'transparent',
+          bgcolor: open ? iconBackColorOpen : user ? 'transparent' : loginBackColor,
           borderRadius: 1,
           '&:hover': { bgcolor: 'secondary.lighter' }
         }}
@@ -94,11 +101,23 @@ const Profile = () => {
         ref={anchorRef}
         aria-controls={open ? 'profile-grow' : undefined}
         aria-haspopup="true"
-        onClick={handleToggle}
+        onClick={user && handleToggle}
+        href={!user && '/login'}
       >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-          <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-          <Typography variant="subtitle1">John Doe</Typography>
+          {user ? (
+            <>
+              <Avatar alt="profile user" sx={{ width: 32, height: 32 }}>
+                {user?.initials}
+              </Avatar>
+              <Typography variant="subtitle1">{user?.displayName}</Typography>
+            </>
+          ) : (
+            <Stack direction="row" justifyContent="center" alignItems="center" spacing={1} useFlexGap>
+              <LoginOutlined />
+              Login
+            </Stack>
+          )}
         </Stack>
       </ButtonBase>
       <Popper
@@ -139,9 +158,11 @@ const Profile = () => {
                       <Grid container justifyContent="space-between" alignItems="center">
                         <Grid item>
                           <Stack direction="row" spacing={1.25} alignItems="center">
-                            <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
+                            <Avatar alt="profile user" sx={{ width: 32, height: 32 }}>
+                              {user?.initials}
+                            </Avatar>
                             <Stack>
-                              <Typography variant="h6">John Doe</Typography>
+                              <Typography variant="h6">{user?.displayName}</Typography>
                               <Typography variant="body2" color="textSecondary">
                                 UI/UX Designer
                               </Typography>

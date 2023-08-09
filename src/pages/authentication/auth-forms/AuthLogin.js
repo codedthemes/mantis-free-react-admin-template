@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // material-ui
 import {
@@ -24,13 +24,15 @@ import { useDispatch } from 'react-redux';
 // project import
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
+
+// Form
 import validationRules from '../../../formConfigs/authLogin/rules/validation/index';
 import conditionalRules from '../../../formConfigs/authLogin/rules/conditional/index';
 import validateFields from 'utils/formUtils/validateFields';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { auth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'auth/firebase';
+import { auth, signInWithEmailAndPassword } from 'auth/firebase';
 import { login } from 'store/reducers/user';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
@@ -38,6 +40,7 @@ import { login } from 'store/reducers/user';
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
@@ -55,14 +58,15 @@ const AuthLogin = () => {
       // userAuth.user contains all our user details
       .then((userAuth) => {
         // store the user's information in the redux state
+        console.log('userauth', userAuth);
         dispatch(
           login({
             email: userAuth.user.email,
             uid: userAuth.user.uid,
-            displayName: userAuth.user.displayName,
-            photoUrl: userAuth.user.photoURL
+            displayName: userAuth.user.displayName
           })
         );
+        navigate('/');
       })
       // display the error if any
       .catch((err) => {
@@ -149,10 +153,10 @@ const AuthLogin = () => {
                         size="small"
                       />
                     }
-                    label={<Typography variant="h6">Keep me sign in</Typography>}
+                    label={<Typography variant="h6">Angemeldet bleiben</Typography>}
                   />
                   <Link variant="h6" component={RouterLink} to="" color="text.primary">
-                    Forgot Password?
+                    Passwort vergessen?
                   </Link>
                 </Stack>
               </Grid>
@@ -170,7 +174,7 @@ const AuthLogin = () => {
               </Grid>
               <Grid item xs={12}>
                 <Divider>
-                  <Typography variant="caption"> Login with</Typography>
+                  <Typography variant="caption">Anmelden mit</Typography>
                 </Divider>
               </Grid>
               <Grid item xs={12}>
