@@ -56,12 +56,6 @@ const AuthRegister = () => {
   };
 
   useEffect(() => {
-    if (user?.uid) {
-      navigate('/');
-    }
-  }, [user?.uid]);
-
-  useEffect(() => {
     changePassword('');
   }, []);
 
@@ -71,7 +65,6 @@ const AuthRegister = () => {
       // returns  an auth object after a successful authentication
       // userAuth.user contains all our user details
       .then((userCredential) => {
-        console.log('userCredential', userCredential);
         const displayName = `${firstName} ${lastName}`;
         updateProfile(userCredential.user, {
           displayName: displayName
@@ -80,11 +73,12 @@ const AuthRegister = () => {
             // Dispatch the user information for persistence in the redux state
             dispatch(
               login({
-                email: userCredential.user.email,
-                uid: userCredential.user.uid,
+                email: userCredential.user?.email,
+                uid: userCredential.user?.uid,
                 displayName: displayName
               })
             );
+            navigate('/');
           })
           .catch((error) => {
             console.log('user not updated');

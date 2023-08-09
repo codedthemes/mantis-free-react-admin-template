@@ -10,10 +10,7 @@ import ScrollTop from 'components/ScrollTop';
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
 const App = () => {
-  const user = useSelector(selectUser);
   const dispatch = useDispatch();
-
-  console.log('user', user);
 
   useEffect(() => {
     onAuthStateChanged(auth, (userAuth) => {
