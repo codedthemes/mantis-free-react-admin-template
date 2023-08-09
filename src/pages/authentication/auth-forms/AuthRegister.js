@@ -12,15 +12,20 @@ import {
   Link,
   IconButton,
   InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  Stack,
-  Typography
+  Typography,
+  TextField
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-// third party
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+import { auth, createUserWithEmailAndPassword, updateProfile } from 'auth/firebase';
+
+// Form
+import validationRules from '../../../formConfigs/authLogin/rules/validation/index';
+import conditionalRules from '../../../formConfigs/authLogin/rules/conditional/index';
+import validateFields from 'utils/formUtils/validateFields';
+import { Formik, Form, Field } from 'formik';
+import { login } from 'store/reducers/user';
 
 // project import
 import FirebaseSocial from './FirebaseSocial';
@@ -33,6 +38,8 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
@@ -49,143 +56,132 @@ const AuthRegister = () => {
   };
 
   useEffect(() => {
+    if (user?.uid) {
+      navigate('/');
+    }
+  }, [user?.uid]);
+
+  useEffect(() => {
     changePassword('');
   }, []);
+
+  const handleRegister = ({ email, password, firstName, lastName }) => {
+    // Sign in an existing user with Firebase
+    createUserWithEmailAndPassword(auth, email, password)
+      // returns  an auth object after a successful authentication
+      // userAuth.user contains all our user details
+      .then((userCredential) => {
+        console.log('userCredential', userCredential);
+        const displayName = `${firstName} ${lastName}`;
+        updateProfile(userCredential.user, {
+          displayName: displayName
+        })
+          .then(() => {
+            // Dispatch the user information for persistence in the redux state
+            dispatch(
+              login({
+                email: userCredential.user.email,
+                uid: userCredential.user.uid,
+                displayName: displayName
+              })
+            );
+          })
+          .catch((error) => {
+            console.log('user not updated');
+          });
+      })
+      // display the error if any
+      .catch((err) => {
+        alert(err);
+      });
+  };
 
   return (
     <>
       <Formik
-        initialValues={{
-          firstname: '',
-          lastname: '',
-          email: '',
-          company: '',
-          password: '',
-          submit: null
-        }}
-        validationSchema={Yup.object().shape({
-          firstname: Yup.string().max(255).required('First Name is required'),
-          lastname: Yup.string().max(255).required('Last Name is required'),
-          email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-          password: Yup.string().max(255).required('Password is required')
-        })}
-        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-          try {
-            setStatus({ success: false });
-            setSubmitting(false);
-          } catch (err) {
-            console.error(err);
-            setStatus({ success: false });
-            setErrors({ submit: err.message });
-            setSubmitting(false);
+        initialValues={{}}
+        onSubmit={async (values, formikBag) => {
+          console.log('submit start', values);
+          const { errors } = validateFields(values, conditionalRules, validationRules);
+          console.log('submit', errors, values);
+          formikBag.setErrors(errors);
+
+          if (Object.keys(errors).length === 0) {
+            handleRegister({
+              email: values.email,
+              password: values.password,
+              firstName: values.firstName,
+              lastName: values.lastName
+            });
           }
+          return new Promise((res) => setTimeout(res, 2500));
         }}
       >
-        {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
-          <form noValidate onSubmit={handleSubmit}>
+        {({ values = {}, errors = {}, isSubmitting, handleChange, handleBlur, touched = {} }) => (
+          <Form autoComplete="off">
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
-                  <OutlinedInput
-                    id="firstname-login"
-                    type="firstname"
-                    value={values.firstname}
-                    name="firstname"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="John"
-                    fullWidth
-                    error={Boolean(touched.firstname && errors.firstname)}
-                  />
-                  {touched.firstname && errors.firstname && (
-                    <FormHelperText error id="helper-text-firstname-signup">
-                      {errors.firstname}
-                    </FormHelperText>
-                  )}
-                </Stack>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  shrink={false}
+                  component={TextField}
+                  id="firstName"
+                  name="firstName"
+                  label="Vorname"
+                  required
+                  fullWidth
+                  value={values.firstName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.firstName && Boolean(errors.firstName)}
+                  helperText={touched.firstName && errors.firstName}
+                />
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.lastname && errors.lastname)}
-                    id="lastname-signup"
-                    type="lastname"
-                    value={values.lastname}
-                    name="lastname"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="Doe"
-                    inputProps={{}}
-                  />
-                  {touched.lastname && errors.lastname && (
-                    <FormHelperText error id="helper-text-lastname-signup">
-                      {errors.lastname}
-                    </FormHelperText>
-                  )}
-                </Stack>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  shrink={false}
+                  component={TextField}
+                  id="lastName"
+                  name="lastName"
+                  label="Nachname"
+                  required
+                  value={values.lastName}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.lastName && Boolean(errors.lastName)}
+                  helperText={touched.lastName && errors.lastName}
+                />
               </Grid>
               <Grid item xs={12}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">Company</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.company && errors.company)}
-                    id="company-signup"
-                    value={values.company}
-                    name="company"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="Demo Inc."
-                    inputProps={{}}
-                  />
-                  {touched.company && errors.company && (
-                    <FormHelperText error id="helper-text-company-signup">
-                      {errors.company}
-                    </FormHelperText>
-                  )}
-                </Stack>
+                <Field
+                  shrink={false}
+                  component={TextField}
+                  id="email"
+                  name="email"
+                  label="E-Mail"
+                  required
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.email && Boolean(errors.email)}
+                  helperText={touched.email && errors.email}
+                />
               </Grid>
               <Grid item xs={12}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.email && errors.email)}
-                    id="email-login"
-                    type="email"
-                    value={values.email}
-                    name="email"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="demo@company.com"
-                    inputProps={{}}
-                  />
-                  {touched.email && errors.email && (
-                    <FormHelperText error id="helper-text-email-signup">
-                      {errors.email}
-                    </FormHelperText>
-                  )}
-                </Stack>
-              </Grid>
-              <Grid item xs={12}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="password-signup">Password</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.password && errors.password)}
-                    id="password-signup"
-                    type={showPassword ? 'text' : 'password'}
-                    value={values.password}
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={(e) => {
-                      handleChange(e);
-                      changePassword(e.target.value);
-                    }}
-                    endAdornment={
+                <Field
+                  shrink={false}
+                  component={TextField}
+                  id="password"
+                  name="password"
+                  label="Passwort"
+                  required
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.password && Boolean(errors.password)}
+                  helperText={touched.password && errors.password}
+                  type={showPassword ? 'text' : 'password'}
+                  InputProps={{
+                    endAdornment: (
                       <InputAdornment position="end">
                         <IconButton
                           aria-label="toggle password visibility"
@@ -197,16 +193,9 @@ const AuthRegister = () => {
                           {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                         </IconButton>
                       </InputAdornment>
-                    }
-                    placeholder="******"
-                    inputProps={{}}
-                  />
-                  {touched.password && errors.password && (
-                    <FormHelperText error id="helper-text-password-signup">
-                      {errors.password}
-                    </FormHelperText>
-                  )}
-                </Stack>
+                    )
+                  }}
+                />
                 <FormControl fullWidth sx={{ mt: 2 }}>
                   <Grid container spacing={2} alignItems="center">
                     <Grid item>
@@ -222,14 +211,15 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="body2">
-                  By Signing up, you agree to our &nbsp;
+                  Durch die Anmeldung stimmst du unseren &nbsp;
                   <Link variant="subtitle2" component={RouterLink} to="#">
-                    Terms of Service
+                    Nutzungsbedingungen
                   </Link>
-                  &nbsp; and &nbsp;
+                  &nbsp; und unserer &nbsp;
                   <Link variant="subtitle2" component={RouterLink} to="#">
-                    Privacy Policy
+                    Datenschutzrichtlinie
                   </Link>
+                  &nbsp; zu.
                 </Typography>
               </Grid>
               {errors.submit && (
@@ -240,20 +230,20 @@ const AuthRegister = () => {
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Create Account
+                    Profil erstellen
                   </Button>
                 </AnimateButton>
               </Grid>
               <Grid item xs={12}>
                 <Divider>
-                  <Typography variant="caption">Sign up with</Typography>
+                  <Typography variant="caption">Anmelden mit</Typography>
                 </Divider>
               </Grid>
               <Grid item xs={12}>
                 <FirebaseSocial />
               </Grid>
             </Grid>
-          </form>
+          </Form>
         )}
       </Formik>
     </>

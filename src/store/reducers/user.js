@@ -9,7 +9,15 @@ export const userSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      state.user = action.payload;
+      const initials = action.payload.displayName
+        ?.split(' ')
+        .map((word) => word[0])
+        .join('');
+      console.log('initials', initials);
+      state.user = {
+        ...action.payload,
+        initials
+      };
     },
     logout: (state) => {
       state.user = null;
