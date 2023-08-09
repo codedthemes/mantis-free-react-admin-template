@@ -15,42 +15,21 @@ const AuthFooter = () => {
         textAlign={matchDownSM ? 'center' : 'inherit'}
       >
         <Typography variant="subtitle2" color="secondary" component="span">
-          &copy; Mantis React Dashboard Template By&nbsp;
-          <Typography component={Link} variant="subtitle2" href="https://codedthemes.com" target="_blank" underline="hover">
-            CodedThemes
+          &copy; Stundensatzkalkulator&nbsp;
+          <Typography component={Link} variant="subtitle2" href="/" target="_blank" underline="hover">
+            Adel Consultant
           </Typography>
         </Typography>
 
         <Stack direction={matchDownSM ? 'column' : 'row'} spacing={matchDownSM ? 1 : 3} textAlign={matchDownSM ? 'center' : 'inherit'}>
-          <Typography
-            variant="subtitle2"
-            color="secondary"
-            component={Link}
-            href="https://material-ui.com/store/contributors/codedthemes/"
-            target="_blank"
-            underline="hover"
-          >
-            MUI Templates
+          <Typography variant="subtitle2" color="secondary" component={Link} href="/" target="_blank" underline="hover">
+            Kontakt
           </Typography>
-          <Typography
-            variant="subtitle2"
-            color="secondary"
-            component={Link}
-            href="https://codedthemes.com"
-            target="_blank"
-            underline="hover"
-          >
-            Privacy Policy
+          <Typography variant="subtitle2" color="secondary" component={Link} href="/" target="_blank" underline="hover">
+            Datenschutzerklärung
           </Typography>
-          <Typography
-            variant="subtitle2"
-            color="secondary"
-            component={Link}
-            href="https://codedthemes.support-hub.io/"
-            target="_blank"
-            underline="hover"
-          >
-            Support
+          <Typography variant="subtitle2" color="secondary" component={Link} href="/" target="_blank" underline="hover">
+            Impressum
           </Typography>
         </Stack>
       </Stack>
