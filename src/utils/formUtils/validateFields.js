@@ -11,9 +11,7 @@ const validateFields = (values, conditionalRules, validationRules) => {
       ruleSettings.forEach((ruleSetting) => {
         const rule = ruleSetting.rule;
         const ruleParsed = typeof rule === 'string' ? { [rule]: [values[fieldKey]] } : rule;
-        console.log('ruleParsed', ruleParsed, values);
         const validatedValue = jsonLogic.apply(ruleParsed, values);
-        console.log('validated', validatedValue, ruleSetting, values);
 
         if (validatedValue !== true && validatedValue !== undefined) {
           errors[fieldKey] = validatedValue;

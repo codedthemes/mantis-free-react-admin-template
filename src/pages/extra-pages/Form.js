@@ -34,8 +34,6 @@ const FormComponent = () => {
 
   const currentFormValues = currentForm?.formValues || {};
 
-  console.log('curr formValues', currentFormValues);
-
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}

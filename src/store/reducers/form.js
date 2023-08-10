@@ -21,7 +21,6 @@ const form = createSlice({
     },
     setCurrentFormValues(state, action) {
       state.currentFormValues = action.payload;
-      console.log('saved', action.payload);
     },
     createForm(state, action) {
       const newFormId = uid();

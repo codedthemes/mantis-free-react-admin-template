@@ -6,8 +6,6 @@ const getVisibleFieldKeys = (conditionalConfig, values) => {
   const conditionalFieldKeys = Object.keys(conditionalConfig);
   const valueKeys = Object.keys(values);
 
-  console.log('keys', valueKeys, conditionalFieldKeys);
-
   const uniqueKeys = [...new Set([...valueKeys, ...conditionalFieldKeys])];
 
   uniqueKeys.forEach((fieldKey) => {

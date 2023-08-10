@@ -13,6 +13,7 @@ import 'assets/third-party/apex-chart.css';
 
 // project import
 import App from './App';
+import { UserContextProvider } from 'context/user/user';
 import { store } from 'store';
 import reportWebVitals from './reportWebVitals';
 
@@ -24,7 +25,9 @@ root.render(
   <StrictMode>
     <ReduxProvider store={store}>
       <BrowserRouter basename="/">
-        <App />
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
       </BrowserRouter>
     </ReduxProvider>
   </StrictMode>
