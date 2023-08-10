@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { logout, selectUser } from '../../../../../store/reducers/user';
+import { useRef, useState, useContext } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -29,7 +27,7 @@ import SettingTab from './SettingTab';
 
 // assets
 import { LogoutOutlined, SettingOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons';
-import { signOut, auth } from 'auth/firebase';
+import { UserContext } from 'context/user/user';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -57,13 +55,11 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme();
-  const user = useSelector(selectUser);
-  const dispatch = useDispatch();
+  const { user, logoutUser } = useContext(UserContext);
 
   const handleLogout = async () => {
     setOpen(false);
-    dispatch(logout());
-    signOut(auth);
+    logoutUser();
   };
 
   const anchorRef = useRef(null);
@@ -93,7 +89,7 @@ const Profile = () => {
       <ButtonBase
         sx={{
           p: 0.25,
-          bgcolor: open ? iconBackColorOpen : user ? 'transparent' : loginBackColor,
+          bgcolor: open ? iconBackColorOpen : user.uid ? 'transparent' : loginBackColor,
           borderRadius: 1,
           '&:hover': { bgcolor: 'secondary.lighter' }
         }}
@@ -101,11 +97,11 @@ const Profile = () => {
         ref={anchorRef}
         aria-controls={open ? 'profile-grow' : undefined}
         aria-haspopup="true"
-        onClick={user && handleToggle}
-        href={!user && '/login'}
+        onClick={user.uid && handleToggle}
+        href={!user.uid && '/login'}
       >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-          {user ? (
+          {user.uid ? (
             <>
               <Avatar alt="profile user" sx={{ width: 32, height: 32 }}>
                 {user?.initials}
@@ -164,7 +160,7 @@ const Profile = () => {
                             <Stack>
                               <Typography variant="h6">{user?.displayName}</Typography>
                               <Typography variant="body2" color="textSecondary">
-                                UI/UX Designer
+                                {user?.company}
                               </Typography>
                             </Stack>
                           </Stack>

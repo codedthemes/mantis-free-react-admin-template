@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
@@ -15,21 +15,17 @@ import {
   Typography,
   TextField
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
-import { auth, createUserWithEmailAndPassword, updateProfile } from 'auth/firebase';
 
 // Form
 import validationRules from '../../../formConfigs/authLogin/rules/validation/index';
 import conditionalRules from '../../../formConfigs/authLogin/rules/conditional/index';
 import validateFields from 'utils/formUtils/validateFields';
 import { Formik, Form, Field } from 'formik';
-import { login } from 'store/reducers/user';
 
 // project import
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
+import { UserContext } from 'context/user/user';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
 
 // assets
@@ -38,8 +34,7 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 // ============================|| FIREBASE - REGISTER ||============================ //
 
 const AuthRegister = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { registerUser } = useContext(UserContext);
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => {
@@ -59,35 +54,9 @@ const AuthRegister = () => {
     changePassword('');
   }, []);
 
-  const handleRegister = ({ email, password, firstName, lastName }) => {
+  const handleRegister = ({ email, password, firstName, lastName, company }) => {
     // Sign in an existing user with Firebase
-    createUserWithEmailAndPassword(auth, email, password)
-      // returns  an auth object after a successful authentication
-      // userAuth.user contains all our user details
-      .then((userCredential) => {
-        const displayName = `${firstName} ${lastName}`;
-        updateProfile(userCredential.user, {
-          displayName: displayName
-        })
-          .then(() => {
-            // Dispatch the user information for persistence in the redux state
-            dispatch(
-              login({
-                email: userCredential.user?.email,
-                uid: userCredential.user?.uid,
-                displayName: displayName
-              })
-            );
-            navigate('/');
-          })
-          .catch((error) => {
-            console.log('user not updated');
-          });
-      })
-      // display the error if any
-      .catch((err) => {
-        alert(err);
-      });
+    registerUser({ email, password, firstName, lastName, company });
   };
 
   return (
@@ -95,9 +64,7 @@ const AuthRegister = () => {
       <Formik
         initialValues={{}}
         onSubmit={async (values, formikBag) => {
-          console.log('submit start', values);
           const { errors } = validateFields(values, conditionalRules, validationRules);
-          console.log('submit', errors, values);
           formikBag.setErrors(errors);
 
           if (Object.keys(errors).length === 0) {
@@ -105,7 +72,8 @@ const AuthRegister = () => {
               email: values.email,
               password: values.password,
               firstName: values.firstName,
-              lastName: values.lastName
+              lastName: values.lastName,
+              company: values.company
             });
           }
           return new Promise((res) => setTimeout(res, 2500));
@@ -143,6 +111,21 @@ const AuthRegister = () => {
                   onBlur={handleBlur}
                   error={touched.lastName && Boolean(errors.lastName)}
                   helperText={touched.lastName && errors.lastName}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Field
+                  shrink={false}
+                  component={TextField}
+                  id="company"
+                  name="company"
+                  label="Unternehmen"
+                  required
+                  value={values.company}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.company && Boolean(errors.company)}
+                  helperText={touched.company && errors.company}
                 />
               </Grid>
               <Grid item xs={12}>

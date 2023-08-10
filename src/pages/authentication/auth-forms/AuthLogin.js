@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import {
@@ -19,7 +19,6 @@ import {
 
 // third party
 import { Formik, Form, Field } from 'formik';
-import { useDispatch } from 'react-redux';
 
 // project import
 import FirebaseSocial from './FirebaseSocial';
@@ -32,15 +31,13 @@ import validateFields from 'utils/formUtils/validateFields';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { auth, signInWithEmailAndPassword } from 'auth/firebase';
-import { login } from 'store/reducers/user';
+import { UserContext } from 'context/user/user';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { authUser } = useContext(UserContext);
 
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
@@ -53,25 +50,12 @@ const AuthLogin = () => {
 
   const handleLogin = ({ email, password }) => {
     // Sign in an existing user with Firebase
-    signInWithEmailAndPassword(auth, email, password)
-      // returns  an auth object after a successful authentication
-      // userAuth.user contains all our user details
-      .then((userAuth) => {
-        // store the user's information in the redux state
-        console.log('userauth', userAuth);
-        dispatch(
-          login({
-            email: userAuth.user.email,
-            uid: userAuth.user.uid,
-            displayName: userAuth.user.displayName
-          })
-        );
-        navigate('/');
-      })
-      // display the error if any
-      .catch((err) => {
-        alert(err);
-      });
+    authUser({
+      emailCredentials: {
+        email: email,
+        password: password
+      }
+    });
   };
 
   return (
@@ -79,9 +63,7 @@ const AuthLogin = () => {
       <Formik
         initialValues={{}}
         onSubmit={async (values, formikBag) => {
-          console.log('submit start', values);
           const { errors } = validateFields(values, conditionalRules, validationRules);
-          console.log('submit', errors, values);
           formikBag.setErrors(errors);
 
           if (Object.keys(errors).length === 0) {
