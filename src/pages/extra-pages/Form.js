@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // material-ui
 import { Typography, Grid, TextField, Button, CircularProgress } from '@mui/material';
@@ -26,10 +26,12 @@ const FormComponent = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { activeFormId, forms } = useSelector((state) => state.form);
+  const { ...all } = useParams();
   const currentForm = forms[activeFormId];
+  console.log('params', all);
 
   if (!currentForm) {
-    navigate('/');
+    // navigate('/');
   }
 
   const currentFormValues = currentForm?.formValues || {};

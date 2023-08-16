@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
@@ -10,25 +10,24 @@ import MainCard from 'components/MainCard';
 import { Edit, Delete, AddToPhotos } from '@mui/icons-material';
 
 // redux
-import { createForm, activeStep, removeForm } from 'store/reducers/form';
-import { useDispatch, useSelector } from 'react-redux';
+import { UserContext } from 'context/user/user';
 
 const SelectFormView = () => {
-  const { forms } = useSelector((state) => state.form);
-  const dispatch = useDispatch();
+  const { createForm, deleteForm, formsData } = useContext(UserContext);
   const theme = useTheme();
   const [addNewTitle, setAddNewTitle] = useState('');
   const addForm = () => {
     setAddNewTitle('');
-    dispatch(createForm({ userTitle: addNewTitle }));
+    createForm({ title: addNewTitle });
   };
-  const deleteForm = (formId) => dispatch(removeForm(formId));
+  const removeForm = (formId) => deleteForm(formId);
 
   const formCardsDom = () => {
-    const formIds = Object.keys(forms);
+    const formIds = Object.keys(formsData);
     const formCards =
       formIds.map((formId) => {
-        const formData = forms[formId];
+        const formData = formsData[formId];
+        console.log('FormData', formData);
 
         return (
           <Grid key={formId} item xs={12} sm={6} md={4}>
@@ -40,7 +39,7 @@ const SelectFormView = () => {
             >
               <CardContent>
                 <Typography variant="h3" paragraph>
-                  {formData.userTitle || 'Formular: ' + formId}
+                  {formData.title || 'Formular: ' + formData.id}
                 </Typography>
                 <Grid container spacing={1}>
                   <Grid item>
@@ -49,7 +48,7 @@ const SelectFormView = () => {
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button color="secondary" variant="contained" onClick={() => deleteForm(formId)}>
+                    <Button color="secondary" variant="contained" onClick={() => removeForm(formId)}>
                       <Delete />
                     </Button>
                   </Grid>
