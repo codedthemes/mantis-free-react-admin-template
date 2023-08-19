@@ -1,5 +1,6 @@
-import { createContext, useState, useCallback, useEffect, useRef } from 'react';
+import { createContext, useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { StatusCodes } from 'http-status-codes';
 import dayjs from 'dayjs';
 
 // Firebase
@@ -25,7 +26,14 @@ const initialUser = {
 };
 
 const initialFormsData = {};
-const initialActiveForm = null;
+const initialStatusCodes = {
+  loadingUser: null,
+  createUser: null,
+  setUser: null,
+  loadingForm: null,
+  createForm: null,
+  setForm: null
+};
 
 export const UserContext = createContext(null);
 export const UserContextProvider = ({ children }) => {
@@ -33,7 +41,9 @@ export const UserContextProvider = ({ children }) => {
   const mounted = useRef();
   const [user, setUser] = useState(initialUser);
   const [formsData, setFormsData] = useState(initialFormsData);
-  const [activeFormData, setActiveFormData] = useState(initialActiveForm);
+  const [activeFormId, setActiveFormId] = useState(initialFormsData);
+  const requestStatusCodes = useRef(initialStatusCodes);
+  const activeFormData = useMemo(() => formsData[activeFormId], [activeFormId, formsData]);
 
   console.log('context user', user);
   console.log('context forms', formsData);
@@ -171,6 +181,8 @@ export const UserContextProvider = ({ children }) => {
     [user.uid, user.userFormIds, reloadUser]
   );
 
+  // FORMS
+
   const deleteForm = useCallback(
     async (formId) => {
       console.log('Delete', formId);
@@ -184,7 +196,6 @@ export const UserContextProvider = ({ children }) => {
     const tmpForms = {};
     const snap = await getDocs(query(collection(db, 'forms'), where(documentId(), 'in', formIds)));
 
-    console.log('snap', snap.docs);
     snap.docs.forEach((doc) => {
       const docData = doc.data();
       console.log('docData', docData);
@@ -200,7 +211,6 @@ export const UserContextProvider = ({ children }) => {
     return tmpForms;
   }, []);
 
-  // forms
   const createForm = useCallback(
     async ({ title }) => {
       const docRef = await addDoc(collection(db, 'forms'), {
@@ -209,12 +219,26 @@ export const UserContextProvider = ({ children }) => {
         values: JSON.stringify({})
       });
 
-      console.log('docRef', docRef);
-
       await addUserForm(docRef.id);
       await reloadUser();
+      updateRequestStatusCodes('createForm', StatusCodes.successful);
     },
     [addUserForm, reloadUser]
+  );
+
+  const saveForm = useCallback(
+    async (values) => {
+      if (activeFormId) {
+        await setDoc(
+          doc(db, 'forms', activeFormId),
+          {
+            values: JSON.stringify(values) || ''
+          },
+          { merge: true }
+        );
+      }
+    },
+    [activeFormId]
   );
 
   useEffect(() => {
@@ -224,17 +248,21 @@ export const UserContextProvider = ({ children }) => {
   }, [mounted]);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (userAuth) => {
-      console.log('auth user changed');
-      const enable = true;
-      if (enable && userAuth) {
-        loginUser({
-          email: userAuth.email,
-          uid: userAuth.uid,
-          displayName: userAuth.displayName
-        });
-      }
-    });
+    const initialize = async () => {
+      await onAuthStateChanged(auth, async (userAuth) => {
+        console.log('auth user changed');
+        const enable = true;
+        if (enable && userAuth) {
+          await loginUser({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName
+          });
+        }
+      });
+    };
+
+    initialize();
   }, [loginUser]);
 
   useEffect(() => {
@@ -250,6 +278,9 @@ export const UserContextProvider = ({ children }) => {
     updateForms();
   }, [user.userFormIds, getForms]);
 
+  console.log('activeFormId', activeFormId);
+  console.log('activeFormData', activeFormData);
+
   return (
     <UserContext.Provider
       value={{
@@ -262,10 +293,13 @@ export const UserContextProvider = ({ children }) => {
         addUserForm,
         reloadUser,
         formsData,
-        activeFormData,
-        setActiveFormData,
         createForm,
-        deleteForm
+        deleteForm,
+        saveForm,
+        activeFormId,
+        activeFormData,
+        setActiveFormId,
+        requestStatusCodes
       }}
     >
       {children}

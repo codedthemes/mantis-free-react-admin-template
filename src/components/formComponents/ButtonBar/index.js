@@ -1,19 +1,17 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useFormikContext } from 'formik';
 
 // material-ui
 import { Grid, Button } from '@mui/material';
-
-// redux
-import { useDispatch } from 'react-redux';
-import { setCurrentFormValues } from 'store/reducers/form';
+import { UserContext } from 'context/user/user';
 
 const ButtonBar = () => {
-  const dispatch = useDispatch();
   const { values = {} } = useFormikContext();
+  const { saveForm } = useContext(UserContext);
+
   const saveAction = useCallback(() => {
-    dispatch(setCurrentFormValues(values));
-  }, [dispatch, values]);
+    saveForm(values);
+  }, [values, saveForm]);
   return (
     <Grid container>
       <Grid item>

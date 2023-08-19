@@ -28,7 +28,7 @@ const MainRoutes = {
       element: <SamplePage />
     },
     {
-      path: 'form/:userId',
+      path: 'form/:formId',
       element: <Form />
     },
     {
