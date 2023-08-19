@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useMemo } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // material-ui
 import { Typography, Grid, TextField, Button, CircularProgress } from '@mui/material';
@@ -15,38 +15,38 @@ import validateFields from 'utils/formUtils/validateFields';
 
 // project import
 import MainCard from 'components/MainCard';
-
-// redux
-import { useSelector } from 'react-redux';
 import ButtonBar from 'components/formComponents/ButtonBar/index';
+import { UserContext } from 'context/user/user';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const FormComponent = () => {
   const navigate = useNavigate();
+  const { activeFormId, activeFormData, setActiveFormId } = useContext(UserContext);
+  const activeFormTitle = useMemo(() => activeFormData?.title, [activeFormData]);
   const { t } = useTranslation();
-  const { activeFormId, forms } = useSelector((state) => state.form);
-  const currentForm = forms[activeFormId];
+  const { formId } = useParams();
+  console.log('params', activeFormId, formId);
 
-  if (!currentForm) {
-    navigate('/');
-  }
+  useEffect(() => {
+    if (!formId) {
+      navigate('/');
+    } else {
+      if (formId !== activeFormId) {
+        setActiveFormId(formId);
+      }
+    }
+  }, [activeFormId, formId, setActiveFormId, navigate]);
 
-  const currentFormValues = currentForm?.formValues || {};
-
-  return (
-    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
-      {/* row 1 */}
-      <Grid item xs={12} sx={{ mb: -2.25 }}>
-        <Typography variant="h1">Formular: {forms[activeFormId]?.userTitle}</Typography>
-      </Grid>
-      <Grid item xs={12} sx={{ mb: -2.25 }}>
+  const content = useMemo(() => {
+    if (activeFormData) {
+      return (
         <MainCard>
           <Typography variant="h4" component="h2" sx={{ mb: 4 }}>
             Basisangaben
           </Typography>
           <Formik
-            initialValues={currentFormValues}
+            initialValues={activeFormData?.values || {}}
             onSubmit={async (values, formikBag) => {
               const { errors } = validateFields(values, conditionalRules, validationRules);
               formikBag.setErrors(errors);
@@ -216,6 +216,20 @@ const FormComponent = () => {
             )}
           </Formik>
         </MainCard>
+      );
+    }
+
+    return 'loading';
+  }, [activeFormData, t]);
+
+  return (
+    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
+      {/* row 1 */}
+      <Grid item xs={12} sx={{ mb: -2.25 }}>
+        <Typography variant="h1">Formular{activeFormTitle ? `: ${activeFormTitle}` : ''}</Typography>
+      </Grid>
+      <Grid item xs={12} sx={{ mb: -2.25 }}>
+        {content}
       </Grid>
     </Grid>
   );
