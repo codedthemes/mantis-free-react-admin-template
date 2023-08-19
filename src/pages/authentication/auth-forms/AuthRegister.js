@@ -84,7 +84,6 @@ const AuthRegister = () => {
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <Field
-                  shrink={false}
                   component={TextField}
                   id="firstName"
                   name="firstName"
@@ -100,7 +99,6 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Field
-                  shrink={false}
                   component={TextField}
                   id="lastName"
                   name="lastName"
@@ -115,7 +113,6 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Field
-                  shrink={false}
                   component={TextField}
                   id="company"
                   name="company"
@@ -130,7 +127,6 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Field
-                  shrink={false}
                   component={TextField}
                   id="email"
                   name="email"
@@ -145,7 +141,6 @@ const AuthRegister = () => {
               </Grid>
               <Grid item xs={12}>
                 <Field
-                  shrink={false}
                   component={TextField}
                   id="password"
                   name="password"

@@ -10,7 +10,6 @@ import { StatusCodes } from 'http-status-codes';
 
 const App = () => {
   const { requestStatusCodes } = useContext(UserContext);
-
   console.log('requestStatusCodes', requestStatusCodes);
 
   return (

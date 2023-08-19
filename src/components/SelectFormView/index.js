@@ -27,7 +27,6 @@ const SelectFormView = () => {
     const formCards =
       formIds.map((formId) => {
         const formData = formsData[formId];
-        console.log('FormData', formData);
 
         return (
           <Grid key={formId} item xs={12} sm={6} md={4}>

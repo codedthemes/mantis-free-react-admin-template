@@ -81,7 +81,6 @@ const AuthLogin = () => {
               <Grid item xs={12}>
                 <Stack spacing={3}>
                   <Field
-                    shrink={false}
                     component={TextField}
                     id="email"
                     name="email"
@@ -93,7 +92,6 @@ const AuthLogin = () => {
                     helperText={touched.email && errors.email}
                   />
                   <Field
-                    shrink={false}
                     component={TextField}
                     id="password"
                     name="password"

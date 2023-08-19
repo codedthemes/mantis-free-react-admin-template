@@ -26,7 +26,6 @@ const FormComponent = () => {
   const activeFormTitle = useMemo(() => activeFormData?.title, [activeFormData]);
   const { t } = useTranslation();
   const { formId } = useParams();
-  console.log('params', activeFormId, formId);
 
   useEffect(() => {
     if (!formId) {
@@ -59,7 +58,6 @@ const FormComponent = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={'auto'}>
                     <Field
-                      shrink={false}
                       component={TextField}
                       id="fullName"
                       name="fullName"
