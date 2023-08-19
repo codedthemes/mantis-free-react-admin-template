@@ -45,9 +45,6 @@ export const UserContextProvider = ({ children }) => {
   const requestStatusCodes = useRef(initialStatusCodes);
   const activeFormData = useMemo(() => formsData[activeFormId], [activeFormId, formsData]);
 
-  console.log('context user', user);
-  console.log('context forms', formsData);
-
   const logoutUser = useCallback(
     ({ toPage } = {}) => {
       signOut(auth);
@@ -185,7 +182,6 @@ export const UserContextProvider = ({ children }) => {
 
   const deleteForm = useCallback(
     async (formId) => {
-      console.log('Delete', formId);
       await deleteDoc(doc(db, 'forms', formId));
       await removeUserForm(formId);
     },
@@ -198,7 +194,6 @@ export const UserContextProvider = ({ children }) => {
 
     snap.docs.forEach((doc) => {
       const docData = doc.data();
-      console.log('docData', docData);
       tmpForms[doc.id] = {
         id: docData.id,
         title: docData.title,
@@ -206,8 +201,6 @@ export const UserContextProvider = ({ children }) => {
         creationDate: docData.creationDate
       };
     });
-    console.log('items', tmpForms);
-
     return tmpForms;
   }, []);
 
@@ -250,7 +243,6 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     const initialize = async () => {
       await onAuthStateChanged(auth, async (userAuth) => {
-        console.log('auth user changed');
         const enable = true;
         if (enable && userAuth) {
           await loginUser({
@@ -277,9 +269,6 @@ export const UserContextProvider = ({ children }) => {
 
     updateForms();
   }, [user.userFormIds, getForms]);
-
-  console.log('activeFormId', activeFormId);
-  console.log('activeFormData', activeFormData);
 
   return (
     <UserContext.Provider
