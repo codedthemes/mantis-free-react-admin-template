@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { StatusCodes } from 'http-status-codes';
 
 // material-ui
 import { Grid, Button, CardContent, TextField, Typography } from '@mui/material';
@@ -8,12 +9,13 @@ import MainCard from 'components/MainCard';
 
 // icons
 import { Edit, Delete, AddToPhotos } from '@mui/icons-material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
 import { UserContext } from 'context/user/user';
 
 const SelectFormView = () => {
-  const { createForm, deleteForm, formsData } = useContext(UserContext);
+  const { createForm, deleteForm, formsData, requestStatusCodes } = useContext(UserContext);
   const theme = useTheme();
   const [addNewTitle, setAddNewTitle] = useState('');
   const addForm = () => {
@@ -21,6 +23,7 @@ const SelectFormView = () => {
     createForm({ title: addNewTitle });
   };
   const removeForm = (formId) => deleteForm(formId);
+  const creationLoading = requestStatusCodes.loadingForm === StatusCodes.PROCESSING;
 
   const formCardsDom = () => {
     const formIds = Object.keys(formsData);
@@ -81,12 +84,12 @@ const SelectFormView = () => {
                   <Grid item xs="auto">
                     <Button
                       disabled={!addNewTitle}
-                      startIcon={<AddToPhotos />}
+                      startIcon={creationLoading ? <CircularProgress size="1rem" /> : <AddToPhotos />}
                       sx={{ height: '100%' }}
                       variant="contained"
                       onClick={() => addForm(addNewTitle)}
                     >
-                      erstellen
+                      {creationLoading ? 'lädt' : 'erstellen'}
                     </Button>
                   </Grid>
                 </Grid>
