@@ -47,7 +47,7 @@ export const UserContextProvider = ({ children }) => {
 
   const [status_loadingUser, setLoadingUser] = useState(initialStatusCodes.loadingUser);
   const [status_createUser, setCreateUser] = useState(initialStatusCodes.createUser);
-  const [status_setUser, setSetUser] = useState(initialStatusCodes.setUser);
+  const [status_authUser, setAuthUser] = useState(initialStatusCodes.setUser);
   const [status_loadingForm, setLoadingForm] = useState(initialStatusCodes.loadingForm);
   const [status_createForm, setCreateForm] = useState(initialStatusCodes.createForm);
   const [status_saveForm, setSaveForm] = useState(initialStatusCodes.saveForm);
@@ -57,13 +57,13 @@ export const UserContextProvider = ({ children }) => {
     return {
       loadingUser: status_loadingUser,
       createUser: status_createUser,
-      setUser: status_setUser,
+      authUser: status_authUser,
       loadingForm: status_loadingForm,
       createForm: status_createForm,
       setForm: status_setForm,
       saveForm: status_saveForm
     };
-  }, [status_loadingUser, status_saveForm, status_createUser, status_setUser, status_loadingForm, status_createForm, status_setForm]);
+  }, [status_loadingUser, status_saveForm, status_createUser, status_authUser, status_loadingForm, status_createForm, status_setForm]);
 
   const logoutUser = useCallback(
     ({ toPage } = {}) => {
@@ -99,9 +99,8 @@ export const UserContextProvider = ({ children }) => {
         displayName: displayName,
         ...userDoc
       });
-      navigate('/');
     },
-    [getUserDoc, navigate]
+    [getUserDoc]
   );
 
   const reloadUser = useCallback(async () => {
@@ -116,9 +115,10 @@ export const UserContextProvider = ({ children }) => {
   }, [user.email, user.uid, user.displayName, getUserDoc]);
 
   const authUser = useCallback(
-    ({ emailCredentials }) => {
+    async ({ emailCredentials }) => {
       const { email, password } = emailCredentials;
-      signInWithEmailAndPassword(auth, email, password)
+      setAuthUser(StatusCodes.PROCESSING);
+      await signInWithEmailAndPassword(auth, email, password)
         .then(async (userAuth) => {
           // store the user's information in the redux state
           await loginUser({ email: userAuth.user.email, uid: userAuth.user.uid, displayName: userAuth.user.displayName });
@@ -127,6 +127,7 @@ export const UserContextProvider = ({ children }) => {
         .catch((err) => {
           alert(err);
         });
+      setAuthUser(StatusCodes.PROCESSING);
     },
     [loginUser]
   );

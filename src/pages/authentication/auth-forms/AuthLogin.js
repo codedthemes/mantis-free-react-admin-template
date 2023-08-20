@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import React, { useContext, useCallback } from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // material-ui
 import {
@@ -14,7 +14,8 @@ import {
   InputAdornment,
   Stack,
   Typography,
-  TextField
+  TextField,
+  CircularProgress
 } from '@mui/material';
 
 // third party
@@ -37,7 +38,8 @@ import { UserContext } from 'context/user/user';
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
-  const { authUser } = useContext(UserContext);
+  const { authUser, requestStatusCodes } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
   const handleClickShowPassword = () => {
@@ -48,15 +50,20 @@ const AuthLogin = () => {
     event.preventDefault();
   };
 
-  const handleLogin = ({ email, password }) => {
-    // Sign in an existing user with Firebase
-    authUser({
-      emailCredentials: {
-        email: email,
-        password: password
-      }
-    });
-  };
+  const handleLogin = useCallback(
+    async ({ email, password }) => {
+      // Sign in an existing user with Firebase
+      await authUser({
+        emailCredentials: {
+          email: email,
+          password: password
+        }
+      });
+
+      navigate('/');
+    },
+    [navigate, authUser]
+  );
 
   return (
     <>
@@ -67,12 +74,12 @@ const AuthLogin = () => {
           formikBag.setErrors(errors);
 
           if (Object.keys(errors).length === 0) {
-            handleLogin({
+            await handleLogin({
               email: values.email,
               password: values.password
             });
           }
-          return new Promise((res) => setTimeout(res, 2500));
+          return;
         }}
       >
         {({ values = {}, errors = {}, isSubmitting, handleChange, handleBlur, touched = {} }) => (
@@ -148,7 +155,7 @@ const AuthLogin = () => {
               <Grid item xs={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
-                    Login
+                    {isSubmitting ? <CircularProgress size="1rem" color="inherit" sx={{ mr: '0.5rem' }} /> : ''}Login
                   </Button>
                 </AnimateButton>
               </Grid>
