@@ -15,16 +15,12 @@ const ProtectedRoute = ({ children }) => {
   if (requestStatusCodes.loadingUser === 200) {
     console.log('should navigate to login');
     navigate('/login');
-    return 'should navigate to login';
+    return <CircularProgress />;
   }
 
   if (!requestStatusCodes.loadingUser || requestStatusCodes.loadingUser === 102) {
     console.log('loading user');
-    return (
-      <>
-        <CircularProgress />
-      </>
-    );
+    return <CircularProgress />;
   }
 
   navigate('/');
