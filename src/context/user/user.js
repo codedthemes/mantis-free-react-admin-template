@@ -99,9 +99,9 @@ export const UserContextProvider = ({ children }) => {
         displayName: displayName,
         ...userDoc
       });
-      // navigate('/');
+      navigate('/');
     },
-    [getUserDoc]
+    [getUserDoc, navigate]
   );
 
   const reloadUser = useCallback(async () => {
@@ -132,9 +132,10 @@ export const UserContextProvider = ({ children }) => {
   );
 
   const registerUser = useCallback(
-    (formData) => {
+    async (formData) => {
       const { email, password, firstName, lastName, company } = formData;
-      createUserWithEmailAndPassword(auth, email, password)
+      setCreateUser(StatusCodes.PROCESSING);
+      await createUserWithEmailAndPassword(auth, email, password)
         // returns  an auth object after a successful authentication
         // userAuth.user contains all our user details
         .then((userCredential) => {
@@ -162,6 +163,7 @@ export const UserContextProvider = ({ children }) => {
         .catch((error) => {
           console.log('user not updated', error);
         });
+      setCreateUser(StatusCodes.OK);
     },
     [authUser]
   );
@@ -266,6 +268,7 @@ export const UserContextProvider = ({ children }) => {
   useEffect(() => {
     const initialize = async () => {
       await onAuthStateChanged(auth, async (userAuth) => {
+        setLoadingUser(StatusCodes.PROCESSING);
         const enable = true;
         if (enable && userAuth) {
           await loginUser({
@@ -274,6 +277,7 @@ export const UserContextProvider = ({ children }) => {
             displayName: userAuth.displayName
           });
         }
+        setLoadingUser(StatusCodes.OK);
       });
     };
 
