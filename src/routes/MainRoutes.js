@@ -3,6 +3,7 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
+import ProtectedRoute from './ProtectedRoute';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
@@ -25,11 +26,19 @@ const MainRoutes = {
   children: [
     {
       path: '/',
-      element: <SamplePage />
+      element: (
+        <ProtectedRoute>
+          <SamplePage />
+        </ProtectedRoute>
+      )
     },
     {
       path: 'form/:formId',
-      element: <Form />
+      element: (
+        <ProtectedRoute>
+          <Form />
+        </ProtectedRoute>
+      )
     },
     {
       path: 'color',
