@@ -32,7 +32,8 @@ const initialStatusCodes = {
   setUser: null,
   loadingForm: null,
   createForm: null,
-  setForm: null
+  setForm: null,
+  saveForm: null
 };
 
 export const UserContext = createContext(null);
@@ -42,8 +43,27 @@ export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(initialUser);
   const [formsData, setFormsData] = useState(initialFormsData);
   const [activeFormId, setActiveFormId] = useState(initialFormsData);
-  const requestStatusCodes = useRef(initialStatusCodes);
   const activeFormData = useMemo(() => formsData[activeFormId], [activeFormId, formsData]);
+
+  const [status_loadingUser, setLoadingUser] = useState(initialStatusCodes.loadingUser);
+  const [status_createUser, setCreateUser] = useState(initialStatusCodes.createUser);
+  const [status_setUser, setSetUser] = useState(initialStatusCodes.setUser);
+  const [status_loadingForm, setLoadingForm] = useState(initialStatusCodes.loadingForm);
+  const [status_createForm, setCreateForm] = useState(initialStatusCodes.createForm);
+  const [status_saveForm, setSaveForm] = useState(initialStatusCodes.saveForm);
+  const [status_setForm, setSetForm] = useState(initialStatusCodes.setForm);
+
+  const requestStatusCodes = useMemo(() => {
+    return {
+      loadingUser: status_loadingUser,
+      createUser: status_createUser,
+      setUser: status_setUser,
+      loadingForm: status_loadingForm,
+      createForm: status_createForm,
+      setForm: status_setForm,
+      saveForm: status_saveForm
+    };
+  }, [status_loadingUser, status_saveForm, status_createUser, status_setUser, status_loadingForm, status_createForm, status_setForm]);
 
   const logoutUser = useCallback(
     ({ toPage } = {}) => {
@@ -81,7 +101,7 @@ export const UserContextProvider = ({ children }) => {
       });
       // navigate('/');
     },
-    [navigate, getUserDoc]
+    [getUserDoc]
   );
 
   const reloadUser = useCallback(async () => {
@@ -206,6 +226,7 @@ export const UserContextProvider = ({ children }) => {
 
   const createForm = useCallback(
     async ({ title }) => {
+      setCreateForm(StatusCodes.PROCESSING);
       const docRef = await addDoc(collection(db, 'forms'), {
         title: title,
         creationDate: dayjs().valueOf(),
@@ -214,13 +235,14 @@ export const UserContextProvider = ({ children }) => {
 
       await addUserForm(docRef.id);
       await reloadUser();
-      updateRequestStatusCodes('createForm', StatusCodes.successful);
+      setCreateForm(StatusCodes.OK);
     },
     [addUserForm, reloadUser]
   );
 
   const saveForm = useCallback(
     async (values) => {
+      setSaveForm(StatusCodes.PROCESSING);
       if (activeFormId) {
         await setDoc(
           doc(db, 'forms', activeFormId),
@@ -230,6 +252,7 @@ export const UserContextProvider = ({ children }) => {
           { merge: true }
         );
       }
+      setSaveForm(StatusCodes.OK);
     },
     [activeFormId]
   );
@@ -259,12 +282,14 @@ export const UserContextProvider = ({ children }) => {
 
   useEffect(() => {
     const updateForms = async () => {
+      setLoadingForm(StatusCodes.PROCESSING);
       if (user.userFormIds.length > 0) {
         const forms = await getForms(user.userFormIds);
         setFormsData(forms);
       } else {
         setFormsData({});
       }
+      setLoadingForm(StatusCodes.OK);
     };
 
     updateForms();

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // material-ui
@@ -8,10 +8,7 @@ import { Typography, Grid, TextField, Button, CircularProgress } from '@mui/mate
 import { Formik, Form, FieldArray, Field } from 'formik';
 import FieldTemplate from '../../components/formComponents/FieldTemplate/index';
 import { useTranslation } from 'react-i18next';
-import validationRules from '../../formConfigs/testForm/rules/validation/index';
-import conditionalRules from '../../formConfigs/testForm/rules/conditional/index';
 import StundensatzRechnerValueUpdater from '../../components/formComponents/CalculationUpdater/index';
-import validateFields from 'utils/formUtils/validateFields';
 
 // project import
 import MainCard from 'components/MainCard';
@@ -37,21 +34,19 @@ const FormComponent = () => {
     }
   }, [activeFormId, formId, setActiveFormId, navigate]);
 
+  const onSubmit = useCallback(async (values, _formikBag) => {
+    console.log('submit', values);
+  }, []);
+
   const content = useMemo(() => {
     if (activeFormData) {
+      console.log('activeFormData.values', activeFormData.values);
       return (
         <MainCard>
           <Typography variant="h4" component="h2" sx={{ mb: 4 }}>
             Basisangaben
           </Typography>
-          <Formik
-            initialValues={activeFormData?.values || {}}
-            onSubmit={async (values, formikBag) => {
-              const { errors } = validateFields(values, conditionalRules, validationRules);
-              formikBag.setErrors(errors);
-              return new Promise((res) => setTimeout(res, 2500));
-            }}
-          >
+          <Formik initialValues={activeFormData.values || {}} onSubmit={onSubmit}>
             {({ values = {}, errors = {}, isSubmitting, handleChange, handleBlur, touched = {} }) => (
               <Form autoComplete="off">
                 <StundensatzRechnerValueUpdater />
@@ -134,6 +129,7 @@ const FormComponent = () => {
                     <Field
                       component={TextField}
                       sx={{ mb: 3 }}
+                      id="donationsAmount"
                       name="donationsAmount"
                       type="number"
                       label="Donation"
@@ -148,25 +144,35 @@ const FormComponent = () => {
                           <Typography variant="h5">All your donations</Typography>
                         </Grid>
 
-                        {values.donations?.map((_, index) => (
+                        {values.donations?.map((arrayField, index) => (
                           <Grid container item key={index} spacing={2}>
                             <Grid item xs={12} sm="auto" style={{ display: 'flex', alignItems: 'center' }}>
                               <Field
                                 component={TextField}
-                                name={`donations[${index}].institution`}
+                                name={`donations.${index}.institution`}
+                                id={`donations.${index}.institution`}
                                 label="Institution"
-                                style={{ width: '100%' }}
                                 sx={{ mb: 3 }}
+                                value={arrayField.institution}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.donations?.[index].institution && Boolean(errors.donations?.[index].institution)}
+                                helperText={touched.donations?.[index].institution && errors.donations?.[index].institution}
                               />
                             </Grid>
                             <Grid item xs={12} sm="auto">
                               <Field
                                 component={TextField}
-                                name={`donations[${index}].percentage`}
-                                label="Percentage"
+                                name={`donations.${index}.donation`}
+                                id={`donations.${index}.donation`}
+                                label="Spende"
                                 type="number"
-                                style={{ width: '100%' }}
                                 sx={{ mb: 3 }}
+                                value={arrayField.donation}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.donations?.[index].donation && Boolean(errors.donations?.[index].donation)}
+                                helperText={touched.donations?.[index].donation && errors.donations?.[index].donation}
                               />
                             </Grid>
                             <Grid item>
