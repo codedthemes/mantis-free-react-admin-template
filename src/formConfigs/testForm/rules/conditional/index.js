@@ -1,6 +1,5 @@
-
 const rules = {
-  title: { "==": [{ var: "fullName" }, "peter"] }
+  title: { '==': [{ var: 'firstField' }, 1] }
 };
 
 export default rules;

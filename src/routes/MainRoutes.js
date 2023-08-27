@@ -4,19 +4,16 @@ import { lazy } from 'react';
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 import ProtectedRoute from './ProtectedRoute';
-
-// render - dashboard
-const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
+const Dashboard = Loadable(lazy(() => import('pages/dashboard')));
+const Graphs = Loadable(lazy(() => import('pages/graphs')));
 
 // render - sample page
-const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
-const Form = Loadable(lazy(() => import('pages/extra-pages/Form')));
+const FormOverview = Loadable(lazy(() => import('pages/form/FormOverview')));
+const Form = Loadable(lazy(() => import('pages/form/Form')));
 
 // render - utilities
-const Typography = Loadable(lazy(() => import('pages/components-overview/Typography')));
 const Color = Loadable(lazy(() => import('pages/components-overview/Color')));
 const Shadow = Loadable(lazy(() => import('pages/components-overview/Shadow')));
-const AntIcons = Loadable(lazy(() => import('pages/components-overview/AntIcons')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -28,7 +25,15 @@ const MainRoutes = {
       path: '/',
       element: (
         <ProtectedRoute>
-          <SamplePage />
+          <Dashboard />
+        </ProtectedRoute>
+      )
+    },
+    {
+      path: '/form/overview',
+      element: (
+        <ProtectedRoute>
+          <FormOverview />
         </ProtectedRoute>
       )
     },
@@ -49,25 +54,17 @@ const MainRoutes = {
       children: [
         {
           path: 'default',
-          element: <DashboardDefault />
+          element: <Dashboard />
         }
       ]
     },
     {
       path: 'sample-page',
-      element: <DashboardDefault />
+      element: <Graphs />
     },
     {
       path: 'shadow',
       element: <Shadow />
-    },
-    {
-      path: 'typography',
-      element: <Typography />
-    },
-    {
-      path: 'icons/ant',
-      element: <AntIcons />
     }
   ]
 };
