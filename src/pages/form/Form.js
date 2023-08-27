@@ -3,10 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 // material-ui
 import { Typography, Grid, TextField, Button, CircularProgress } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 // formik
 import { Formik, Form, FieldArray, Field } from 'formik';
-import FieldTemplate from '../../components/formComponents/FieldTemplate/index';
 import { useTranslation } from 'react-i18next';
 import StundensatzRechnerValueUpdater from '../../components/formComponents/CalculationUpdater/index';
 
@@ -14,11 +14,14 @@ import StundensatzRechnerValueUpdater from '../../components/formComponents/Calc
 import MainCard from 'components/MainCard';
 import ButtonBar from 'components/formComponents/ButtonBar/index';
 import { UserContext } from 'context/user/user';
+import Conditional from 'components/formComponents/Conditional/index';
+import ColoredSection from 'components/pageLayout/header/coloredSection/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const FormComponent = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
   const { activeFormId, activeFormData, setActiveFormId } = useContext(UserContext);
   const activeFormTitle = useMemo(() => activeFormData?.title, [activeFormData]);
   const { t } = useTranslation();
@@ -75,7 +78,7 @@ const FormComponent = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       error={touched.firstField && Boolean(errors.firstField)}
-                      helperText={touched.firstField && errors.firstField}
+                      helperText={(touched.firstField && errors.firstField) || 'Wenn hier 1 steht, wird ein weiteres Feld sichtbar'}
                       sx={{ mb: 3 }}
                     />
                   </Grid>
@@ -121,20 +124,9 @@ const FormComponent = () => {
                       helperText={touched.email && errors.email}
                       sx={{ mb: 3 }}
                     />
-                    <FieldTemplate name="title">
-                      <Field component={TextField} id="title" name="title" sx={{ mb: 3 }} label={t('form.fields.testField.label')} />
-                    </FieldTemplate>
-                  </Grid>
-                  <Grid item xs={12} sm="auto">
-                    <Field
-                      component={TextField}
-                      sx={{ mb: 3 }}
-                      id="donationsAmount"
-                      name="donationsAmount"
-                      type="number"
-                      label="Donation"
-                      style={{ width: '100%' }}
-                    />
+                    <Conditional name="title">
+                      <Field component={TextField} id="title" name="title" sx={{ mb: 3 }} label="Konditionelles Feld" />
+                    </Conditional>
                   </Grid>
 
                   <FieldArray name="donations">
@@ -227,15 +219,13 @@ const FormComponent = () => {
   }, [activeFormData, t]);
 
   return (
-    <Grid container rowSpacing={4.5} columnSpacing={2.75}>
-      {/* row 1 */}
-      <Grid item xs={12} sx={{ mb: -2.25 }}>
-        <Typography variant="h1">Formular{activeFormTitle ? `: ${activeFormTitle}` : ''}</Typography>
-      </Grid>
-      <Grid item xs={12} sx={{ mb: -2.25 }}>
-        {content}
-      </Grid>
-    </Grid>
+    <ColoredSection
+      bgColor={theme.palette.primary.main}
+      headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
+      description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
+    >
+      {content}
+    </ColoredSection>
   );
 };
 
