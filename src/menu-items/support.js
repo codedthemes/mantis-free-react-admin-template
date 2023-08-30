@@ -1,11 +1,6 @@
 // assets
-import { ChromeOutlined, QuestionOutlined } from '@ant-design/icons';
-
-// icons
-const icons = {
-  ChromeOutlined,
-  QuestionOutlined
-};
+import EmailIcon from '@mui/icons-material/Email';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 // ==============================|| MENU ITEMS - SAMPLE PAGE & DOCUMENTATION ||============================== //
 
@@ -20,17 +15,14 @@ const support = {
       type: 'item',
       url: '/',
       // url: '/sample-page',
-      icon: icons.ChromeOutlined
+      icon: EmailIcon
     },
     {
       id: 'documentation',
       title: 'Dokumentation',
       type: 'item',
       url: '/',
-      // url: 'https://codedthemes.gitbook.io/mantis/',
-      icon: icons.QuestionOutlined,
-      external: true,
-      target: true
+      icon: ManageSearchIcon
     }
   ]
 };

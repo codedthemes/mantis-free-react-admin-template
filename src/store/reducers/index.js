@@ -3,10 +3,9 @@ import { combineReducers } from 'redux';
 
 // project import
 import menu from './menu';
-import form from './form';
 
 // ==============================|| COMBINE REDUCERS ||============================== //
 
-const reducers = combineReducers({ menu, form });
+const reducers = combineReducers({ menu });
 
 export default reducers;

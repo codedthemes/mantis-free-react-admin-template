@@ -1,11 +1,6 @@
 // assets
-import { LoginOutlined, ProfileOutlined } from '@ant-design/icons';
-
-// icons
-const icons = {
-  LoginOutlined,
-  ProfileOutlined
-};
+import DescriptionIcon from '@mui/icons-material/Description';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
@@ -19,18 +14,15 @@ const pages = {
       title: 'Mitarbeiter',
       type: 'item',
       url: '/',
-      // url: '/login',
-      icon: icons.LoginOutlined,
-      target: true
+      icon: PeopleAltIcon
     },
     {
       id: 'forms',
       title: 'Formulare',
       type: 'item',
-      url: '/',
-      // url: '/register',
-      icon: icons.ProfileOutlined,
-      target: true
+      url: '/form/overview',
+      matchingUrlRegexp: /\/form\/[^/]{8,}$/,
+      icon: DescriptionIcon
     }
   ]
 };
