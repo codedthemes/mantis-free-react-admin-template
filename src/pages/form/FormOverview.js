@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectFormView from 'components/SelectFormView/index';
 import { useTheme } from '@mui/material/styles';
-import ColoredSection from 'components/pageLayout/header/coloredSection/index';
+import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 

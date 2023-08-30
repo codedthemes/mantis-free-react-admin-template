@@ -1,16 +1,11 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
-
-// icons
-const icons = {
-  DashboardOutlined
-};
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
 
 const dashboard = {
   id: 'group-dashboard',
-  title: 'Navigation',
+  title: '',
   type: 'group',
   children: [
     {
@@ -18,7 +13,7 @@ const dashboard = {
       title: 'Dashboard',
       type: 'item',
       url: '/dashboard/default',
-      icon: icons.DashboardOutlined,
+      icon: DashboardIcon,
       breadcrumbs: false
     }
   ]

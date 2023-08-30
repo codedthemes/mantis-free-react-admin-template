@@ -1,5 +1,8 @@
 // ==============================|| DEFAULT THEME - TYPOGRAPHY  ||============================== //
 
+import { createTheme } from '@mui/material/styles';
+const theme = createTheme();
+
 const Typography = (fontFamily) => ({
   htmlFontSize: 16,
   fontFamily,
@@ -9,23 +12,35 @@ const Typography = (fontFamily) => ({
   fontWeightBold: 600,
   h1: {
     fontWeight: 600,
-    fontSize: '2.375rem',
-    lineHeight: 1.21
+    fontSize: '2rem',
+    lineHeight: 1.21,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.375rem'
+    }
   },
   h2: {
     fontWeight: 600,
-    fontSize: '1.875rem',
-    lineHeight: 1.27
+    fontSize: '1.5rem',
+    lineHeight: 1.27,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.875rem'
+    }
   },
   h3: {
     fontWeight: 600,
-    fontSize: '1.5rem',
-    lineHeight: 1.33
+    fontSize: '1.4rem',
+    lineHeight: 1.33,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.5rem'
+    }
   },
   h4: {
     fontWeight: 600,
-    fontSize: '1.25rem',
-    lineHeight: 1.4
+    fontSize: '1.2rem',
+    lineHeight: 1.4,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.25rem'
+    }
   },
   h5: {
     fontWeight: 600,

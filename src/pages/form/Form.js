@@ -11,11 +11,10 @@ import { useTranslation } from 'react-i18next';
 import StundensatzRechnerValueUpdater from '../../components/formComponents/CalculationUpdater/index';
 
 // project import
-import MainCard from 'components/MainCard';
 import ButtonBar from 'components/formComponents/ButtonBar/index';
 import { UserContext } from 'context/user/user';
 import Conditional from 'components/formComponents/Conditional/index';
-import ColoredSection from 'components/pageLayout/header/coloredSection/index';
+import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -45,7 +44,7 @@ const FormComponent = () => {
     if (activeFormData) {
       console.log('activeFormData.values', activeFormData.values);
       return (
-        <MainCard>
+        <>
           <Typography variant="h4" component="h2" sx={{ mb: 4 }}>
             Basisangaben
           </Typography>
@@ -211,18 +210,18 @@ const FormComponent = () => {
               </Form>
             )}
           </Formik>
-        </MainCard>
+        </>
       );
     }
 
     return 'loading';
-  }, [activeFormData, t]);
+  }, [activeFormData, t, onSubmit]);
 
   return (
     <ColoredSection
+      backLink="/form/overview"
       bgColor={theme.palette.primary.main}
       headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
-      description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
     >
       {content}
     </ColoredSection>

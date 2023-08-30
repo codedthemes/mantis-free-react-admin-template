@@ -1,23 +1,22 @@
 import PropTypes from 'prop-types';
-import { forwardRef, useEffect } from 'react';
+import { forwardRef, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 
-// project import
-import { activeItem } from 'store/reducers/menu';
-
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
 const NavItem = ({ item, level }) => {
   const theme = useTheme();
-  const dispatch = useDispatch();
   const { pathname } = useLocation();
-
-  const { drawerOpen, openItem } = useSelector((state) => state.menu);
+  const { drawerOpen } = useSelector((state) => state.menu);
+  const isActive = useMemo(() => {
+    item.matchingUrlRegexp && console.log('pathname.match(item.matchingUrlRegexp)', pathname.match(item.matchingUrlRegexp));
+    return pathname === item.url || (item.matchingUrlRegexp && pathname.match(item.matchingUrlRegexp));
+  }, [pathname, item.url, item.matchingUrlRegexp]);
 
   let itemTarget = '_self';
   if (item.target) {
@@ -29,21 +28,8 @@ const NavItem = ({ item, level }) => {
     listItemProps = { component: 'a', href: item.url, target: itemTarget };
   }
 
-  const itemHandler = (id) => {
-    dispatch(activeItem({ openItem: [id] }));
-  };
-
   const Icon = item.icon;
   const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} /> : false;
-
-  const isSelected = openItem.findIndex((id) => id === item.id) > -1;
-  // active menu item on page load
-  useEffect(() => {
-    if (pathname.includes(item.url)) {
-      dispatch(activeItem({ openItem: [item.id] }));
-    }
-    // eslint-disable-next-line
-  }, [pathname]);
 
   const textColor = 'text.primary';
   const iconSelectedColor = 'primary.main';
@@ -52,8 +38,7 @@ const NavItem = ({ item, level }) => {
     <ListItemButton
       {...listItemProps}
       disabled={item.disabled}
-      onClick={() => itemHandler(item.id)}
-      selected={isSelected}
+      selected={isActive}
       sx={{
         zIndex: 1201,
         pl: drawerOpen ? `${level * 28}px` : 1.5,
@@ -89,7 +74,7 @@ const NavItem = ({ item, level }) => {
         <ListItemIcon
           sx={{
             minWidth: 28,
-            color: isSelected ? iconSelectedColor : textColor,
+            color: isActive ? iconSelectedColor : textColor,
             ...(!drawerOpen && {
               borderRadius: 1.5,
               width: 36,
@@ -101,7 +86,7 @@ const NavItem = ({ item, level }) => {
               }
             }),
             ...(!drawerOpen &&
-              isSelected && {
+              isActive && {
                 bgcolor: 'primary.lighter',
                 '&:hover': {
                   bgcolor: 'primary.lighter'
@@ -115,7 +100,7 @@ const NavItem = ({ item, level }) => {
       {(drawerOpen || (!drawerOpen && level !== 1)) && (
         <ListItemText
           primary={
-            <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor }}>
+            <Typography variant="h6" sx={{ color: isActive ? iconSelectedColor : textColor }}>
               {item.title}
             </Typography>
           }

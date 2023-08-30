@@ -32,6 +32,10 @@ const Palette = (mode) => {
 
   const paletteColor = ThemeOption(colors);
 
+  const { palette } = createTheme();
+  const { augmentColor } = palette;
+  const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
+
   return createTheme({
     palette: {
       mode,
@@ -45,6 +49,7 @@ const Palette = (mode) => {
         secondary: paletteColor.grey[500],
         disabled: paletteColor.grey[400]
       },
+      white: createColor('#FFFFFF'),
       action: {
         disabled: paletteColor.grey[300]
       },
