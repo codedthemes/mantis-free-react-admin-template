@@ -42,7 +42,7 @@ const Test = () => {
           Konditionelle Felder
         </Typography>
       </Grid>
-      <Grid item xs={6} sm={6}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           id="conditionalControlField"
@@ -59,7 +59,7 @@ const Test = () => {
           sx={{ mb: 2 }}
         />
       </Grid>
-      <Grid item xs={6} sm={6}>
+      <Grid item xs={12} sm={6}>
         <Conditional name="conditionalField">
           <Field
             component={TextField}
@@ -88,7 +88,7 @@ const Test = () => {
                 <MainCard key={index} content={false} sx={{ mb: 2 }}>
                   <CardContent>
                     <Grid container item spacing={2}>
-                      <Grid item xs={6} sm="auto" style={{ display: 'flex', alignItems: 'center' }}>
+                      <Grid item xs={12} sm={6} style={{ display: 'flex', alignItems: 'center' }}>
                         <Field
                           component={TextField}
                           name={`testList.${index}.feld1`}
@@ -102,7 +102,7 @@ const Test = () => {
                           helperText={touched.testList?.[index].feld1 && errors.testList?.[index].feld1}
                         />
                       </Grid>
-                      <Grid item xs={6} sm="auto">
+                      <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
                           name={`testList.${index}.feld2`}
@@ -127,12 +127,6 @@ const Test = () => {
                   </CardContent>
                 </MainCard>
               ))}
-
-              {values.testList.length <= 1 && (
-                <Button variant="contained" onClick={() => push({ feld1: '', feld2: 0 })} disabled={isSubmitting}>
-                  neuen Eintrag hinzufügen
-                </Button>
-              )}
 
               <Grid item>{typeof errors.testList === 'string' ? <Typography color="error">{errors.testList}</Typography> : null}</Grid>
               <Grid item xs={12}>
