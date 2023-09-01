@@ -53,26 +53,26 @@ const FormComponent = () => {
               <Form autoComplete="off">
                 <StundensatzRechnerValueUpdater />
                 <Grid container spacing={2}>
-                  <Grid item xs={12} sm={'auto'}>
+                  <Grid item xs={12}>
                     <Field
                       component={TextField}
-                      id="fullName"
-                      name="fullName"
-                      label="Full name"
-                      value={values.fullName}
+                      id="email"
+                      name="email"
+                      label="E-Mail"
+                      value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      error={touched.fullName && Boolean(errors.fullName)}
-                      helperText={touched.fullName && errors.fullName}
+                      error={touched.email && Boolean(errors.email)}
+                      helperText={touched.email && errors.email}
                       sx={{ mb: 3 }}
                     />
                   </Grid>
-                  <Grid item xs={4} sm={4}>
+                  <Grid item xs={12} sm={6}>
                     <Field
                       component={TextField}
                       id="firstField"
                       name="firstField"
-                      label="FirstField"
+                      label="Berechnungsfeld (Eingabe 1)"
                       value={values.firstField}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -81,11 +81,11 @@ const FormComponent = () => {
                       sx={{ mb: 3 }}
                     />
                   </Grid>
-                  <Grid item xs={4} sm={4}>
+                  <Grid item xs={12} sm={6}>
                     <TextField
                       id="secondField"
                       name="secondField"
-                      label="SecondField"
+                      label="Berechnungsfeld (Eingabe 2)"
                       value={values.secondField}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -94,11 +94,11 @@ const FormComponent = () => {
                       sx={{ mb: 3 }}
                     />
                   </Grid>
-                  <Grid item xs={4} sm={4}>
+                  <Grid item xs={12}>
                     <TextField
                       id="resultField"
                       name="resultField"
-                      label="ResultField"
+                      label="Ergebnisfeld"
                       value={values.resultField}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -110,17 +110,17 @@ const FormComponent = () => {
                       sx={{ mb: 3 }}
                     />
                   </Grid>
-                  <Grid item xs={12} sm="auto">
+                  <Grid item xs={12}>
                     <TextField
                       fullWidth
-                      id="email"
-                      name="email"
-                      label="Email"
-                      value={values.email}
+                      id="name"
+                      name="name"
+                      label="Name"
+                      value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      error={touched.email && Boolean(errors.email)}
-                      helperText={touched.email && errors.email}
+                      error={touched.name && Boolean(errors.name)}
+                      helperText={touched.name && errors.name}
                       sx={{ mb: 3 }}
                     />
                     <Conditional name="title">
