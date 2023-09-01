@@ -50,10 +50,6 @@ const AuthRegister = () => {
     setLevel(strengthColor(temp));
   };
 
-  useEffect(() => {
-    changePassword('');
-  }, []);
-
   const handleRegister = ({ email, password, firstName, lastName, company }) => {
     // Sign in an existing user with Firebase
     registerUser({ email, password, firstName, lastName, company });
@@ -147,7 +143,10 @@ const AuthRegister = () => {
                   label="Passwort"
                   required
                   value={values.password}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    handleChange(e);
+                    changePassword(event.target.value);
+                  }}
                   onBlur={handleBlur}
                   error={touched.password && Boolean(errors.password)}
                   helperText={touched.password && errors.password}
