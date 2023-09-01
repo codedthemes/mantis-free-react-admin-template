@@ -13,7 +13,7 @@ const Annahmen = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} />
       </Grid>
       <Grid item xs={12}>
@@ -22,7 +22,7 @@ const Annahmen = () => {
       <Grid item xs={12}>
         <Typography variant="h4">Allgemeine Annahmen</Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           id="planjahr"
@@ -39,7 +39,7 @@ const Annahmen = () => {
           sx={{ mb: 2 }}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <FormControl sx={{ width: '100%' }}>
           <InputLabel for="waehrung">Währung</InputLabel>
           <Select
@@ -58,10 +58,8 @@ const Annahmen = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={12}>
-        {' '}
-      </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12}></Grid>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           id="unternehmensname"
@@ -75,8 +73,8 @@ const Annahmen = () => {
           sx={{ mb: 2 }}
         />
       </Grid>
-      <Grid item xs={6}></Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}></Grid>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           id="unternehmensstrasse"
@@ -90,7 +88,7 @@ const Annahmen = () => {
           sx={{ mb: 2 }}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           id="unternehmensplz"
@@ -104,7 +102,7 @@ const Annahmen = () => {
           sx={{ mb: 2 }}
         />
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={12} sm={6}>
         <Field
           component={TextField}
           id="planungsverantwortlicher"
