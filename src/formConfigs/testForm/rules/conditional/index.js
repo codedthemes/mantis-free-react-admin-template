@@ -1,5 +1,5 @@
 const rules = {
-  title: { '==': [{ var: 'firstField' }, 1] }
+  conditionalField: { '==': [{ var: 'conditionalControlField' }, 'show'] }
 };
 
 export default rules;

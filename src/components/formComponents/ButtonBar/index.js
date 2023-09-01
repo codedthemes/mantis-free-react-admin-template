@@ -17,12 +17,10 @@ const ButtonBar = () => {
   const isSaving = requestStatusCodes.saveForm === StatusCodes.PROCESSING;
   const { enqueueSnackbar } = useSnackbar();
 
-  console.log('form values', values);
-
   const saveAction = useCallback(async () => {
     const { errors } = validateFields(values, conditionalRules, validationRules);
     setErrors(errors);
-    console.log('values', values);
+    console.log('errors', errors);
 
     if (Object.keys(errors).length === 0) {
       await saveForm(values);

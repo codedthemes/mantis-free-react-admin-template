@@ -1,8 +1,8 @@
 import React from 'react';
 
 // material-ui
-import { Typography, Grid, TextField, Divider } from '@mui/material';
-import { DateTimePicker, Datepicker } from '@mui/x-date-pickers/DateTimePicker';
+import { Typography, Grid, TextField, Divider, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs from 'dayjs';
 
 // formik
@@ -20,7 +20,7 @@ const Annahmen = () => {
         <Divider sx={{ my: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4">Basisangaben</Typography>
+        <Typography variant="h4">Allgemeine Annahmen</Typography>
       </Grid>
       <Grid item xs={6}>
         <Field
@@ -40,18 +40,23 @@ const Annahmen = () => {
         />
       </Grid>
       <Grid item xs={6}>
-        <Field
-          component={TextField}
-          id="waehrung"
-          name="waehrung"
-          label="Währung"
-          value={values.waehrung}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          error={touched.waehrung && Boolean(errors.waehrung)}
-          helperText={touched.waehrung && errors.waehrung}
-          sx={{ mb: 2 }}
-        />
+        <FormControl sx={{ width: '100%' }}>
+          <InputLabel for="waehrung">Währung</InputLabel>
+          <Select
+            id="waehrung"
+            name="waehrung"
+            value={values.waehrung}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.waehrung && Boolean(errors.waehrung)}
+            helperText={touched.waehrung && errors.waehrung}
+            sx={{ mb: 2 }}
+            defaultValue="euro"
+          >
+            <MenuItem value="euro">€ Euro</MenuItem>
+            <MenuItem value="dollar">$ Dollar</MenuItem>
+          </Select>
+        </FormControl>
       </Grid>
       <Grid item xs={12}>
         {' '}
