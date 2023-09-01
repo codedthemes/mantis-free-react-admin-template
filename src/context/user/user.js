@@ -250,7 +250,7 @@ export const UserContextProvider = ({ children }) => {
         await setDoc(
           doc(db, 'forms', activeFormId),
           {
-            values: JSON.stringify(values) || ''
+            values: JSON.stringify({ ...values, lastChanged: dayjs().valueOf() }) || ''
           },
           { merge: true }
         );

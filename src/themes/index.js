@@ -4,6 +4,8 @@ import { useMemo } from 'react';
 // material-ui
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { deDE as coreDeDE } from '@mui/material/locale';
+import { deDE } from '@mui/x-date-pickers/locales';
 
 // project import
 import Palette from './palette';
@@ -46,7 +48,7 @@ export default function ThemeCustomization({ children }) {
     [theme, themeTypography, themeCustomShadows]
   );
 
-  const themes = createTheme(themeOptions);
+  const themes = createTheme(themeOptions, coreDeDE, deDE);
   themes.components = componentsOverride(themes);
 
   return (
