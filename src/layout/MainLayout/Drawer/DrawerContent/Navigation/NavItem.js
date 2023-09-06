@@ -11,8 +11,10 @@ import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography } 
 
 const NavItem = ({ item, level }) => {
   const theme = useTheme();
+  console.log('item', item);
   const { pathname } = useLocation();
-  const { drawerOpen } = useSelector((state) => state.menu);
+  // const { drawerOpen } = useSelector((state) => state.menu);
+  const drawerOpen = true;
   const isActive = useMemo(() => {
     item.matchingUrlRegexp && console.log('pathname.match(item.matchingUrlRegexp)', pathname.match(item.matchingUrlRegexp));
     return pathname === item.url || (item.matchingUrlRegexp && pathname.match(item.matchingUrlRegexp));

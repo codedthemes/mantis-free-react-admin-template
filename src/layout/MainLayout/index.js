@@ -43,10 +43,30 @@ const MainLayout = () => {
   }, [drawerOpen]);
 
   return (
-    <Box sx={{ display: 'flex', width: '100%' }}>
+    <Box
+      sx={{
+        background: `radial-gradient(circle at 1.99% 58.05%, ${theme.palette.grey[200]}, transparent 100%),radial-gradient(circle at 98.01% 20.98%, ${theme.palette.grey[100]}, transparent 100%),radial-gradient(circle at 50% 50%, ${theme.palette.grey[300]}, ${theme.palette.common.white} 100%)`,
+        display: 'grid',
+        width: '100%',
+        padding: 5,
+        gridTemplateColumns: '260px 1fr',
+        gridTemplateRows: '200px 1fr'
+      }}
+    >
       <Header open={open} handleDrawerToggle={handleDrawerToggle} />
       <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
-      <Box component="main" sx={{ width: '100%', flexGrow: 1, backgroundColor: theme.palette.common.white }}>
+      <Box
+        component="main"
+        sx={{
+          width: '100%',
+          flexGrow: 1,
+          backgroundColor: theme.palette.common.white,
+          gridColumnStart: '2',
+          gridColumnEnd: '2',
+          gridRowStart: '2',
+          gridRowEnd: '2'
+        }}
+      >
         <Toolbar />
         <Outlet />
       </Box>

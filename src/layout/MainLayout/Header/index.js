@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
+import { AppBar, IconButton, Toolbar, useMediaQuery, Box } from '@mui/material';
 
 // project import
 import AppBarStyled from './AppBarStyled';
@@ -37,28 +37,7 @@ const Header = ({ open, handleDrawerToggle }) => {
     </Toolbar>
   );
 
-  // app-bar params
-  const appBar = {
-    position: 'fixed',
-    color: 'inherit',
-    elevation: 0,
-    sx: {
-      borderBottom: `1px solid ${theme.palette.divider}`
-      // boxShadow: theme.customShadows.z1
-    }
-  };
-
-  return (
-    <>
-      {!matchDownMD ? (
-        <AppBarStyled open={open} {...appBar}>
-          {mainHeader}
-        </AppBarStyled>
-      ) : (
-        <AppBar {...appBar}>{mainHeader}</AppBar>
-      )}
-    </>
-  );
+  return <Box sx={{ gridColumnStart: '2', gridColumnEnd: '3', gridRowStart: '1', gridRowEnd: '1' }}>{mainHeader}</Box>;
 };
 
 Header.propTypes = {

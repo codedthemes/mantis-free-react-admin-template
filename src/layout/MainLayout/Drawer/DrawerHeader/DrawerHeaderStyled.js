@@ -8,8 +8,8 @@ const DrawerHeaderStyled = styled(Box, { shouldForwardProp: (prop) => prop !== '
   ...theme.mixins.toolbar,
   display: 'flex',
   alignItems: 'center',
-  justifyContent: open ? 'flex-start' : 'center',
-  paddingLeft: theme.spacing(open ? 3 : 0)
+  justifyContent: 'flex-start',
+  paddingLeft: theme.spacing(3)
 }));
 
 export default DrawerHeaderStyled;

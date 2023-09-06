@@ -43,7 +43,10 @@ export default function ThemeCustomization({ children }) {
       },
       palette: theme.palette,
       customShadows: themeCustomShadows,
-      typography: themeTypography
+      typography: themeTypography,
+      shape: {
+        borderRadius: theme.spacing(1)
+      }
     }),
     [theme, themeTypography, themeCustomShadows]
   );
