@@ -43,7 +43,22 @@ export default function ThemeCustomization({ children }) {
       },
       palette: theme.palette,
       customShadows: themeCustomShadows,
-      typography: themeTypography
+      typography: themeTypography,
+      shape: {
+        paddingButton: `${theme.spacing(1.5)} ${theme.spacing(2)}`,
+        paddingBoxLarge: {
+          xs: `${theme.spacing(4)} ${theme.spacing(4)}`,
+          sm: `${theme.spacing(6)} ${theme.spacing(7)}`,
+          md: `${theme.spacing(9)} ${theme.spacing(11)}`,
+          lg: `${theme.spacing(10)} ${theme.spacing(12)}`
+        },
+        borderRadius: theme.spacing(1),
+        borderRadiusBox: theme.spacing(3),
+        drawerWidth: '260px',
+        drawerWidthCondensed: '60px',
+        layoutDesignGutter: { xs: theme.spacing(3), sm: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(7) },
+        layoutDesignGutterOuter: { xs: theme.spacing(3), sm: theme.spacing(4), md: theme.spacing(4), lg: theme.spacing(5) }
+      }
     }),
     [theme, themeTypography, themeCustomShadows]
   );

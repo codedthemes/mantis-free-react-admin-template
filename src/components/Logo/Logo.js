@@ -20,7 +20,7 @@ const Logo = () => {
      *
      */
     <>
-      <img src="https://placehold.co/118x35/EEE/31343C" alt="placeholder logo" width="118" height="35" />
+      <img src="https://placehold.co/200x60/EEE/31343C" alt="placeholder logo" width="200" height="60" />
     </>
   );
 };

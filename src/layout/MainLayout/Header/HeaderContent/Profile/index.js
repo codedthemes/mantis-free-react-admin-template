@@ -3,30 +3,16 @@ import { useRef, useState, useContext } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import {
-  Avatar,
-  Box,
-  ButtonBase,
-  CardContent,
-  ClickAwayListener,
-  Grid,
-  IconButton,
-  Paper,
-  Popper,
-  Stack,
-  Tab,
-  Tabs,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, ButtonBase, ClickAwayListener, Grid, IconButton, Popper, Stack, Typography } from '@mui/material';
 
 // project import
-import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 import ProfileTab from './ProfileTab';
 
 // assets
-import { LogoutOutlined, SettingOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons';
+import { SettingsOutlined, Logout } from '@mui/icons-material';
 import { UserContext } from 'context/user/user';
+import LayoutBox from 'components/LayoutBox/index';
 
 // tab panel wrapper
 function TabPanel({ children, value, index, ...other }) {
@@ -80,17 +66,22 @@ const Profile = () => {
     setValue(newValue);
   };
 
-  const iconBackColorOpen = 'grey.300';
-  const loginBackColor = 'grey.100';
+  const iconBackColorClosed = theme.palette.primary.main;
+  const iconBackColorOpen = theme.palette.primary.light;
+  const iconColorClosed = theme.palette.common.white;
+  const iconColorOpen = theme.palette.common.white;
 
   return (
     <Box sx={{ flexShrink: 0, ml: 0.75 }}>
       <ButtonBase
         sx={{
           p: 0.25,
-          bgcolor: open ? iconBackColorOpen : user.uid ? 'transparent' : loginBackColor,
-          borderRadius: 1,
-          '&:hover': { bgcolor: 'secondary.lighter' }
+          bgcolor: open ? iconBackColorOpen : iconBackColorClosed,
+          padding: 1.5,
+          borderRadius: '50%',
+          boxShadow: theme.customShadows.z3,
+          transition: '.25s',
+          '&:hover': { bgcolor: 'secondary.lighter', transform: 'rotate(25deg)' }
         }}
         aria-label="open profile"
         ref={anchorRef}
@@ -99,21 +90,7 @@ const Profile = () => {
         onClick={user.uid && handleToggle}
         href={!user.uid && '/login'}
       >
-        <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-          {user.uid ? (
-            <>
-              <Avatar alt="profile user" sx={{ width: 32, height: 32 }}>
-                {user?.initials}
-              </Avatar>
-              <Typography variant="subtitle1">{user?.displayName}</Typography>
-            </>
-          ) : (
-            <Stack direction="row" justifyContent="center" alignItems="center" spacing={1} useFlexGap>
-              <LoginOutlined />
-              Login
-            </Stack>
-          )}
-        </Stack>
+        <SettingsOutlined sx={{ color: open ? iconColorOpen : iconColorClosed }} />
       </ButtonBase>
       <Popper
         placement="bottom-end"
@@ -122,6 +99,7 @@ const Profile = () => {
         role={undefined}
         transition
         disablePortal
+        sx={{ zIndex: 1 }}
         popperOptions={{
           modifiers: [
             {
@@ -136,9 +114,8 @@ const Profile = () => {
         {({ TransitionProps }) => (
           <Transitions type="fade" in={open} {...TransitionProps}>
             {open && (
-              <Paper
+              <Box
                 sx={{
-                  boxShadow: theme.customShadows.z1,
                   width: 290,
                   minWidth: 240,
                   maxWidth: 290,
@@ -148,33 +125,44 @@ const Profile = () => {
                 }}
               >
                 <ClickAwayListener onClickAway={handleClose}>
-                  <MainCard elevation={0} border={false} content={false}>
-                    <CardContent sx={{ px: 2.5, pt: 3 }}>
-                      <Grid container justifyContent="space-between" alignItems="center">
-                        <Grid item>
-                          <Stack direction="row" spacing={1.25} alignItems="center">
-                            <Avatar alt="profile user" sx={{ width: 32, height: 32 }}>
-                              {user?.initials}
-                            </Avatar>
-                            <Stack>
-                              <Typography variant="h6">{user?.displayName}</Typography>
-                              <Typography variant="body2" color="textSecondary">
-                                {user?.company}
-                              </Typography>
-                            </Stack>
+                  <LayoutBox
+                    sx={{ px: 3, py: 2, backgroundColor: theme.palette.common.white }}
+                    elevation={0}
+                    border={false}
+                    content={false}
+                  >
+                    <Grid
+                      container
+                      justifyContent="space-between"
+                      alignItems="center"
+                      sx={{ mb: 2, backgroundColor: theme.palette.grey[300], borderRadius: '10000px', padding: 0.5 }}
+                    >
+                      <Grid item>
+                        <Stack direction="row" spacing={2} alignItems="center" marginLeft={0.8}>
+                          <Avatar
+                            alt="profile user"
+                            sx={{ width: 32, height: 32, bgColor: theme.palette.primary.main, color: theme.palette.common.white }}
+                          >
+                            {user?.initials}
+                          </Avatar>
+                          <Stack>
+                            <Typography variant="h6">{user?.displayName}</Typography>
+                            <Typography variant="body2" color="textSecondary">
+                              {user?.company}
+                            </Typography>
                           </Stack>
-                        </Grid>
-                        <Grid item>
-                          <IconButton size="large" color="secondary" onClick={handleLogout}>
-                            <LogoutOutlined />
-                          </IconButton>
-                        </Grid>
+                        </Stack>
                       </Grid>
-                    </CardContent>
+                      <Grid item>
+                        <IconButton size="large" color="primary" onClick={handleLogout}>
+                          <Logout />
+                        </IconButton>
+                      </Grid>
+                    </Grid>
                     {open && <ProfileTab handleLogout={handleLogout} />}
-                  </MainCard>
+                  </LayoutBox>
                 </ClickAwayListener>
-              </Paper>
+              </Box>
             )}
           </Transitions>
         )}

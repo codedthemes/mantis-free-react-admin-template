@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -9,50 +9,31 @@ import { Box, Drawer, useMediaQuery } from '@mui/material';
 import DrawerHeader from './DrawerHeader';
 import DrawerContent from './DrawerContent';
 import MiniDrawerStyled from './MiniDrawerStyled';
-import { drawerWidth } from 'config';
+import { UserContext } from 'context/user/user';
 
 // ==============================|| MAIN LAYOUT - DRAWER ||============================== //
 
 const MainDrawer = ({ open, handleDrawerToggle, window }) => {
   const theme = useTheme();
+  const { drawerStatus } = useContext(UserContext);
   const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
 
-  // responsive drawer container
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const drawerWidth = useMemo(() => {
+    if (drawerStatus === 'condensed') {
+      return theme.shape.drawerWidthCondensed;
+    }
+
+    return theme.shape.drawerWidth;
+  }, [theme.shape.drawerWidthCondensed, theme.shape.drawerWidth, drawerStatus]);
 
   // header content
   const drawerContent = useMemo(() => <DrawerContent />, []);
   const drawerHeader = useMemo(() => <DrawerHeader open={open} />, [open]);
 
   return (
-    <Box component="nav" sx={{ flexShrink: { md: 0 }, zIndex: 1300 }} aria-label="mailbox folders">
-      {!matchDownMD ? (
-        <MiniDrawerStyled variant="permanent" open={open}>
-          {drawerHeader}
-          {drawerContent}
-        </MiniDrawerStyled>
-      ) : (
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={open}
-          onClose={handleDrawerToggle}
-          ModalProps={{ keepMounted: true }}
-          sx={{
-            display: { xs: 'block', lg: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: drawerWidth,
-              borderRight: `1px solid ${theme.palette.divider}`,
-              backgroundImage: 'none',
-              boxShadow: 'inherit'
-            }
-          }}
-        >
-          {open && drawerHeader}
-          {open && drawerContent}
-        </Drawer>
-      )}
+    <Box component="nav" sx={{ width: drawerWidth, padding: theme.spacing(3) }}>
+      {drawerHeader}
+      {drawerContent}
     </Box>
   );
 };
