@@ -8,6 +8,7 @@ import { useTheme } from '@mui/material/styles';
 import { UserContext } from 'context/user/user';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 import TestForm from 'formConfigs/testForm/Form/index';
+import LayoutBox from 'components/LayoutBox/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -37,13 +38,22 @@ const FormComponent = () => {
   }, [activeFormData]);
 
   return (
-    <ColoredSection
-      backLink="/form/overview"
-      bgColor={theme.palette.primary.main}
-      headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
-    >
-      {content}
-    </ColoredSection>
+    <>
+      <ColoredSection
+        backLink="/form/overview"
+        bgColor={theme.palette.primary.main}
+        headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
+      />
+      <LayoutBox
+        sx={{
+          backgroundColor: theme.palette.common.white,
+          px: { xs: theme.spacing(4), md: theme.spacing(6), lg: theme.spacing(8) },
+          py: { xs: theme.spacing(4), md: theme.spacing(6), lg: theme.spacing(8) }
+        }}
+      >
+        {content}
+      </LayoutBox>
+    </>
   );
 };
 

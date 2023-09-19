@@ -1,5 +1,6 @@
 import { createContext, useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { StatusCodes } from 'http-status-codes';
 import dayjs from 'dayjs';
 
@@ -36,14 +37,22 @@ const initialStatusCodes = {
   saveForm: null
 };
 
+const initialLayout = {
+  drawerStatus: null,
+}
+
 export const UserContext = createContext(null);
 export const UserContextProvider = ({ children }) => {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
   const mounted = useRef();
   const [user, setUser] = useState(initialUser);
   const [formsData, setFormsData] = useState(initialFormsData);
   const [activeFormId, setActiveFormId] = useState(initialFormsData);
   const activeFormData = useMemo(() => formsData[activeFormId], [activeFormId, formsData]);
+  
+  const [drawerStatus, setDrawerStatus] = useState(initialLayout.drawerStatus);
 
   const [status_loadingUser, setLoadingUser] = useState(initialStatusCodes.loadingUser);
   const [status_createUser, setCreateUser] = useState(initialStatusCodes.createUser);
@@ -261,12 +270,6 @@ export const UserContextProvider = ({ children }) => {
   );
 
   useEffect(() => {
-    mounted.current = true;
-
-    return () => (mounted.current = false);
-  }, [mounted]);
-
-  useEffect(() => {
     const initialize = async () => {
       await onAuthStateChanged(auth, async (userAuth) => {
         setLoadingUser(StatusCodes.PROCESSING);
@@ -300,6 +303,20 @@ export const UserContextProvider = ({ children }) => {
     updateForms();
   }, [user.userFormIds, getForms]);
 
+  useEffect(() => {
+    if (matchDownMD) {
+      setDrawerStatus('closed');
+    } else {
+      setDrawerStatus('opened');
+    }
+  }, [matchDownMD]);
+
+  useEffect(() => {
+    mounted.current = true;
+
+    return () => (mounted.current = false);
+  }, [mounted]);
+
   return (
     <UserContext.Provider
       value={{
@@ -318,7 +335,9 @@ export const UserContextProvider = ({ children }) => {
         activeFormId,
         activeFormData,
         setActiveFormId,
-        requestStatusCodes
+        requestStatusCodes,
+        drawerStatus,
+        setDrawerStatus,
       }}
     >
       {children}

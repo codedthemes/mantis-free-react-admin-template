@@ -1,6 +1,5 @@
 // assets
-import DescriptionIcon from '@mui/icons-material/Description';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { SwitchAccountOutlined, BackupTableOutlined } from '@mui/icons-material';
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
@@ -14,7 +13,7 @@ const pages = {
       title: 'Mitarbeiter',
       type: 'item',
       url: '/',
-      icon: PeopleAltIcon
+      icon: SwitchAccountOutlined
     },
     {
       id: 'forms',
@@ -22,7 +21,7 @@ const pages = {
       type: 'item',
       url: '/form/overview',
       matchingUrlRegexp: /\/form\/[^/]{8,}$/,
-      icon: DescriptionIcon
+      icon: BackupTableOutlined
     }
   ]
 };

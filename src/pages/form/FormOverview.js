@@ -8,13 +8,14 @@ import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 const SamplePage = () => {
   const theme = useTheme();
   return (
-    <ColoredSection
-      bgColor={theme.palette.primary.dark}
-      headline="Formulare"
-      description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
-    >
+    <>
+      <ColoredSection
+        bgColor={theme.palette.primary.dark}
+        headline="Formulare"
+        description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
+      />
       <SelectFormView />
-    </ColoredSection>
+    </>
   );
 };
 

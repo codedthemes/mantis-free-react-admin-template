@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -9,23 +9,29 @@ import { Box, Drawer, useMediaQuery } from '@mui/material';
 import DrawerHeader from './DrawerHeader';
 import DrawerContent from './DrawerContent';
 import MiniDrawerStyled from './MiniDrawerStyled';
-import { drawerWidth } from 'config';
+import { UserContext } from 'context/user/user';
 
 // ==============================|| MAIN LAYOUT - DRAWER ||============================== //
 
 const MainDrawer = ({ open, handleDrawerToggle, window }) => {
   const theme = useTheme();
+  const { drawerStatus } = useContext(UserContext);
   const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
+
+  const drawerWidth = useMemo(() => {
+    if (drawerStatus === 'condensed') {
+      return theme.shape.drawerWidthCondensed;
+    }
+
+    return theme.shape.drawerWidth;
+  }, [theme.shape.drawerWidthCondensed, theme.shape.drawerWidth, drawerStatus]);
 
   // header content
   const drawerContent = useMemo(() => <DrawerContent />, []);
   const drawerHeader = useMemo(() => <DrawerHeader open={open} />, [open]);
 
   return (
-    <Box
-      component="nav"
-      sx={{ display: 'flex', flexDirection: 'column', gridColumnStart: '1', gridColumnEnd: '1', gridRowStart: '1', gridRowEnd: '3' }}
-    >
+    <Box component="nav" sx={{ width: drawerWidth, padding: theme.spacing(3) }}>
       {drawerHeader}
       {drawerContent}
     </Box>
