@@ -25,8 +25,8 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
       >
         <Grid container justifyContent="center">
           <Grid item xs={12} sm={10} lg={12}>
-           <Stack flexDirection={{ xs: 'column', lg: 'row' }}>
-            <Stack sx={{ order: { xs: 1, lg: 0 }}} spacing={{ xs: 2, sm: 3, lg: 4 }}>
+            <Stack flexDirection={{ xs: 'column', lg: 'row' }}>
+              <Stack sx={{ order: { xs: 1, lg: 0 } }} spacing={{ xs: 2, sm: 3, lg: 4 }}>
                 <Stack direction="row" alignItems="center" flexWrap="wrap" useFlexGap spacing={{ xs: 1.5, sm: 2 }}>
                   {backLink && (
                     <Button
@@ -35,6 +35,8 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
                         height: '3rem',
                         width: '3rem',
                         backgroundColor: fgColor,
+                        alignSelf: 'flex-start',
+                        marginTop: { xs: '0.2rem', md: '0.35rem', lg: '0.5rem' },
                         '&:hover': { backgroundColor: fgColor, opacity: '0.8' }
                       }}
                       variant="contained"
@@ -44,7 +46,7 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
                       <ArrowBackIosNewIcon fontSize="small" sx={{ color: bgColor }} />
                     </Button>
                   )}
-                  <Typography variant="h1" sx={{ fontSize: { xs: 32, md: 48, lg: 64 } }}>
+                  <Typography variant="h1">
                     {headline}
                     <Box
                       sx={{
@@ -65,7 +67,7 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
                 )}
               </Stack>
               {headerChildren}
-           </Stack>
+            </Stack>
           </Grid>
         </Grid>
       </LayoutBox>

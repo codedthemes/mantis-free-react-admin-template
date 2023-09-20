@@ -7,6 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import ScrollTop from 'components/ScrollTop';
 import { SnackbarProvider } from 'notistack';
 import 'dayjs/locale/de';
+import './styles/index.css';
 
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
