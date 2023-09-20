@@ -2,7 +2,7 @@
 
 const config = {
   defaultPath: '/',
-  fontFamily: `'Public Sans', sans-serif`,
+  fontFamily: `'Red Hat Display', sans-serif`,
   i18n: 'en',
   miniDrawer: false,
   container: true,
