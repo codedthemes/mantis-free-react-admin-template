@@ -4,12 +4,14 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme();
 
 const Typography = (fontFamily) => ({
-  htmlFontSize: 18,
   fontFamily,
+  fontSize: 20,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,
   fontWeightBold: 600,
+  fontWeightBolder: 700,
+  fontWeightBoldest: 800,
   h1: {
     fontWeight: 600,
     fontSize: '2rem',

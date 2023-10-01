@@ -25,20 +25,19 @@ const Dashboard = () => {
   const { View } = useLottie(options);
 
   const bottomBoxRendering = useCallback(() => {
-    const renderItem = ({ Icon, text, link, color }) => {
+    const renderItem = ({ primaryText, prefixText, link, color }) => {
       const textColor = theme.palette.common.white;
       const textColorHover = textColor;
       const bgColor = `linear-gradient(to right, ${color}, ${lighten(color, 0.15)})`;
 
       return (
-        <Grid item md={4}>
+        <Grid item sm={12} md={6} xl={4}>
           <Button
             component={Link}
             sx={{
               background: bgColor,
               color: textColor,
               padding: `${theme.spacing(4)} ${theme.spacing(5)}`,
-              marginBottom: theme.spacing(1),
               borderRadius: theme.shape.borderRadiusBox,
               width: '100%',
               transition: '.25s',
@@ -51,18 +50,33 @@ const Dashboard = () => {
             }}
             to={link}
           >
-            <Stack direction="row" alignItems="center" spacing={2}>
-              <Icon sx={{ fontSize: { xs: 32, md: 32, lg: 40 }, color: textColor }} />
+            <Stack direction="column" spacing={1}>
+              {/* <Icon sx={{ fontSize: { xs: 32, md: 32, lg: 40 }, color: textColor }} /> */}
               <Typography
                 paragraph
                 sx={{
                   fontSize: 24,
-                  fontWeight: theme.typography.fontWeightBold,
-                  marginBottom: '0px',
+                  lineHeight: '1em',
+                  textTransform: 'none',
+                  fontWeight: theme.typography.fontWeightBoldest,
+                  margin: '0px',
                   color: textColor
                 }}
               >
-                {text}
+                {prefixText}
+              </Typography>
+              <Typography
+                paragraph
+                sx={{
+                  fontSize: 44,
+                  lineHeight: '1em',
+                  textTransform: 'none',
+                  fontWeight: theme.typography.fontWeightLight,
+                  margin: '0px',
+                  color: textColor
+                }}
+              >
+                {primaryText}
               </Typography>
             </Stack>
           </Button>
@@ -71,31 +85,33 @@ const Dashboard = () => {
     };
 
     return (
-      <Grid container spacing={theme.shape.layoutDesignGutter}>
-        {renderItem({ Icon: BackupTableOutlined, text: 'Formulare', link: '/form/overview', color: theme.palette.primary.dark })}
-        {renderItem({ Icon: SwitchAccountOutlined, text: 'Mitarbeiter', link: '/', color: theme.palette.secondary.main })}
-        {renderItem({ Icon: AccountCircleOutlined, text: 'Profil', link: '/', color: theme.palette.primary.light })}
-        <Grid xs={12} item>
-          <LayoutBox sx={{ backgroundColor: theme.palette.common.white, padding: theme.shape.paddingBoxLarge }}>
-            <Typography paragraph>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Tempor nec feugiat nisl pretium fusce id velit ut. Fames ac turpis egestas sed tempus urna et. Diam in arcu cursus euismod.
-              Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis.
-            </Typography>
-            <Typography paragraph>
-              Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec
-              feugiat nisl pretium fusce id velit ut. Fames ac turpis egestas sed tempus urna et.
-            </Typography>
-            <Typography paragraph>
-              Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec feugiat nisl
-              pretium fusce id velit ut. Fames ac turpis egestas sed tempus urna et. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec feugiat nisl pretium fusce id velit ut.
-              Fames ac turpis egestas sed tempus urna et. Diam in arcu cursus euismod. Phasellus faucibus scelerisque eleifend donec pretium
-              vulputate sapien nec sagittis.
-            </Typography>
-          </LayoutBox>
-        </Grid>
+      <Grid container spacing={3}>
+        {renderItem({ primaryText: 'Formularen', prefixText: 'zu den', link: '/form/overview', color: theme.palette.primary.dark })}
+        {renderItem({ primaryText: 'Mitarbeitern', prefixText: 'zu den', link: '/', color: theme.palette.secondary.main })}
+        {renderItem({ primaryText: 'Profil', prefixText: 'zum', link: '/', color: theme.palette.primary.light })}
       </Grid>
+      // <Grid container spacing={theme.shape.layoutDesignGutter}>
+      //   <Grid xs={12} item>
+      //     <LayoutBox sx={{ backgroundColor: theme.palette.common.white, padding: theme.shape.paddingBoxLarge }}>
+      //       <Typography paragraph>
+      //         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      //         Tempor nec feugiat nisl pretium fusce id velit ut. Fames ac turpis egestas sed tempus urna et. Diam in arcu cursus euismod.
+      //         Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis.
+      //       </Typography>
+      //       <Typography paragraph>
+      //         Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec
+      //         feugiat nisl pretium fusce id velit ut. Fames ac turpis egestas sed tempus urna et.
+      //       </Typography>
+      //       <Typography paragraph>
+      //         Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec feugiat nisl
+      //         pretium fusce id velit ut. Fames ac turpis egestas sed tempus urna et. Lorem ipsum dolor sit amet, consectetur adipiscing
+      //         elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor nec feugiat nisl pretium fusce id velit ut.
+      //         Fames ac turpis egestas sed tempus urna et. Diam in arcu cursus euismod. Phasellus faucibus scelerisque eleifend donec pretium
+      //         vulputate sapien nec sagittis.
+      //       </Typography>
+      //     </LayoutBox>
+      //   </Grid>
+      // </Grid>
     );
   }, [theme]);
 
