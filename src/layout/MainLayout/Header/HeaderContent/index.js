@@ -18,8 +18,8 @@ const HeaderContent = () => {
   return (
     <>
       <Stack flexDirection="column" marginTop={1}>
-        <Typography sx={{ fontSize: 14 }}>Willkommen zurück,</Typography>
-        <Typography sx={{ fontSize: 32, fontWeight: theme.typography.fontWeightBold }}>{user?.displayName}</Typography>
+        <Typography>Willkommen zurück,</Typography>
+        <Typography sx={{ fontSize: 36, fontWeight: theme.typography.fontWeightBold }}>{user?.displayName}</Typography>
       </Stack>
       <Profile />
     </>
