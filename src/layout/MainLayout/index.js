@@ -54,15 +54,18 @@ const MainLayout = () => {
           display: 'grid',
           width: '100%',
           maxWidth: '1920px',
+          minHeight: '100vh',
           margin: '0 auto',
-          padding: theme.shape.layoutDesignGutterOuter,
           gridTemplateColumns: `auto 1fr`,
           gridTemplateRows: `auto 1fr`,
-          gap: theme.shape.layoutDesignGutter
+          gap: theme.shape.layoutDesignGutter,
+          paddingRight: theme.shape.layoutDesignGutter
         }}
       >
-        <Box sx={{ gridColumnStart: '2', gridColumnEnd: '3', gridRowStart: '1', gridRowEnd: '1' }}>
-          <Box sx={{ posiiton: 'sticky' }}>
+        <Box
+          sx={{ gridColumnStart: '2', gridColumnEnd: '3', gridRowStart: '1', gridRowEnd: '1', paddingTop: theme.shape.layoutDesignGutter }}
+        >
+          <Box sx={{ positon: 'sticky' }}>
             <Header open={open} handleDrawerToggle={handleDrawerToggle} />
           </Box>
         </Box>
@@ -78,25 +81,17 @@ const MainLayout = () => {
         >
           <Box
             sx={{
-              position: 'sticky',
-              top: theme.shape.layoutDesignGutterOuter,
-              left: '0',
-              height: {
-                xs: `calc(100vh - ${theme.shape.layoutDesignGutterOuter.xs} - ${theme.shape.layoutDesignGutterOuter.xs})`,
-                sm: `calc(100vh - ${theme.shape.layoutDesignGutterOuter.sm} - ${theme.shape.layoutDesignGutterOuter.sm})`,
-                md: `calc(100vh - ${theme.shape.layoutDesignGutterOuter.md} - ${theme.shape.layoutDesignGutterOuter.md})`,
-                lg: `calc(100vh - ${theme.shape.layoutDesignGutterOuter.lg} - ${theme.shape.layoutDesignGutterOuter.lg})`
-              }
+              height: '100%'
             }}
           >
-            <LayoutBox
+            <Box
               sx={{
                 height: '100%',
                 backgroundColor: theme.palette.primary.main
               }}
             >
               <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
-            </LayoutBox>
+            </Box>
           </Box>
         </Box>
         <Box
@@ -108,7 +103,8 @@ const MainLayout = () => {
             gridColumnEnd: '2',
             gridRowStart: '2',
             gridRowEnd: '3',
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            paddingBottom: theme.shape.layoutDesignGutter
           }}
         >
           <Outlet />

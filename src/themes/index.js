@@ -53,8 +53,8 @@ export default function ThemeCustomization({ children }) {
           lg: `${theme.spacing(10)} ${theme.spacing(12)}`
         },
         borderRadius: theme.spacing(1),
-        borderRadiusBox: theme.spacing(3),
-        drawerWidth: '260px',
+        borderRadiusBox: theme.spacing(1),
+        drawerWidth: '380px',
         drawerWidthCondensed: '60px',
         layoutDesignGutter: { xs: theme.spacing(3), sm: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(7) },
         layoutDesignGutterOuter: { xs: theme.spacing(3), sm: theme.spacing(4), md: theme.spacing(4), lg: theme.spacing(5) }

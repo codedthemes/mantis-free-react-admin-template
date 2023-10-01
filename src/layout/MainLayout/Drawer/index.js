@@ -31,7 +31,7 @@ const MainDrawer = ({ open, handleDrawerToggle, window }) => {
   const drawerHeader = useMemo(() => <DrawerHeader open={open} />, [open]);
 
   return (
-    <Box component="nav" sx={{ width: drawerWidth, padding: theme.spacing(3) }}>
+    <Box component="nav" sx={{ width: drawerWidth, padding: theme.shape.layoutDesignGutter }}>
       {drawerHeader}
       {drawerContent}
     </Box>
