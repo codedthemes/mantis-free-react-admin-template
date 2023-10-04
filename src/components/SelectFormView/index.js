@@ -12,7 +12,7 @@ import { Edit, Delete, AddToPhotos } from '@mui/icons-material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 
 const SelectFormView = () => {
   const { createForm, deleteForm, formsData, requestStatusCodes } = useContext(UserContext);

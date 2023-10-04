@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
 // material-ui
-import { Box, List, Typography } from '@mui/material';
+import { List } from '@mui/material';
 
 // project import
 import NavItem from './NavItem';
@@ -10,10 +9,6 @@ import NavItem from './NavItem';
 // ==============================|| NAVIGATION - LIST GROUP ||============================== //
 
 const NavGroup = ({ item }) => {
-  const menu = useSelector((state) => state.menu);
-  // const { drawerOpen } = menu;
-  const drawerOpen = true;
-
   const navItems = item.children?.map((menuItem) => {
     return <NavItem key={menuItem.id} item={menuItem} level={1} />;
   });

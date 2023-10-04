@@ -11,7 +11,7 @@ import ProfileTab from './ProfileTab';
 
 // assets
 import { SettingsOutlined, Logout } from '@mui/icons-material';
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 import LayoutBox from 'components/LayoutBox/index';
 
 // tab panel wrapper
@@ -38,25 +38,24 @@ function a11yProps(index) {
 
 // ==============================|| HEADER CONTENT - PROFILE ||============================== //
 
-const Profile = () => {
+const Profile = ({ variant }) => {
   const theme = useTheme();
   const { user, logoutUser } = useContext(UserContext);
+
+  const anchorRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  console.log('update open', open);
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
 
   const handleLogout = async () => {
     setOpen(false);
     logoutUser();
   };
 
-  const anchorRef = useRef(null);
-  const [open, setOpen] = useState(false);
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
   const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
+    console.log('click away');
     setOpen(false);
   };
 
@@ -72,7 +71,7 @@ const Profile = () => {
   const iconColorOpen = theme.palette.common.white;
 
   return (
-    <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+    <Box sx={{ flexShrink: 0 }}>
       <ButtonBase
         sx={{
           p: 0.25,
@@ -112,19 +111,16 @@ const Profile = () => {
         }}
       >
         {({ TransitionProps }) => (
-          <Transitions type="fade" in={open} {...TransitionProps}>
-            {open && (
-              <Box
-                sx={{
-                  width: 290,
-                  minWidth: 240,
-                  maxWidth: 290,
-                  [theme.breakpoints.down('md')]: {
-                    maxWidth: 250
-                  }
-                }}
-              >
-                <ClickAwayListener onClickAway={handleClose}>
+          <ClickAwayListener onClickAway={handleClose}>
+            <Transitions type="fade" in={open} {...TransitionProps}>
+              {open && (
+                <Box
+                  sx={{
+                    width: 290,
+                    minWidth: 290,
+                    maxWidth: 290
+                  }}
+                >
                   <LayoutBox
                     sx={{ px: 3, py: 2, backgroundColor: theme.palette.common.white }}
                     elevation={0}
@@ -161,10 +157,10 @@ const Profile = () => {
                     </Grid>
                     {open && <ProfileTab handleLogout={handleLogout} />}
                   </LayoutBox>
-                </ClickAwayListener>
-              </Box>
-            )}
-          </Transitions>
+                </Box>
+              )}
+            </Transitions>
+          </ClickAwayListener>
         )}
       </Popper>
     </Box>

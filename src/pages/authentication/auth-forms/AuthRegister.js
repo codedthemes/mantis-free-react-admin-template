@@ -25,7 +25,7 @@ import { Formik, Form, Field } from 'formik';
 // project import
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
 
 // assets

@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Grid, Button } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Save } from '@mui/icons-material';
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 
 import validateFields from 'utils/formUtils/validateFields';
 import validationRules from 'formConfigs/testForm/rules/validation/index';

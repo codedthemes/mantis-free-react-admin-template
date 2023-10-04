@@ -2,16 +2,15 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { AppBar, IconButton, Toolbar, useMediaQuery, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 // project import
 import HeaderContent from './HeaderContent';
 
 // ==============================|| MAIN LAYOUT - HEADER ||============================== //
 
-const Header = ({ open }) => {
+const Header = () => {
   const theme = useTheme();
-  const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
 
   // common header
   const mainHeader = (
