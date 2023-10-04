@@ -1,4 +1,4 @@
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 import { useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CircularProgress, Stack } from '@mui/material';

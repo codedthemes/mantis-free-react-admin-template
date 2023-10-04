@@ -8,7 +8,7 @@ import ButtonBar from 'components/formComponents/ButtonBar/index';
 import { Formik, Form, FieldArray, Field } from 'formik';
 import StundensatzRechnerValueUpdater from 'components/formComponents/CalculationUpdater/index';
 import Annahmen from './Annahmen';
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 import Test from './Test';
 
 const TestForm = () => {

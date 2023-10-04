@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography, ListItem } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItem } from '@mui/material';
 
 // ==============================|| NAVIGATION - LIST ITEM ||============================== //
 
-const NavItem = ({ item, level }) => {
+const NavItem = ({ item }) => {
   const theme = useTheme();
   console.log('item', item);
   const { pathname } = useLocation();

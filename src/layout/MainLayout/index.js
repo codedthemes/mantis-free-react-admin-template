@@ -1,47 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Toolbar, useMediaQuery } from '@mui/material';
+import { Box, Button } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 // project import
 import Drawer from './Drawer';
 import Header from './Header';
 
 // types
-import { openDrawer } from 'store/reducers/menu';
-import LayoutBox from 'components/LayoutBox/index';
+import { NavigationContext } from 'context/navigation/index';
+import Profile from './Header/HeaderContent/Profile/index';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
   const theme = useTheme();
-  const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'));
-  const dispatch = useDispatch();
-
-  const { drawerOpen } = useSelector((state) => state.menu);
-
-  // drawer toggler
-  const [open, setOpen] = useState(drawerOpen);
-  const handleDrawerToggle = () => {
-    setOpen(!open);
-    dispatch(openDrawer({ drawerOpen: !open }));
-  };
-
-  // set media wise responsive drawer
-  useEffect(() => {
-    setOpen(!matchDownLG);
-    dispatch(openDrawer({ drawerOpen: !matchDownLG }));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [matchDownLG]);
-
-  useEffect(() => {
-    if (open !== drawerOpen) setOpen(drawerOpen);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [drawerOpen]);
+  const { setNavOpen, navOpen, useDrawerNav } = useContext(NavigationContext);
 
   return (
     <Box
@@ -63,10 +40,49 @@ const MainLayout = () => {
         }}
       >
         <Box
-          sx={{ gridColumnStart: '2', gridColumnEnd: '3', gridRowStart: '1', gridRowEnd: '1', paddingTop: theme.shape.layoutDesignGutter }}
+          sx={{
+            gridColumnStart: '2',
+            gridColumnEnd: '3',
+            gridRowStart: '1',
+            gridRowEnd: '1',
+            paddingTop: theme.shape.layoutDesignGutter
+          }}
         >
           <Box sx={{ positon: 'sticky' }}>
-            <Header open={open} handleDrawerToggle={handleDrawerToggle} />
+            {useDrawerNav && (
+              <Box
+                sx={{
+                  position: 'fixed',
+                  top: '16px',
+                  right: '16px',
+                  backgroundColor: theme.palette.common.white,
+                  boxShadow: theme.shadows[5],
+                  padding: 1,
+                  zIndex: '1000',
+                  borderRadius: '500px',
+                  display: 'flex',
+                  gap: theme.spacing(1)
+                }}
+              >
+                <Profile />
+                <Button
+                  color="primary"
+                  variant="contained"
+                  sx={{
+                    height: '50px',
+                    width: '50px',
+                    minWidth: 'auto',
+                    borderRadius: '500px',
+                    border: `1px solid ${theme.palette.common.white}`,
+                    padding: 1
+                  }}
+                  onClick={() => setNavOpen(!navOpen)}
+                >
+                  <MenuIcon />
+                </Button>
+              </Box>
+            )}
+            <Header />
           </Box>
         </Box>
         <Box
@@ -76,23 +92,21 @@ const MainLayout = () => {
             gridColumnStart: '1',
             gridColumnEnd: '1',
             gridRowStart: '1',
-            gridRowEnd: '3'
+            gridRowEnd: '3',
+            backgroundColor: theme.palette.primary.main,
+            position: 'relative',
+            ':after': {
+              content: '""',
+              position: 'absolute',
+              top: '0',
+              right: '100%',
+              backgroundColor: theme.palette.primary.main,
+              height: '100%',
+              width: '100vw'
+            }
           }}
         >
-          <Box
-            sx={{
-              height: '100%'
-            }}
-          >
-            <Box
-              sx={{
-                height: '100%',
-                backgroundColor: theme.palette.primary.main
-              }}
-            >
-              <Drawer open={open} handleDrawerToggle={handleDrawerToggle} />
-            </Box>
-          </Box>
+          <Drawer />
         </Box>
         <Box
           component="main"

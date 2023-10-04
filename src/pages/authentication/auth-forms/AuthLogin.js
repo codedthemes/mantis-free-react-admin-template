@@ -32,7 +32,7 @@ import validateFields from 'utils/formUtils/validateFields';
 
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 

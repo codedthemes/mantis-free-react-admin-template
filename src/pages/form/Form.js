@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
 // project import
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 import TestForm from 'formConfigs/testForm/Form/index';
 import LayoutBox from 'components/LayoutBox/index';

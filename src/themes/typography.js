@@ -5,7 +5,7 @@ const theme = createTheme();
 
 const Typography = (fontFamily) => ({
   fontFamily,
-  fontSize: 20,
+  htmlFontSize: 18,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,

@@ -3,16 +3,16 @@ import { Link as RouterLink } from 'react-router-dom';
 import { StatusCodes } from 'http-status-codes';
 
 // material-ui
-import { Grid, Button, CardContent, TextField, Typography } from '@mui/material';
+import { Grid, Button, TextField, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import MainCard from 'components/MainCard';
+import LayoutBox from 'components/LayoutBox';
 
 // icons
 import { Edit, Delete, AddToPhotos } from '@mui/icons-material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
-import { UserContext } from 'context/user/user';
+import { UserContext } from 'context/user';
 
 const SelectFormView = () => {
   const { createForm, deleteForm, formsData, requestStatusCodes } = useContext(UserContext);
@@ -27,74 +27,77 @@ const SelectFormView = () => {
 
   const formCardsDom = () => {
     const formIds = Object.keys(formsData);
+    const cardPadding = { sm: theme.spacing(2), md: theme.spacing(3), lg: theme.spacing(4), xl: theme.spacing(5) };
     const formCards =
       formIds.map((formId) => {
         const formData = formsData[formId];
 
         return (
           <Grid key={formId} item xs={12} sm={6} md={4}>
-            <MainCard
+            <LayoutBox
               sx={{
-                height: '100%'
+                height: '100%',
+                backgroundColor: theme.palette.common.white,
+                padding: cardPadding
               }}
               content={false}
             >
-              <CardContent>
-                <Typography variant="h3" paragraph>
-                  {formData.title || 'Formular: ' + formData.id}
-                </Typography>
-                <Grid container spacing={1}>
-                  <Grid item>
-                    <Button component={RouterLink} variant="contained" startIcon={<Edit />} to={`/form/${formId}`}>
-                      Bearbeiten
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button color="secondary" variant="contained" onClick={() => removeForm(formId)}>
-                      <Delete />
-                    </Button>
-                  </Grid>
+              <Typography variant="h3" paragraph>
+                {formData.title || 'Formular: ' + formData.id}
+              </Typography>
+              <Grid container spacing={1}>
+                <Grid item>
+                  <Button component={RouterLink} variant="contained" startIcon={<Edit />} to={`/form/${formId}`}>
+                    Bearbeiten
+                  </Button>
                 </Grid>
-              </CardContent>
-            </MainCard>
+                <Grid item>
+                  <Button color="secondary" variant="contained" onClick={() => removeForm(formId)} sx={{ height: '100%' }}>
+                    <Delete style={{ color: theme.palette.common.white }} />
+                  </Button>
+                </Grid>
+              </Grid>
+            </LayoutBox>
           </Grid>
         );
       }) || [];
 
     return (
       <>
-        <Grid container spacing={2} sx={{ marginBottom: theme.spacing(2) }}>
+        <Grid container spacing={3} sx={{ marginBottom: theme.spacing(3) }}>
           {formCards}
           <Grid item xs={12} sm={6} md={8}>
-            <MainCard key={'newForm'} sx={{ height: '100%' }} content={false}>
-              <CardContent>
-                <Typography variant="h3" paragraph>
-                  Neues Formular
-                </Typography>
-                <Typography paragraph>Erstellen Sie ein neues Formular</Typography>
-                <Grid container spacing={1}>
-                  <Grid item xs>
-                    <TextField
-                      value={addNewTitle}
-                      sx={{ width: '100%' }}
-                      placeholder="Name des Formulars"
-                      onChange={(e) => setAddNewTitle(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs="auto">
-                    <Button
-                      disabled={!addNewTitle}
-                      startIcon={creationLoading ? <CircularProgress size="1rem" /> : <AddToPhotos />}
-                      sx={{ height: '100%' }}
-                      variant="contained"
-                      onClick={() => addForm(addNewTitle)}
-                    >
-                      {creationLoading ? 'lädt' : 'erstellen'}
-                    </Button>
-                  </Grid>
+            <LayoutBox
+              key={'newForm'}
+              sx={{ height: '100%', backgroundColor: theme.palette.common.white, padding: cardPadding }}
+              content={false}
+            >
+              <Typography variant="h3" paragraph>
+                Neues Formular
+              </Typography>
+              <Typography paragraph>Erstellen Sie ein neues Formular</Typography>
+              <Grid container spacing={1}>
+                <Grid item xs>
+                  <TextField
+                    value={addNewTitle}
+                    sx={{ width: '100%' }}
+                    placeholder="Name des Formulars"
+                    onChange={(e) => setAddNewTitle(e.target.value)}
+                  />
                 </Grid>
-              </CardContent>
-            </MainCard>
+                <Grid item xs="auto">
+                  <Button
+                    disabled={!addNewTitle}
+                    startIcon={creationLoading ? <CircularProgress size="1rem" /> : <AddToPhotos />}
+                    sx={{ height: '100%' }}
+                    variant="contained"
+                    onClick={() => addForm(addNewTitle)}
+                  >
+                    {creationLoading ? 'lädt' : 'erstellen'}
+                  </Button>
+                </Grid>
+              </Grid>
+            </LayoutBox>
           </Grid>
         </Grid>
       </>
