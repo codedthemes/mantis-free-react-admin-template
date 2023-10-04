@@ -46,6 +46,12 @@ export default function ThemeCustomization({ children }) {
       typography: themeTypography,
       shape: {
         paddingButton: `${theme.spacing(1.5)} ${theme.spacing(2)}`,
+        paddingBoxMedium: {
+          xs: `${theme.spacing(2.5)} ${theme.spacing(3)}`,
+          sm: `${theme.spacing(3)} ${theme.spacing(4)}`,
+          md: `${theme.spacing(5)} ${theme.spacing(6)}`,
+          lg: `${theme.spacing(6)} ${theme.spacing(8)}`
+        },
         paddingBoxLarge: {
           xs: `${theme.spacing(4)} ${theme.spacing(4)}`,
           sm: `${theme.spacing(6)} ${theme.spacing(7)}`,

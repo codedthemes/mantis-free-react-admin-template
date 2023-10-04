@@ -20,7 +20,7 @@ const Annahmen = () => {
         <Divider sx={{ my: 2 }} />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h4">Allgemeine Annahmen</Typography>
+        <Typography variant="h2">Allgemeine Annahmen</Typography>
       </Grid>
       <Grid item xs={12} sm={6}>
         <Field
