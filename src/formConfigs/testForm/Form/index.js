@@ -10,6 +10,7 @@ import StundensatzRechnerValueUpdater from 'components/formComponents/Calculatio
 import Annahmen from './Annahmen';
 import { UserContext } from 'context/user';
 import Test from './Test';
+import Produktivstunden from './Produktivstunden';
 
 const TestForm = () => {
   const { activeFormData } = useContext(UserContext);
@@ -26,6 +27,8 @@ const TestForm = () => {
         <Form autoComplete="off">
           <StundensatzRechnerValueUpdater />
           <Annahmen />
+          <Divider sx={{ my: 4 }} />
+          <Produktivstunden />
           <Divider sx={{ my: 4 }} />
           <ButtonBar />
           <Divider sx={{ my: 4 }} />

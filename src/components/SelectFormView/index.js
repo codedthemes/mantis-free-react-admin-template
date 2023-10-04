@@ -27,7 +27,8 @@ const SelectFormView = () => {
 
   const formCardsDom = () => {
     const formIds = Object.keys(formsData);
-    const cardPadding = { sm: theme.spacing(2), md: theme.spacing(3), lg: theme.spacing(4), xl: theme.spacing(5) };
+    const cardPadding = { xs: theme.spacing(2), sm: theme.spacing(3), md: theme.spacing(3), lg: theme.spacing(4), xl: theme.spacing(5) };
+
     const formCards =
       formIds.map((formId) => {
         const formData = formsData[formId];
