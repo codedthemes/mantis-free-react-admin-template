@@ -205,6 +205,7 @@ const AuthRegister = () => {
                   </Button>
                 </AnimateButton>
               </Grid>
+              {/*
               <Grid item xs={12}>
                 <Divider>
                   <Typography variant="caption">Anmelden mit</Typography>
@@ -213,6 +214,7 @@ const AuthRegister = () => {
               <Grid item xs={12}>
                 <FirebaseSocial />
               </Grid>
+              */}
             </Grid>
           </Form>
         )}

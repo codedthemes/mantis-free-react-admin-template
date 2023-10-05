@@ -1,4 +1,3 @@
-
 import { createContext, useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery, useTheme } from '@mui/material';
@@ -15,6 +14,8 @@ import {
   db,
   onAuthStateChanged
 } from 'services/firebase';
+import { setPersistence, inMemoryPersistence, browserSessionPersistence } from 'firebase/auth';
+
 import { setDoc, doc, getDoc, getDocs, addDoc, collection, query, where, documentId, deleteDoc } from 'firebase/firestore';
 
 const initialUser = {
@@ -39,8 +40,8 @@ const initialStatusCodes = {
 };
 
 const initialLayout = {
-  drawerStatus: null,
-}
+  drawerStatus: null
+};
 
 export const UserContext = createContext(null);
 export const UserContextProvider = ({ children }) => {
@@ -52,7 +53,7 @@ export const UserContextProvider = ({ children }) => {
   const [formsData, setFormsData] = useState(initialFormsData);
   const [activeFormId, setActiveFormId] = useState(initialFormsData);
   const activeFormData = useMemo(() => formsData[activeFormId], [activeFormId, formsData]);
-  
+
   const [drawerStatus, setDrawerStatus] = useState(initialLayout.drawerStatus);
 
   const [status_loadingUser, setLoadingUser] = useState(initialStatusCodes.loadingUser);
@@ -126,8 +127,11 @@ export const UserContextProvider = ({ children }) => {
 
   const authUser = useCallback(
     async ({ emailCredentials }) => {
-      const { email, password } = emailCredentials;
+      const { email, password, keepSignedIn } = emailCredentials;
       setAuthUser(StatusCodes.PROCESSING);
+      const persistance = keepSignedIn ? inMemoryPersistence : browserSessionPersistence;
+      console.log('using pers', keepSignedIn, persistance);
+      await setPersistence(auth, persistance);
       await signInWithEmailAndPassword(auth, email, password)
         .then(async (userAuth) => {
           // store the user's information in the redux state
@@ -338,7 +342,7 @@ export const UserContextProvider = ({ children }) => {
         setActiveFormId,
         requestStatusCodes,
         drawerStatus,
-        setDrawerStatus,
+        setDrawerStatus
       }}
     >
       {children}

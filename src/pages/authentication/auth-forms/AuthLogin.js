@@ -51,12 +51,13 @@ const AuthLogin = () => {
   };
 
   const handleLogin = useCallback(
-    async ({ email, password }) => {
+    async ({ email, password, keepSignedIn }) => {
       // Sign in an existing user with Firebase
       await authUser({
         emailCredentials: {
           email: email,
-          password: password
+          password: password,
+          keepSignedIn: keepSignedIn
         }
       });
 
@@ -73,20 +74,24 @@ const AuthLogin = () => {
           const { errors } = validateFields(values, conditionalRules, validationRules);
           formikBag.setErrors(errors);
 
+          console.log('login values', values);
+
           if (Object.keys(errors).length === 0) {
             await handleLogin({
               email: values.email,
-              password: values.password
+              password: values.password,
+              keepSignedIn: values.keepSignedIn
             });
           }
           return;
         }}
       >
-        {({ values = {}, errors = {}, isSubmitting, handleChange, handleBlur, touched = {} }) => (
+        {({ values = {}, errors = {}, isSubmitting, handleChange, handleBlur, touched = {}, setFieldValue }) => (
           <Form autoComplete="off">
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={3}>
+                  {console.log('values', values)}
                   <Field
                     component={TextField}
                     id="email"
@@ -133,9 +138,10 @@ const AuthLogin = () => {
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={checked}
-                        onChange={(event) => setChecked(event.target.checked)}
-                        name="checked"
+                        id="keepSignedIn"
+                        name="keepSignedIn"
+                        checked={values.keepSignedIn}
+                        onChange={(e) => setFieldValue('keepSignedIn', !values.keepSignedIn)}
                         color="primary"
                         size="small"
                       />
@@ -159,6 +165,7 @@ const AuthLogin = () => {
                   </Button>
                 </AnimateButton>
               </Grid>
+              {/*
               <Grid item xs={12}>
                 <Divider>
                   <Typography variant="caption">Anmelden mit</Typography>
@@ -167,6 +174,7 @@ const AuthLogin = () => {
               <Grid item xs={12}>
                 <FirebaseSocial />
               </Grid>
+              */}
             </Grid>
           </Form>
         )}

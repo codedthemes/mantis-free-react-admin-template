@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import dayjs from 'dayjs';
 import { StatusCodes } from 'http-status-codes';
 
 // material-ui
-import { Grid, Button, TextField, Typography } from '@mui/material';
+import { Grid, Button, TextField, Typography, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import LayoutBox from 'components/LayoutBox';
 
@@ -13,6 +14,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
 import { UserContext } from 'context/user';
+import TextTeaserCard from 'components/TextTeaserCard/index';
 
 const SelectFormView = () => {
   const { createForm, deleteForm, formsData, requestStatusCodes } = useContext(UserContext);
@@ -34,31 +36,34 @@ const SelectFormView = () => {
         const formData = formsData[formId];
 
         return (
-          <Grid key={formId} item xs={12} sm={6} md={4}>
-            <LayoutBox
-              sx={{
-                height: '100%',
-                backgroundColor: theme.palette.common.white,
-                padding: cardPadding
-              }}
-              content={false}
-            >
-              <Typography variant="h3" paragraph>
-                {formData.title || 'Formular: ' + formData.id}
-              </Typography>
-              <Grid container spacing={1}>
-                <Grid item>
-                  <Button component={RouterLink} variant="contained" startIcon={<Edit />} to={`/form/${formId}`}>
-                    Bearbeiten
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button color="secondary" variant="contained" onClick={() => removeForm(formId)} sx={{ height: '100%' }}>
-                    <Delete style={{ color: theme.palette.common.white }} />
-                  </Button>
-                </Grid>
-              </Grid>
-            </LayoutBox>
+          <Grid key={formId} item xs={12} sm={6}>
+            <TextTeaserCard
+              grow
+              primaryText={
+                <Stack
+                  sx={{
+                    display: 'flex',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                  }}
+                  component="span"
+                >
+                  {formData.title || 'Formular: ' + formData.id}
+                  <Edit
+                    sx={{
+                      opacity: '0.2',
+                      fontSize: 55,
+                      margin: '0 -0.35em -0.35em'
+                    }}
+                  />
+                </Stack>
+              }
+              prefixText={`zuletzt bearbeitet: ${dayjs(formData.creationDate).format('DD.MM.YYYY')}`}
+              link={`/form/${formId}`}
+              color={theme.palette.primary.light}
+            />
           </Grid>
         );
       }) || [];
@@ -67,16 +72,13 @@ const SelectFormView = () => {
       <>
         <Grid container spacing={3} sx={{ marginBottom: theme.spacing(3) }}>
           {formCards}
-          <Grid item xs={12} sm={6} md={8}>
-            <LayoutBox
-              key={'newForm'}
-              sx={{ height: '100%', backgroundColor: theme.palette.common.white, padding: cardPadding }}
-              content={false}
+          <Grid item xs={12} sm={6}>
+            <TextTeaserCard
+              primaryText="Neues Formular"
+              prefixText="Erstellen Sie ein neues Formular"
+              color={theme.palette.common.white}
+              light
             >
-              <Typography variant="h3" paragraph>
-                Neues Formular
-              </Typography>
-              <Typography paragraph>Erstellen Sie ein neues Formular</Typography>
               <Grid container spacing={1}>
                 <Grid item xs>
                   <TextField
@@ -91,6 +93,7 @@ const SelectFormView = () => {
                     disabled={!addNewTitle}
                     startIcon={creationLoading ? <CircularProgress size="1rem" /> : <AddToPhotos />}
                     sx={{ height: '100%' }}
+                    color="primary"
                     variant="contained"
                     onClick={() => addForm(addNewTitle)}
                   >
@@ -98,7 +101,7 @@ const SelectFormView = () => {
                   </Button>
                 </Grid>
               </Grid>
-            </LayoutBox>
+            </TextTeaserCard>
           </Grid>
         </Grid>
       </>
