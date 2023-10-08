@@ -12,7 +12,7 @@ import {
   DialogContentText,
   ButtonGroup
 } from '@mui/material/index';
-import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, MinimizeOutlined } from '@mui/icons-material';
+import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, ClearOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 
 const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsable = true }) => {
@@ -49,7 +49,7 @@ const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsabl
             ) : (
               ''
             )}
-            {collapsable ? <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <MinimizeOutlined /> : <EditOutlined />}</Button> : ''}
+            {collapsable ? <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <ClearOutlined /> : <EditOutlined />}</Button> : ''}
           </ButtonGroup>
         </Stack>
         {collapsable ? <Collapse in={isOpen}>{children}</Collapse> : children}
