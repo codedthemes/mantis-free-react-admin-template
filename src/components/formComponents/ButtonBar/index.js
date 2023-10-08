@@ -10,6 +10,7 @@ import { UserContext } from 'context/user';
 import validateFields from 'utils/formUtils/validateFields';
 import validationRules from 'formConfigs/testForm/rules/validation/index';
 import conditionalRules from 'formConfigs/testForm/rules/conditional/index';
+import FormSection from '../FormSection/index';
 
 const ButtonBar = () => {
   const { values = {}, setErrors } = useFormikContext();
@@ -28,13 +29,11 @@ const ButtonBar = () => {
     }
   }, [values, saveForm, setErrors, enqueueSnackbar]);
   return (
-    <Grid container>
-      <Grid item>
-        <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" onClick={saveAction}>
-          {isSaving ? 'lädt' : 'speichern'}
-        </Button>
-      </Grid>
-    </Grid>
+    <FormSection collapsable={false}>
+      <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" onClick={saveAction}>
+        {isSaving ? 'lädt' : 'speichern'}
+      </Button>
+    </FormSection>
   );
 };
 

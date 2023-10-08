@@ -5,7 +5,7 @@ const LayoutBox = ({ children, sx, ...otherProps }) => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ ...sx, borderRadius: theme.shape.borderRadiusBox, boxShadow: theme.shadows[16] }} {...otherProps}>
+    <Box sx={{ ...sx, borderRadius: theme.shape.borderRadiusBox }} {...otherProps}>
       {children}
     </Box>
   );

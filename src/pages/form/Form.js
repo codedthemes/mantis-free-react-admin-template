@@ -44,15 +44,7 @@ const FormComponent = () => {
         bgColor={theme.palette.primary.light}
         headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
       />
-      <LayoutBox
-        sx={{
-          backgroundColor: theme.palette.common.white,
-          px: { xs: theme.spacing(4), md: theme.spacing(6), lg: theme.spacing(8) },
-          py: { xs: theme.spacing(4), md: theme.spacing(6), lg: theme.spacing(8) }
-        }}
-      >
-        {content}
-      </LayoutBox>
+      {content}
     </>
   );
 };

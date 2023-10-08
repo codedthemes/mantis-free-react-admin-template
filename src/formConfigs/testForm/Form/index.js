@@ -27,11 +27,8 @@ const TestForm = () => {
         <Form autoComplete="off">
           <StundensatzRechnerValueUpdater />
           <Annahmen />
-          <Divider sx={{ my: 4 }} />
           <Produktivstunden />
-          <Divider sx={{ my: 4 }} />
           <ButtonBar />
-          <Divider sx={{ my: 4 }} />
           <Test />
         </Form>
       )}
