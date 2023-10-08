@@ -23,7 +23,6 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, 
         padding: `${theme.spacing(4)} ${theme.spacing(5)}`,
         borderRadius: theme.shape.borderRadiusBox,
         transition: '.25s',
-        boxShadow: theme.shadows[16],
         justifyContent: 'flex-start',
         position: 'relative',
         overflow: 'hidden',
@@ -44,7 +43,7 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, 
         },
         '&:hover': {
           color: textColorHover,
-          boxShadow: theme.shadows[10],
+          boxShadow: theme.shadows[8],
 
           '&:after': link && {
             transform: 'rotate(20deg) translateY(-50%) translateX(-15%)'
