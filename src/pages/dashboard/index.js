@@ -22,7 +22,7 @@ const Dashboard = () => {
     return (
       <Grid container spacing={3}>
         <Grid item sm={12} md={6} xl={4}>
-          <TextTeaserCard primaryText="Formularen" prefixText="zu den" link="/form/overview" color={theme.palette.primary.dark} />
+          <TextTeaserCard primaryText="Formularen" prefixText="zu den" link="/office/form/overview" color={theme.palette.primary.dark} />
         </Grid>
         <Grid item sm={12} md={6} xl={4}>
           <TextTeaserCard primaryText="Mitarbeitern" prefixText="zu den" link="/" color={theme.palette.secondary.main} />

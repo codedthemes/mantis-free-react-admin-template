@@ -130,7 +130,6 @@ export const UserContextProvider = ({ children }) => {
       const { email, password, keepSignedIn } = emailCredentials;
       setAuthUser(StatusCodes.PROCESSING);
       const persistance = keepSignedIn ? inMemoryPersistence : browserSessionPersistence;
-      console.log('using pers', keepSignedIn, persistance);
       await setPersistence(auth, persistance);
       await signInWithEmailAndPassword(auth, email, password)
         .then(async (userAuth) => {

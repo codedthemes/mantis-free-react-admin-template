@@ -56,7 +56,7 @@ const MainLayout = () => {
                   top: '16px',
                   right: '16px',
                   backgroundColor: theme.palette.common.white,
-                  boxShadow: theme.shadows[5],
+                  boxShadow: theme.shadows[8],
                   padding: 1,
                   zIndex: '1000',
                   borderRadius: '500px',

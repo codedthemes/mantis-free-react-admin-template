@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
-import { Grid, TextField, Divider, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+import { Grid, TextField, Divider, MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import dayjs from 'dayjs';
 
 // formik
 import { Field, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
+import { UserContext } from 'context/user/index';
 
 const Annahmen = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
+  const { activeFormId, deleteForm } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const removeForm = async () => {
+    await deleteForm(activeFormId);
+    navigate('/office/form/overview');
+  };
 
   return (
     <>
       <FormSection collapsable={false}>
-        <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} />
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Button color="primary" variant="contained" onClick={removeForm}>
+              Formular Löschen
+            </Button>
+          </Grid>
+        </Grid>
       </FormSection>
       <FormSection title="Allgemeine Annahmen" defaultOpen={true}>
         <Grid container spacing={2}>
