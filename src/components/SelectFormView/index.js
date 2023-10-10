@@ -1,15 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { StatusCodes } from 'http-status-codes';
 
 // material-ui
-import { Grid, Button, TextField, Typography, Stack } from '@mui/material';
+import { Grid, Button, TextField, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import LayoutBox from 'components/LayoutBox';
 
 // icons
-import { Edit, Delete, AddToPhotos } from '@mui/icons-material';
+import { Edit, AddToPhotos } from '@mui/icons-material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
@@ -17,20 +15,17 @@ import { UserContext } from 'context/user';
 import TextTeaserCard from 'components/TextTeaserCard/index';
 
 const SelectFormView = () => {
-  const { createForm, deleteForm, formsData, requestStatusCodes } = useContext(UserContext);
+  const { createForm, formsData, requestStatusCodes } = useContext(UserContext);
   const theme = useTheme();
   const [addNewTitle, setAddNewTitle] = useState('');
   const addForm = () => {
     setAddNewTitle('');
     createForm({ title: addNewTitle });
   };
-  const removeForm = (formId) => deleteForm(formId);
   const creationLoading = requestStatusCodes.loadingForm === StatusCodes.PROCESSING;
 
   const formCardsDom = () => {
     const formIds = Object.keys(formsData);
-    const cardPadding = { xs: theme.spacing(2), sm: theme.spacing(3), md: theme.spacing(3), lg: theme.spacing(4), xl: theme.spacing(5) };
-
     const formCards =
       formIds.map((formId) => {
         const formData = formsData[formId];
@@ -61,7 +56,7 @@ const SelectFormView = () => {
                 </Stack>
               }
               prefixText={`zuletzt bearbeitet: ${dayjs(formData.creationDate).format('DD.MM.YYYY')}`}
-              link={`/form/${formId}`}
+              link={`/office/form/${formId}`}
               color={theme.palette.primary.light}
             />
           </Grid>

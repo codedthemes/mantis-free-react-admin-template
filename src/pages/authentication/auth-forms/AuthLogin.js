@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react';
+import React, { useContext, useCallback, useEffect } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 // material-ui
@@ -38,7 +38,7 @@ import { UserContext } from 'context/user';
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
-  const { authUser, requestStatusCodes } = useContext(UserContext);
+  const { user, authUser, requestStatusCodes } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -49,6 +49,13 @@ const AuthLogin = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  useEffect(() => {
+    if (user.uid) {
+      console.log('navigate', user.uid);
+      navigate('/office/dashboard');
+    }
+  }, [user.uid, navigate]);
 
   const handleLogin = useCallback(
     async ({ email, password, keepSignedIn }) => {
@@ -61,7 +68,7 @@ const AuthLogin = () => {
         }
       });
 
-      navigate('/');
+      navigate('/office/dashboard');
     },
     [navigate, authUser]
   );

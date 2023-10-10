@@ -2,7 +2,7 @@ import { Button, Stack, Typography, useTheme, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { darken } from '@mui/material/styles';
 
-const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, light, grow }) => {
+const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, light, grow, ratio, textAlign }) => {
   const theme = useTheme();
   const textColor = light ? theme.palette.text.primary : theme.palette.common.white;
   const textColorHover = textColor;
@@ -15,6 +15,7 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, 
       component={link && Link}
       to={link && link}
       sx={{
+        aspectRatio: ratio,
         width: '100%',
         height: grow && '100%',
         flexGrow: grow && '1',
@@ -31,7 +32,7 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, 
           position: 'absolute',
           top: '50%',
           left: '0',
-          height: '300%',
+          height: '1000%',
           width: '75%',
           background:
             'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.25) 80%, rgba(255,255,255,0.3) 100%)',
@@ -51,7 +52,7 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, 
         }
       }}
     >
-      <Stack direction="column" spacing={1} sx={{ width: '100%' }}>
+      <Stack direction="column" textAlign={textAlign || 'left'} spacing={1} sx={{ width: '100%' }}>
         {/* <Icon sx={{ fontSize: { xs: 32, md: 32, lg: 40 }, color: textColor }} /> */}
         <Typography
           paragraph

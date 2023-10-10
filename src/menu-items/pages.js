@@ -19,7 +19,7 @@ const pages = {
       id: 'forms',
       title: 'Formulare',
       type: 'item',
-      url: '/form/overview',
+      url: '/office/form/overview',
       matchingUrlRegexp: /\/form\/[^/]{8,}$/,
       icon: BackupTableOutlined
     }
