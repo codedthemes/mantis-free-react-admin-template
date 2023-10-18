@@ -23,7 +23,7 @@ const DrawerHeader = ({ open }) => {
           size="small"
           sx={{ height: 16, '& .MuiChip-label': { fontSize: '0.625rem', py: 0.25 } }}
           component="a"
-          href="https://github.com/codedthemes/mantis-free-react-admin-template"
+          href="https://lh3.googleusercontent.com/BQk0osbF_n6r45LMj430pdNMkm5ryLaHVfUCAt95LyfHHL8HKMZqapIGTuqTxXmuVeNb-25XN2xCgWh8eeyAfIg=w16383"
           target="_blank"
           clickable
         />
