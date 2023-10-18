@@ -6,27 +6,16 @@ import { Link as RouterLink } from 'react-router-dom';
 import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 // third-party
-import NumberFormat from 'react-number-format';
+// import NumberFormat from 'react-number-format';
 
 // project import
 import Dot from 'components/@extended/Dot';
+import { mockData } from './mockData';
 
-function createData(trackingNo, name, fat, carbs, protein) {
-  return { trackingNo, name, fat, carbs, protein };
-}
 
-const rows = [
-  createData(84564564, 'Camera Lens', 40, 2, 40570),
-  createData(98764564, 'Laptop', 300, 0, 180139),
-  createData(98756325, 'Mobile', 355, 1, 90989),
-  createData(98652366, 'Handset', 50, 1, 10239),
-  createData(13286564, 'Computer Accessories', 100, 1, 83348),
-  createData(86739658, 'TV', 99, 0, 410780),
-  createData(13256498, 'Keyboard', 125, 2, 70999),
-  createData(98753263, 'Mouse', 89, 2, 10570),
-  createData(98753275, 'Desktop', 185, 1, 98063),
-  createData(98753291, 'Chair', 100, 0, 14001)
-];
+const rows = 
+mockData
+;
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -58,36 +47,36 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: 'trackingNo',
+    id: 'registrationNumber',
     align: 'left',
     disablePadding: false,
-    label: 'Tracking No.'
+    label: 'Registration Number'
   },
   {
-    id: 'name',
+    id: 'student',
     align: 'left',
     disablePadding: true,
-    label: 'Product Name'
+    label: 'Student'
   },
   {
-    id: 'fat',
+    id: 'midTermExam',
     align: 'right',
     disablePadding: false,
-    label: 'Total Order'
+    label: 'Mid Term Exam'
   },
   {
-    id: 'carbs',
-    align: 'left',
+    id: 'finalExam',
+    align: 'right',
     disablePadding: false,
+    label: 'Final Exam'
+  },
+  {
+    id: 'score',
+    align: 'right',
+    disablePadding: false,
+    label: 'Score',
+  },
 
-    label: 'Status'
-  },
-  {
-    id: 'protein',
-    align: 'right',
-    disablePadding: false,
-    label: 'Total Amount'
-  }
 ];
 
 // ==============================|| ORDER TABLE - HEADER ||============================== //
@@ -129,11 +118,11 @@ const OrderStatus = ({ status }) => {
       break;
     case 1:
       color = 'success';
-      title = 'Approved';
+      title = 'Promoted';
       break;
     case 2:
       color = 'error';
-      title = 'Rejected';
+      title = `Repeating`;
       break;
     default:
       color = 'primary';
@@ -197,21 +186,20 @@ export default function OrderTable() {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   aria-checked={isItemSelected}
                   tabIndex={-1}
-                  key={row.trackingNo}
+                  key={row.registrationNumber}
                   selected={isItemSelected}
                 >
                   <TableCell component="th" id={labelId} scope="row" align="left">
                     <Link color="secondary" component={RouterLink} to="">
-                      {row.trackingNo}
+                      {row.registrationNumber}
                     </Link>
                   </TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="left">{row.student}</TableCell>
+                  <TableCell align="right">{row.midTermExam}</TableCell>
+                  <TableCell align="right">{row.finalExam}</TableCell>
+                  <TableCell align="right">{row.score}</TableCell>
                   <TableCell align="left">
-                    <OrderStatus status={row.carbs} />
-                  </TableCell>
-                  <TableCell align="right">
-                    <NumberFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
+                    <OrderStatus status={row.status} />
                   </TableCell>
                 </TableRow>
               );
