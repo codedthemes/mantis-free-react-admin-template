@@ -11,6 +11,7 @@ import Annahmen from './Annahmen';
 import { UserContext } from 'context/user';
 import Test from './Test';
 import Produktivstunden from './Produktivstunden';
+import Lohnnebenkostensatz from './Lohnnebenkostensatz';
 
 const TestForm = () => {
   const { activeFormData } = useContext(UserContext);
@@ -28,6 +29,7 @@ const TestForm = () => {
           <StundensatzRechnerValueUpdater />
           <Annahmen />
           <Produktivstunden />
+          <Lohnnebenkostensatz />
           <ButtonBar />
           <Test />
         </Form>
