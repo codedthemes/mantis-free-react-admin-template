@@ -1,7 +1,7 @@
 import React from 'react';
 
 // material-ui
-import { Typography, Grid, TextField, Box, useTheme } from '@mui/material';
+import { Typography, Grid, TextField, Box, useTheme, Divider } from '@mui/material';
 
 // formik
 import { Field, useFormikContext } from 'formik';
@@ -13,9 +13,9 @@ const Produktivstunden = () => {
 
   return (
     <FormSection title="Produktivstunden / Anwesenheitszeit">
-      <Grid container spacing={2}>
+      <Grid container spacing={{ xs: 2, md: 4 }}>
         <Grid item xs={12}>
-          <Typography variant="h2"></Typography>
+          <Divider sx={{ my: 2 }} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
@@ -112,7 +112,7 @@ const Produktivstunden = () => {
             <Typography variant="h4" sx={{ mb: 2 }}>
               Jahresarbeitszeit gesamt
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container spacing={{ xs: 2, md: 4 }}>
               <Grid item xs={12} md={6}>
                 <Field
                   component={TextField}

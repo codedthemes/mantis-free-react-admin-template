@@ -24,7 +24,7 @@ const Annahmen = () => {
   return (
     <>
       <FormSection collapsable={false}>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 2, md: 4 }} alignItems="flex-end">
           <Grid item xs={12} sm={6}>
             <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} />
           </Grid>
@@ -36,7 +36,7 @@ const Annahmen = () => {
         </Grid>
       </FormSection>
       <FormSection title="Allgemeine Annahmen" defaultOpen={true}>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ xs: 2, md: 4 }}>
           <Grid item xs={12}>
             <Divider sx={{ my: 2 }} />
           </Grid>
