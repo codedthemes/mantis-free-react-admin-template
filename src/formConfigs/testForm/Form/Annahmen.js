@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { Field, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import { UserContext } from 'context/user/index';
+import FormReadonlyValue from 'components/formComponents/FormReadonlyValue/index';
 
 const Annahmen = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
@@ -26,7 +27,8 @@ const Annahmen = () => {
       <FormSection collapsable={false}>
         <Grid container spacing={{ xs: 2, md: 4 }} alignItems="flex-end">
           <Grid item xs={12} sm={6}>
-            <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} />
+            {/* <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} /> */}
+            <FormReadonlyValue label="Letzte Änderung" value={dayjs(values.letzteAenderung).format('DD.MM.YYYY')} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Button color="primary" variant="contained" onClick={removeForm}>

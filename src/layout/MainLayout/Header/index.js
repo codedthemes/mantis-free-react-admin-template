@@ -14,7 +14,7 @@ const Header = () => {
 
   // common header
   const mainHeader = (
-    <Box sx={{ justifyContent: 'space-between', alignItems: 'center', display: 'flex', marginTop: theme.spacing(2) }}>
+    <Box sx={{ justifyContent: 'space-between', alignItems: 'center', display: 'flex' }}>
       <HeaderContent />
     </Box>
   );

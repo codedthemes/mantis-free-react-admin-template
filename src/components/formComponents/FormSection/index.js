@@ -20,6 +20,10 @@ const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsabl
   const [openPopup, setOpenPopup] = useState(false);
   const theme = useTheme();
 
+  const buttonStyles = {
+    aspectRatio: '1/1'
+  }
+
   return (
     <>
       <LayoutBox
@@ -30,26 +34,26 @@ const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsabl
           mb: { xs: theme.spacing(2), md: theme.spacing(3), lg: theme.spacing(4) }
         }}
       >
-        <Stack gap={2} direction="row" justifyContent="space-between" flexWrap="wrap">
+        <Stack gap={2} direction="row" justifyContent="space-between" flexWrap="wrap" alignItems="center" >
           <Typography variant="h2" sx={{ mr: 'auto' }}>
             {title}
           </Typography>
           <ButtonGroup color="primary" variant="outlined">
             {onDelete ? (
-              <Button onClick={() => setOpenPopup(true)}>
+              <Button sx={{ ...buttonStyles }} onClick={() => setOpenPopup(true)}>
                 <DeleteOutlineOutlined />
               </Button>
             ) : (
               ''
             )}
             {onAdd ? (
-              <Button onClick={onAdd}>
+              <Button sx={{ ...buttonStyles }} onClick={onAdd}>
                 <NoteAddOutlined />
               </Button>
             ) : (
               ''
             )}
-            {collapsable ? <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <ClearOutlined /> : <EditOutlined />}</Button> : ''}
+            {collapsable ? <Button sx={{ ...buttonStyles }} onClick={() => setIsOpen(!isOpen)}>{isOpen ? <ClearOutlined /> : <EditOutlined />}</Button> : ''}
           </ButtonGroup>
         </Stack>
         {collapsable ? <Collapse in={isOpen}>{children}</Collapse> : children}

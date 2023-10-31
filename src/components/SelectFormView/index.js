@@ -7,7 +7,7 @@ import { Grid, Button, TextField, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 // icons
-import { Edit, AddToPhotos } from '@mui/icons-material';
+import { Edit, ChevronRight } from '@mui/icons-material';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
@@ -20,7 +20,7 @@ const SelectFormView = () => {
   const [addNewTitle, setAddNewTitle] = useState('');
   const addForm = () => {
     setAddNewTitle('');
-    createForm({ title: addNewTitle });
+    createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}` });
   };
   const creationLoading = requestStatusCodes.loadingForm === StatusCodes.PROCESSING;
 
@@ -69,12 +69,17 @@ const SelectFormView = () => {
           {formCards}
           <Grid item xs={12} sm={6}>
             <TextTeaserCard
-              primaryText="Neues Formular"
-              prefixText="Erstellen Sie ein neues Formular"
+              onClick={addForm}
+              primaryText={
+                <Stack flexDirection="row" alignItems="center">
+                  Neues Formular <ChevronRight fontSize="large" />
+                </Stack>
+              }
+              prefixText="Erstellen Sie ein"
               color={theme.palette.common.white}
               light
             >
-              <Grid container spacing={1}>
+              {/* <Grid container spacing={1}>
                 <Grid item xs>
                   <TextField
                     value={addNewTitle}
@@ -86,7 +91,7 @@ const SelectFormView = () => {
                 <Grid item xs="auto">
                   <Button
                     disabled={!addNewTitle}
-                    startIcon={creationLoading ? <CircularProgress size="1rem" /> : <AddToPhotos />}
+                    startIcon={creationLoading ? <CircularProgress size="1rem" /> : <ChevronRight />}
                     sx={{ height: '100%' }}
                     color="primary"
                     variant="contained"
@@ -95,7 +100,7 @@ const SelectFormView = () => {
                     {creationLoading ? 'lädt' : 'erstellen'}
                   </Button>
                 </Grid>
-              </Grid>
+              </Grid> */}
             </TextTeaserCard>
           </Grid>
         </Grid>
