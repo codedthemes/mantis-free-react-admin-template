@@ -34,8 +34,12 @@ const MainDrawer = () => {
     return (
       <Drawer anchor={'left'} open={navOpen} onClose={() => setNavOpen(false)}>
         <Box
+          component="nav"
           sx={{
-            padding: theme.spacing(2),
+            padding: {
+              xs: theme.spacing(3),
+              sm: theme.spacing(5)
+            },
             backgroundColor: theme.palette.primary.main,
             height: '100%'
           }}

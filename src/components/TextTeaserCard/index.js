@@ -2,18 +2,19 @@ import { Button, Stack, Typography, useTheme, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { darken } from '@mui/material/styles';
 
-const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, light, grow, ratio, textAlign }) => {
+const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, light, grow, ratio, textAlign, onClick }) => {
   const theme = useTheme();
   const textColor = light ? theme.palette.text.primary : theme.palette.common.white;
   const textColorHover = textColor;
   const bgColor = `linear-gradient(to right, ${color}, ${darken(color, 0.15)})`;
 
-  const OuterComponent = link ? Button : Box;
+  const OuterComponent = link || onClick ? Button : Box;
 
   return (
     <OuterComponent
       component={link && Link}
       to={link && link}
+      onClick={onClick && onClick}
       sx={{
         aspectRatio: ratio,
         width: '100%',

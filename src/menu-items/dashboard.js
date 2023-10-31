@@ -12,7 +12,7 @@ const dashboard = {
       id: 'dashboard',
       title: 'Dashboard',
       type: 'item',
-      url: '/dashboard/default',
+      url: '/office/dashboard',
       icon: DashboardIcon,
       breadcrumbs: false
     }
