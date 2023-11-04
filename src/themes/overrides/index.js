@@ -21,21 +21,21 @@ import Typography from './Typography';
 // ==============================|| OVERRIDES - MAIN ||============================== //
 
 export default function ComponentsOverrides(theme) {
-    return merge(
-        Button(theme),
-        Badge(theme),
-        CardContent(),
-        Checkbox(theme),
-        Chip(theme),
-        IconButton(theme),
-        InputLabel(theme),
-        LinearProgress(),
-        Link(),
-        ListItemIcon(),
-        OutlinedInput(theme),
-        Tab(theme),
-        TableCell(theme),
-        Tabs(),
-        Typography()
-    );
+  return merge(
+    Button(theme),
+    Badge(theme),
+    CardContent(),
+    Checkbox(theme),
+    Chip(theme),
+    IconButton(theme),
+    InputLabel(theme),
+    LinearProgress(),
+    Link(),
+    ListItemIcon(),
+    OutlinedInput(theme),
+    Tab(theme),
+    TableCell(theme),
+    Tabs(),
+    Typography()
+  );
 }

@@ -6,11 +6,11 @@ import ScrollTop from 'components/ScrollTop';
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
 const App = () => (
-    <ThemeCustomization>
-        <ScrollTop>
-            <Routes />
-        </ScrollTop>
-    </ThemeCustomization>
+  <ThemeCustomization>
+    <ScrollTop>
+      <Routes />
+    </ScrollTop>
+  </ThemeCustomization>
 );
 
 export default App;
