@@ -33,7 +33,7 @@ const MainLayout = () => {
           maxWidth: '1920px',
           minHeight: '100vh',
           margin: '0 auto',
-          gridTemplateColumns: `auto 1fr`,
+          gridTemplateColumns: `1fr minmax(50%, 1000px) .5fr`,
           gridTemplateRows: `auto 1fr`,
           gap: theme.shape.layoutDesignGutter,
           paddingRight: theme.shape.layoutDesignGutter
@@ -95,6 +95,7 @@ const MainLayout = () => {
             gridRowEnd: '3',
             backgroundColor: theme.palette.primary.main,
             position: 'relative',
+            alignItems: 'flex-end',
             ':after': {
               content: '""',
               position: 'absolute',
