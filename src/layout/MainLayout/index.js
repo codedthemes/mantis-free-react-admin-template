@@ -33,10 +33,15 @@ const MainLayout = () => {
           maxWidth: '1920px',
           minHeight: '100vh',
           margin: '0 auto',
-          gridTemplateColumns: `1fr minmax(50%, 1000px) .5fr`,
+          gridTemplateColumns: {
+            sx: `0 auto 0`,
+            sm: `0 auto 0`,
+            md: `1fr minmax(50%, 1000px) 1fr`,
+            lg: `1fr minmax(50%, 1000px) .25fr`,
+            xl: `1fr minmax(50%, 1000px) .5fr`
+          },
           gridTemplateRows: `auto 1fr`,
-          gap: theme.shape.layoutDesignGutter,
-          paddingRight: theme.shape.layoutDesignGutter
+          gap: theme.shape.layoutDesignGutter
         }}
       >
         <Box
