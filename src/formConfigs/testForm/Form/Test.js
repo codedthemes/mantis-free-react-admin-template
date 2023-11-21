@@ -138,7 +138,7 @@ const Test = () => {
         <Grid item xs={12}>
           <Divider sx={{ my: 4 }} />
         </Grid>
-        <pre>{JSON.stringify({ values, errors }, null, 4)}</pre>
+        <pre style={{ maxWidth: '100%' }}>{JSON.stringify({ values, errors }, null, 4)}</pre>
       </Grid>
     </FormSection>
   );

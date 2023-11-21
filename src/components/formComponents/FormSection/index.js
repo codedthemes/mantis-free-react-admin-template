@@ -31,7 +31,8 @@ const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsabl
           backgroundColor: theme.palette.common.white,
           px: { xs: theme.spacing(4), md: theme.spacing(6), lg: theme.spacing(8) },
           py: { xs: theme.spacing(3), md: theme.spacing(5), lg: theme.spacing(6) },
-          mb: { xs: theme.spacing(2), md: theme.spacing(2.5), lg: theme.spacing(3) }
+          mb: { xs: theme.spacing(2), md: theme.spacing(2.5), lg: theme.spacing(3) },
+          overflow: 'hidden'
         }}
       >
         <Stack gap={2} direction="row" justifyContent="space-between" flexWrap="wrap" alignItems="center" >

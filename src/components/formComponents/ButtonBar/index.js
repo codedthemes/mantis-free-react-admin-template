@@ -34,7 +34,7 @@ const ButtonBar = () => {
   const barMarginReset = { xs: theme.spacing(-1), sm: theme.spacing(-2), md: theme.spacing(-3) };
 
   return (
-    <Stack direction="row" justifyContent="end" sx={{ position: 'sticky', marginLeft: barMarginReset, borderTopRightRadius: theme.shape.borderRadiusBox, borderTopLeftRadius: theme.shape.borderRadiusBox, bottom: '0', right: '0', paddingX: theme.spacing(3), paddingY: theme.spacing(2), backgroundColor: theme.palette.common.white, width: barWidth, zIndex: '1000', boxShadow: theme.customShadows.z2 }}>
+    <Stack direction="row" justifyContent="end" sx={{ position: 'sticky', marginLeft: barMarginReset, borderTopRightRadius: theme.shape.borderRadiusBox, borderTopLeftRadius: theme.shape.borderRadiusBox, bottom: '0', right: '0', paddingX: { xs: theme.spacing(1.5), sm: theme.spacing(3) }, paddingY: { xs: theme.spacing(1.5), sm: theme.spacing(2) }, backgroundColor: theme.palette.common.white, width: barWidth, zIndex: '1000', boxShadow: theme.customShadows.z2 }}>
       <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" onClick={saveAction}>
         {isSaving ? 'lädt' : 'speichern'}
       </Button>
