@@ -1,10 +1,12 @@
 // ==============================|| OVERRIDES - INPUT LABEL ||============================== //
 
-export default function MuiFormControl() {
+export default function MuiFormControl(theme) {
   return {
     MuiFormControl: {
       styleOverrides: {
-        root: {}
+        root: {
+          marginBottom: theme.spacing(3)
+        }
       }
     }
   };

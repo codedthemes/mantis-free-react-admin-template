@@ -16,7 +16,7 @@ const Start = () => {
 
   const bottomBoxRendering = useCallback(() => {
     return (
-      <Grid container spacing={3}>
+      <Grid container spacing={{ xs: 3, md: 5, lg: 8 }}>
         <Grid item sm={12} md={6} xl={4}>
           <TextTeaserCard
             primaryText="Login"

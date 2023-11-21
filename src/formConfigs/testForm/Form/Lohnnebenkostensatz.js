@@ -13,9 +13,9 @@ const Lohnnebenkostensatz = () => {
 
   return (
     <FormSection title="Lohnnebenkostensatz">
-      <Grid container spacing={{ xs: 2, md: 4 }}>
+      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
         <Grid item xs={12}>
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ mt: 2, mb: 4 }} />
         </Grid>
         <Grid item xs={12}>
           <Typography variant="h3">Produktive Kapazität (pro Jahr)</Typography>
@@ -158,7 +158,7 @@ const Lohnnebenkostensatz = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Divider />
+          <Divider sx={{ my: 4 }}/>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
@@ -179,7 +179,7 @@ const Lohnnebenkostensatz = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Divider />
+          <Divider sx={{ my: 4 }}/>
         </Grid>
 
         <Grid item xs={12}>
@@ -229,7 +229,7 @@ const Lohnnebenkostensatz = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Divider />
+          <Divider sx={{ my: 4 }}/>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field

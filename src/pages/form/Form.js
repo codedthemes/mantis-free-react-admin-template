@@ -41,7 +41,7 @@ const FormComponent = () => {
     <>
       <ColoredSection
         backLink="/office/form/overview"
-        bgColor={theme.palette.primary.light}
+        bgColor={theme.palette.primary[800]}
         headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
       />
       {content}

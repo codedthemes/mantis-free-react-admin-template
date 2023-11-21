@@ -55,18 +55,19 @@ export default function ThemeCustomization({ children }) {
         paddingBoxLarge: {
           xs: `${theme.spacing(4)} ${theme.spacing(4)}`,
           sm: `${theme.spacing(6)} ${theme.spacing(7)}`,
-          md: `${theme.spacing(9)} ${theme.spacing(11)}`,
-          lg: `${theme.spacing(10)} ${theme.spacing(12)}`
+          md: `${theme.spacing(8)} ${theme.spacing(10)}`,
+          lg: `${theme.spacing(9)} ${theme.spacing(11)}`
         },
-        borderRadius: theme.spacing(1),
-        borderRadiusBox: theme.spacing(2),
+        borderRadius: theme.spacing(0.5),
+        borderRadiusBox: theme.spacing(0.75),
         drawerWidth: {
-          xs: '340px',
-          lg: '400px',
-          xl: '480px'
+          xs: '320px',
+          lg: '340px',
+          xl: '360px'
         },
         drawerWidthCondensed: '80px',
         layoutDesignGutter: { xs: theme.spacing(3), sm: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(12) },
+        layoutDesignGutterReset: { xs: theme.spacing(-3), sm: theme.spacing(-4), md: theme.spacing(-5), lg: theme.spacing(-12) },
         layoutDesignGutterOuter: { xs: theme.spacing(3), sm: theme.spacing(4), md: theme.spacing(4), lg: theme.spacing(5) }
       }
     }),

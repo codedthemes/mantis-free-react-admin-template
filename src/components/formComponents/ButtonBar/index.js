@@ -2,21 +2,22 @@ import React, { useCallback, useContext } from 'react';
 import { useFormikContext } from 'formik';
 import { useSnackbar } from 'notistack';
 import { StatusCodes } from 'http-status-codes';
-import { Grid, Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Save } from '@mui/icons-material';
+import { useTheme } from '@mui/material/styles';
 import { UserContext } from 'context/user';
 
 import validateFields from 'utils/formUtils/validateFields';
 import validationRules from 'formConfigs/testForm/rules/validation/index';
 import conditionalRules from 'formConfigs/testForm/rules/conditional/index';
-import FormSection from '../FormSection/index';
 
 const ButtonBar = () => {
   const { values = {}, setErrors } = useFormikContext();
   const { saveForm, requestStatusCodes } = useContext(UserContext);
   const isSaving = requestStatusCodes.saveForm === StatusCodes.PROCESSING;
   const { enqueueSnackbar } = useSnackbar();
+  const theme = useTheme();
 
   const saveAction = useCallback(async () => {
     const { errors } = validateFields(values, conditionalRules, validationRules);
@@ -28,12 +29,16 @@ const ButtonBar = () => {
       enqueueSnackbar('Formular erfolgreich gespeichert.', { variant: 'success' });
     }
   }, [values, saveForm, setErrors, enqueueSnackbar]);
+
+  const barWidth = { xs: `calc(100% + ${theme.spacing(2)})`, sm: `calc(100% + ${theme.spacing(4)})`, md: `calc(100% + ${theme.spacing(6)})` };
+  const barMarginReset = { xs: theme.spacing(-1), sm: theme.spacing(-2), md: theme.spacing(-3) };
+
   return (
-    <FormSection collapsable={false}>
+    <Stack direction="row" justifyContent="end" sx={{ position: 'sticky', marginLeft: barMarginReset, borderTopRightRadius: theme.shape.borderRadiusBox, borderTopLeftRadius: theme.shape.borderRadiusBox, bottom: '0', right: '0', paddingX: theme.spacing(3), paddingY: theme.spacing(2), backgroundColor: theme.palette.common.white, width: barWidth, zIndex: '1000', boxShadow: theme.customShadows.z2 }}>
       <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" onClick={saveAction}>
         {isSaving ? 'lädt' : 'speichern'}
       </Button>
-    </FormSection>
+    </Stack>
   );
 };
 

@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // material-ui
-import { Grid, TextField, Divider, MenuItem, Select, FormControl, InputLabel, Button } from '@mui/material';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { Grid, TextField, Divider, MenuItem, Select, FormControl, InputLabel, Button, Stack } from '@mui/material';
 import dayjs from 'dayjs';
 
 // formik
@@ -25,22 +24,18 @@ const Annahmen = () => {
   return (
     <>
       <FormSection collapsable={false}>
-        <Grid container spacing={{ xs: 2, md: 4 }} alignItems="flex-end">
-          <Grid item xs={12} sm={6}>
-            {/* <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} /> */}
-            <FormReadonlyValue label="Letzte Änderung" value={dayjs(values.letzteAenderung).format('DD.MM.YYYY')} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Button color="primary" variant="contained" onClick={removeForm}>
-              Formular Löschen
-            </Button>
-          </Grid>
-        </Grid>
+        <Stack justifyContent="space-between" alignItems="center" direction="row" sx={{ width: '100%' }}>
+          {/* <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} /> */}
+          <FormReadonlyValue label="Letzte Änderung" value={dayjs(values.letzteAenderung).format('DD.MM.YYYY')} />
+          <Button color="primary" variant="contained" onClick={removeForm}>
+            Formular Löschen
+          </Button>
+        </Stack>
       </FormSection>
       <FormSection title="Allgemeine Annahmen" defaultOpen={true}>
-        <Grid container spacing={{ xs: 2, md: 4 }}>
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
           <Grid item xs={12}>
-            <Divider sx={{ my: 2 }} />
+            <Divider sx={{ mt: 2, mb: 4 }} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <Field
@@ -78,7 +73,6 @@ const Annahmen = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12}></Grid>
           <Grid item xs={12} sm={6}>
             <Field
               component={TextField}

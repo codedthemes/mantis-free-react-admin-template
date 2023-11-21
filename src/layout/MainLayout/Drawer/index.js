@@ -52,7 +52,10 @@ const MainDrawer = () => {
   }
 
   return (
-    <Box component="nav" sx={{ width: drawerWidth, padding: theme.shape.layoutDesignGutter, position: 'sticky', top: '0' }}>
+    <Box component="nav" sx={{ width: drawerWidth, padding: {
+      xs: theme.spacing(3),
+      sm: theme.spacing(5)
+    }, position: 'sticky', top: '0' }}>
       {drawerHeader}
       {drawerContent}
     </Box>

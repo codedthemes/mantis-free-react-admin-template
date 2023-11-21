@@ -1,11 +1,12 @@
 import React from 'react';
 
 // material-ui
-import { Typography, Grid, TextField, Box, useTheme, Divider } from '@mui/material';
+import { Typography, Grid, TextField, useTheme, Divider } from '@mui/material';
 
 // formik
 import { Field, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
+import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 
 const Produktivstunden = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
@@ -13,9 +14,9 @@ const Produktivstunden = () => {
 
   return (
     <FormSection title="Produktivstunden / Anwesenheitszeit">
-      <Grid container spacing={{ xs: 2, md: 4 }}>
+      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
         <Grid item xs={12}>
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ mt: 2, mb: 4 }} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
@@ -49,20 +50,26 @@ const Produktivstunden = () => {
             sx={{ mb: 2 }}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            InputProps={{
-              readOnly: true
-            }}
-            id="durchschnittArbeitsstundenProTag"
-            name="durchschnittArbeitsstundenProTag"
-            label="Ø Arbeitsstunden pro Tag"
-            value={values.durchschnittArbeitsstundenProTag}
-            sx={{ mb: 2 }}
-          />
+        <Grid item xs={12}>
+          <ReadOnlyBox>
+            <Grid container spacing={{ xs: 2, md: 4 }}>
+              <Grid item xs={12} md={6}>
+                <Field
+                  component={TextField}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  id="durchschnittArbeitsstundenProTag"
+                  name="durchschnittArbeitsstundenProTag"
+                  label="Ø Arbeitsstunden pro Tag"
+                  value={values.durchschnittArbeitsstundenProTag}
+                  sx={{ mb: 2 }}
+                />
+              </Grid>
+            </Grid>
+          </ReadOnlyBox>
         </Grid>
-        <Grid item xs={12} sm={6}></Grid>
+        <Grid item xs={12} sm={6}>&nbsp;</Grid>
         <Grid item xs={12}>
           <Typography variant="h3">Ermittlung der Anwesenheitszeit</Typography>
         </Grid>
@@ -101,17 +108,7 @@ const Produktivstunden = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Box
-            sx={{
-              padding: theme.shape.paddingBoxMedium,
-              border: `1px solid ${theme.palette.grey[300]}`,
-              borderRadius: theme.shape.borderRadiusBox,
-              height: '100%'
-            }}
-          >
-            <Typography variant="h4" sx={{ mb: 2 }}>
-              Jahresarbeitszeit gesamt
-            </Typography>
+          <ReadOnlyBox title={"Jahresarbeitszeit gesamt"}>
             <Grid container spacing={{ xs: 2, md: 4 }}>
               <Grid item xs={12} md={6}>
                 <Field
@@ -140,7 +137,7 @@ const Produktivstunden = () => {
                 />
               </Grid>
             </Grid>
-          </Box>
+          </ReadOnlyBox>
         </Grid>
       </Grid>
     </FormSection>

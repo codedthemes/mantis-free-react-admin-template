@@ -124,7 +124,11 @@ const MainLayout = () => {
             gridRowStart: '2',
             gridRowEnd: '3',
             backgroundColor: 'transparent',
-            paddingBottom: theme.shape.layoutDesignGutter
+            marginTop: {
+              sm: theme.spacing(-4),
+              md: theme.spacing(-6),
+              lg: theme.spacing(-8)
+            }
           }}
         >
           <Outlet />

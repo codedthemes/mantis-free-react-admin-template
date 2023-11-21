@@ -30,8 +30,8 @@ const TestForm = () => {
           <Annahmen />
           <Produktivstunden />
           <Lohnnebenkostensatz />
-          <ButtonBar />
           <Test />
+          <ButtonBar />
         </Form>
       )}
     </Formik>

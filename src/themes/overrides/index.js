@@ -8,7 +8,9 @@ import CardContent from './CardContent';
 import Checkbox from './Checkbox';
 import Chip from './Chip';
 import IconButton from './IconButton';
+import Divider from './Divider';
 import InputLabel from './InputLabel';
+import Input from './Input';
 import FormControl from './FormControl';
 import TextField from './TextField';
 import MuiCard from './MuiCard';
@@ -32,11 +34,13 @@ export default function ComponentsOverrides(theme) {
     Checkbox(theme),
     Chip(theme),
     IconButton(theme),
-    FormControl(),
+    FormControl(theme),
     TextField(),
     FormHelperText(),
     MuiCard(),
+    Divider(theme),
     InputLabel(theme),
+    Input(theme),
     LinearProgress(),
     Link(),
     ListItemIcon(),

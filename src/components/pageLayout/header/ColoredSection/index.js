@@ -24,20 +24,22 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
         }}
       >
         <Grid container justifyContent="center">
-          <Grid item xs={12} sm={10} lg={12}>
+          <Grid item xs={12} sm={12} lg={12}>
             <Stack flexDirection={{ xs: 'column', lg: 'row' }}>
               <Stack sx={{ order: { xs: 1, lg: 0 } }} spacing={{ xs: 2, sm: 3, lg: 4 }}>
-                <Stack direction="row" alignItems="center" flexWrap="wrap" useFlexGap spacing={{ xs: 1.5, sm: 2 }}>
+                <Stack direction="row" alignItems="center" flexWrap={{ xs: 'wrap', sm: 'nowrap' }} useFlexGap spacing={{ xs: 1.5, sm: 2, lg: 3, xl: 4 }}>
                   {backLink && (
                     <Button
                       sx={{
+                        aspectRatio: '1/1',
                         minWidth: '0px',
-                        height: '3rem',
-                        width: '3rem',
+                        height: '2.75rem',
+                        width: '2.75rem',
                         backgroundColor: fgColor,
                         alignSelf: 'flex-start',
-                        marginTop: { xs: '0.2rem', md: '0.35rem', lg: '0.5rem' },
-                        '&:hover': { backgroundColor: fgColor, opacity: '0.8' }
+                        marginTop: { xs: '0.2rem', md: '0.4rem', lg: '0.7rem' },
+                        '&:hover': { backgroundColor: fgColor, opacity: '0.8' },
+                        flexShrink: "0"
                       }}
                       variant="contained"
                       component={Link}

@@ -9,6 +9,8 @@ const StundensatzRechnerValueUpdater = () => {
       setFieldValue('durchschnittArbeitsstundenProTag', durchschnittArbeitsstundenProTag);
     }
   }, [values.wochenarbeitszeit, values.wochenarbeitstage, setFieldValue]);
+
+
   useEffect(() => {
     if (
       values.wochenarbeitszeit !== undefined &&
@@ -22,8 +24,8 @@ const StundensatzRechnerValueUpdater = () => {
       const jahresarbeitszzeitInTagen = values.tageProJahr - values.wochenendtageProJahr;
       const jahresArbeitszeitInStunden = arbeitsstundenProJahr - wochenendArbeitsstundenProJahr;
 
-      setFieldValue('jahresArbeitszeitInStunden', jahresarbeitszzeitInTagen);
-      setFieldValue('jahresarbeitszzeitInTagen', jahresArbeitszeitInStunden);
+      setFieldValue('jahresArbeitszeitInStunden', jahresArbeitszeitInStunden);
+      setFieldValue('jahresarbeitszzeitInTagen', jahresarbeitszzeitInTagen);
     }
   }, [
     values.wochenarbeitszeit,
@@ -33,6 +35,12 @@ const StundensatzRechnerValueUpdater = () => {
     values.wochenendtageProJahr,
     setFieldValue
   ]);
+
+
+  useEffect(() => {
+
+  }, [setFieldValue]);
+
   return <React.Fragment />;
 };
 
