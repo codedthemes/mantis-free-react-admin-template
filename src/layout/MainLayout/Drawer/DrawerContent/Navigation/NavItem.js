@@ -10,7 +10,6 @@ import { ListItemButton, ListItemIcon, ListItem } from '@mui/material';
 
 const NavItem = ({ item }) => {
   const theme = useTheme();
-  console.log('item', item);
   const { pathname } = useLocation();
   // const { drawerOpen } = useSelector((state) => state.menu);
   const drawerOpen = true;
@@ -49,7 +48,7 @@ const NavItem = ({ item }) => {
           color: textColor,
           padding: theme.shape.paddingButton,
           marginBottom: theme.spacing(1),
-          borderRadius: theme.shape.borderRadius,
+          borderRadius: theme.shape.borderRadius / 4,
           transition: '.25s',
           '&:after': {
             content: '""',

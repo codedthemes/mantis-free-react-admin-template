@@ -104,6 +104,8 @@ const AuthLogin = () => {
                     id="email"
                     name="email"
                     label="E-Mail"
+                    type="email"
+                    autoComplete="email"
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -115,6 +117,7 @@ const AuthLogin = () => {
                     id="password"
                     name="password"
                     label="Passwort"
+                    autoComplete="password"
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}

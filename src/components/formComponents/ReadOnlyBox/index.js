@@ -22,8 +22,8 @@ const ReadOnlyBox = ({ children, title }) => {
   return (
     <>
       <Button color="primary" variant={isOpen ? "contained" : "outlined"} sx={{ paddingX: 1, paddingY: 0.5, minWidth: 0, display: 'inline-flex', gap: 1, alignItems: 'center' }} onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <VisibilityIcon /> : <VisibilityOffIcon />} Zusatzberechnungen
-        </Button>
+        {isOpen ? <VisibilityIcon /> : <VisibilityOffIcon />} {title || 'Zusatzinformationen'}
+      </Button>
       <Collapse in={isOpen}>
         <Box
           sx={{

@@ -127,6 +127,8 @@ const AuthRegister = () => {
                   id="email"
                   name="email"
                   label="E-Mail"
+                  type="email"
+                  autoComplete="email"
                   required
                   value={values.email}
                   onChange={handleChange}
@@ -141,6 +143,7 @@ const AuthRegister = () => {
                   id="password"
                   name="password"
                   label="Passwort"
+                  autoComplete="password"
                   required
                   value={values.password}
                   onChange={(e) => {

@@ -6,7 +6,7 @@ export default function InputLabel(theme) {
       styleOverrides: {
         root: {
           color: theme.palette.grey[900],
-          fontSize: '1.1rem',
+          fontSize: '1rem',
           transition: 'unset',
           fontWeight: 600,
           position: 'relative',
@@ -16,7 +16,10 @@ export default function InputLabel(theme) {
           left: 'unset',
           maxWidth: '100%',
           marginBottom: theme.spacing(0.7),
-          padding: 'none'
+          padding: 'none',
+          textOverflow: 'initial',
+          whiteSpace: 'wrap',
+          hyphens: 'auto'
         }
       }
     }

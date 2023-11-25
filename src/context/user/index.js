@@ -263,6 +263,7 @@ export const UserContextProvider = ({ children }) => {
         await setDoc(
           doc(db, 'forms', activeFormId),
           {
+            title: values.formTitle,
             values: JSON.stringify({ ...values, lastChanged: dayjs().valueOf() }) || ''
           },
           { merge: true }

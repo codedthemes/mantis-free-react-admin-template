@@ -59,12 +59,6 @@ const Profile = ({ variant }) => {
     setOpen(false);
   };
 
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   const iconBackColorClosed = theme.palette.primary.main;
   const iconBackColorOpen = theme.palette.primary.light;
   const iconColorClosed = theme.palette.common.white;

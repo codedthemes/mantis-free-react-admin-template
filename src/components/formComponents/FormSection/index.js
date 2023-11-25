@@ -15,14 +15,14 @@ import {
 import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, ClearOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 
-const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsable = true }) => {
+const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
   const [openPopup, setOpenPopup] = useState(false);
   const theme = useTheme();
 
   const buttonStyles = {
     aspectRatio: '1/1'
-  }
+  };
 
   return (
     <>
@@ -35,10 +35,17 @@ const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsabl
           overflow: 'hidden'
         }}
       >
-        <Stack gap={2} direction="row" justifyContent="space-between" flexWrap="wrap" alignItems="center" >
-          <Typography variant="h2" sx={{ mr: 'auto' }}>
-            {title}
-          </Typography>
+        <Stack gap={2} direction="row" justifyContent="space-between" flexWrap={{ xs: 'wrap', sm: 'nowrap' }} alignItems="flex-start">
+          <Stack>
+            <Typography variant="h2" sx={{ mr: 'auto' }}>
+              {title}
+            </Typography>
+            {description && (
+              <Typography variant="text" sx={{ mr: 'auto', mt: 1 }}>
+                {description}
+              </Typography>
+            )}
+          </Stack>
           <ButtonGroup color="primary" variant="outlined">
             {onDelete ? (
               <Button sx={{ ...buttonStyles }} onClick={() => setOpenPopup(true)}>
@@ -54,7 +61,13 @@ const FormSection = ({ children, title, onAdd, onDelete, defaultOpen, collapsabl
             ) : (
               ''
             )}
-            {collapsable ? <Button sx={{ ...buttonStyles }} onClick={() => setIsOpen(!isOpen)}>{isOpen ? <ClearOutlined /> : <EditOutlined />}</Button> : ''}
+            {collapsable ? (
+              <Button sx={{ ...buttonStyles }} onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <ClearOutlined /> : <EditOutlined />}
+              </Button>
+            ) : (
+              ''
+            )}
           </ButtonGroup>
         </Stack>
         {collapsable ? <Collapse in={isOpen}>{children}</Collapse> : children}

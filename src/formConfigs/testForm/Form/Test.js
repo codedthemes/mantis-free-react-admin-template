@@ -26,6 +26,7 @@ const Test = () => {
             id="email"
             name="email"
             label="E-Mail"
+            type="email"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}

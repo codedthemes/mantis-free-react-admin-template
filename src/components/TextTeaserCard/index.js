@@ -61,7 +61,7 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, 
             fontSize: 24,
             lineHeight: '1em',
             textTransform: 'none',
-            fontWeight: theme.typography.fontWeightBoldest,
+            fontWeight: theme.typography.fontWeightBolder,
             margin: '0px',
             color: textColor
           }}

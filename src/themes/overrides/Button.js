@@ -15,7 +15,7 @@ export default function Button(theme) {
       styleOverrides: {
         root: {
           fontWeight: 400,
-          padding: `${theme.spacing(1)} ${theme.spacing(2)}`
+          padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
         },
         contained: {
           ...disabledStyle

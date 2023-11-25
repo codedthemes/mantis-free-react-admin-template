@@ -1,12 +1,10 @@
 import React, { useContext, useCallback } from 'react';
 
-// material-ui
-import { Grid, Divider } from '@mui/material';
-
 // project import
 import ButtonBar from 'components/formComponents/ButtonBar/index';
-import { Formik, Form, FieldArray, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import StundensatzRechnerValueUpdater from 'components/formComponents/CalculationUpdater/index';
+import Start from './Start';
 import Annahmen from './Annahmen';
 import { UserContext } from 'context/user';
 import Test from './Test';
@@ -20,6 +18,7 @@ const TestForm = () => {
   }, []);
   const initialValues = {
     ...(activeFormData.values || {}),
+    formTitle: activeFormData.title,
     letzteAenderung: activeFormData?.values?.lastChanged
   };
   return (
@@ -27,6 +26,7 @@ const TestForm = () => {
       {() => (
         <Form autoComplete="off">
           <StundensatzRechnerValueUpdater />
+          <Start />
           <Annahmen />
           <Produktivstunden />
           <Lohnnebenkostensatz />

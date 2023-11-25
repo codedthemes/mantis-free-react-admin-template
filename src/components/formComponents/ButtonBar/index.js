@@ -30,11 +30,32 @@ const ButtonBar = () => {
     }
   }, [values, saveForm, setErrors, enqueueSnackbar]);
 
-  const barWidth = { xs: `calc(100% + ${theme.spacing(2)})`, sm: `calc(100% + ${theme.spacing(4)})`, md: `calc(100% + ${theme.spacing(6)})` };
+  const barWidth = {
+    xs: `calc(100% + ${theme.spacing(2)})`,
+    sm: `calc(100% + ${theme.spacing(4)})`,
+    md: `calc(100% + ${theme.spacing(6)})`
+  };
   const barMarginReset = { xs: theme.spacing(-1), sm: theme.spacing(-2), md: theme.spacing(-3) };
 
   return (
-    <Stack direction="row" justifyContent="end" sx={{ position: 'sticky', marginLeft: barMarginReset, borderTopRightRadius: theme.shape.borderRadiusBox, borderTopLeftRadius: theme.shape.borderRadiusBox, bottom: '0', right: '0', paddingX: { xs: theme.spacing(1.5), sm: theme.spacing(3) }, paddingY: { xs: theme.spacing(1.5), sm: theme.spacing(2) }, backgroundColor: theme.palette.common.white, width: barWidth, zIndex: '1000', boxShadow: theme.customShadows.z2 }}>
+    <Stack
+      direction="row"
+      justifyContent="end"
+      sx={{
+        position: 'sticky',
+        marginLeft: barMarginReset,
+        borderTopRightRadius: theme.shape.borderRadius * 4,
+        borderTopLeftRadius: theme.shape.borderRadius * 4,
+        bottom: '0',
+        right: '0',
+        paddingX: { xs: theme.spacing(1.5), sm: theme.spacing(3) },
+        paddingY: { xs: theme.spacing(1.5), sm: theme.spacing(2) },
+        backgroundColor: theme.palette.common.white,
+        width: barWidth,
+        zIndex: '1000',
+        boxShadow: theme.customShadows.z2
+      }}
+    >
       <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" onClick={saveAction}>
         {isSaving ? 'lädt' : 'speichern'}
       </Button>
