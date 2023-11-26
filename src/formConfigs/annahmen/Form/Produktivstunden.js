@@ -7,6 +7,7 @@ import { Typography, Grid, TextField, useTheme, Divider } from '@mui/material';
 import { Field, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
+import formFloat from 'utils/formUtils/formFloat';
 
 const Produktivstunden = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
@@ -65,7 +66,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_durchschnittArbeitsstundenProTag"
                   name="annahmen_produktivstunden_durchschnittArbeitsstundenProTag"
                   label="Ø Arbeitsstunden pro Tag"
-                  value={values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag}
+                  value={formFloat(values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -124,7 +125,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_jahresarbeitszzeitInTagen"
                   name="annahmen_produktivstunden_jahresarbeitszzeitInTagen"
                   label="Jahresarbeitszeit in Tagen"
-                  value={values.annahmen_produktivstunden_jahresarbeitszzeitInTagen}
+                  value={formFloat(values.annahmen_produktivstunden_jahresarbeitszzeitInTagen, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -137,7 +138,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_jahresArbeitszeitInStunden"
                   name="annahmen_produktivstunden_jahresArbeitszeitInStunden"
                   label="Jahresarbeitszeit in Stunden"
-                  value={values.annahmen_produktivstunden_jahresArbeitszeitInStunden}
+                  value={formFloat(values.annahmen_produktivstunden_jahresArbeitszeitInStunden, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -248,7 +249,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_summeNichtanwesenheitInTagen"
                   name="annahmen_produktivstunden_summeNichtanwesenheitInTagen"
                   label="Summe Nichtanwesenheit in Tagen"
-                  value={values.annahmen_produktivstunden_summeNichtanwesenheitInTagen}
+                  value={formFloat(values.annahmen_produktivstunden_summeNichtanwesenheitInTagen, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -261,7 +262,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_summeNichtanwesenheitInStunden"
                   name="annahmen_produktivstunden_summeNichtanwesenheitInStunden"
                   label="Summe Nichtanwesenheit in Stunden"
-                  value={values.annahmen_produktivstunden_summeNichtanwesenheitInStunden}
+                  value={formFloat(values.annahmen_produktivstunden_summeNichtanwesenheitInStunden, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -280,7 +281,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_anwesenheitszeitInTagen"
                   name="annahmen_produktivstunden_anwesenheitszeitInTagen"
                   label="Summe Anwesenheit in Tagen"
-                  value={values.annahmen_produktivstunden_anwesenheitszeitInTagen}
+                  value={formFloat(values.annahmen_produktivstunden_anwesenheitszeitInTagen, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -293,7 +294,7 @@ const Produktivstunden = () => {
                   id="annahmen_produktivstunden_anwesenheitszeitInStunden"
                   name="annahmen_produktivstunden_anwesenheitszeitInStunden"
                   label="Summe Anwesenheit in Stunden"
-                  value={values.annahmen_produktivstunden_anwesenheitszeitInStunden}
+                  value={formFloat(values.annahmen_produktivstunden_anwesenheitszeitInStunden, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>

@@ -33,7 +33,6 @@ const Lohnnebenkostensatz = () => {
             value={values.annahmen_lohnnebenkosten_sonderzahlungen}
             onChange={handleChange}
             onBlur={handleBlur}
-            readOnly
             error={touched.annahmen_lohnnebenkosten_sonderzahlungen && Boolean(errors.annahmen_lohnnebenkosten_sonderzahlungen)}
             helperText={touched.annahmen_lohnnebenkosten_sonderzahlungen && errors.annahmen_lohnnebenkosten_sonderzahlungen}
           />
@@ -50,7 +49,6 @@ const Lohnnebenkostensatz = () => {
             value={values.annahmen_lohnnebenkosten_svAbgabenArbeitgeber}
             onChange={handleChange}
             onBlur={handleBlur}
-            readOnly
             error={touched.annahmen_lohnnebenkosten_svAbgabenArbeitgeber && Boolean(errors.annahmen_lohnnebenkosten_svAbgabenArbeitgeber)}
             helperText={touched.annahmen_lohnnebenkosten_svAbgabenArbeitgeber && errors.annahmen_lohnnebenkosten_svAbgabenArbeitgeber}
           />
@@ -67,7 +65,6 @@ const Lohnnebenkostensatz = () => {
             value={values.annahmen_lohnnebenkosten_sonstigeKosten}
             onChange={handleChange}
             onBlur={handleBlur}
-            readOnly
             error={touched.annahmen_lohnnebenkosten_sonstigeKosten && Boolean(errors.annahmen_lohnnebenkosten_sonstigeKosten)}
             helperText={touched.annahmen_lohnnebenkosten_sonstigeKosten && errors.annahmen_lohnnebenkosten_sonstigeKosten}
             sx={{ mb: 2 }}
