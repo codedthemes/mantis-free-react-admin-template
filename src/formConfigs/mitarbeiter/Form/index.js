@@ -7,7 +7,6 @@ import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
 import Stammdaten from './Stammdaten';
 import { UserContext } from 'context/user';
-import Test from './Test';
 
 const TestForm = () => {
   const { activeFormData } = useContext(UserContext);
@@ -26,7 +25,6 @@ const TestForm = () => {
           <CalculationUpdater />
           <Start />
           <Stammdaten />
-          <Test />
           <ButtonBar />
         </Form>
       )}

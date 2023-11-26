@@ -43,7 +43,8 @@ const ButtonBar = () => {
       justifyContent="end"
       sx={{
         position: 'sticky',
-        marginLeft: barMarginReset,
+        mt: { xs: 4, md: 6, lg: 8 },
+        ml: barMarginReset,
         borderTopRightRadius: theme.shape.borderRadius * 4,
         borderTopLeftRadius: theme.shape.borderRadius * 4,
         bottom: '0',
