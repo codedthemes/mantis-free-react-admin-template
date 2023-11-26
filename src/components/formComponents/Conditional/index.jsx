@@ -1,16 +1,13 @@
-import { useFormikContext } from "formik";
-import { useMemo } from "react";
-import jsonLogic from "../../../formConfigs/jsonLogic";
-import conditionalRules from "../../../formConfigs/testForm/rules/conditional/index";
+import { useFormikContext } from 'formik';
+import { useMemo } from 'react';
+import jsonLogic from '../../../formConfigs/jsonLogic';
+import conditionalRules from '../../../formConfigs/annahmen/rules/conditional/index';
 
 const Conditional = ({ children, name }) => {
   const { values } = useFormikContext();
 
   const rule = useMemo(() => conditionalRules[name], [name]);
-  const approved = useMemo(() => !rule || jsonLogic.apply(rule, values), [
-    values,
-    rule
-  ]);
+  const approved = useMemo(() => !rule || jsonLogic.apply(rule, values), [values, rule]);
 
   return approved ? children : <></>;
 };

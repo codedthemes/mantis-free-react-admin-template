@@ -7,8 +7,8 @@ import { useTheme } from '@mui/material/styles';
 // project import
 import { UserContext } from 'context/user';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
-import TestForm from 'formConfigs/testForm/Form/index';
-import LayoutBox from 'components/LayoutBox/index';
+import Annahmen from 'formConfigs/annahmen/Form/index';
+import Mitarbeiter from 'formConfigs/mitarbeiter/Form/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -31,7 +31,14 @@ const FormComponent = () => {
 
   const content = useMemo(() => {
     if (activeFormData) {
-      return <TestForm />;
+      const formLiteral = {
+        annahmen: <Annahmen />,
+        mitarbeiter: <Mitarbeiter />
+      };
+
+      console.log('type', activeFormData.type);
+
+      return formLiteral[activeFormData.type] || 'Es ist ein Fehler aufgetreten.';
     }
 
     return 'loading';

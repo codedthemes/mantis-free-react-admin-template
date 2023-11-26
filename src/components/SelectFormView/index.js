@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import dayjs from 'dayjs';
 import { StatusCodes } from 'http-status-codes';
 
 // material-ui
-import { Grid, Button, TextField, Stack } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 // icons
@@ -14,21 +14,33 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { UserContext } from 'context/user';
 import TextTeaserCard from 'components/TextTeaserCard/index';
 
-const SelectFormView = () => {
-  const { createForm, formsData, requestStatusCodes } = useContext(UserContext);
+const SelectFormView = ({ formType }) => {
+  const { createForm, formsData = {}, requestStatusCodes } = useContext(UserContext);
+  const visibleForms = useMemo(() => {
+    const formsToUse = {};
+    Object.keys(formsData).forEach((formKey) => {
+      const currentForm = formsData[formKey];
+      console.log('type', currentForm.type, formType);
+      if (currentForm.type === formType) {
+        formsToUse[formKey] = currentForm;
+      }
+    });
+
+    return formsToUse;
+  }, [formType, formsData]);
   const theme = useTheme();
   const [addNewTitle, setAddNewTitle] = useState('');
   const addForm = () => {
     setAddNewTitle('');
-    createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}` });
+    createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}`, type: formType });
   };
   const creationLoading = requestStatusCodes.loadingForm === StatusCodes.PROCESSING;
 
   const formCardsDom = () => {
-    const formIds = Object.keys(formsData);
+    const formIds = Object.keys(visibleForms);
     const formCards =
       formIds.map((formId) => {
-        const formData = formsData[formId];
+        const formData = visibleForms[formId];
 
         return (
           <Grid key={formId} item xs={12} sm={6}>
@@ -78,30 +90,7 @@ const SelectFormView = () => {
               prefixText="Erstellen Sie ein"
               color={theme.palette.common.white}
               light
-            >
-              {/* <Grid container spacing={1}>
-                <Grid item xs>
-                  <TextField
-                    value={addNewTitle}
-                    sx={{ width: '100%' }}
-                    placeholder="Name des Formulars"
-                    onChange={(e) => setAddNewTitle(e.target.value)}
-                  />
-                </Grid>
-                <Grid item xs="auto">
-                  <Button
-                    disabled={!addNewTitle}
-                    startIcon={creationLoading ? <CircularProgress size="1rem" /> : <ChevronRight />}
-                    sx={{ height: '100%' }}
-                    color="primary"
-                    variant="contained"
-                    onClick={() => addForm(addNewTitle)}
-                  >
-                    {creationLoading ? 'lädt' : 'erstellen'}
-                  </Button>
-                </Grid>
-              </Grid> */}
-            </TextTeaserCard>
+            ></TextTeaserCard>
           </Grid>
         </Grid>
       </>

@@ -9,8 +9,8 @@ import { useTheme } from '@mui/material/styles';
 import { UserContext } from 'context/user';
 
 import validateFields from 'utils/formUtils/validateFields';
-import validationRules from 'formConfigs/testForm/rules/validation/index';
-import conditionalRules from 'formConfigs/testForm/rules/conditional/index';
+import validationRules from 'formConfigs/annahmen/rules/validation/index';
+import conditionalRules from 'formConfigs/annahmen/rules/conditional/index';
 
 const ButtonBar = () => {
   const { values = {}, setErrors } = useFormikContext();

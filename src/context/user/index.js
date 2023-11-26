@@ -231,8 +231,9 @@ export const UserContextProvider = ({ children }) => {
     snap.docs.forEach((doc) => {
       const docData = doc.data();
       tmpForms[doc.id] = {
-        id: docData.id,
+        id: doc.id,
         title: docData.title,
+        type: docData.type,
         values: docData.values ? JSON.parse(docData.values) : {},
         creationDate: docData.creationDate
       };
@@ -241,10 +242,11 @@ export const UserContextProvider = ({ children }) => {
   }, []);
 
   const createForm = useCallback(
-    async ({ title }) => {
+    async ({ title, type }) => {
       setCreateForm(StatusCodes.PROCESSING);
       const docRef = await addDoc(collection(db, 'forms'), {
         title: title,
+        type: type,
         creationDate: dayjs().valueOf(),
         values: JSON.stringify({})
       });
@@ -298,6 +300,7 @@ export const UserContextProvider = ({ children }) => {
       setLoadingForm(StatusCodes.PROCESSING);
       if (user.userFormIds.length > 0) {
         const forms = await getForms(user.userFormIds);
+        console.log('forms', forms);
         setFormsData(forms);
       } else {
         setFormsData({});

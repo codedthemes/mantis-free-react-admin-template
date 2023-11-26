@@ -12,13 +12,13 @@ import { UserContext } from 'context/user/index';
 import FormReadonlyValue from 'components/formComponents/FormReadonlyValue/index';
 
 const Annahmen = () => {
-  const { values, handleChange, handleBlur, touched } = useFormikContext();
+  const { values, errors, handleChange, handleBlur, touched } = useFormikContext();
   const { activeFormId, deleteForm } = useContext(UserContext);
   const navigate = useNavigate();
 
   const removeForm = async () => {
     await deleteForm(activeFormId);
-    navigate('/office/form/overview');
+    navigate('/office/dashboard');
   };
 
   return (

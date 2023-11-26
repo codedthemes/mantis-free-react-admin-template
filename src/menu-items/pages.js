@@ -9,19 +9,19 @@ const pages = {
   type: 'group',
   children: [
     {
-      id: 'mitarbeiter',
-      title: 'Mitarbeiter',
-      type: 'item',
-      url: '/',
-      icon: SwitchAccountOutlined
-    },
-    {
       id: 'forms',
       title: 'Formulare',
       type: 'item',
       url: '/office/form/overview',
       matchingUrlRegexp: /\/form\/[^/]{8,}$/,
       icon: BackupTableOutlined
+    },
+    {
+      id: 'mitarbeiter',
+      title: 'Mitarbeiter',
+      type: 'item',
+      url: '/',
+      icon: SwitchAccountOutlined
     }
   ]
 };

@@ -44,7 +44,6 @@ const Profile = ({ variant }) => {
 
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
-  console.log('update open', open);
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
