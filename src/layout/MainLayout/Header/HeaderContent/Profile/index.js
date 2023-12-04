@@ -29,16 +29,9 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired
 };
 
-function a11yProps(index) {
-  return {
-    id: `profile-tab-${index}`,
-    'aria-controls': `profile-tabpanel-${index}`
-  };
-}
-
 // ==============================|| HEADER CONTENT - PROFILE ||============================== //
 
-const Profile = ({ variant }) => {
+const Profile = () => {
   const theme = useTheme();
   const { user, logoutUser } = useContext(UserContext);
 
@@ -53,7 +46,7 @@ const Profile = ({ variant }) => {
     logoutUser();
   };
 
-  const handleClose = (event) => {
+  const handleClose = () => {
     console.log('click away');
     setOpen(false);
   };

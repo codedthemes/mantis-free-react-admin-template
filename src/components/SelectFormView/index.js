@@ -1,6 +1,5 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import dayjs from 'dayjs';
-import { StatusCodes } from 'http-status-codes';
 
 // material-ui
 import { Grid, Stack } from '@mui/material';
@@ -8,14 +7,14 @@ import { useTheme } from '@mui/material/styles';
 
 // icons
 import { Edit, ChevronRight } from '@mui/icons-material';
-import CircularProgress from '@mui/material/CircularProgress';
 
 // redux
 import { UserContext } from 'context/user';
 import TextTeaserCard from 'components/TextTeaserCard/index';
 
+// eslint-disable-next-line react/prop-types
 const SelectFormView = ({ formType }) => {
-  const { createForm, formsData = {}, requestStatusCodes } = useContext(UserContext);
+  const { createForm, formsData = {} } = useContext(UserContext);
   const visibleForms = useMemo(() => {
     const formsToUse = {};
     Object.keys(formsData).forEach((formKey) => {
@@ -29,12 +28,9 @@ const SelectFormView = ({ formType }) => {
     return formsToUse;
   }, [formType, formsData]);
   const theme = useTheme();
-  const [addNewTitle, setAddNewTitle] = useState('');
   const addForm = () => {
-    setAddNewTitle('');
     createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}`, type: formType });
   };
-  const creationLoading = requestStatusCodes.loadingForm === StatusCodes.PROCESSING;
 
   const formCardsDom = () => {
     const formIds = Object.keys(visibleForms);

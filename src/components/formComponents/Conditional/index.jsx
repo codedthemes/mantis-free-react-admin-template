@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import jsonLogic from '../../../formConfigs/jsonLogic';
 import conditionalRules from '../../../formConfigs/annahmen/rules/conditional/index';
 
+// eslint-disable-next-line react/prop-types
 const Conditional = ({ children, name }) => {
   const { values } = useFormikContext();
 

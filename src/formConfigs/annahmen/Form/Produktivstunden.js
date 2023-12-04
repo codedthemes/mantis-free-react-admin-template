@@ -1,7 +1,7 @@
 import React from 'react';
 
 // material-ui
-import { Typography, Grid, TextField, useTheme, Divider } from '@mui/material';
+import { Typography, Grid, TextField, Divider } from '@mui/material';
 
 // formik
 import { Field, useFormikContext } from 'formik';
@@ -11,7 +11,6 @@ import formFloat from 'utils/formUtils/formFloat';
 
 const Produktivstunden = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
-  const theme = useTheme();
 
   return (
     <FormSection title="Produktivstunden / Anwesenheitszeit" description="Geben Sie hier Angaben zu Ihrem Mitarber an.">

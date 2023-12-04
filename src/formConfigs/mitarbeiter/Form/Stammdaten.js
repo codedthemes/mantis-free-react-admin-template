@@ -6,19 +6,22 @@ import { Grid, TextField, Divider, Button, ButtonGroup, Typography } from '@mui/
 // formik
 import { Field, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
+import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 
 const Stammdaten = () => {
   const { values, handleChange, handleBlur, touched, errors, isSubmitting } = useFormikContext();
 
   return (
-    <FieldArray name="mitarbeiter">
+    <FieldArray name="mitarbeiter_mitarbeiter">
       {({ push, remove }) => (
         <>
-          {values.mitarbeiter?.map((arrayField, index) => (
+          {values.mitarbeiter_mitarbeiter?.map((arrayField, index) => (
             <>
               <FormSection
                 key={index}
-                title={`${values.mitarbeiter?.[index]?.vorname || 'Mitarbeiter'} ${values.mitarbeiter?.[index]?.nachname || ''}`}
+                title={`${values.mitarbeiter_mitarbeiter?.[index]?.vorname || 'Mitarbeiter'} ${
+                  values.mitarbeiter_mitarbeiter?.[index]?.nachname || ''
+                }`}
                 description="Pflegen Sie hier allgemeine Angaben zu Ihrem Mitarbeiter ein."
               >
                 <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
@@ -31,28 +34,32 @@ const Stammdaten = () => {
                     <Grid item xs={12} sm={6}>
                       <Field
                         component={TextField}
-                        id={`mitarbeiter.${index}.vorname`}
-                        name={`mitarbeiter.${index}.vorname`}
+                        id={`mitarbeiter_mitarbeiter.${index}.vorname`}
+                        name={`mitarbeiter_mitarbeiter.${index}.vorname`}
                         label="Vorname"
-                        value={values.mitarbeiter?.[index]?.vorname}
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.vorname}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.vorname && Boolean(errors.mitarbeiter?.[index]?.vorname)}
-                        helperText={touched.mitarbeiter?.[index]?.vorname && errors.mitarbeiter?.[index]?.vorname}
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.vorname && Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.vorname)
+                        }
+                        helperText={touched.mitarbeiter_mitarbeiter?.[index]?.vorname && errors.mitarbeiter_mitarbeiter?.[index]?.vorname}
                         sx={{ mb: 2 }}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <Field
                         component={TextField}
-                        id={`mitarbeiter.${index}.nachname`}
-                        name={`mitarbeiter.${index}.nachname`}
+                        id={`mitarbeiter_mitarbeiter.${index}.nachname`}
+                        name={`mitarbeiter_mitarbeiter.${index}.nachname`}
                         label="Nachname"
-                        value={values.mitarbeiter?.[index]?.nachname}
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.nachname}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.nachname && Boolean(errors.mitarbeiter?.[index]?.nachname)}
-                        helperText={touched.mitarbeiter?.[index]?.nachname && errors.mitarbeiter?.[index]?.nachname}
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.nachname && Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.nachname)
+                        }
+                        helperText={touched.mitarbeiter_mitarbeiter?.[index]?.nachname && errors.mitarbeiter_mitarbeiter?.[index]?.nachname}
                         sx={{ mb: 2 }}
                       />
                     </Grid>
@@ -62,59 +69,21 @@ const Stammdaten = () => {
                     <Grid item xs={12} sm={6}>
                       <Field
                         component={TextField}
-                        id={`mitarbeiter.${index}.urlaubstage`}
-                        name={`mitarbeiter.${index}.urlaubstage`}
-                        label="Urlaubstage"
-                        value={values.mitarbeiter?.[index]?.urlaubstage}
+                        id={`mitarbeiter_mitarbeiter.${index}.sollarbeitsstdPA`}
+                        name={`mitarbeiter_mitarbeiter.${index}.sollarbeitsstdPA`}
+                        label="Sollarbeitsstunden p.a. (ohne Feiertage)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.sollarbeitsstdPA}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.urlaubstage && Boolean(errors.mitarbeiter?.[index]?.urlaubstage)}
-                        helperText={touched.mitarbeiter?.[index]?.urlaubstage && errors.mitarbeiter?.[index]?.urlaubstage}
-                        sx={{ mb: 2 }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        component={TextField}
-                        id={`mitarbeiter.${index}.krankheitstage`}
-                        name={`mitarbeiter.${index}.krankheitstage`}
-                        label="Krankheitstage"
-                        value={values.mitarbeiter?.[index]?.krankheitstage}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.krankheitstage && Boolean(errors.mitarbeiter?.[index]?.krankheitstage)}
-                        helperText={touched.mitarbeiter?.[index]?.krankheitstage && errors.mitarbeiter?.[index]?.krankheitstage}
-                        sx={{ mb: 2 }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        component={TextField}
-                        id={`mitarbeiter.${index}.fortbildungstage`}
-                        name={`mitarbeiter.${index}.fortbildungstage`}
-                        label="Fortbildungstage"
-                        value={values.mitarbeiter?.[index]?.fortbildungstage}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.fortbildungstage && Boolean(errors.mitarbeiter?.[index]?.fortbildungstage)}
-                        helperText={touched.mitarbeiter?.[index]?.fortbildungstage && errors.mitarbeiter?.[index]?.fortbildungstage}
-                        sx={{ mb: 2 }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        component={TextField}
-                        id={`mitarbeiter.${index}.sonstigeAbwesenheiten`}
-                        name={`mitarbeiter.${index}.sonstigeAbwesenheiten`}
-                        label="Sonstige Abwesenheiten (in Tagen)"
-                        value={values.mitarbeiter?.[index]?.sonstigeAbwesenheiten}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
                         error={
-                          touched.mitarbeiter?.[index]?.sonstigeAbwesenheiten && Boolean(errors.mitarbeiter?.[index]?.sonstigeAbwesenheiten)
+                          touched.mitarbeiter_mitarbeiter?.[index]?.sollarbeitsstdPA &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.sollarbeitsstdPA)
                         }
                         helperText={
-                          touched.mitarbeiter?.[index]?.sonstigeAbwesenheiten && errors.mitarbeiter?.[index]?.sonstigeAbwesenheiten
+                          touched.mitarbeiter_mitarbeiter?.[index]?.sollarbeitsstdPA &&
+                          errors.mitarbeiter_mitarbeiter?.[index]?.sollarbeitsstdPA
                         }
                         sx={{ mb: 2 }}
                       />
@@ -125,71 +94,226 @@ const Stammdaten = () => {
                     <Grid item xs={12} sm={6}>
                       <Field
                         component={TextField}
-                        id={`mitarbeiter.${index}.direktVerrechenbar`}
-                        name={`mitarbeiter.${index}.direktVerrechenbar`}
-                        label="Direkt verrechenbar (in Prozent)"
-                        value={values.mitarbeiter?.[index]?.direktVerrechenbar}
+                        id={`mitarbeiter_mitarbeiter.${index}.urlaubStd`}
+                        name={`mitarbeiter_mitarbeiter.${index}.urlaubStd`}
+                        label="Urlaub (in Stunden)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.urlaubStd}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.direktVerrechenbar && Boolean(errors.mitarbeiter?.[index]?.direktVerrechenbar)}
-                        helperText={touched.mitarbeiter?.[index]?.direktVerrechenbar && errors.mitarbeiter?.[index]?.direktVerrechenbar}
-                        sx={{ mb: 2 }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <Field
-                        component={TextField}
-                        id={`mitarbeiter.${index}.bruttoStundenentgelt`}
-                        name={`mitarbeiter.${index}.bruttoStundenentgelt`}
-                        label="Brutto Stundenentgelt (in EUR)"
-                        value={values.mitarbeiter?.[index]?.bruttoStundenentgelt}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
+                        max="8760"
                         error={
-                          touched.mitarbeiter?.[index]?.bruttoStundenentgelt && Boolean(errors.mitarbeiter?.[index]?.bruttoStundenentgelt)
+                          touched.mitarbeiter_mitarbeiter?.[index]?.urlaubStd && Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.urlaubStd)
                         }
-                        helperText={touched.mitarbeiter?.[index]?.bruttoStundenentgelt && errors.mitarbeiter?.[index]?.bruttoStundenentgelt}
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.urlaubStd && errors.mitarbeiter_mitarbeiter?.[index]?.urlaubStd
+                        }
                         sx={{ mb: 2 }}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <Field
                         component={TextField}
-                        id={`mitarbeiter.${index}.zulagenProStd`}
-                        name={`mitarbeiter.${index}.zulagenProStd`}
-                        label="Zulagen pro Stdunde (in EUR)"
-                        value={values.mitarbeiter?.[index]?.zulagenProStd}
+                        id={`mitarbeiter_mitarbeiter.${index}.krankheitStd`}
+                        name={`mitarbeiter_mitarbeiter.${index}.krankheitStd`}
+                        label="Krankheit (in Stunden)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.krankheitStd}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        error={touched.mitarbeiter?.[index]?.zulagenProStd && Boolean(errors.mitarbeiter?.[index]?.zulagenProStd)}
-                        helperText={touched.mitarbeiter?.[index]?.zulagenProStd && errors.mitarbeiter?.[index]?.zulagenProStd}
+                        type="number"
+                        min="0"
+                        max="8760"
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.krankheitStd &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.krankheitStd)
+                        }
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.krankheitStd && errors.mitarbeiter_mitarbeiter?.[index]?.krankheitStd
+                        }
                         sx={{ mb: 2 }}
                       />
                     </Grid>
-                    <Grid item xs={12} sm={12}></Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        component={TextField}
+                        id={`mitarbeiter_mitarbeiter.${index}.fortbildungStd`}
+                        name={`mitarbeiter_mitarbeiter.${index}.fortbildungStd`}
+                        label="Fortbildung (in Stunden)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.fortbildungStd}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
+                        max="8760"
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.fortbildungStd &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.fortbildungStd)
+                        }
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.fortbildungStd &&
+                          errors.mitarbeiter_mitarbeiter?.[index]?.fortbildungStd
+                        }
+                        sx={{ mb: 2 }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        component={TextField}
+                        id={`mitarbeiter_mitarbeiter.${index}.sonstigeAbwesenheitenStd`}
+                        name={`mitarbeiter_mitarbeiter.${index}.sonstigeAbwesenheitenStd`}
+                        label="Sonstige Abwesenheiten (in Stunden)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
+                        max="8760"
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd)
+                        }
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd &&
+                          errors.mitarbeiter_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd
+                        }
+                        sx={{ mb: 2 }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        component={TextField}
+                        id={`mitarbeiter_mitarbeiter.${index}.direktVerrechenbar`}
+                        name={`mitarbeiter_mitarbeiter.${index}.direktVerrechenbar`}
+                        label="Davon direkt verrechenbar (in Prozent)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.direktVerrechenbar}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
+                        max="100"
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.direktVerrechenbar &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.direktVerrechenbar)
+                        }
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.direktVerrechenbar &&
+                          errors.mitarbeiter_mitarbeiter?.[index]?.direktVerrechenbar
+                        }
+                        sx={{ mb: 2 }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      &nbsp;
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        component={TextField}
+                        id={`mitarbeiter_mitarbeiter.${index}.bruttoStundenentgeltStd`}
+                        name={`mitarbeiter_mitarbeiter.${index}.bruttoStundenentgeltStd`}
+                        label="Brutto Stundenentgelt (pro Stunde, in EUR)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.bruttoStundenentgeltStd}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.bruttoStundenentgeltStd &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.bruttoStundenentgeltStd)
+                        }
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.bruttoStundenentgeltStd &&
+                          errors.mitarbeiter_mitarbeiter?.[index]?.bruttoStundenentgeltStd
+                        }
+                        sx={{ mb: 2 }}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Field
+                        component={TextField}
+                        id={`mitarbeiter_mitarbeiter.${index}.zulagenProStd`}
+                        name={`mitarbeiter_mitarbeiter.${index}.zulagenProStd`}
+                        label="durchschn. Zulagen pro Stdunde (in EUR)"
+                        value={values.mitarbeiter_mitarbeiter?.[index]?.zulagenProStd}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        type="number"
+                        min="0"
+                        error={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.zulagenProStd &&
+                          Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.zulagenProStd)
+                        }
+                        helperText={
+                          touched.mitarbeiter_mitarbeiter?.[index]?.zulagenProStd && errors.mitarbeiter_mitarbeiter?.[index]?.zulagenProStd
+                        }
+                        sx={{ mb: 2 }}
+                      />
+                    </Grid>
                     <Grid item xs={12}>
-                      <ButtonGroup>
-                        <Button variant="contained" color="secondary" disabled={isSubmitting} onClick={() => remove(index)}>
+                      <ReadOnlyBox alwaysOpen>
+                        <Grid container spacing={{ xs: 2, md: 4 }}>
+                          <Grid item xs={12} sm={6}>
+                            <Field
+                              component={TextField}
+                              id={`mitarbeiter_mitarbeiter.${index}.anwesenheitsentgelt`}
+                              name={`mitarbeiter_mitarbeiter.${index}.anwesenheitsentgelt`}
+                              label="Anwesenheitsentgelt (gesamt)"
+                              value={values.mitarbeiter_mitarbeiter?.[index]?.anwesenheitsentgelt}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              InputProps={{
+                                readOnly: true
+                              }}
+                              error={
+                                touched.mitarbeiter_mitarbeiter?.[index]?.anwesenheitsentgelt &&
+                                Boolean(errors.mitarbeiter_mitarbeiter?.[index]?.anwesenheitsentgelt)
+                              }
+                              helperText={
+                                touched.mitarbeiter_mitarbeiter?.[index]?.anwesenheitsentgelt &&
+                                errors.mitarbeiter_mitarbeiter?.[index]?.anwesenheitsentgelt
+                              }
+                              sx={{ mb: 2 }}
+                            />
+                          </Grid>
+                        </Grid>
+                      </ReadOnlyBox>
+                    </Grid>
+                    <Grid item xs={12} sm={12}>
+                      &nbsp;
+                    </Grid>
+                    <Grid item xs={12}>
+                      <ButtonGroup columnSpacing="2">
+                        <Button variant="contained" color="primary" disabled={isSubmitting} onClick={() => remove(index)}>
                           Mitarbeiter löschen
+                        </Button>
+                        <Button
+                          variant="outlined"
+                          color="primary"
+                          disabled={isSubmitting}
+                          onClick={() => push(values.mitarbeiter_mitarbeiter?.[index])}
+                        >
+                          Mitarbeiter duplizieren
                         </Button>
                       </ButtonGroup>
                     </Grid>
                   </>
 
                   <Grid item>
-                    {typeof errors.mitarbeiter === 'string' ? <Typography color="error">{errors.mitarbeiter}</Typography> : null}
+                    {typeof errors.mitarbeiter_mitarbeiter === 'string' ? (
+                      <Typography color="error">{errors.mitarbeiter_mitarbeiter}</Typography>
+                    ) : null}
                   </Grid>
                 </Grid>
               </FormSection>
-              {index === values.mitarbeiter?.length - 1 && (
-                <Button variant="contained" onClick={() => push({})} disabled={isSubmitting}>
+              {index === values.mitarbeiter_mitarbeiter?.length - 1 && (
+                <Button variant="contained" onClick={() => push({})} disabled={isSubmitting} sx={{ mb: 4 }}>
                   neuen Mitarbeiter hinzufügen
                 </Button>
               )}
             </>
           ))}
-          {(!values.mitarbeiter || values.mitarbeiter.length === 0) && (
-            <Button variant="contained" onClick={() => push({})} disabled={isSubmitting}>
+          {(!values.mitarbeiter_mitarbeiter || values.mitarbeiter_mitarbeiter?.length === 0) && (
+            <Button variant="contained" onClick={() => push({})} disabled={isSubmitting} sx={{ mb: 4 }}>
               neuen Mitarbeiter hinzufügen
             </Button>
           )}

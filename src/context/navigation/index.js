@@ -2,6 +2,7 @@ import { createContext, useState, useEffect, useRef } from 'react';
 import { useMediaQuery, useTheme } from '@mui/material';
 
 export const NavigationContext = createContext(null);
+// eslint-disable-next-line react/prop-types
 export const NavigationContextProvider = ({ children }) => {
   const theme = useTheme();
   const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));

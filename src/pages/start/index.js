@@ -1,18 +1,10 @@
 import React, { useCallback } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Grid, Typography, Box } from '@mui/material';
-import { useLottie } from 'lottie-react';
-import lottieAnimCalc from '../../assets/lotties/animation_calc_2.json';
 import TextTeaserCard from 'components/TextTeaserCard/index';
 
 const Start = () => {
   const theme = useTheme();
-  const options = {
-    animationData: lottieAnimCalc,
-    loop: true
-  };
-
-  const { View } = useLottie(options);
 
   const bottomBoxRendering = useCallback(() => {
     return (

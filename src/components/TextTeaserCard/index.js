@@ -2,7 +2,8 @@ import { Button, Stack, Typography, useTheme, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { darken } from '@mui/material/styles';
 
-const TextTeaserCard = ({ primaryText, prefixText, link, color, icon, children, light, grow, ratio, textAlign, onClick }) => {
+// eslint-disable-next-line react/prop-types
+const TextTeaserCard = ({ primaryText, prefixText, link, color, children, light, grow, ratio, textAlign, onClick }) => {
   const theme = useTheme();
   const textColor = light ? theme.palette.text.primary : theme.palette.common.white;
   const textColorHover = textColor;

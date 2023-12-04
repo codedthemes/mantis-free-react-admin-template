@@ -35,7 +35,6 @@ const initialStatusCodes = {
   setUser: null,
   loadingForm: null,
   createForm: null,
-  setForm: null,
   saveForm: null
 };
 
@@ -44,6 +43,7 @@ const initialLayout = {
 };
 
 export const UserContext = createContext(null);
+// eslint-disable-next-line react/prop-types
 export const UserContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const theme = useTheme();
@@ -62,7 +62,6 @@ export const UserContextProvider = ({ children }) => {
   const [status_loadingForm, setLoadingForm] = useState(initialStatusCodes.loadingForm);
   const [status_createForm, setCreateForm] = useState(initialStatusCodes.createForm);
   const [status_saveForm, setSaveForm] = useState(initialStatusCodes.saveForm);
-  const [status_setForm, setSetForm] = useState(initialStatusCodes.setForm);
 
   const requestStatusCodes = useMemo(() => {
     return {
@@ -71,10 +70,9 @@ export const UserContextProvider = ({ children }) => {
       authUser: status_authUser,
       loadingForm: status_loadingForm,
       createForm: status_createForm,
-      setForm: status_setForm,
       saveForm: status_saveForm
     };
-  }, [status_loadingUser, status_saveForm, status_createUser, status_authUser, status_loadingForm, status_createForm, status_setForm]);
+  }, [status_loadingUser, status_saveForm, status_createUser, status_authUser, status_loadingForm, status_createForm]);
 
   const logoutUser = useCallback(
     ({ toPage } = {}) => {

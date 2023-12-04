@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import PublicNav from 'components/PublicNav/index';
 
 // ==============================|| MAIN LAYOUT ||============================== //

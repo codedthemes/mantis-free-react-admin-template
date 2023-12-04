@@ -13,7 +13,7 @@ import Lohnnebenkostensatz from './Lohnnebenkostensatz';
 
 const TestForm = () => {
   const { activeFormData } = useContext(UserContext);
-  const onSubmit = useCallback(async (values, _formikBag) => {
+  const onSubmit = useCallback(async (values) => {
     console.log('submit', values);
   }, []);
   const initialValues = {

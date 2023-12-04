@@ -5,7 +5,6 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import {
   Button,
   Checkbox,
-  Divider,
   FormControlLabel,
   FormHelperText,
   Grid,
@@ -22,7 +21,6 @@ import {
 import { Formik, Form, Field } from 'formik';
 
 // project import
-import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 // Form
@@ -37,8 +35,7 @@ import { UserContext } from 'context/user';
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
-  const [checked, setChecked] = React.useState(false);
-  const { user, authUser, requestStatusCodes } = useContext(UserContext);
+  const { user, authUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -151,7 +148,7 @@ const AuthLogin = () => {
                         id="keepSignedIn"
                         name="keepSignedIn"
                         checked={values.keepSignedIn}
-                        onChange={(e) => setFieldValue('keepSignedIn', !values.keepSignedIn)}
+                        onChange={() => setFieldValue('keepSignedIn', !values.keepSignedIn)}
                         color="primary"
                         size="small"
                       />

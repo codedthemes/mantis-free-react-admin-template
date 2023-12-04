@@ -1,19 +1,19 @@
 // ==============================|| OVERRIDES - INPUT LABEL ||============================== //
 
-export default function InputLabel(theme) {
+export default function InputLabel() {
   return {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          "&.Mui-readOnly": {
-            "label": {
-              opacity: '0.5',
+          '&.Mui-readOnly': {
+            label: {
+              opacity: '0.5'
             },
-            "fieldset": {
+            fieldset: {
               borderStyle: 'dashed'
             }
-          },
-        },
+          }
+        }
       }
     }
   };

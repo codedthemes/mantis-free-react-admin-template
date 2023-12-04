@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useMemo } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Drawer, useMediaQuery } from '@mui/material';
+import { Box, Drawer } from '@mui/material';
 
 // project import
 import DrawerHeader from './DrawerHeader';
@@ -52,10 +52,18 @@ const MainDrawer = () => {
   }
 
   return (
-    <Box component="nav" sx={{ width: drawerWidth, padding: {
-      xs: theme.spacing(3),
-      sm: theme.spacing(5)
-    }, position: 'sticky', top: '0' }}>
+    <Box
+      component="nav"
+      sx={{
+        width: drawerWidth,
+        padding: {
+          xs: theme.spacing(3),
+          sm: theme.spacing(5)
+        },
+        position: 'sticky',
+        top: '0'
+      }}
+    >
       {drawerHeader}
       {drawerContent}
     </Box>

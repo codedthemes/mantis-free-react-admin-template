@@ -20,9 +20,13 @@ const FormOverview = () => {
         headline="Formularübersicht"
         description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
       />
-      <Typography variant="h2" sx={headlineSectionStyle}>Annahmen</Typography>
+      <Typography variant="h2" sx={headlineSectionStyle}>
+        Annahmen
+      </Typography>
       <SelectFormView formType="annahmen" />
-      <Typography variant="h2" sx={headlineSectionStyle}>Mitarbeiter</Typography>
+      <Typography variant="h2" sx={headlineSectionStyle}>
+        Mitarbeiter
+      </Typography>
       <SelectFormView formType="mitarbeiter" />
     </>
   );

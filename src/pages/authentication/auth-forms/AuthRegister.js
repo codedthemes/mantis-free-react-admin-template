@@ -1,20 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
-import {
-  Box,
-  Button,
-  Divider,
-  FormControl,
-  FormHelperText,
-  Grid,
-  Link,
-  IconButton,
-  InputAdornment,
-  Typography,
-  TextField
-} from '@mui/material';
+import { Box, Button, FormControl, FormHelperText, Grid, Link, IconButton, InputAdornment, Typography, TextField } from '@mui/material';
 
 // Form
 import validationRules from '../../../formConfigs/authLogin/rules/validation/index';
@@ -23,7 +11,6 @@ import validateFields from 'utils/formUtils/validateFields';
 import { Formik, Form, Field } from 'formik';
 
 // project import
-import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/@extended/AnimateButton';
 import { UserContext } from 'context/user';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';

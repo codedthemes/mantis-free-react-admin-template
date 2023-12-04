@@ -1,6 +1,3 @@
-// material-ui
-import { Box, useMediaQuery } from '@mui/material';
-
 // project import
 import Profile from './Profile';
 import { useContext } from 'react';

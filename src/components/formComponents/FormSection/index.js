@@ -15,6 +15,7 @@ import {
 import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, ClearOutlined } from '@mui/icons-material';
 import { useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
   const [openPopup, setOpenPopup] = useState(false);
