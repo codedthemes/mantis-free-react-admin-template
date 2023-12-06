@@ -5,22 +5,22 @@ import { SwitchAccountOutlined, BackupTableOutlined } from '@mui/icons-material'
 
 const pages = {
   id: 'authentication',
-  title: 'Formulare',
+  title: 'Angaben',
   type: 'group',
   children: [
     {
       id: 'forms',
-      title: 'Formulare',
+      title: 'Angaben',
       type: 'item',
       url: '/office/form/overview',
       matchingUrlRegexp: /\/form\/[^/]{8,}$/,
       icon: BackupTableOutlined
     },
     {
-      id: 'mitarbeiter',
-      title: 'Mitarbeiter',
+      id: 'auswertung',
+      title: 'Auswertung',
       type: 'item',
-      url: '/',
+      url: '/office/review',
       icon: SwitchAccountOutlined
     }
   ]

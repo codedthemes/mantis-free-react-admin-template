@@ -21,7 +21,7 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
           background: bgGradient || bgColor,
           color: fgColor,
           padding: theme.shape.paddingBoxLarge,
-          marginBottom: noMargin ? '0' : theme.shape.layoutDesignGutter
+          marginBottom: noMargin ? '0' : { xs: 2, sm: 3, md: 4 }
         }}
       >
         <Grid container justifyContent="center">

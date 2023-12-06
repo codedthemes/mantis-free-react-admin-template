@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
 // project import
 import { UserContext } from 'context/user';
@@ -36,8 +37,6 @@ const FormComponent = () => {
         mitarbeiter: <Mitarbeiter />
       };
 
-      console.log('type', activeFormData.type);
-
       return formLiteral[activeFormData.type] || 'Es ist ein Fehler aufgetreten.';
     }
 
@@ -45,14 +44,14 @@ const FormComponent = () => {
   }, [activeFormData]);
 
   return (
-    <>
+    <Box mb={theme.shape.layoutDesignGutterReset}>
       <ColoredSection
         backLink="/office/form/overview"
         bgColor={theme.palette.primary[800]}
         headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
       />
       {content}
-    </>
+    </Box>
   );
 };
 

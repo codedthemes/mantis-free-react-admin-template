@@ -256,6 +256,17 @@ export const UserContextProvider = ({ children }) => {
     [addUserForm, reloadUser]
   );
 
+  const updateForms = useCallback(async () => {
+    setLoadingForm(StatusCodes.PROCESSING);
+    if (user.userFormIds.length > 0) {
+      const forms = await getForms(user.userFormIds);
+      setFormsData(forms);
+    } else {
+      setFormsData({});
+    }
+    setLoadingForm(StatusCodes.OK);
+  }, [user.userFormIds, getForms]);
+
   const saveForm = useCallback(
     async (values) => {
       setSaveForm(StatusCodes.PROCESSING);
@@ -268,11 +279,16 @@ export const UserContextProvider = ({ children }) => {
           },
           { merge: true }
         );
+        await updateForms();
       }
       setSaveForm(StatusCodes.OK);
     },
-    [activeFormId]
+    [activeFormId, updateForms]
   );
+
+  useEffect(() => {
+    updateForms();
+  }, [updateForms]);
 
   useEffect(() => {
     const initialize = async () => {
@@ -292,22 +308,6 @@ export const UserContextProvider = ({ children }) => {
 
     initialize();
   }, [loginUser]);
-
-  useEffect(() => {
-    const updateForms = async () => {
-      setLoadingForm(StatusCodes.PROCESSING);
-      if (user.userFormIds.length > 0) {
-        const forms = await getForms(user.userFormIds);
-        console.log('forms', forms);
-        setFormsData(forms);
-      } else {
-        setFormsData({});
-      }
-      setLoadingForm(StatusCodes.OK);
-    };
-
-    updateForms();
-  }, [user.userFormIds, getForms]);
 
   useEffect(() => {
     if (matchDownMD) {

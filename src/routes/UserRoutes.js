@@ -9,6 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 const FormOverview = Loadable(lazy(() => import('pages/form/FormOverview')));
 const Form = Loadable(lazy(() => import('pages/form/Form')));
 const Dashboard = Loadable(lazy(() => import('pages/dashboard')));
+const Review = Loadable(lazy(() => import('pages/review')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -37,6 +38,14 @@ const UserRoutes = {
       element: (
         <ProtectedRoute>
           <Form />
+        </ProtectedRoute>
+      )
+    },
+    {
+      path: 'office/review',
+      element: (
+        <ProtectedRoute>
+          <Review />
         </ProtectedRoute>
       )
     }

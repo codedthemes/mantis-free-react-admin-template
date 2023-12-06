@@ -80,7 +80,14 @@ const SelectFormView = ({ formType }) => {
               onClick={addForm}
               primaryText={
                 <Stack flexDirection="row" alignItems="center">
-                  Neues Formular <ChevronRight fontSize="large" />
+                  Neues Angabenset{' '}
+                  <ChevronRight
+                    sx={{
+                      opacity: '0.2',
+                      fontSize: 65,
+                      margin: '0 -0.35em -0.35em 1rem'
+                    }}
+                  />
                 </Stack>
               }
               prefixText="Erstellen Sie ein"

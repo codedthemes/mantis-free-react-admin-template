@@ -7,9 +7,12 @@ import { Grid, TextField, Divider, Button, ButtonGroup, Typography } from '@mui/
 import { Field, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
+import { useParams } from 'react-router-dom/dist/index';
+import { uniqueId } from 'lodash';
 
 const Stammdaten = () => {
   const { values, handleChange, handleBlur, touched, errors, isSubmitting } = useFormikContext();
+  let { openUser } = useParams();
 
   return (
     <>
@@ -23,9 +26,11 @@ const Stammdaten = () => {
               <>
                 <FormSection
                   key={index}
-                  title={`${values.mitarbeiter_mitarbeiter?.[index]?.vorname || 'Mitarbeiter'} ${values.mitarbeiter_mitarbeiter?.[index]?.nachname || ''
-                    }`}
+                  title={`${values.mitarbeiter_mitarbeiter?.[index]?.vorname || 'Mitarbeiter'} ${
+                    values.mitarbeiter_mitarbeiter?.[index]?.nachname || ''
+                  }`}
                   description="Pflegen Sie hier allgemeine Angaben zu Ihrem Mitarbeiter ein."
+                  defaultOpen={openUser === values.mitarbeiter_mitarbeiter?.[index]?.userId}
                 >
                   <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
                     <Grid item xs={12}>
@@ -297,7 +302,7 @@ const Stammdaten = () => {
                             variant="outlined"
                             color="primary"
                             disabled={isSubmitting}
-                            onClick={() => push(values.mitarbeiter_mitarbeiter?.[index])}
+                            onClick={() => push({ ...values.mitarbeiter_mitarbeiter?.[index], userId: uniqueId() })}
                           >
                             Mitarbeiter duplizieren
                           </Button>
@@ -313,14 +318,14 @@ const Stammdaten = () => {
                   </Grid>
                 </FormSection>
                 {index === values.mitarbeiter_mitarbeiter?.length - 1 && (
-                  <Button variant="contained" onClick={() => push({})} disabled={isSubmitting} sx={{ mb: 4 }}>
+                  <Button variant="contained" onClick={() => push({ userId: uniqueId() })} disabled={isSubmitting} sx={{ mb: 4 }}>
                     neuen Mitarbeiter hinzufügen
                   </Button>
                 )}
               </>
             ))}
             {(!values.mitarbeiter_mitarbeiter || values.mitarbeiter_mitarbeiter?.length === 0) && (
-              <Button variant="contained" onClick={() => push({})} disabled={isSubmitting} sx={{ mb: 4 }}>
+              <Button variant="contained" onClick={() => push({ userId: uniqueId() })} disabled={isSubmitting} sx={{ mb: 4 }}>
                 neuen Mitarbeiter hinzufügen
               </Button>
             )}

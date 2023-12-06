@@ -1,7 +1,7 @@
 import React from 'react';
 import SelectFormView from 'components/SelectFormView/index';
 import { useTheme } from '@mui/material/styles';
-import { Typography } from '@mui/material';
+import { Typography, Stack } from '@mui/material';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
@@ -9,15 +9,15 @@ import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 const FormOverview = () => {
   const theme = useTheme();
   const headlineSectionStyle = {
-    mb: { xs: 1, md: 2, lg: 3 },
-    mt: { xs: 3, md: 4, lg: 6 }
+    mb: { xs: 2, md: 2, lg: 3 },
+    mt: { xs: 5, md: 6, lg: 7 }
   };
 
   return (
-    <>
+    <Stack mb={6}>
       <ColoredSection
         bgColor={theme.palette.primary.dark}
-        headline="Formularübersicht"
+        headline="Angaben"
         description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
       />
       <Typography variant="h2" sx={headlineSectionStyle}>
@@ -28,7 +28,7 @@ const FormOverview = () => {
         Mitarbeiter
       </Typography>
       <SelectFormView formType="mitarbeiter" />
-    </>
+    </Stack>
   );
 };
 
