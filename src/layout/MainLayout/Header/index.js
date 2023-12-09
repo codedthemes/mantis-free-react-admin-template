@@ -1,12 +1,16 @@
 import PropTypes from 'prop-types';
-
+import './HeaderContent.scss';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import { AppBar, IconButton, Toolbar, useMediaQuery } from '@mui/material';
 
 // project import
 import AppBarStyled from './AppBarStyled';
-import HeaderContent from './HeaderContent';
+// import HeaderContent from './HeaderContent';
+
+import Notification from './HeaderContent/Notification';
+import Profile from './HeaderContent/Profile';
+import MobileSection from './HeaderContent/MobileSection';
 
 // assets
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
@@ -16,24 +20,31 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 const Header = ({ open, handleDrawerToggle }) => {
   const theme = useTheme();
   const matchDownMD = useMediaQuery(theme.breakpoints.down('lg'));
-
+  const matchesXs = useMediaQuery((theme) => theme.breakpoints.down('md'));
   const iconBackColor = 'grey.100';
   const iconBackColorOpen = 'grey.200';
 
   // common header
   const mainHeader = (
     <Toolbar>
-      <IconButton
-        disableRipple
-        aria-label="open drawer"
-        onClick={handleDrawerToggle}
-        edge="start"
-        color="secondary"
-        sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
-      >
-        {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </IconButton>
-      <HeaderContent />
+      <div className="header-wrapper">
+        <IconButton
+          disableRipple
+          aria-label="open drawer"
+          onClick={handleDrawerToggle}
+          edge="start"
+          color="secondary"
+          sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
+        >
+          {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </IconButton>
+        {/* <HeaderContent /> */}
+        <div className="header-right">
+          <Notification />
+          {!matchesXs && <Profile />}
+          {matchesXs && <MobileSection />}
+        </div>
+      </div>
     </Toolbar>
   );
 

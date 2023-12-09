@@ -13,7 +13,7 @@ import AnimateButton from 'components/@extended/AnimateButton';
 const NavCard = () => (
   <MainCard sx={{ bgcolor: 'grey.50', m: 3 }}>
     <Stack alignItems="center" spacing={2.5}>
-      <CardMedia component="img" image={avatar} sx={{ width: 112 }} />
+      <CardMedia compvnent="img" image={avatar} sx={{ width: 112 }} />
       <Stack alignItems="center">
         <Typography variant="h5">Mantis Pro</Typography>
         <Typography variant="h6" color="secondary">

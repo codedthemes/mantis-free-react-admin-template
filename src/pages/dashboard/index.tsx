@@ -1,8 +1,9 @@
 import './dashboard.scss';
 
-import { Typography } from '@mui/material';
-
 import AnalyticEcommerce from '../../components/cards/statistics/AnalyticEcommerce';
+import { SectionHeader } from 'components/cards/headers/SectionHeader';
+import { RenderComponent } from 'utils/RenderComponent';
+import { MockTasks } from 'utils/RenderComponent';
 
 // import AnalyticEcommerce from '@/components/cards/statistics/AnalyticEcommerce';
 
@@ -12,35 +13,22 @@ export function DashboardDefault() {
   return (
     <div className="dashboard-container">
       <div className="dashboard-column">
-        <Typography className="dashboard-column-header" variant="h5">
-          New
-        </Typography>
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
+        <SectionHeader title="New" />
+        {RenderComponent(MockTasks)}
       </div>
       <div className="dashboard-column">
-        <Typography variant="h5" className="dashboard-column-header">
-          Active
-        </Typography>
+        <SectionHeader title="Committed" />
         <AnalyticEcommerce title="Total Users" count="78,250" percentage={70.5} extra="8,900" />
+        {RenderComponent(MockTasks)}
       </div>
       <div className="dashboard-column">
-        <Typography variant="h5" className="dashboard-column-header">
-          Resolved
-        </Typography>
+        <SectionHeader title="Active" />
+        {RenderComponent(MockTasks)}
         <AnalyticEcommerce title="Total Order" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
       </div>
       <div className="dashboard-column">
-        <Typography variant="h5" className="dashboard-column-header">
-          Closed
-        </Typography>
-        <AnalyticEcommerce title="Total Sales" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" />
+        <SectionHeader title="Resolved" />
+        {RenderComponent(MockTasks)}
       </div>
     </div>
   );
