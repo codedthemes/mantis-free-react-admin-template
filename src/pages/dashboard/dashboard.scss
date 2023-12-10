@@ -11,5 +11,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  min-width: 230px;
+}
+
+.droppable-column {
+  min-height: 85vh;
+  overflow: auto;
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.droppable-column:hover {
+  border: 1px solid #e0e0e0;
 }

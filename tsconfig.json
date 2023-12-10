@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/cards/statistics/AnalyticEcommerce.js",
+    "src/components/cards/statistics/AnalyticEcommerce.tsx",
     "src/utils/SyntaxHighlight.js",
     "src/pages/dashboard/index.tsx"
   ],

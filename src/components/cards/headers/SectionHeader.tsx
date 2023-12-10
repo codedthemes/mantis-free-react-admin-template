@@ -7,7 +7,7 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ title }: SectionHeaderProps) {
   return (
-    <Typography className="section-header" variant="h5">
+    <Typography className="section-header" variant="h5" sx={{ marginBottom: '8px' }}>
       {title}
     </Typography>
   );

@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-
+import './AnalyticEcommerce.scss';
 // material-ui
+import { ChipPropsColorOverrides } from '@mui/material';
 import { Box, Chip, Grid, Stack, Typography } from '@mui/material';
 
 // project import
@@ -11,8 +11,24 @@ import { RiseOutlined, FallOutlined } from '@ant-design/icons';
 
 // ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
-const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) => (
-  <MainCard contentSX={{ p: 2.25 }}>
+const HandleOnDrag = (e: React.DragEvent, id: string, status: string) => {
+  e.dataTransfer.setData('id', id);
+  e.dataTransfer.setData('status', status);
+};
+
+type AnalyticEcommerceProps = {
+  color?:
+    | OverridableStringUnion<'secondary' | 'default' | 'primary' | 'error' | 'info' | 'success' | 'warning', ChipPropsColorOverrides>
+    | undefined;
+  title?: string;
+  count?: string;
+  percentage?: number;
+  isLoss?: boolean;
+  extra?: string;
+};
+
+const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }: AnalyticEcommerceProps) => (
+  <MainCard className="card-animation" draggable onDragStart={(e: any) => HandleOnDrag(e, count ?? '', extra ?? '')} contentSX={{ p: 2.5 }}>
     <Stack spacing={0.5}>
       <Typography variant="h6" color="textSecondary">
         {title}
@@ -26,7 +42,7 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
         {percentage && (
           <Grid item>
             <Chip
-              variant="combined"
+              // variant="combined"
               color={color}
               icon={
                 <>
@@ -53,15 +69,6 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
     </Box>
   </MainCard>
 );
-
-AnalyticEcommerce.propTypes = {
-  color: PropTypes.string,
-  title: PropTypes.string,
-  count: PropTypes.string,
-  percentage: PropTypes.number,
-  isLoss: PropTypes.bool,
-  extra: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
-};
 
 AnalyticEcommerce.defaultProps = {
   color: 'primary'

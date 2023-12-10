@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@typescript-eslint/parser": "^5.62.0",
     "apexcharts": "^3.35.5",
     "formik": "^2.2.9",
     "framer-motion": "^7.3.6",
