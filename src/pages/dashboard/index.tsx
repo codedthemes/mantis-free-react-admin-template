@@ -1,16 +1,15 @@
 import './dashboard.scss';
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { ColumnName, Task } from 'Types/Task';
 import { SectionHeader } from 'components/cards/headers/SectionHeader';
 import { RenderComponent } from 'utils/RenderComponent';
-import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
-
+import { CaretRightOutlined, CheckCircleOutlined } from '@ant-design/icons';
 // import AnalyticEcommerce from '@/components/cards/statistics/AnalyticEcommerce';
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 export function DashboardDefault() {
-  const initialTaskObj: { [key: string]: Task[] } = {
+  const initialTaskObj: Record<string, Task[]> = {
     new: [
       {
         id: '8',
@@ -104,18 +103,12 @@ export function DashboardDefault() {
 
     if (task && task.status !== newStatus) {
       SetArray(task, newStatus);
-    } else {
-      console.log('Error:', taskId, taskStatus, task);
     }
   };
 
   const HandleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
   };
-
-  useEffect(() => {
-    console.log('taskObj', taskObj);
-  }, [taskObj]);
 
   return (
     <div className="dashboard-container">
@@ -126,11 +119,11 @@ export function DashboardDefault() {
         }}
         onDragOver={HandleDragOver}
       >
-        <SectionHeader title="New" />
+        <SectionHeader title="New" icon={<CaretRightOutlined style={{ verticalAlign: '-0.3em', color: '#00A7FA' }} />} />
         <div className="droppable-column">{RenderComponent(taskObj.new)}</div>
       </div>
       <div className="dashboard-column">
-        <SectionHeader title="Committed" />
+        <SectionHeader title="Committed" icon={<CaretRightOutlined style={{ verticalAlign: '-0.3em', color: '#bc85fa' }} />} />
         <div
           className="droppable-column"
           onDrop={(e: React.DragEvent) => {
@@ -143,7 +136,7 @@ export function DashboardDefault() {
         </div>
       </div>
       <div className="dashboard-column">
-        <SectionHeader title="Active" />
+        <SectionHeader title="Active" icon={<CaretRightOutlined style={{ verticalAlign: '-0.3em', color: '#F6A229' }} />} />
         <div
           className="droppable-column"
           onDrop={(e: React.DragEvent) => {
@@ -156,7 +149,7 @@ export function DashboardDefault() {
         </div>
       </div>
       <div className="dashboard-column">
-        <SectionHeader title="Resolved" />
+        <SectionHeader title="Resolved" icon={<CheckCircleOutlined style={{ verticalAlign: '-0.3em', color: '#48EB12' }} />} />
         <div
           className="droppable-column"
           onDrop={(e: React.DragEvent) => {

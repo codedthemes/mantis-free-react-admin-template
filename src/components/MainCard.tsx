@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -16,32 +15,46 @@ const headerSX = {
 
 // ==============================|| CUSTOM - MAIN CARD ||============================== //
 
+type MainCardProps = {
+  border?: boolean;
+  boxShadow?: boolean;
+  content?: boolean;
+  contentSX?: object;
+  darkTitle?: boolean;
+  divider?: boolean;
+  elevation?: number;
+  secondary?: ReactNode;
+  shadow?: string;
+  sx?: object;
+  title?: string | ReactNode;
+  codeHighlight?: boolean;
+  children?: ReactNode;
+  draggable: boolean;
+  onDragStart: (e: any) => void;
+};
+
 const MainCard = forwardRef(
-  (
-    {
-      border = true,
-      boxShadow,
-      children,
-      content = true,
-      contentSX = {},
-      darkTitle,
-      elevation,
-      secondary,
-      shadow,
-      sx = {},
-      title,
-      codeHighlight,
-      ...others
-    },
-    ref
-  ) => {
+  ({
+    border = true,
+    boxShadow,
+    children,
+    content = true,
+    contentSX = {},
+    darkTitle,
+    elevation,
+    secondary,
+    shadow,
+    sx = {},
+    title,
+    codeHighlight,
+    ...others
+  }: MainCardProps) => {
     const theme = useTheme();
     boxShadow = theme.palette.mode === 'dark' ? boxShadow || true : boxShadow;
 
     return (
       <Card
         elevation={elevation || 0}
-        ref={ref}
         {...others}
         sx={{
           marginBottom: '15px',
@@ -84,21 +97,5 @@ const MainCard = forwardRef(
     );
   }
 );
-
-MainCard.propTypes = {
-  border: PropTypes.bool,
-  boxShadow: PropTypes.bool,
-  contentSX: PropTypes.object,
-  darkTitle: PropTypes.bool,
-  divider: PropTypes.bool,
-  elevation: PropTypes.number,
-  secondary: PropTypes.node,
-  shadow: PropTypes.string,
-  sx: PropTypes.object,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  codeHighlight: PropTypes.bool,
-  content: PropTypes.bool,
-  children: PropTypes.node
-};
 
 export default MainCard;

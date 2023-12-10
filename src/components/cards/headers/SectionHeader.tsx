@@ -3,12 +3,16 @@ import { Typography } from '@mui/material';
 
 interface SectionHeaderProps {
   title: string;
+  icon?: React.ReactNode;
 }
 
-export function SectionHeader({ title }: SectionHeaderProps) {
+export function SectionHeader({ title, icon }: SectionHeaderProps) {
   return (
-    <Typography className="section-header" variant="h5" sx={{ marginBottom: '8px' }}>
-      {title}
-    </Typography>
+    <div className="section-header">
+      <Typography className="section-header-text" variant="h5">
+        {title}
+      </Typography>
+      {icon && <div className="section-header-icon">{icon}</div>}
+    </div>
   );
 }

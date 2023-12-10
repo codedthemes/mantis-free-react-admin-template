@@ -5,7 +5,7 @@ export function RenderComponent(data: Task[]): JSX.Element[] {
   const elementsToRender: JSX.Element[] = [];
 
   data.forEach((task, key) => {
-    elementsToRender.push(<AnalyticEcommerce title={task.title} count={task.id} extra={task.status} />);
+    elementsToRender.push(<AnalyticEcommerce percentage={10} id={task.id} title={task.title} status={task.status} extra={task.status} />);
   });
 
   return elementsToRender;

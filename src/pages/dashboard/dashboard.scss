@@ -3,7 +3,14 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 35px;
+  gap: 15px;
+  @media screen and (max-width: 1015px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 10px 0;
+    padding: 0 0 0 0;
+  }
 }
 
 .dashboard-column {
@@ -15,14 +22,12 @@
 }
 
 .droppable-column {
-  min-height: 85vh;
+  height: 85vh;
   overflow: auto;
-  border: 1px solid #f0f0f0;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 10px;
   width: 100%;
-}
-
-.droppable-column:hover {
-  border: 1px solid #e0e0e0;
+  @media screen and (max-width: 1015px) {
+    height: auto;
+  }
 }

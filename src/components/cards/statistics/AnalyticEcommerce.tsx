@@ -1,13 +1,12 @@
 import './AnalyticEcommerce.scss';
-// material-ui
 import { ChipPropsColorOverrides } from '@mui/material';
-import { Box, Chip, Grid, Stack, Typography } from '@mui/material';
-
-// project import
+import { Box, Grid, Stack, Typography, Chip } from '@mui/material';
+import { RightOutlined, ExclamationOutlined, RiseOutlined, FallOutlined } from '@ant-design/icons';
+import { IndicatorColors } from 'utils/DataStatus';
 import MainCard from 'components/MainCard';
-
-// assets
-import { RiseOutlined, FallOutlined } from '@ant-design/icons';
+import dayjs from 'dayjs';
+import { GetDateStatus } from 'utils/DataStatus';
+import { ColumnName } from 'Types/Task';
 
 // ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
@@ -17,58 +16,88 @@ const HandleOnDrag = (e: React.DragEvent, id: string, status: string) => {
 };
 
 type AnalyticEcommerceProps = {
-  color?:
-    | OverridableStringUnion<'secondary' | 'default' | 'primary' | 'error' | 'info' | 'success' | 'warning', ChipPropsColorOverrides>
-    | undefined;
   title?: string;
-  count?: string;
+  status: string;
+  id?: string;
   percentage?: number;
   isLoss?: boolean;
   extra?: string;
+  dayPoints?: string;
 };
 
-const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }: AnalyticEcommerceProps) => (
-  <MainCard className="card-animation" draggable onDragStart={(e: any) => HandleOnDrag(e, count ?? '', extra ?? '')} contentSX={{ p: 2.5 }}>
-    <Stack spacing={0.5}>
-      <Typography variant="h6" color="textSecondary">
-        {title}
-      </Typography>
-      <Grid container alignItems="center">
-        <Grid item>
-          <Typography variant="h4" color="inherit">
-            {count}
-          </Typography>
+const AnalyticEcommerce = ({ title, status, extra, id: key, dayPoints = '3' }: AnalyticEcommerceProps) => {
+  const indicatorColor = IndicatorColors[status];
+  const dueDate = dayjs().add(Number(dayPoints), 'day').format('MM/DD/YYYY');
+  const dateDiff = dayjs(dayjs(dueDate)).diff(dayjs().format('MM/DD/YYYY'), 'day');
+
+  return (
+    <MainCard className="card-animation" draggable onDragStart={(e: any) => HandleOnDrag(e, key ?? '', extra ?? '')} contentSX={{ p: 2.5 }}>
+      <Stack spacing={0.5}>
+        <Typography variant="h6" color="textPrimary">
+          {title}
+        </Typography>
+        <Grid container alignItems="center">
+          <div className="card-middle">
+            <div className="card-status">
+              <Typography variant="subtitle2" color="textSecondary">
+                {status}
+              </Typography>
+              <RightOutlined style={{ verticalAlign: '-0.3em', color: indicatorColor, fontSize: '10px', marginLeft: '3px' }} />
+            </div>
+            <div className="card-points">
+              <Typography variant="subtitle2" color="textSecondary">
+                points: {dayPoints}
+              </Typography>
+            </div>
+          </div>
         </Grid>
-        {percentage && (
+      </Stack>
+      <Box sx={{ paddingTop: 1 }}>
+        {dueDate && status === ColumnName.ACTIVE ? (
           <Grid item>
-            <Chip
-              // variant="combined"
-              color={color}
-              icon={
-                <>
-                  {!isLoss && <RiseOutlined style={{ fontSize: '0.75rem', color: 'inherit' }} />}
-                  {isLoss && <FallOutlined style={{ fontSize: '0.75rem', color: 'inherit' }} />}
-                </>
-              }
-              label={`${percentage}%`}
-              sx={{ ml: 1.25, pl: 1 }}
-              size="small"
-            />
+            <Chip label={`${dueDate}`} size="small" />
+            {<ExclamationOutlined style={{ color: GetDateStatus(dayjs().format('MM/DD/YYYY'), dueDate) }} />}
           </Grid>
+        ) : (
+          <></>
         )}
-      </Grid>
-    </Stack>
-    <Box sx={{ pt: 2.25 }}>
-      <Typography variant="caption" color="textSecondary">
-        You made an extra{' '}
-        <Typography component="span" variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
-          {extra}
-        </Typography>{' '}
-        this year
-      </Typography>
-    </Box>
-  </MainCard>
-);
+        {status === ColumnName.RESOLVED ? (
+          <div className="card-total">
+            {dateDiff >= 0 ? (
+              <RiseOutlined
+                style={{
+                  verticalAlign: '-0.3em',
+                  color: IndicatorColors['success'],
+                  fontSize: '16px',
+                  marginLeft: '3px'
+                }}
+              />
+            ) : (
+              <FallOutlined
+                style={{
+                  verticalAlign: '-0.3em',
+                  color: IndicatorColors['danger'],
+                  fontSize: '16px',
+                  marginLeft: '3px'
+                }}
+              />
+            )}
+            {dateDiff}
+          </div>
+        ) : (
+          <></>
+        )}
+        {/* <Typography variant="caption" color="textSecondary">
+          You made an extra{' '}
+          <Typography component="span" variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
+            {extra}
+          </Typography>{' '}
+          this year
+        </Typography> */}
+      </Box>
+    </MainCard>
+  );
+};
 
 AnalyticEcommerce.defaultProps = {
   color: 'primary'

@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 // material-ui
 import { Fade, Box, Grow } from '@mui/material';
 
-// ==============================|| TRANSITIONS ||============================== //
+type TransitionType = 'grow' | 'fade' | 'collapse' | 'slide' | 'zoom';
+type TransitionPosition = 'top-left' | 'top-right' | 'top' | 'bottom-left' | 'bottom-right' | 'bottom';
+type TransitionsProps = {
+  children?: ReactNode;
+  position?: TransitionPosition;
+  type?: TransitionType;
+};
 
-const Transitions = forwardRef(({ children, position, type, ...others }, ref) => {
+const Transitions = forwardRef(({ children, position, type, ...others }: TransitionsProps, ref) => {
   let positionSX = {
     transformOrigin: '0 0 0'
   };
