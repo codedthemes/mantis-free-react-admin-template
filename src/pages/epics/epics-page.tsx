@@ -1,7 +1,7 @@
 // material-ui
 import { Typography } from '@mui/material';
 import { SectionHeader } from 'components/cards/headers/SectionHeader';
-// project import
+import { CreateEpicButton } from './create-epic-button';
 import MainCard from 'components/MainCard';
 import { epicDescription } from 'pages/dashboard/create-task/CreateTask';
 import { RenderEpicComponent } from 'utils/RenderComponent';
@@ -13,13 +13,13 @@ const EpicsPage = () => {
   return (
     <MainCard title="Epics">
       <div className="epic-container">
-        <Typography variant="h4" color="secondary">
-          {/* {epicDescription} */}
-        </Typography>
         <div className="dashboard-container">
           <div className="dashboard-column">
             <SectionHeader title={epicDescription} />
-            <div className="droppable-column">{RenderEpicComponent(Epics)}</div>
+            <div className="create-epic-button">
+              <CreateEpicButton />
+            </div>
+            <div className="epics-list">{RenderEpicComponent(Epics)}</div>
           </div>
         </div>
         <div className="epics-list"></div>

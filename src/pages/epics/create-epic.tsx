@@ -1,0 +1,62 @@
+import { useEffect, useState } from 'react';
+import { Grid, Stack, Typography, SelectChangeEvent, Button } from '@mui/material';
+import { CustomInput } from 'components/CustomInput';
+import { useEpicStore } from 'zustand-store/EpicStore';
+import { EpicStatus } from 'types/Epic';
+
+type CreateTaskProps = {
+  handleToggle: () => void;
+};
+
+export const CreateEpic = ({ handleToggle }: CreateTaskProps) => {
+  const [epicName, setEpicName] = useState('');
+  const [isEpicValid, setIsEpicValid] = useState(true);
+
+  const { AddEpic } = useEpicStore();
+
+  useEffect(() => {
+    if (epicName) {
+      setIsEpicValid(false);
+    } else {
+      setIsEpicValid(true);
+    }
+  }, [epicName]);
+
+  const handleEpicNameChange = (event: SelectChangeEvent<HTMLInputElement>) => {
+    setEpicName(event.target.value as string);
+  };
+
+  const CreateEpic = () => {
+    AddEpic({ title: epicName, status: EpicStatus.IN_PROGRESS, userId: '1' });
+    handleToggle();
+  };
+
+  return (
+    <Grid container spacing={3} padding={3} paddingTop={0}>
+      <Grid item xs={12}>
+        <Stack direction="row" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: -1 } }}>
+          <Typography variant="h3">Create an epic</Typography>
+        </Stack>
+      </Grid>
+      <Grid item xs={12}>
+        <>
+          <CustomInput placeholder="Enter epic title" value={epicName} handleChange={handleEpicNameChange} />
+        </>
+
+        <Button
+          disableElevation
+          fullWidth
+          size="large"
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={isEpicValid}
+          onClick={CreateEpic}
+          sx={{ mt: 3 }}
+        >
+          create epic{' '}
+        </Button>
+      </Grid>
+    </Grid>
+  );
+};
