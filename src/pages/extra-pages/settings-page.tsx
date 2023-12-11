@@ -58,13 +58,13 @@ const SettingsPage = () => {
             <CustomInput title="Name" value={editedSettings.name} handleChange={handleNameChange} />
           </div>
           <div className="settings-section">
-            <CustomInput title="Email" value={editedSettings.email} handleChange={handleEmailChange} />
-          </div>
-          <div className="settings-section">
             <CustomInput title="Title" value={editedSettings.title} handleChange={handleTitleChange} />
           </div>
+          <div className="settings-section">
+            <CustomInput disabled={true} title="Email" value={editedSettings.email} handleChange={handleEmailChange} />
+          </div>
         </div>
-        <Button variant="contained" disabled={personalSettingsChanged}>
+        <Button variant="contained" disabled={personalSettingsChanged} onClick={handleUpdateSettings}>
           Save
         </Button>
       </MainCard>

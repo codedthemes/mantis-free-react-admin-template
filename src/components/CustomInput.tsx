@@ -23,7 +23,7 @@ export const CustomInput = ({ title, placeholder, value, disabled, error, touche
         onChange={handleChange}
         placeholder={placeholder}
         fullWidth
-
+        disabled={disabled}
         // error={true}
       />
       {/* {touched.email && errors.email && (
