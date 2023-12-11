@@ -29,9 +29,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/cards/statistics/AnalyticEcommerce.tsx",
+    "src/components/cards/statistics/TaskCard.tsx",
     "src/utils/SyntaxHighlight.js",
-    "src/pages/dashboard/index.tsx"
+    "src/pages/dashboard/Dashboard.tsx"
   ],
   "exclude": ["node_modules"]
 }

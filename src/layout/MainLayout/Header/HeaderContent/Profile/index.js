@@ -147,7 +147,7 @@ const Profile = () => {
                           </Stack>
                         </Grid>
                         <Grid item>
-                          <IconButton size="large" color="secondary" onClick={handleLogout}>
+                          <IconButton size="large" style={{ color: '#FF7F7F' }} onClick={handleLogout}>
                             <LogoutOutlined />
                           </IconButton>
                         </Grid>

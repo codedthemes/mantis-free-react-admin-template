@@ -3,11 +3,11 @@ import dayjs from 'dayjs';
 export const GetDateStatus = (date: string, dueDate: string) => {
   const daysUntilDue = dayjs(dayjs(dueDate)).diff(date, 'day');
 
-  return daysUntilDue >= 6
+  return daysUntilDue >= 3
     ? IndicatorColors.new
-    : daysUntilDue >= 3
+    : daysUntilDue === 2
     ? IndicatorColors.warning
-    : daysUntilDue >= 1
+    : daysUntilDue === 1
     ? IndicatorColors.danger
     : IndicatorColors.pastDue;
 };

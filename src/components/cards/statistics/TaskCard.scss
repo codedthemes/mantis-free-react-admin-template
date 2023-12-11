@@ -2,10 +2,11 @@
   transition: transform 0.15s ease;
   width: 245px;
   height: 130px;
+  cursor: pointer;
 }
 
 .card-animation:hover {
-  transform: scale(1.008);
+  transform: scale(1.012);
 }
 
 .card-middle {

@@ -1,14 +1,11 @@
-import './AnalyticEcommerce.scss';
-import { ChipPropsColorOverrides } from '@mui/material';
+import './TaskCard.scss';
 import { Box, Grid, Stack, Typography, Chip } from '@mui/material';
 import { RightOutlined, ExclamationOutlined, RiseOutlined, FallOutlined } from '@ant-design/icons';
 import { IndicatorColors } from 'utils/DataStatus';
 import MainCard from 'components/MainCard';
 import dayjs from 'dayjs';
 import { GetDateStatus } from 'utils/DataStatus';
-import { ColumnName } from 'Types/Task';
-
-// ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
+import { ColumnName } from 'types/Task';
 
 const HandleOnDrag = (e: React.DragEvent, id: string, status: string) => {
   e.dataTransfer.setData('id', id);
@@ -19,19 +16,17 @@ type AnalyticEcommerceProps = {
   title?: string;
   status: string;
   id?: string;
-  percentage?: number;
-  isLoss?: boolean;
-  extra?: string;
-  dayPoints?: string;
+  points?: number;
 };
 
-const AnalyticEcommerce = ({ title, status, extra, id: key, dayPoints = '3' }: AnalyticEcommerceProps) => {
-  const indicatorColor = IndicatorColors[status];
-  const dueDate = dayjs().add(Number(dayPoints), 'day').format('MM/DD/YYYY');
+const AnalyticEcommerce = ({ title, status, points, id }: AnalyticEcommerceProps) => {
+  const dueDate = dayjs()
+    .add(points ?? 0, 'day')
+    .format('MM/DD/YYYY');
   const dateDiff = dayjs(dayjs(dueDate)).diff(dayjs().format('MM/DD/YYYY'), 'day');
 
   return (
-    <MainCard className="card-animation" draggable onDragStart={(e: any) => HandleOnDrag(e, key ?? '', extra ?? '')} contentSX={{ p: 2.5 }}>
+    <MainCard className="card-animation" draggable onDragStart={(e: any) => HandleOnDrag(e, id ?? '', status ?? '')} contentSX={{ p: 2.5 }}>
       <Stack spacing={0.5}>
         <Typography variant="h6" color="textPrimary">
           {title}
@@ -42,11 +37,11 @@ const AnalyticEcommerce = ({ title, status, extra, id: key, dayPoints = '3' }: A
               <Typography variant="subtitle2" color="textSecondary">
                 {status}
               </Typography>
-              <RightOutlined style={{ verticalAlign: '-0.3em', color: indicatorColor, fontSize: '10px', marginLeft: '3px' }} />
+              <RightOutlined style={{ verticalAlign: '-0.3em', color: IndicatorColors[status], fontSize: '10px', marginLeft: '3px' }} />
             </div>
             <div className="card-points">
               <Typography variant="subtitle2" color="textSecondary">
-                points: {dayPoints}
+                points: {points}
               </Typography>
             </div>
           </div>

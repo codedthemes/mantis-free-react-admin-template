@@ -1,9 +1,15 @@
-export type Task = {
+import { CreateTask } from 'pages/dashboard/create-task/CreateTask';
+
+export interface Task extends CreateTask {
   id: string;
+}
+
+export interface CreateTask {
   title: string;
-  description: string;
+  points: number;
   status: string;
-};
+  epicId?: string;
+}
 
 export enum ColumnName {
   NEW = 'new',

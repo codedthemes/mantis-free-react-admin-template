@@ -5,13 +5,11 @@ import MainCard from 'components/MainCard';
 import Transitions from 'components/@extended/Transitions';
 
 import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
-
-// ==============================|| HEADER CONTENT - NOTIFICATION ||============================== //
+import { CreateTask } from 'pages/dashboard/create-task/CreateTask';
 
 const Notification = () => {
   const theme = useTheme();
   const matchesXs = useMediaQuery(theme.breakpoints.down('md'));
-
   const anchorRef = useRef<HTMLButtonElement | null>(null);
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
@@ -39,9 +37,7 @@ const Notification = () => {
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        {/* <Badge badgeContent={4} color="primary"> */}
         <PlusOutlined style={{ color: '#1990FF' }} />
-        {/* </Badge> */}
       </IconButton>
       <Popper
         placement={matchesXs ? 'bottom' : 'bottom-end'}
@@ -85,7 +81,9 @@ const Notification = () => {
                       <CloseOutlined />
                     </IconButton>
                   }
-                />
+                >
+                  <CreateTask handleToggle={handleToggle} />
+                </MainCard>
               </ClickAwayListener>
             </Paper>
           </Transitions>
