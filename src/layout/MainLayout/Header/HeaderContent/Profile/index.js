@@ -95,7 +95,6 @@ const Profile = () => {
         onClick={handleToggle}
       >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
-          {/* <UserOutlined /> */}
           <Typography variant="subtitle1">Gabriel Blake</Typography>
         </Stack>
       </ButtonBase>
@@ -155,7 +154,7 @@ const Profile = () => {
                     </CardContent>
                     {open && (
                       <>
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        {/* <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                           <Tabs variant="fullWidth" value={value} onChange={handleChange} aria-label="profile tabs">
                             <Tab
                               sx={{
@@ -169,7 +168,7 @@ const Profile = () => {
                               label="You"
                               {...a11yProps(1)}
                             />
-                            {/* <Tab
+                            <Tab
                               sx={{
                                 display: 'flex',
                                 flexDirection: 'row',
@@ -180,14 +179,14 @@ const Profile = () => {
                               icon={<SettingOutlined style={{ marginBottom: 0, marginRight: '10px' }} />}
                               label="Setting"
                               {...a11yProps(1)}
-                            /> */}
+                            />
                           </Tabs>
                         </Box>
                         <TabPanel value={value} index={0} dir={theme.direction}>
-                          {/* <ProfileTab handleLogout={handleLogout} /> */}
+                          <ProfileTab handleLogout={handleLogout} />
                           <SettingTab />
                         </TabPanel>
-                        <TabPanel value={value} index={1} dir={theme.direction}></TabPanel>
+                        <TabPanel value={value} index={1} dir={theme.direction}></TabPanel> */}
                       </>
                     )}
                   </MainCard>

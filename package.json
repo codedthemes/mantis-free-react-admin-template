@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@typeform/embed-react": "^3.9.0",
     "@typescript-eslint/parser": "^5.62.0",
     "apexcharts": "^3.35.5",
     "dayjs": "^1.11.10",
@@ -31,6 +32,7 @@
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.5",
     "react-element-to-jsx-string": "^15.0.0",
+    "react-helmet": "^6.1.0",
     "react-number-format": "^4.9.4",
     "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^8.0.4",
@@ -81,6 +83,7 @@
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/eslint-parser": "^7.21.3",
+    "@types/react-helmet": "^6.1.11",
     "@types/uuid": "^9.0.7",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",

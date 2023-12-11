@@ -1,0 +1,13 @@
+.epic-card-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 5px;
+}
+
+.epic-card-title {
+  font-size: 1rem;
+  margin: 0 0 0 3px;
+}

@@ -1,7 +1,7 @@
 import './dashboard.scss';
 import { ColumnName } from 'types/Task';
 import { SectionHeader } from 'components/cards/headers/SectionHeader';
-import { RenderComponent } from 'utils/RenderComponent';
+import { RenderTaskComponent } from 'utils/RenderComponent';
 import { CaretRightOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { useTaskStore } from 'zustand-store/TasksStore';
 
@@ -33,7 +33,7 @@ export function DashboardDefault() {
         onDragOver={HandleDragOver}
       >
         <SectionHeader title="New" icon={<CaretRightOutlined style={{ verticalAlign: '-0.3em', color: '#00A7FA' }} />} />
-        <div className="droppable-column">{RenderComponent(Tasks.new)}</div>
+        <div className="droppable-column">{RenderTaskComponent(Tasks.new)}</div>
       </div>
       <div className="dashboard-column">
         <SectionHeader title="Committed" icon={<CaretRightOutlined style={{ verticalAlign: '-0.3em', color: '#bc85fa' }} />} />
@@ -44,7 +44,7 @@ export function DashboardDefault() {
           }}
           onDragOver={HandleDragOver}
         >
-          {RenderComponent(Tasks.committed)}
+          {RenderTaskComponent(Tasks.committed)}
         </div>
       </div>
       <div className="dashboard-column">
@@ -56,7 +56,7 @@ export function DashboardDefault() {
           }}
           onDragOver={HandleDragOver}
         >
-          {RenderComponent(Tasks.active)}
+          {RenderTaskComponent(Tasks.active)}
         </div>
       </div>
       <div className="dashboard-column">
@@ -68,7 +68,7 @@ export function DashboardDefault() {
           }}
           onDragOver={HandleDragOver}
         >
-          {RenderComponent(Tasks.resolved)}
+          {RenderTaskComponent(Tasks.resolved)}
         </div>
       </div>
     </div>

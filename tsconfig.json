@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/cards/statistics/TaskCard.tsx",
+    "src/components/cards/task/task-card.tsx",
     "src/utils/SyntaxHighlight.js",
     "src/pages/dashboard/dashboard.tsx"
   ],

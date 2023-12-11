@@ -1,4 +1,4 @@
-import './TaskCard.scss';
+import './task-card.scss';
 import { Box, Grid, Stack, Typography, Chip } from '@mui/material';
 import { RightOutlined, ExclamationOutlined, RiseOutlined, FallOutlined } from '@ant-design/icons';
 import { IndicatorColors } from 'utils/DataStatus';
@@ -12,14 +12,14 @@ const HandleOnDrag = (e: React.DragEvent, id: string, status: string) => {
   e.dataTransfer.setData('status', status);
 };
 
-type AnalyticEcommerceProps = {
+type TaskCardProps = {
   title?: string;
   status: string;
   id?: string;
   points?: number;
 };
 
-const AnalyticEcommerce = ({ title, status, points, id }: AnalyticEcommerceProps) => {
+const TaskCard = ({ title, status, points, id }: TaskCardProps) => {
   const dueDate = dayjs()
     .add(points ?? 0, 'day')
     .format('MM/DD/YYYY');
@@ -94,8 +94,8 @@ const AnalyticEcommerce = ({ title, status, points, id }: AnalyticEcommerceProps
   );
 };
 
-AnalyticEcommerce.defaultProps = {
+TaskCard.defaultProps = {
   color: 'primary'
 };
 
-export default AnalyticEcommerce;
+export default TaskCard;

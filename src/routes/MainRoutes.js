@@ -3,7 +3,10 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
-import SettingsPage from 'pages/extra-pages/settings-page';
+import SettingsPage from 'pages/settings/settings-page';
+import FeedbackPage from 'pages/feedback/feedback-page';
+import TermsPage from 'pages/extra-pages/TermsPage';
+import EpicsPage from 'pages/epics/epics-page';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/dashboard')));
@@ -48,6 +51,18 @@ const MainRoutes = {
       path: 'settings-page',
       element: <SettingsPage />
     },
+    {
+      path: 'feedback-page',
+      element: <FeedbackPage />
+    },
+    {
+      path: 'epics-page',
+      element: <EpicsPage />
+    },
+    // {
+    //   path: 'terms-page',
+    //   element: <TermsPage />
+    // },
     {
       path: 'shadow',
       element: <Shadow />

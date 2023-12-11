@@ -30,6 +30,7 @@ type MainCardProps = {
   codeHighlight?: boolean;
   children?: ReactNode;
   draggable?: boolean;
+  className?: string;
   onDragStart?: (e: any) => void;
 };
 

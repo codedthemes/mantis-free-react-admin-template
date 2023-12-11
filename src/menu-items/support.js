@@ -1,5 +1,5 @@
 // assets
-import { ChromeOutlined, QuestionOutlined, SettingOutlined } from '@ant-design/icons';
+import { AuditOutlined, QuestionOutlined, SettingOutlined, FileProtectOutlined } from '@ant-design/icons';
 
 // icons
 
@@ -10,16 +10,16 @@ const support = {
   title: 'Support',
   type: 'group',
   children: [
-    // {
-    //   id: 'sample-page',
-    //   title: 'Sample Page',
-    //   type: 'item',
-    //   url: '/settings-page',
-    //   icon: icons.ChromeOutlined
-    // },
+    {
+      id: 'feedback-page',
+      title: 'Feedback',
+      type: 'item',
+      url: '/feedback-page',
+      icon: AuditOutlined
+    },
     {
       id: 'settings-page',
-      title: 'Settings Page',
+      title: 'Settings',
       type: 'item',
       url: '/settings-page',
       icon: SettingOutlined
@@ -33,6 +33,13 @@ const support = {
       external: true,
       target: true
     }
+    // {
+    //   id: 'terms',
+    //   title: 'Terms',
+    //   type: 'item',
+    //   url: '/terms-page',
+    //   icon: FileProtectOutlined
+    // }
   ]
 };
 

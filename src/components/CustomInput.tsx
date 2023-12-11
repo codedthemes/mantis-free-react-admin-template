@@ -10,10 +10,21 @@ type CustomInputProps = {
   touched?: any;
   handleBlur?: any;
   disabled?: boolean;
+  multiline?: boolean;
   handleChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const CustomInput = ({ title, placeholder, value, disabled, error, touched, handleBlur, handleChange }: CustomInputProps) => {
+export const CustomInput = ({
+  title,
+  placeholder,
+  value,
+  disabled,
+  error,
+  touched,
+  handleBlur,
+  handleChange,
+  multiline
+}: CustomInputProps) => {
   return (
     <Stack sx={{ width: '100%' }} spacing={1} padding={1}>
       <InputLabel htmlFor="email-login">{title}</InputLabel>
@@ -24,6 +35,7 @@ export const CustomInput = ({ title, placeholder, value, disabled, error, touche
         placeholder={placeholder}
         fullWidth
         disabled={disabled}
+        multiline={multiline}
         // error={true}
       />
       {/* {touched.email && errors.email && (

@@ -7,12 +7,13 @@ import { CustomSelect } from 'components/CustomSelect';
 import { ColumnName } from 'types/Task';
 import { useTaskStore } from 'zustand-store/TasksStore';
 import { useEpicStore } from 'zustand-store/EpicStore';
+import { EpicStatus } from 'types/Epic';
 
 type CreateTaskProps = {
   handleToggle: () => void;
 };
 
-const epicDescription =
+export const epicDescription =
   'In LifeOps an "epic" transcends the conventional concept of a product goal and becomes a manifestation of a grander life pursuit. An epic represents a strategic and profound objective, a monumental journey that unfolds over time.';
 
 export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
@@ -63,7 +64,7 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
   };
 
   const CreateEpic = () => {
-    AddEpic({ title: firstEpicName, userId: '1' });
+    AddEpic({ title: firstEpicName, status: EpicStatus.IN_PROGRESS, userId: '1' });
     handleToggle();
   };
   const CreateTask = () => {
