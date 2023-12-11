@@ -1,5 +1,5 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
+import { DashboardOutlined, CrownOutlined } from '@ant-design/icons';
 
 const dashboard = {
   id: 'group-dashboard',
@@ -10,7 +10,7 @@ const dashboard = {
       id: 'dashboard',
       title: 'Life Board',
       type: 'item',
-      url: '/',
+      url: '/dashboard',
       icon: DashboardOutlined,
       breadcrumbs: false
     },
@@ -19,7 +19,7 @@ const dashboard = {
       title: 'Epics',
       type: 'item',
       url: '/epics-page',
-      icon: DashboardOutlined,
+      icon: CrownOutlined,
       breadcrumbs: false
     }
   ]

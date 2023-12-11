@@ -16,7 +16,7 @@ const FeedbackPage = () => (
         <Helmet>
           <script src="//embed.typeform.com/next/embed.js"></script>
         </Helmet>
-        <div data-tf-live="01HHBV27R59QXR8G6YV3Y4263R">Helmet</div>
+        <div data-tf-live="01HHBV27R59QXR8G6YV3Y4263R"></div>
       </div>
     </MainCard>
   </>
