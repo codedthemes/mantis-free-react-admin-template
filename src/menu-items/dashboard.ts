@@ -1,12 +1,5 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
-
-// icons
-const icons = {
-  DashboardOutlined
-};
-
-// ==============================|| MENU ITEMS - DASHBOARD ||============================== //
+import { DashboardOutlined, SettingOutlined } from '@ant-design/icons';
 
 const dashboard = {
   id: 'group-dashboard',
@@ -18,7 +11,7 @@ const dashboard = {
       title: 'Life Board',
       type: 'item',
       url: '/dashboard/default',
-      icon: icons.DashboardOutlined,
+      icon: DashboardOutlined,
       breadcrumbs: false
     }
   ]

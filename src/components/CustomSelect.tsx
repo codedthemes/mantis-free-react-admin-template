@@ -1,10 +1,16 @@
 import { Stack } from '@mui/material';
 import { InputLabel, Select, SelectChangeEvent, MenuItem } from '@mui/material';
+
+type Option = {
+  id: string;
+  title: string;
+};
+
 type CustomSelectProps = {
   title?: string;
   placeholder?: string;
   value?: any;
-  options?: Record<string, string>[];
+  options?: Option[];
   error?: any;
   touched?: any;
   handleBlur?: any;

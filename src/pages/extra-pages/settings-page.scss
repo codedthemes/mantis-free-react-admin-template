@@ -1,0 +1,13 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px !important;
+  //   border: thin solid #eaeaea;
+  border-radius: 8px;
+  padding: 20px 20px 20px 10px;
+}
+
+.settings-section {
+  padding: 0 0 0 10px;
+}

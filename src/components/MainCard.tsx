@@ -29,8 +29,8 @@ type MainCardProps = {
   title?: string | ReactNode;
   codeHighlight?: boolean;
   children?: ReactNode;
-  draggable: boolean;
-  onDragStart: (e: any) => void;
+  draggable?: boolean;
+  onDragStart?: (e: any) => void;
 };
 
 const MainCard = forwardRef(

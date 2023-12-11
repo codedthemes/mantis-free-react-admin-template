@@ -43,7 +43,7 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
     }
   }, [firstEpicName]);
 
-  const handleEpicNameChange = (event: SelectChangeEvent) => {
+  const handleEpicNameChange = (event: SelectChangeEvent<HTMLInputElement>) => {
     setEpic(event.target.value as string);
   };
 
@@ -58,7 +58,7 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
     setTaskPoints(Number(e.target.value));
   };
 
-  const handleStatusChange = (event: SelectChangeEvent) => {
+  const handleStatusChange = (event: SelectChangeEvent<HTMLInputElement>) => {
     setTaskStatus(event.target.value as ColumnName);
   };
 

@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "src/components/cards/statistics/TaskCard.tsx",
     "src/utils/SyntaxHighlight.js",
-    "src/pages/dashboard/Dashboard.tsx"
+    "src/pages/dashboard/dashboard.tsx"
   ],
   "exclude": ["node_modules"]
 }
