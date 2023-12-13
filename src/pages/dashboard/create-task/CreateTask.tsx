@@ -87,13 +87,7 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
         {Epics?.length ? (
           <>
             <CustomSelect title="Epic" placeholder="Select an epic" value={epic} options={Epics} handleChange={handleEpicNameChange} />
-            <CustomInput
-              title="Title"
-              placeholder="Enter task title"
-              value={taskName}
-              handleChange={handleTaskNameChange}
-              disabled={isTaskValid}
-            />
+            <CustomInput title="Title" placeholder="Enter task title" value={taskName} handleChange={handleTaskNameChange} />
             <div className="status-points-container">
               <CustomSelect
                 title="Status"
