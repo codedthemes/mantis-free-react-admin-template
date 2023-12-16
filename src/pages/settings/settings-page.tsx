@@ -28,7 +28,7 @@ const SettingsPage = () => {
   }, [initialUserSettings, editedSettings]);
 
   const handleUpdateSettings = () => {
-    console.log('Updated Settings:', editedSettings);
+    // handle settings update
   };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

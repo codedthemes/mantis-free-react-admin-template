@@ -15,16 +15,6 @@ const EpicsPage = () => {
     fetchEpics('1');
   }, [fetchEpics]);
 
-  useEffect(() => {
-    const unsubscribe = useEpicStore.subscribe((updatedEpics) => {
-      // Handle the state change here, e.g., update component state
-      console.log('Epics updated:', updatedEpics);
-    });
-
-    // Cleanup the subscription when the component unmounts
-    return () => unsubscribe();
-  }, []);
-
   return (
     <MainCard title="Epics">
       <div className="epic-container">

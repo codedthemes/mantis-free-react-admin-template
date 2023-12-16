@@ -35,21 +35,24 @@ type MainCardProps = {
 };
 
 const MainCard = forwardRef(
-  ({
-    border = true,
-    boxShadow,
-    children,
-    content = true,
-    contentSX = {},
-    darkTitle,
-    elevation,
-    secondary,
-    shadow,
-    sx = {},
-    title,
-    codeHighlight,
-    ...others
-  }: MainCardProps) => {
+  (
+    {
+      border = true,
+      boxShadow,
+      children,
+      content = true,
+      contentSX = {},
+      darkTitle,
+      elevation,
+      secondary,
+      shadow,
+      sx = {},
+      title,
+      codeHighlight,
+      ...others
+    }: MainCardProps,
+    ref
+  ) => {
     const theme = useTheme();
     boxShadow = theme.palette.mode === 'dark' ? boxShadow || true : boxShadow;
 
@@ -86,14 +89,14 @@ const MainCard = forwardRef(
         {!content && children}
 
         {/* card footer - clipboard & highlighter  */}
-        {codeHighlight && (
+        {/* {codeHighlight && (
           <>
             <Divider sx={{ borderStyle: 'dashed' }} />
             <Highlighter codeHighlight={codeHighlight} main>
               {children}
             </Highlighter>
           </>
-        )}
+        )} */}
       </Card>
     );
   }

@@ -14,11 +14,9 @@ export function RenderTaskComponent(data: Task[]): JSX.Element[] {
 }
 
 export function RenderEpicComponent(data: Epic[]): JSX.Element[] {
-  console.log(data);
   const elementsToRender: JSX.Element[] = [];
 
   data.forEach((epicData, key) => {
-    console.log(epicData);
     elementsToRender.push(<EpicCard key={key} epic={epicData} />);
   });
 

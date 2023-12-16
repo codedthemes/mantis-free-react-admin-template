@@ -17,9 +17,7 @@ export class EpicApi implements IEpicApi {
     throw new Error('Method not implemented.');
   }
   async getAllEpics(user_id: string): Promise<Epic[]> {
-    console.log(user_id);
     const result = await (await this.query.get(`/epics/${user_id}`)).data;
-    console.log(result);
     return result.data;
   }
   async updateEpic(id: string, payload: Epic): Promise<Epic> {

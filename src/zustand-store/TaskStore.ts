@@ -16,13 +16,15 @@ export const useTaskStore = create<TaskStore>((set) => ({
         id: '8',
         title: 'Get Khabib food and litter',
         points: 2,
-        status: 'new'
+        status: 'new',
+        epic_id: '1'
       },
       {
         id: '145',
         title: 'Update dads pc to windows 11',
         points: 7,
-        status: 'new'
+        status: 'new',
+        epic_id: '1'
       }
     ],
     committed: [
@@ -30,13 +32,15 @@ export const useTaskStore = create<TaskStore>((set) => ({
         id: '22',
         title: 'Get clothes for christmas party',
         points: 3,
-        status: 'committed'
+        status: 'committed',
+        epic_id: '1'
       },
       {
         id: '73',
         title: 'pick up lunch',
         points: 1,
-        status: 'committed'
+        status: 'committed',
+        epic_id: '1'
       }
     ],
     active: [
@@ -44,13 +48,15 @@ export const useTaskStore = create<TaskStore>((set) => ({
         id: '1',
         title: 'Clean my room',
         points: 2,
-        status: 'active'
+        status: 'active',
+        epic_id: '1'
       },
       {
         id: '2',
         title: 'Take out the trash',
         points: 1,
-        status: 'active'
+        status: 'active',
+        epic_id: '1'
       }
     ],
 
@@ -59,13 +65,15 @@ export const useTaskStore = create<TaskStore>((set) => ({
         id: '7',
         title: 'Workout',
         points: 1,
-        status: 'resolved'
+        status: 'resolved',
+        epic_id: '1'
       },
       {
         id: '11',
         title: 'Dev 422 Homework',
         points: 2,
-        status: 'resolved'
+        status: 'resolved',
+        epic_id: '1'
       }
     ]
   },
