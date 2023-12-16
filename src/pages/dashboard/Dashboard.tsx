@@ -1,9 +1,9 @@
 import './dashboard.scss';
-import { ColumnName } from 'types/Task';
+import { ColumnName } from '../../Types/Task';
 import { SectionHeader } from 'components/cards/headers/SectionHeader';
 import { RenderTaskComponent } from 'utils/RenderComponent';
 import { CaretRightOutlined, CheckCircleOutlined } from '@ant-design/icons';
-import { useTaskStore } from 'zustand-store/TasksStore';
+import { useTaskStore } from 'zustand-store/TaskStore';
 
 export function DashboardDefault() {
   const { Tasks, UpdateTasks: updateTasks } = useTaskStore();

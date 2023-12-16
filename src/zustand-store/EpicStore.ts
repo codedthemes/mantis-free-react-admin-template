@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { CreateId } from 'utils/CreateId';
-import { Epic, CreateEpic, EpicStatus } from 'types/Epic';
+import { Epic, CreateEpic, EpicStatus } from '../Types/Epic';
 interface EpicStore {
   Epics: Epic[];
   AddEpic: (epic: CreateEpic) => void;

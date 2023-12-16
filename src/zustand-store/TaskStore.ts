@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-import { Task, ColumnName, CreateTask } from 'types/Task';
-import { v4 as uuidv4 } from 'uuid';
+import { Task, ColumnName, CreateTask } from '../Types/Task';
 import { CreateId } from 'utils/CreateId';
 interface TaskStore {
   Tasks: Record<string, Task[]>;

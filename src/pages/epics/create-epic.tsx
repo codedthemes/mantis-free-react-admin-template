@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Grid, Stack, Typography, SelectChangeEvent, Button } from '@mui/material';
 import { CustomInput } from 'components/CustomInput';
 import { useEpicStore } from 'zustand-store/EpicStore';
-import { EpicStatus } from 'types/Epic';
+import { EpicStatus } from '../../Types/Epic';
 
 type CreateTaskProps = {
   handleToggle: () => void;

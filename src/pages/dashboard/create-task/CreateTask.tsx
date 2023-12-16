@@ -4,10 +4,10 @@ import { Grid, Stack, Typography, SelectChangeEvent, Button } from '@mui/materia
 import { CustomInput } from 'components/CustomInput';
 import { ChangeEvent } from 'react';
 import { CustomSelect } from 'components/CustomSelect';
-import { ColumnName } from 'types/Task';
-import { useTaskStore } from 'zustand-store/TasksStore';
+import { ColumnName } from '../../../Types/Task';
+import { useTaskStore } from 'zustand-store/TaskStore';
 import { useEpicStore } from 'zustand-store/EpicStore';
-import { EpicStatus } from 'types/Epic';
+import { EpicStatus } from '../../../Types/Epic';
 
 type CreateTaskProps = {
   handleToggle: () => void;

@@ -1,4 +1,4 @@
-import { CreateTask } from 'pages/dashboard/create-task/CreateTask';
+import { CreateTask } from '../pages/dashboard/create-task/CreateTask';
 
 export interface Task extends CreateTask {
   id: string;

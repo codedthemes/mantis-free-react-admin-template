@@ -5,7 +5,7 @@ import { IndicatorColors } from 'utils/DataStatus';
 import MainCard from 'components/MainCard';
 import dayjs from 'dayjs';
 import { GetDateStatus } from 'utils/DataStatus';
-import { ColumnName } from 'types/Task';
+import { ColumnName } from '../../../Types/Task';
 
 const HandleOnDrag = (e: React.DragEvent, id: string, status: string) => {
   e.dataTransfer.setData('id', id);
