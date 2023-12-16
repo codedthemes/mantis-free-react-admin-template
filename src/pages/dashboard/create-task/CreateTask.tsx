@@ -5,7 +5,6 @@ import { CustomInput } from 'components/CustomInput';
 import { ChangeEvent } from 'react';
 import { CustomSelect } from 'components/CustomSelect';
 import { ColumnName } from '../../../Types/Task';
-import { useTaskStore } from 'zustand-store/TaskStore';
 import { useEpicStore } from 'zustand-store/EpicStore';
 import { EpicStatus } from '../../../Types/Epic';
 
@@ -18,15 +17,18 @@ export const epicDescription =
 
 export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
   const [epic, setEpic] = useState('');
-  const [firstEpicName, setFirstEpicName] = useState('');
+  const [epicName, setEpicName] = useState('');
   const [taskName, setTaskName] = useState('');
   const [taskStatus, setTaskStatus] = useState<ColumnName>(ColumnName.NEW);
   const [taskPoints, setTaskPoints] = useState(1);
   const [isTaskValid, setIsTaskValid] = useState(true);
   const [isEpicValid, setIsEpicValid] = useState(true);
 
-  const { AddTask } = useTaskStore();
-  const { Epics, AddEpic } = useEpicStore();
+  const { Epics, fetchEpics, AddEpic } = useEpicStore();
+
+  useEffect(() => {
+    fetchEpics('1');
+  }, [fetchEpics]);
 
   useEffect(() => {
     if (epic && taskName && taskStatus && taskPoints) {
@@ -37,12 +39,12 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
   }, [epic, taskName, taskStatus, taskPoints]);
 
   useEffect(() => {
-    if (firstEpicName) {
+    if (epicName) {
       setIsEpicValid(false);
     } else {
       setIsEpicValid(true);
     }
-  }, [firstEpicName]);
+  }, [epicName]);
 
   const handleEpicNameChange = (event: SelectChangeEvent<HTMLInputElement>) => {
     setEpic(event.target.value as string);
@@ -52,7 +54,7 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
     setTaskName(e.target.value);
   };
   const handleFirstEpicNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFirstEpicName(e.target.value);
+    setEpicName(e.target.value);
   };
 
   const handlePointsChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,16 +65,10 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
     setTaskStatus(event.target.value as ColumnName);
   };
 
-  const CreateEpic = () => {
-    AddEpic({ title: firstEpicName, status: EpicStatus.IN_PROGRESS, userId: '1' });
-    handleToggle();
+  const CreateEpic = async () => {
+    AddEpic({ title: epicName, status: EpicStatus.IN_PROGRESS, user_id: '1' });
   };
   const CreateTask = () => {
-    AddTask({
-      title: taskName,
-      points: taskPoints,
-      status: taskStatus
-    });
     handleToggle();
   };
 
@@ -108,12 +104,7 @@ export const CreateTask = ({ handleToggle }: CreateTaskProps) => {
             <Typography variant="caption" color="textSecondary">
               {epicDescription}
             </Typography>
-            <CustomInput
-              title="Create an epic"
-              placeholder="Enter epic title"
-              value={firstEpicName}
-              handleChange={handleFirstEpicNameChange}
-            />
+            <CustomInput title="Create an epic" placeholder="Enter epic title" value={epicName} handleChange={handleFirstEpicNameChange} />
           </div>
         )}
         <Button

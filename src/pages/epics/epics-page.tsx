@@ -6,9 +6,24 @@ import MainCard from 'components/MainCard';
 import { epicDescription } from 'pages/dashboard/create-task/CreateTask';
 import { RenderEpicComponent } from 'utils/RenderComponent';
 import { useEpicStore } from 'zustand-store/EpicStore';
+import { useEffect } from 'react';
 
 const EpicsPage = () => {
-  const { Epics } = useEpicStore();
+  const { Epics, fetchEpics } = useEpicStore();
+
+  useEffect(() => {
+    fetchEpics('1');
+  }, [fetchEpics]);
+
+  useEffect(() => {
+    const unsubscribe = useEpicStore.subscribe((updatedEpics) => {
+      // Handle the state change here, e.g., update component state
+      console.log('Epics updated:', updatedEpics);
+    });
+
+    // Cleanup the subscription when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   return (
     <MainCard title="Epics">

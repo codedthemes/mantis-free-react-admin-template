@@ -1,10 +1,10 @@
-export interface Epic extends CreateEpic {
+export interface Epic extends CreateEpicPayload {
   id: string;
 }
 
-export interface CreateEpic {
+export interface CreateEpicPayload {
   title: string;
-  userId: string;
+  user_id: string;
   status: EpicStatus;
 }
 

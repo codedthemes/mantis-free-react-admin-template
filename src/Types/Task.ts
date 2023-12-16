@@ -8,7 +8,7 @@ export interface CreateTask {
   title: string;
   points: number;
   status: string;
-  epicId?: string;
+  epic_id: string;
 }
 
 export enum ColumnName {

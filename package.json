@@ -19,6 +19,7 @@
     "@typeform/embed-react": "^3.9.0",
     "@typescript-eslint/parser": "^5.62.0",
     "apexcharts": "^3.35.5",
+    "axios": "^1.6.2",
     "dayjs": "^1.11.10",
     "firebase": "^10.7.1",
     "formik": "^2.2.9",

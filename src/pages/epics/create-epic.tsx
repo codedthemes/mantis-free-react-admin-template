@@ -4,15 +4,18 @@ import { CustomInput } from 'components/CustomInput';
 import { useEpicStore } from 'zustand-store/EpicStore';
 import { EpicStatus } from '../../Types/Epic';
 
-type CreateTaskProps = {
+type CreateEpicProps = {
   handleToggle: () => void;
 };
 
-export const CreateEpic = ({ handleToggle }: CreateTaskProps) => {
+export const CreateEpic = ({ handleToggle }: CreateEpicProps) => {
   const [epicName, setEpicName] = useState('');
   const [isEpicValid, setIsEpicValid] = useState(true);
-
   const { AddEpic } = useEpicStore();
+
+  const createEpic = async () => {
+    AddEpic({ title: epicName, status: EpicStatus.IN_PROGRESS, user_id: '1' });
+  };
 
   useEffect(() => {
     if (epicName) {
@@ -27,7 +30,7 @@ export const CreateEpic = ({ handleToggle }: CreateTaskProps) => {
   };
 
   const CreateEpic = () => {
-    AddEpic({ title: epicName, status: EpicStatus.IN_PROGRESS, userId: '1' });
+    createEpic();
     handleToggle();
   };
 
@@ -54,7 +57,7 @@ export const CreateEpic = ({ handleToggle }: CreateTaskProps) => {
           onClick={CreateEpic}
           sx={{ mt: 3 }}
         >
-          create epic{' '}
+          create epic
         </Button>
       </Grid>
     </Grid>

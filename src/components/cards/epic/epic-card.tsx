@@ -1,18 +1,24 @@
 import { IndicatorColors } from 'utils/DataStatus';
 import './epic-card.scss';
 import { CrownOutlined } from '@ant-design/icons';
+import { Epic, EpicStatus } from 'Types/Epic';
 
 type EpicCardProps = {
-  id?: string;
-  title?: string;
-  status?: string;
+  epic: Epic;
 };
 
-export const EpicCard = ({ id, title, status }: EpicCardProps) => {
+export const EpicCard = ({ epic }: EpicCardProps) => {
   return (
     <div className="epic-card-container">
-      <CrownOutlined style={{ verticalAlign: '-1em', fontSize: '18px', color: IndicatorColors[status ?? 'new'], marginBottom: '4px' }} />
-      <div className="epic-card-title">{title}</div>
+      <CrownOutlined
+        style={{
+          verticalAlign: '-1em',
+          fontSize: '18px',
+          color: IndicatorColors[epic.status ?? EpicStatus.IN_PROGRESS],
+          marginBottom: '4px'
+        }}
+      />
+      <div className="epic-card-title">{epic.title}</div>
     </div>
   );
 };
