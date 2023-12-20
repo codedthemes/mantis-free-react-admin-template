@@ -51,13 +51,13 @@ const ButtonBar = () => {
         right: '0',
         paddingX: { xs: theme.spacing(1.5), sm: theme.spacing(3) },
         paddingY: { xs: theme.spacing(1.5), sm: theme.spacing(2) },
-        backgroundColor: theme.palette.common.white,
+        backgroundColor: theme.palette.primary.main,
         width: barWidth,
         zIndex: '1000',
         boxShadow: theme.customShadows.z2
       }}
     >
-      <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" onClick={saveAction}>
+      <Button startIcon={isSaving ? <CircularProgress size="1rem" /> : <Save />} variant="contained" color="white" onClick={saveAction}>
         {isSaving ? 'lädt' : 'speichern'}
       </Button>
     </Stack>

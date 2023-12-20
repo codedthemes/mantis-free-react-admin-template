@@ -3,7 +3,8 @@ import { lazy } from 'react';
 // project import
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './helper/ProtectedRoute';
+import Redirect from './helper/Redirect';
 
 // pages
 const FormOverview = Loadable(lazy(() => import('pages/form/FormOverview')));
@@ -34,12 +35,30 @@ const UserRoutes = {
       )
     },
     {
-      path: 'office/form/:formId',
-      element: (
-        <ProtectedRoute>
-          <Form />
-        </ProtectedRoute>
-      )
+      path: 'office/form',
+      children: [
+        {
+          path: ':formId',
+          children: [
+            {
+              path: ':formSection',
+              element: (
+                <ProtectedRoute>
+                  <Form />
+                </ProtectedRoute>
+              ),
+            },
+            {
+              path: '',
+              element: <Redirect to="/office/dashboard" />
+            }
+          ]
+        },
+        {
+          path: '',
+          element: <Redirect to="/office/dashboard" />
+        }
+      ]
     },
     {
       path: 'office/review',

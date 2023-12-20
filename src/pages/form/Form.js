@@ -10,6 +10,7 @@ import { UserContext } from 'context/user';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 import Annahmen from 'formConfigs/annahmen/Form/index';
 import Mitarbeiter from 'formConfigs/mitarbeiter/Form/index';
+import FullPageLoader from 'components/FullPageLoader/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -18,7 +19,7 @@ const FormComponent = () => {
   const theme = useTheme();
   const { activeFormId, activeFormData, setActiveFormId } = useContext(UserContext);
   const activeFormTitle = useMemo(() => activeFormData?.title, [activeFormData]);
-  const { formId } = useParams();
+  const { formId, formSection } = useParams();
 
   useEffect(() => {
     if (!formId) {
@@ -37,11 +38,11 @@ const FormComponent = () => {
         mitarbeiter: <Mitarbeiter />
       };
 
-      return formLiteral[activeFormData.type] || 'Es ist ein Fehler aufgetreten.';
+      return formLiteral[formSection] || 'Es ist ein Fehler aufgetreten.';
     }
 
-    return 'loading';
-  }, [activeFormData]);
+    return <FullPageLoader />;
+  }, [activeFormData, formSection]);
 
   return (
     <Box mb={theme.shape.layoutDesignGutterReset}>

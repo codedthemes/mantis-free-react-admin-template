@@ -21,13 +21,19 @@ const FormOverview = () => {
         description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
       />
       <Typography variant="h2" sx={headlineSectionStyle}>
-        Annahmen
+        Dokumente
       </Typography>
-      <SelectFormView formType="annahmen" />
-      <Typography variant="h2" sx={headlineSectionStyle}>
+      <SelectFormView
+        formType="stundensatz"
+        sections={[
+          { linkPart: 'annahmen', label: 'Annahmen' },
+          { linkPart: 'mitarbeiter', label: 'Mitarbeiter' }
+        ]}
+      />
+      {/* <Typography variant="h2" sx={headlineSectionStyle}>
         Mitarbeiter
       </Typography>
-      <SelectFormView formType="mitarbeiter" />
+      <SelectFormView formType="stundensatz" /> */}
     </Stack>
   );
 };

@@ -56,19 +56,21 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, children, light,
     >
       <Stack direction="column" textAlign={textAlign || 'left'} spacing={1} sx={{ width: '100%' }}>
         {/* <Icon sx={{ fontSize: { xs: 32, md: 32, lg: 40 }, color: textColor }} /> */}
-        <Typography
-          paragraph
-          sx={{
-            fontSize: 24,
-            lineHeight: '1em',
-            textTransform: 'none',
-            fontWeight: theme.typography.fontWeightBolder,
-            margin: '0px',
-            color: textColor
-          }}
-        >
-          {prefixText}
-        </Typography>
+        {prefixText && (
+          <Typography
+            paragraph
+            sx={{
+              fontSize: 24,
+              lineHeight: '1em',
+              textTransform: 'none',
+              fontWeight: theme.typography.fontWeightBolder,
+              margin: '0px',
+              color: textColor
+            }}
+          >
+            {prefixText}
+          </Typography>
+        )}
         <Typography
           paragraph
           sx={{

@@ -1,21 +1,12 @@
 /* eslint-disable react/prop-types */
 import { UserContext } from 'context/user';
-import { useContext, useCallback } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CircularProgress, Stack } from '@mui/material';
+import FullPageLoader from 'components/FullPageLoader/index';
 
 const ProtectedRoute = ({ children }) => {
   const { user, requestStatusCodes } = useContext(UserContext);
   const navigate = useNavigate();
-
-  const FullPageLoader = useCallback(
-    () => (
-      <Stack sx={{ minHeight: 'calc(90vh - 200px)' }} justifyContent="center" alignItems="center">
-        <CircularProgress />
-      </Stack>
-    ),
-    []
-  );
 
   if (user.uid) {
     return children;
