@@ -23,7 +23,6 @@ const MainLayout = () => {
   const { setNavOpen, navOpen, useDrawerNav } = useContext(NavigationContext);
 
   const footerLinkStyles = {
-    color: theme.palette.common.white,
     fontWeight: 300,
     fontSize: '1rem',
     padding: 0,
@@ -33,7 +32,6 @@ const MainLayout = () => {
   return (
     <Box
       sx={{
-        overflow: 'hidden',
         background: `radial-gradient(circle at 2% 10%, ${theme.palette.common.white}, transparent 100%),radial-gradient(circle at 95% 20%, ${theme.palette.primary[200]}, transparent 100%),radial-gradient(circle at 25% 90%, ${theme.palette.grey[300]}, transparent 100%)`
       }}
     >
@@ -147,12 +145,11 @@ const MainLayout = () => {
       <Box
         component="footer"
         sx={{
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor: 'transparent',
           padding: theme.shape.layoutDesignGutter,
-          color: theme.palette.common.white,
           position: 'relative',
           zIndex: '1',
-          borderTop: '1px solid white'
+          borderTop: `2px solid ${theme.palette.primary.main}`
         }}
       >
         <Grid container spacing={3}>
