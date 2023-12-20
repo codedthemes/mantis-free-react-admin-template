@@ -10,7 +10,7 @@ import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 const Zusammenfassung = () => {
   const { values, handleChange, handleBlur, touched, errors } = useFormikContext();
 
-  if (!values.mitarbeiter_anwesenheitsEntgeltGesamt) {
+  if (!values.pk_produktiv_anwesenheitsEntgeltGesamt) {
     return;
   }
 
@@ -24,17 +24,17 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={6}>
             <Field
               component={TextField}
-              id={`mitarbeiter_anwesenheitsEntgeltGesamt`}
-              name={`mitarbeiter_anwesenheitsEntgeltGesamt`}
+              id={`pk_produktiv_anwesenheitsEntgeltGesamt`}
+              name={`pk_produktiv_anwesenheitsEntgeltGesamt`}
               label="Anwesenheitsentgelt (gesamt, in EUR)"
-              value={values.mitarbeiter_anwesenheitsEntgeltGesamt}
+              value={values.pk_produktiv_anwesenheitsEntgeltGesamt}
               onChange={handleChange}
               onBlur={handleBlur}
               InputProps={{
                 readOnly: true
               }}
-              error={touched.mitarbeiter_anwesenheitsEntgeltGesamt && Boolean(errors.mitarbeiter_anwesenheitsEntgeltGesamt)}
-              helperText={touched.mitarbeiter_anwesenheitsEntgeltGesamt && errors.mitarbeiter_anwesenheitsEntgeltGesamt}
+              error={touched.pk_produktiv_anwesenheitsEntgeltGesamt && Boolean(errors.pk_produktiv_anwesenheitsEntgeltGesamt)}
+              helperText={touched.pk_produktiv_anwesenheitsEntgeltGesamt && errors.pk_produktiv_anwesenheitsEntgeltGesamt}
               sx={{ mb: 2 }}
             />
           </Grid>

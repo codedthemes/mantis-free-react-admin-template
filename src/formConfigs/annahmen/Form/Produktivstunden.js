@@ -78,43 +78,25 @@ const Produktivstunden = () => {
         <Grid item xs={12}>
           <Typography variant="h3">Ermittlung der Anwesenheitszeit</Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            id="annahmen_produktivstunden_tageProJahr"
-            name="annahmen_produktivstunden_tageProJahr"
-            label="Tage pro Jahr"
-            value={values.annahmen_produktivstunden_tageProJahr}
-            type="number"
-            min="0"
-            max="365"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.annahmen_produktivstunden_tageProJahr && Boolean(errors.annahmen_produktivstunden_tageProJahr)}
-            helperText={touched.annahmen_produktivstunden_tageProJahr && errors.annahmen_produktivstunden_tageProJahr}
-            sx={{ mb: 2 }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            id="annahmen_produktivstunden_wochenendtageProJahr"
-            name="annahmen_produktivstunden_wochenendtageProJahr"
-            label="Davon Wochenendtage"
-            value={values.annahmen_produktivstunden_wochenendtageProJahr}
-            type="number"
-            min="0"
-            max="53"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.annahmen_produktivstunden_wochenendtageProJahr && Boolean(errors.annahmen_produktivstunden_wochenendtageProJahr)}
-            helperText={touched.annahmen_produktivstunden_wochenendtageProJahr && errors.annahmen_produktivstunden_wochenendtageProJahr}
-            sx={{ mb: 2 }}
-          />
-        </Grid>
         <Grid item xs={12}>
-          <ReadOnlyBox title={'Jahresarbeitszeit gesamt'}>
+          <ReadOnlyBox title={'Jahresarbeitszeit gesamt'} alwaysOpen>
             <Grid container spacing={{ xs: 2, md: 4 }}>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  component={TextField}
+                  id="annahmen_produktivstunden_wochenendtageProJahr"
+                  name="annahmen_produktivstunden_wochenendtageProJahr"
+                  label={`Wochenendtage im Jahr ${values.annahmen_allgemein_planjahr || ''}`}
+                  value={values.annahmen_produktivstunden_wochenendtageProJahr}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  sx={{ mb: 2 }}
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                &nbsp;
+              </Grid>
               <Grid item xs={12} md={6}>
                 <Field
                   component={TextField}

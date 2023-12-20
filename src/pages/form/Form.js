@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 import { UserContext } from 'context/user';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 import Annahmen from 'formConfigs/annahmen/Form/index';
-import Mitarbeiter from 'formConfigs/mitarbeiter/Form/index';
+import PersonalkostenProduktiv from 'formConfigs/pk_produktiv/Form/index';
 import FullPageLoader from 'components/FullPageLoader/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
@@ -35,7 +35,7 @@ const FormComponent = () => {
     if (activeFormData) {
       const formLiteral = {
         annahmen: <Annahmen />,
-        mitarbeiter: <Mitarbeiter />
+        pk_produktiv: <PersonalkostenProduktiv />
       };
 
       return formLiteral[formSection] || 'Es ist ein Fehler aufgetreten.';

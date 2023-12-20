@@ -16,19 +16,42 @@ const StundensatzRechnerValueUpdater = () => {
     }
   }, [values.annahmen_produktivstunden_wochenarbeitszeit, values.annahmen_produktivstunden_wochenarbeitstage, setFieldValue]);
   useEffect(() => {
+    const countWeekends = (year) => {
+      let count = 0;
+      let date = new Date(year, 0, 1); // Startdatum ist der 1. Januar des gegebenen Jahres
+
+      while (date.getFullYear() === year) {
+        const dayOfWeek = date.getDay();
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+          // 0 steht für Sonntag, 6 für Samstag
+          count++;
+        }
+        date.setDate(date.getDate() + 1); // Gehe zum nächsten Tag
+      }
+
+      return count;
+    };
+
+    if (values.annahmen_allgemein_planjahr) {
+      const weekendDays = countWeekends(values.annahmen_allgemein_planjahr);
+      if (weekendDays !== values.annahmen_produktivstunden_wochenendtageProJahr) {
+        setFieldValue('annahmen_produktivstunden_wochenendtageProJahr', weekendDays);
+      }
+    } else if (values.annahmen_produktivstunden_wochenendtageProJahr) {
+      setFieldvalue('annahmen_produktivstunden_wochenendtageProJahr', undefined);
+    }
+  }, [setFieldValue, values.annahmen_allgemein_planjahr, values.annahmen_produktivstunden_wochenendtageProJahr]);
+  useEffect(() => {
     if (
       values.annahmen_produktivstunden_wochenarbeitszeit !== undefined &&
       values.annahmen_produktivstunden_wochenarbeitstage !== undefined &&
       values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag !== undefined &&
-      values.annahmen_produktivstunden_tageProJahr !== undefined &&
       values.annahmen_produktivstunden_wochenendtageProJahr !== undefined
     ) {
-      const arbeitsstundenProJahr =
-        values.annahmen_produktivstunden_tageProJahr * values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0;
+      const arbeitsstundenProJahr = 365 * values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0;
       const wochenendArbeitsstundenProJahr =
         values.annahmen_produktivstunden_wochenendtageProJahr * values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0;
-      const jahresarbeitszzeitInTagen =
-        values.annahmen_produktivstunden_tageProJahr - values.annahmen_produktivstunden_wochenendtageProJahr || 0;
+      const jahresarbeitszzeitInTagen = 365 - values.annahmen_produktivstunden_wochenendtageProJahr || 0;
       const jahresArbeitszeitInStunden = arbeitsstundenProJahr - wochenendArbeitsstundenProJahr || 0;
 
       jahresArbeitszeitInStunden !== values.annahmen_produktivstunden_jahresArbeitszeitInStunden &&
@@ -40,7 +63,6 @@ const StundensatzRechnerValueUpdater = () => {
     values.annahmen_produktivstunden_wochenarbeitszeit,
     values.annahmen_produktivstunden_wochenarbeitstage,
     values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag,
-    values.annahmen_produktivstunden_tageProJahr,
     values.annahmen_produktivstunden_wochenendtageProJahr,
     setFieldValue,
     values.annahmen_produktivstunden_jahresArbeitszeitInStunden,
