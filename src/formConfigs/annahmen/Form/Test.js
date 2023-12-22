@@ -107,6 +107,7 @@ const Test = () => {
                             id={`testList.${index}.feld2`}
                             label="Feld 2"
                             type="number"
+                            onWheel={(event) => event.target.blur()}
                             value={arrayField.feld2}
                             onChange={handleChange}
                             onBlur={handleBlur}

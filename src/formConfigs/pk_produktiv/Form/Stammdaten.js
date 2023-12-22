@@ -82,22 +82,17 @@ const Stammdaten = () => {
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.sollarbeitsstdPA`}
-                          name={`pk_produktiv_mitarbeiter.${index}.sollarbeitsstdPA`}
+                          id={`pk_produktiv_mitarbeiter.${index}.E9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.E9`}
                           label="Sollarbeitsstunden p.a. (ohne Feiertage)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.sollarbeitsstdPA}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.E9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.sollarbeitsstdPA &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.sollarbeitsstdPA)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.sollarbeitsstdPA &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.sollarbeitsstdPA
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.E9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.E9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.E9 && errors.pk_produktiv_mitarbeiter?.[index]?.E9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
@@ -107,91 +102,72 @@ const Stammdaten = () => {
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.urlaubStd`}
-                          name={`pk_produktiv_mitarbeiter.${index}.urlaubStd`}
+                          id={`pk_produktiv_mitarbeiter.${index}.F9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.F9`}
                           label="Urlaub (in Stunden)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.urlaubStd}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.F9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
                           max="8760"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.urlaubStd &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.urlaubStd)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.urlaubStd && errors.pk_produktiv_mitarbeiter?.[index]?.urlaubStd
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.F9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.F9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.F9 && errors.pk_produktiv_mitarbeiter?.[index]?.F9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.krankheitStd`}
-                          name={`pk_produktiv_mitarbeiter.${index}.krankheitStd`}
+                          id={`pk_produktiv_mitarbeiter.${index}.G9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.G9`}
                           label="Krankheit (in Stunden)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.krankheitStd}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.G9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
                           max="8760"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.krankheitStd &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.krankheitStd)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.krankheitStd &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.krankheitStd
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.G9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.G9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.G9 && errors.pk_produktiv_mitarbeiter?.[index]?.G9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.fortbildungStd`}
-                          name={`pk_produktiv_mitarbeiter.${index}.fortbildungStd`}
+                          id={`pk_produktiv_mitarbeiter.${index}.H9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.H9`}
                           label="Fortbildung (in Stunden)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.fortbildungStd}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.H9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
                           max="8760"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.fortbildungStd &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.fortbildungStd)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.fortbildungStd &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.fortbildungStd
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.H9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.H9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.H9 && errors.pk_produktiv_mitarbeiter?.[index]?.H9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.sonstigeAbwesenheitenStd`}
-                          name={`pk_produktiv_mitarbeiter.${index}.sonstigeAbwesenheitenStd`}
+                          id={`pk_produktiv_mitarbeiter.${index}.I9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.I9`}
                           label="Sonstige Abwesenheiten (in Stunden)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.I9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
                           max="8760"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.sonstigeAbwesenheitenStd
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.I9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.I9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.I9 && errors.pk_produktiv_mitarbeiter?.[index]?.I9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
@@ -201,10 +177,10 @@ const Stammdaten = () => {
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
-                                id={`pk_produktiv_mitarbeiter.${index}.anwesenheitsStdMa`}
-                                name={`pk_produktiv_mitarbeiter.${index}.anwesenheitsStdMa`}
+                                id={`pk_produktiv_mitarbeiter.${index}.M9`}
+                                name={`pk_produktiv_mitarbeiter.${index}.M9`}
                                 label="Anwesenheit (in Std.)"
-                                value={values.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsStdMa}
+                                value={values.pk_produktiv_mitarbeiter?.[index]?.M9}
                                 InputProps={{
                                   readOnly: true
                                 }}
@@ -220,23 +196,18 @@ const Stammdaten = () => {
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.direktVerrechenbar`}
-                          name={`pk_produktiv_mitarbeiter.${index}.direktVerrechenbar`}
+                          id={`pk_produktiv_mitarbeiter.${index}.N9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.N9`}
                           label="Davon direkt verrechenbar (in Prozent)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.direktVerrechenbar}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.N9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
                           max="100"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.direktVerrechenbar &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.direktVerrechenbar)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.direktVerrechenbar &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.direktVerrechenbar
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.N9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.N9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.N9 && errors.pk_produktiv_mitarbeiter?.[index]?.N9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
@@ -246,10 +217,10 @@ const Stammdaten = () => {
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
-                                id={`pk_produktiv_mitarbeiter.${index}.direktVerrechnet`}
-                                name={`pk_produktiv_mitarbeiter.${index}.direktVerrechnet`}
+                                id={`pk_produktiv_mitarbeiter.${index}.O9`}
+                                name={`pk_produktiv_mitarbeiter.${index}.O9`}
                                 label="Direkt verrechnet (in Std.)"
-                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.direktVerrechnet, 1)}
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.O9, 1)}
                                 InputProps={{
                                   readOnly: true
                                 }}
@@ -259,10 +230,10 @@ const Stammdaten = () => {
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
-                                id={`pk_produktiv_mitarbeiter.${index}.nichtDirektVerrechnet`}
-                                name={`pk_produktiv_mitarbeiter.${index}.nichtDirektVerrechnet`}
+                                id={`pk_produktiv_mitarbeiter.${index}.P9`}
+                                name={`pk_produktiv_mitarbeiter.${index}.P9`}
                                 label="Nicht direkt verrechnet (in Std.)"
-                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.nichtDirektVerrechnet, 1)}
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.P9, 1)}
                                 InputProps={{
                                   readOnly: true
                                 }}
@@ -278,44 +249,34 @@ const Stammdaten = () => {
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.bruttoStundenentgeltStd`}
-                          name={`pk_produktiv_mitarbeiter.${index}.bruttoStundenentgeltStd`}
+                          id={`pk_produktiv_mitarbeiter.${index}.Q9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.Q9`}
                           label="Brutto Stundenentgelt (pro Stunde, in EUR)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.bruttoStundenentgeltStd}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.Q9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.bruttoStundenentgeltStd &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.bruttoStundenentgeltStd)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.bruttoStundenentgeltStd &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.bruttoStundenentgeltStd
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.Q9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.Q9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.Q9 && errors.pk_produktiv_mitarbeiter?.[index]?.Q9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
-                          id={`pk_produktiv_mitarbeiter.${index}.zulagenProStd`}
-                          name={`pk_produktiv_mitarbeiter.${index}.zulagenProStd`}
+                          id={`pk_produktiv_mitarbeiter.${index}.R9`}
+                          name={`pk_produktiv_mitarbeiter.${index}.R9`}
                           label="durchschn. Zulagen pro Stdunde (in EUR)"
-                          value={values.pk_produktiv_mitarbeiter?.[index]?.zulagenProStd}
+                          value={values.pk_produktiv_mitarbeiter?.[index]?.R9}
                           onChange={handleChange}
                           onBlur={handleBlur}
                           type="number"
+                          onWheel={(event) => event.target.blur()}
                           min="0"
-                          error={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.zulagenProStd &&
-                            Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.zulagenProStd)
-                          }
-                          helperText={
-                            touched.pk_produktiv_mitarbeiter?.[index]?.zulagenProStd &&
-                            errors.pk_produktiv_mitarbeiter?.[index]?.zulagenProStd
-                          }
+                          error={touched.pk_produktiv_mitarbeiter?.[index]?.R9 && Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.R9)}
+                          helperText={touched.pk_produktiv_mitarbeiter?.[index]?.R9 && errors.pk_produktiv_mitarbeiter?.[index]?.R9}
                           sx={{ mb: 2 }}
                         />
                       </Grid>
@@ -325,10 +286,10 @@ const Stammdaten = () => {
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
-                                id={`pk_produktiv_mitarbeiter.${index}.anwesenheitsentgelt`}
-                                name={`pk_produktiv_mitarbeiter.${index}.anwesenheitsentgelt`}
+                                id={`pk_produktiv_mitarbeiter.${index}.S9`}
+                                name={`pk_produktiv_mitarbeiter.${index}.S9`}
                                 label="Anwesenheitsentgelt (gesamt, in EUR)"
-                                value={values.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsentgelt}
+                                value={values.pk_produktiv_mitarbeiter?.[index]?.S9}
                                 InputProps={{
                                   readOnly: true
                                 }}
@@ -341,10 +302,10 @@ const Stammdaten = () => {
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
-                                id={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitDirektVerreichnet`}
-                                name={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitDirektVerreichnet`}
+                                id={`pk_produktiv_mitarbeiter.${index}.U9`}
+                                name={`pk_produktiv_mitarbeiter.${index}.U9`}
                                 label="Verrechenbarkeit (direkt verrechnet, in EUR)"
-                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.verrechenbarkeitDirektVerreichnet, 1)}
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.U9, 1)}
                                 InputProps={{
                                   readOnly: true
                                 }}
@@ -354,10 +315,10 @@ const Stammdaten = () => {
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
-                                id={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitNichtDirektVerreichnet`}
-                                name={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitNichtDirektVerreichnet`}
+                                id={`pk_produktiv_mitarbeiter.${index}.V9`}
+                                name={`pk_produktiv_mitarbeiter.${index}.V9`}
                                 label="Verrechenbarkeit (direkt verrechnet, in EUR)"
-                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.verrechenbarkeitNichtDirektVerreichnet, 1)}
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.V9, 1)}
                                 InputProps={{
                                   readOnly: true
                                 }}

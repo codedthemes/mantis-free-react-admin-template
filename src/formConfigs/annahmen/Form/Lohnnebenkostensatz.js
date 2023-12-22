@@ -24,49 +24,52 @@ const Lohnnebenkostensatz = () => {
         <Grid item xs={12} md={6}>
           <Field
             component={TextField}
-            id="annahmen_lohnnebenkosten_sonderzahlungen"
-            name="annahmen_lohnnebenkosten_sonderzahlungen"
+            id="annahmen_E39"
+            name="annahmen_E39"
             label="Sonderzahlungen"
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="5"
-            value={values.annahmen_lohnnebenkosten_sonderzahlungen}
+            value={values.annahmen_E39}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.annahmen_lohnnebenkosten_sonderzahlungen && Boolean(errors.annahmen_lohnnebenkosten_sonderzahlungen)}
-            helperText={touched.annahmen_lohnnebenkosten_sonderzahlungen && errors.annahmen_lohnnebenkosten_sonderzahlungen}
+            error={touched.annahmen_E39 && Boolean(errors.annahmen_E39)}
+            helperText={touched.annahmen_E39 && errors.annahmen_E39}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <Field
             component={TextField}
-            id="annahmen_lohnnebenkosten_svAbgabenArbeitgeber"
-            name="annahmen_lohnnebenkosten_svAbgabenArbeitgeber"
+            id="annahmen_E41"
+            name="annahmen_E41"
             label="SV-Abgaben Arbeitgeber"
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="100"
-            value={values.annahmen_lohnnebenkosten_svAbgabenArbeitgeber}
+            value={values.annahmen_E41}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.annahmen_lohnnebenkosten_svAbgabenArbeitgeber && Boolean(errors.annahmen_lohnnebenkosten_svAbgabenArbeitgeber)}
-            helperText={touched.annahmen_lohnnebenkosten_svAbgabenArbeitgeber && errors.annahmen_lohnnebenkosten_svAbgabenArbeitgeber}
+            error={touched.annahmen_E41 && Boolean(errors.annahmen_E41)}
+            helperText={touched.annahmen_E41 && errors.annahmen_E41}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <Field
             component={TextField}
-            id="annahmen_lohnnebenkosten_sonstigeKosten"
-            name="annahmen_lohnnebenkosten_sonstigeKosten"
+            id="annahmen_E42"
+            name="annahmen_E42"
             label="Sonstige Kosten"
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="100"
-            value={values.annahmen_lohnnebenkosten_sonstigeKosten}
+            value={values.annahmen_E42}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.annahmen_lohnnebenkosten_sonstigeKosten && Boolean(errors.annahmen_lohnnebenkosten_sonstigeKosten)}
-            helperText={touched.annahmen_lohnnebenkosten_sonstigeKosten && errors.annahmen_lohnnebenkosten_sonstigeKosten}
+            error={touched.annahmen_E42 && Boolean(errors.annahmen_E42)}
+            helperText={touched.annahmen_E42 && errors.annahmen_E42}
             sx={{ mb: 2 }}
           />
         </Grid>
@@ -79,10 +82,10 @@ const Lohnnebenkostensatz = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_lohnnebenkosten_lohnnebenkostensatz"
-                  name="annahmen_lohnnebenkosten_lohnnebenkostensatz"
+                  id="annahmen_I46"
+                  name="annahmen_I46"
                   label="Lohnnebenkostensatz in %"
-                  value={formFloat(values.annahmen_lohnnebenkosten_lohnnebenkostensatz, 1)}
+                  value={formFloat(values.annahmen_I46, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>

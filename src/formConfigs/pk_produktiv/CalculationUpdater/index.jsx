@@ -15,70 +15,65 @@ const StundensatzRechnerValueUpdater = () => {
 
   useEffect(() => {
     const reCalculateMaValues = () => {
-      let pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt = 0;
-      let pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt = 0;
-      let pk_produktiv_bruttoStundenEntgeltGesamt = 0;
+      let pk_produktiv_P40 = 0;
+      let pk_produktiv_Q40 = 0;
+      let pk_produktiv_Q9_SUMME = 0;
 
       values.pk_produktiv_mitarbeiter?.forEach((ma, index) => {
         // Anwesenheitsentgeld (gesamt) START
-        const nichtanwesenheitsstundenGesamt =
-          0 + (ma.urlaubStd || 0) + (ma.krankheitStd || 0) + (ma.fortbildungStd || 0) + (ma.sonstigeAbwesenheitenStd || 0);
-        const anwesenheitsStdMa = (ma.sollarbeitsstdPA || 0) - nichtanwesenheitsstundenGesamt;
-        const direktVerrechnet = (anwesenheitsStdMa * (ma.direktVerrechenbar || 100)) / 100;
-        const nichtDirektVerrechnet = anwesenheitsStdMa - direktVerrechnet;
-        const anwesenheitsentgelt = anwesenheitsStdMa * ((ma.bruttoStundenentgeltStd || 0) + (ma.zulagenProStd || 0));
-        const verrechenbarkeitDirektVerreichnet = direktVerrechnet * ((ma.bruttoStundenentgeltStd || 0) + (ma.zulagenProStd || 0));
-        const verrechenbarkeitNichtDirektVerreichnet =
-          nichtDirektVerrechnet * ((ma.bruttoStundenentgeltStd || 0) + (ma.zulagenProStd || 0));
+        const J9 = 0 + (ma.F9 || 0) + (ma.G9 || 0) + (ma.H9 || 0) + (ma.I9 || 0);
+        const M9 = (ma.E9 || 0) - J9;
+        const O9 = (M9 * (ma.N9 || 100)) / 100;
+        const P9 = M9 - O9;
+        const S9 = M9 * ((ma.Q9 || 0) + (ma.R9 || 0));
+        const U9 = O9 * ((ma.Q9 || 0) + (ma.R9 || 0));
+        const V9 = P9 * ((ma.Q9 || 0) + (ma.R9 || 0));
 
-        pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt += verrechenbarkeitDirektVerreichnet;
-        pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt += verrechenbarkeitNichtDirektVerreichnet;
-        pk_produktiv_bruttoStundenEntgeltGesamt += ma.bruttoStundenentgeltStd || 0;
+        pk_produktiv_P40 += U9;
+        pk_produktiv_Q40 += V9;
+        pk_produktiv_Q9_SUMME += ma.Q9 || 0;
 
-        if (nichtanwesenheitsstundenGesamt !== ma.nichtanwesenheitsstundenGesamt) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.nichtanwesenheitsstundenGesamt`, nichtanwesenheitsstundenGesamt);
+        if (J9 !== ma.J9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.J9`, J9);
         }
-        if (anwesenheitsStdMa !== ma.anwesenheitsStdMa) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.anwesenheitsStdMa`, anwesenheitsStdMa);
+        if (M9 !== ma.M9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.M9`, M9);
         }
-        if (direktVerrechnet !== ma.direktVerrechnet) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.direktVerrechnet`, direktVerrechnet);
+        if (O9 !== ma.O9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.O9`, O9);
         }
-        if (nichtDirektVerrechnet !== ma.nichtDirektVerrechnet) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.nichtDirektVerrechnet`, nichtDirektVerrechnet);
+        if (P9 !== ma.P9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.P9`, P9);
         }
-        if (anwesenheitsentgelt !== ma.anwesenheitsentgelt) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.anwesenheitsentgelt`, anwesenheitsentgelt);
+        if (S9 !== ma.S9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.S9`, S9);
         }
-        if (verrechenbarkeitDirektVerreichnet !== ma.verrechenbarkeitDirektVerreichnet) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitDirektVerreichnet`, verrechenbarkeitDirektVerreichnet);
+        if (U9 !== ma.U9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.U9`, U9);
         }
-        if (verrechenbarkeitNichtDirektVerreichnet !== ma.verrechenbarkeitNichtDirektVerreichnet) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitNichtDirektVerreichnet`, verrechenbarkeitNichtDirektVerreichnet);
+        if (V9 !== ma.V9) {
+          setFieldValue(`pk_produktiv_mitarbeiter.${index}.V9`, V9);
         }
       });
 
-      const pk_produktiv_bruttoStundenEntgeltDurchschnitt = values.pk_produktiv_mitarbeiter.length
-        ? pk_produktiv_bruttoStundenEntgeltGesamt / values.pk_produktiv_mitarbeiter.length
-        : 0;
+      const pk_produktiv_R40 = values.pk_produktiv_mitarbeiter.length ? pk_produktiv_Q9_SUMME / values.pk_produktiv_mitarbeiter.length : 0;
 
-      const pk_produktiv_anwesenheitsEntgeltGesamt =
-        (pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt || 0) + (pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt || 0);
+      const pk_produktiv_S40 = (pk_produktiv_P40 || 0) + (pk_produktiv_Q40 || 0);
 
-      if (pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt !== values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt) {
-        setFieldValue(`pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt`, pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt);
+      if (pk_produktiv_P40 !== values.pk_produktiv_P40) {
+        setFieldValue(`pk_produktiv_P40`, pk_produktiv_P40);
       }
-      if (pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt !== values.pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt) {
-        setFieldValue(`pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt`, pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt);
+      if (pk_produktiv_Q40 !== values.pk_produktiv_Q40) {
+        setFieldValue(`pk_produktiv_Q40`, pk_produktiv_Q40);
       }
-      if (pk_produktiv_bruttoStundenEntgeltGesamt !== values.pk_produktiv_bruttoStundenEntgeltGesamt) {
-        setFieldValue(`pk_produktiv_bruttoStundenEntgeltGesamt`, pk_produktiv_bruttoStundenEntgeltGesamt);
+      if (pk_produktiv_Q9_SUMME !== values.pk_produktiv_Q9_SUMME) {
+        setFieldValue(`pk_produktiv_Q9_SUMME`, pk_produktiv_Q9_SUMME);
       }
-      if (pk_produktiv_bruttoStundenEntgeltDurchschnitt !== values.pk_produktiv_bruttoStundenEntgeltDurchschnitt) {
-        setFieldValue(`pk_produktiv_bruttoStundenEntgeltDurchschnitt`, pk_produktiv_bruttoStundenEntgeltDurchschnitt);
+      if (pk_produktiv_R40 !== values.pk_produktiv_R40) {
+        setFieldValue(`pk_produktiv_R40`, pk_produktiv_R40);
       }
-      if (pk_produktiv_anwesenheitsEntgeltGesamt !== values.pk_produktiv_anwesenheitsEntgeltGesamt) {
-        setFieldValue(`pk_produktiv_anwesenheitsEntgeltGesamt`, pk_produktiv_anwesenheitsEntgeltGesamt);
+      if (pk_produktiv_S40 !== values.pk_produktiv_S40) {
+        setFieldValue(`pk_produktiv_S40`, pk_produktiv_S40);
       }
       // Anwesenheitsentgeld (gesamt) ENDE
     };
@@ -93,47 +88,39 @@ const StundensatzRechnerValueUpdater = () => {
   }, [
     setFieldValue,
     values.pk_produktiv_mitarbeiter,
-    values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt,
+    values.pk_produktiv_P40,
     values.pk_produktiv_mitarbeiter.length,
-    values.pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt,
-    values.pk_produktiv_bruttoStundenEntgeltGesamt,
-    values.pk_produktiv_bruttoStundenEntgeltDurchschnitt,
-    values.pk_produktiv_anwesenheitsEntgeltGesamt
+    values.pk_produktiv_Q40,
+    values.pk_produktiv_Q9_SUMME,
+    values.pk_produktiv_R40,
+    values.pk_produktiv_S40
   ]);
 
   useEffect(() => {
     const reCalculateLohnNKValues = () => {
-      const lohnNKAnwesenheitVerrechnet =
-        ((values.annahmen_lohnnebenkosten_lohnnebenkostensatz || 0) / 100) *
-        (values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt || 0);
-      const lohnNKAnwesenheitNichtVerrechnet =
-        ((values.annahmen_lohnnebenkosten_lohnnebenkostensatz || 0) / 100) *
-        (values.pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt || 0);
-      const lohnNKAnwesenheitStundenEntgeltDurchschnitt =
-        ((values.annahmen_lohnnebenkosten_lohnnebenkostensatz || 0) / 100) * (values.pk_produktiv_bruttoStundenEntgeltDurchschnitt || 0);
-      const lohnNKEntgeltGesamt = (lohnNKAnwesenheitVerrechnet || 0) + (lohnNKAnwesenheitNichtVerrechnet || 0);
-      const awInklPersonalNKDirektVerrechenbar =
-        (lohnNKAnwesenheitVerrechnet || 0) + (values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt || 0);
-      const awInklPersonalNKNichtDirektVerrechenbar =
-        (lohnNKAnwesenheitNichtVerrechnet || 0) + (values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt || 0);
+      const P41 = ((values.annahmen_I46 || 0) / 100) * (values.pk_produktiv_P40 || 0);
+      const Q41 = ((values.annahmen_I46 || 0) / 100) * (values.pk_produktiv_Q40 || 0);
+      const R41 = ((values.annahmen_I46 || 0) / 100) * (values.pk_produktiv_R40 || 0);
+      const S41 = (P41 || 0) + (Q41 || 0);
+      const P42 = (P41 || 0) + (values.pk_produktiv_P40 || 0);
 
-      if (!values.pk_produktiv_lohnNKAnwesenheitVerrechnet !== lohnNKAnwesenheitVerrechnet) {
-        setFieldValue('pk_produktiv_lohnNKAnwesenheitVerrechnet', lohnNKAnwesenheitVerrechnet);
+      if (!values.pk_produktiv_P41 !== P41) {
+        setFieldValue('pk_produktiv_P41', P41);
       }
-      if (values.pk_produktiv_lohnNKAnwesenheitNichtVerrechnet !== lohnNKAnwesenheitNichtVerrechnet) {
-        setFieldValue('pk_produktiv_lohnNKAnwesenheitNichtVerrechnet', lohnNKAnwesenheitNichtVerrechnet);
+      if (values.pk_produktiv_Q41 !== Q41) {
+        setFieldValue('pk_produktiv_Q41', Q41);
       }
-      if (values.pk_produktiv_lohnNKAnwesenheitStundenEntgeltDurchschnitt !== lohnNKAnwesenheitStundenEntgeltDurchschnitt) {
-        setFieldValue('pk_produktiv_lohnNKAnwesenheitStundenEntgeltDurchschnitt', lohnNKAnwesenheitStundenEntgeltDurchschnitt);
+      if (values.pk_produktiv_R41 !== R41) {
+        setFieldValue('pk_produktiv_R41', R41);
       }
-      if (values.pk_produktiv_lohnNKEntgeltGesamt !== lohnNKEntgeltGesamt) {
-        setFieldValue('pk_produktiv_lohnNKEntgeltGesamt', lohnNKEntgeltGesamt);
+      if (values.pk_produktiv_S41 !== S41) {
+        setFieldValue('pk_produktiv_S41', S41);
       }
-      if (values.pk_produktiv_awInklPersonalNKDirektVerrechenbar !== awInklPersonalNKDirektVerrechenbar) {
-        setFieldValue('pk_produktiv_awInklPersonalNKDirektVerrechenbar', awInklPersonalNKDirektVerrechenbar);
+      if (values.pk_produktiv_P42 !== P42) {
+        setFieldValue('pk_produktiv_P42', P42);
       }
-      if (values.pk_produktiv_awInklPersonalNKDirektVerrechenbar !== awInklPersonalNKDirektVerrechenbar) {
-        setFieldValue('pk_produktiv_awInklPersonalNKDirektVerrechenbar', awInklPersonalNKDirektVerrechenbar);
+      if (values.pk_produktiv_P42 !== P42) {
+        setFieldValue('pk_produktiv_P42', P42);
       }
     };
 
@@ -146,15 +133,15 @@ const StundensatzRechnerValueUpdater = () => {
     };
   }, [
     setFieldValue,
-    values.annahmen_lohnnebenkosten_lohnnebenkostensatz,
-    values.pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt,
-    values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt,
-    values.pk_produktiv_awInklPersonalNKDirektVerrechenbar,
-    values.pk_produktiv_bruttoStundenEntgeltDurchschnitt,
-    values.pk_produktiv_lohnNKAnwesenheitNichtVerrechnet,
-    values.pk_produktiv_lohnNKAnwesenheitStundenEntgeltDurchschnitt,
-    values.pk_produktiv_lohnNKAnwesenheitVerrechnet,
-    values.pk_produktiv_lohnNKEntgeltGesamt
+    values.annahmen_I46,
+    values.pk_produktiv_Q40,
+    values.pk_produktiv_P40,
+    values.pk_produktiv_P42,
+    values.pk_produktiv_R40,
+    values.pk_produktiv_Q41,
+    values.pk_produktiv_R41,
+    values.pk_produktiv_P41,
+    values.pk_produktiv_S41
   ]);
 
   return <React.Fragment />;

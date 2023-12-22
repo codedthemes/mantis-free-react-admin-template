@@ -21,35 +21,37 @@ const Produktivstunden = () => {
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
-            id="annahmen_produktivstunden_wochenarbeitszeit"
-            name="annahmen_produktivstunden_wochenarbeitszeit"
+            id="annahmen_G16"
+            name="annahmen_G16"
             label="Wochenarbeitszeit"
-            value={values.annahmen_produktivstunden_wochenarbeitszeit}
+            value={values.annahmen_G16}
             onChange={handleChange}
             onBlur={handleBlur}
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="120"
             step={0.25}
-            error={touched.annahmen_produktivstunden_wochenarbeitszeit && Boolean(errors.annahmen_produktivstunden_wochenarbeitszeit)}
-            helperText={touched.annahmen_produktivstunden_wochenarbeitszeit && errors.annahmen_produktivstunden_wochenarbeitszeit}
+            error={touched.annahmen_G16 && Boolean(errors.annahmen_G16)}
+            helperText={touched.annahmen_G16 && errors.annahmen_G16}
             sx={{ mb: 2 }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
-            id="annahmen_produktivstunden_wochenarbeitstage"
-            name="annahmen_produktivstunden_wochenarbeitstage"
+            id="annahmen_G17"
+            name="annahmen_G17"
             label="Wochenarbeitstage"
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="7"
-            value={values.annahmen_produktivstunden_wochenarbeitstage}
+            value={values.annahmen_G17}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={touched.annahmen_produktivstunden_wochenarbeitstage && Boolean(errors.annahmen_produktivstunden_wochenarbeitstage)}
-            helperText={touched.annahmen_produktivstunden_wochenarbeitstage && errors.annahmen_produktivstunden_wochenarbeitstage}
+            error={touched.annahmen_G17 && Boolean(errors.annahmen_G17)}
+            helperText={touched.annahmen_G17 && errors.annahmen_G17}
             sx={{ mb: 2 }}
           />
         </Grid>
@@ -62,10 +64,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_durchschnittArbeitsstundenProTag"
-                  name="annahmen_produktivstunden_durchschnittArbeitsstundenProTag"
+                  id="annahmen_G18"
+                  name="annahmen_G18"
                   label="Ø Arbeitsstunden pro Tag"
-                  value={formFloat(values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag, 1)}
+                  value={formFloat(values.annahmen_G18, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -84,10 +86,10 @@ const Produktivstunden = () => {
               <Grid item xs={12} sm={6}>
                 <Field
                   component={TextField}
-                  id="annahmen_produktivstunden_wochenendtageProJahr"
-                  name="annahmen_produktivstunden_wochenendtageProJahr"
+                  id="annahmen_G22"
+                  name="annahmen_G22"
                   label={`Wochenendtage im Jahr ${values.annahmen_allgemein_planjahr || ''}`}
-                  value={values.annahmen_produktivstunden_wochenendtageProJahr}
+                  value={values.annahmen_G22}
                   InputProps={{
                     readOnly: true
                   }}
@@ -103,10 +105,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_jahresarbeitszzeitInTagen"
-                  name="annahmen_produktivstunden_jahresarbeitszzeitInTagen"
+                  id="annahmen_G23"
+                  name="annahmen_G23"
                   label="Jahresarbeitszeit in Tagen"
-                  value={formFloat(values.annahmen_produktivstunden_jahresarbeitszzeitInTagen, 1)}
+                  value={formFloat(values.annahmen_G23, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -116,10 +118,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_jahresArbeitszeitInStunden"
-                  name="annahmen_produktivstunden_jahresArbeitszeitInStunden"
+                  id="annahmen_H23"
+                  name="annahmen_H23"
                   label="Jahresarbeitszeit in Stunden"
-                  value={formFloat(values.annahmen_produktivstunden_jahresArbeitszeitInStunden, 1)}
+                  value={formFloat(values.annahmen_H23, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -132,19 +134,18 @@ const Produktivstunden = () => {
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
-            id="annahmen_produktivstunden_arbeitstageAlsFeiertag"
-            name="annahmen_produktivstunden_arbeitstageAlsFeiertag"
+            id="annahmen_G25"
+            name="annahmen_G25"
             label="Feiertage die auf Arbeitstage fallen"
-            value={values.annahmen_produktivstunden_arbeitstageAlsFeiertag}
+            value={values.annahmen_G25}
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="365"
             onChange={handleChange}
             onBlur={handleBlur}
-            error={
-              touched.annahmen_produktivstunden_arbeitstageAlsFeiertag && Boolean(errors.annahmen_produktivstunden_arbeitstageAlsFeiertag)
-            }
-            helperText={touched.annahmen_produktivstunden_arbeitstageAlsFeiertag && errors.annahmen_produktivstunden_arbeitstageAlsFeiertag}
+            error={touched.annahmen_G25 && Boolean(errors.annahmen_G25)}
+            helperText={touched.annahmen_G25 && errors.annahmen_G25}
             sx={{ mb: 2 }}
           />
         </Grid>
@@ -154,67 +155,54 @@ const Produktivstunden = () => {
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
-            id="annahmen_produktivstunden_urlaubstageProMitarbeiter"
-            name="annahmen_produktivstunden_urlaubstageProMitarbeiter"
+            id="annahmen_G26"
+            name="annahmen_G26"
             label="Urlaubstage pro Mitarbeiter"
-            value={values.annahmen_produktivstunden_urlaubstageProMitarbeiter}
+            value={values.annahmen_G26}
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="365"
             onChange={handleChange}
             onBlur={handleBlur}
-            error={
-              touched.annahmen_produktivstunden_urlaubstageProMitarbeiter &&
-              Boolean(errors.annahmen_produktivstunden_urlaubstageProMitarbeiter)
-            }
-            helperText={
-              touched.annahmen_produktivstunden_urlaubstageProMitarbeiter && errors.annahmen_produktivstunden_urlaubstageProMitarbeiter
-            }
+            error={touched.annahmen_G26 && Boolean(errors.annahmen_G26)}
+            helperText={touched.annahmen_G26 && errors.annahmen_G26}
             sx={{ mb: 2 }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
-            id="annahmen_produktivstunden_krankentageProMitarbeiter"
-            name="annahmen_produktivstunden_krankentageProMitarbeiter"
+            id="annahmen_G27"
+            name="annahmen_G27"
             label="Krankentage pro Mitarbeiter"
-            value={values.annahmen_produktivstunden_krankentageProMitarbeiter}
+            value={values.annahmen_G27}
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="365"
             onChange={handleChange}
             onBlur={handleBlur}
-            error={
-              touched.annahmen_produktivstunden_krankentageProMitarbeiter &&
-              Boolean(errors.annahmen_produktivstunden_krankentageProMitarbeiter)
-            }
-            helperText={
-              touched.annahmen_produktivstunden_krankentageProMitarbeiter && errors.annahmen_produktivstunden_krankentageProMitarbeiter
-            }
+            error={touched.annahmen_G27 && Boolean(errors.annahmen_G27)}
+            helperText={touched.annahmen_G27 && errors.annahmen_G27}
             sx={{ mb: 2 }}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
-            id="annahmen_produktivstunden_sonstigeArbeitsverhinderungen"
-            name="annahmen_produktivstunden_sonstigeArbeitsverhinderungen"
+            id="annahmen_G28"
+            name="annahmen_G28"
             label="Sonstige Arbeitsverhinderungen"
-            value={values.annahmen_produktivstunden_sonstigeArbeitsverhinderungen}
+            value={values.annahmen_G28}
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="0"
             max="365"
             onChange={handleChange}
             onBlur={handleBlur}
-            error={
-              touched.annahmen_produktivstunden_sonstigeArbeitsverhinderungen &&
-              Boolean(errors.annahmen_produktivstunden_sonstigeArbeitsverhinderungen)
-            }
-            helperText={
-              touched.annahmen_produktivstunden_sonstigeArbeitsverhinderungen &&
-              errors.annahmen_produktivstunden_sonstigeArbeitsverhinderungen
-            }
+            error={touched.annahmen_G28 && Boolean(errors.annahmen_G28)}
+            helperText={touched.annahmen_G28 && errors.annahmen_G28}
             sx={{ mb: 2 }}
           />
         </Grid>
@@ -227,10 +215,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_summeNichtanwesenheitInTagen"
-                  name="annahmen_produktivstunden_summeNichtanwesenheitInTagen"
+                  id="annahmen_G29"
+                  name="annahmen_G29"
                   label="Summe Nichtanwesenheit in Tagen"
-                  value={formFloat(values.annahmen_produktivstunden_summeNichtanwesenheitInTagen, 1)}
+                  value={formFloat(values.annahmen_G29, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -240,10 +228,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_summeNichtanwesenheitInStunden"
-                  name="annahmen_produktivstunden_summeNichtanwesenheitInStunden"
+                  id="annahmen_H29"
+                  name="annahmen_H29"
                   label="Summe Nichtanwesenheit in Stunden"
-                  value={formFloat(values.annahmen_produktivstunden_summeNichtanwesenheitInStunden, 1)}
+                  value={formFloat(values.annahmen_H29, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -259,10 +247,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_anwesenheitszeitInTagen"
-                  name="annahmen_produktivstunden_anwesenheitszeitInTagen"
+                  id="annahmen_G31"
+                  name="annahmen_G31"
                   label="Summe Anwesenheit in Tagen"
-                  value={formFloat(values.annahmen_produktivstunden_anwesenheitszeitInTagen, 1)}
+                  value={formFloat(values.annahmen_G31, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -272,10 +260,10 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
-                  id="annahmen_produktivstunden_anwesenheitszeitInStunden"
-                  name="annahmen_produktivstunden_anwesenheitszeitInStunden"
+                  id="annahmen_H31"
+                  name="annahmen_H31"
                   label="Summe Anwesenheit in Stunden"
-                  value={formFloat(values.annahmen_produktivstunden_anwesenheitszeitInStunden, 1)}
+                  value={formFloat(values.annahmen_H31, 1)}
                   sx={{ mb: 2 }}
                 />
               </Grid>

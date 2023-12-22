@@ -6,15 +6,11 @@ const StundensatzRechnerValueUpdater = () => {
 
   // Produktivstunden
   useEffect(() => {
-    if (
-      values.annahmen_produktivstunden_wochenarbeitszeit !== undefined &&
-      values.annahmen_produktivstunden_wochenarbeitstage !== undefined
-    ) {
-      const durchschnittArbeitsstundenProTag =
-        values.annahmen_produktivstunden_wochenarbeitszeit / values.annahmen_produktivstunden_wochenarbeitstage || 0;
-      setFieldValue('annahmen_produktivstunden_durchschnittArbeitsstundenProTag', durchschnittArbeitsstundenProTag);
+    if (values.annahmen_G16 !== undefined && values.annahmen_G17 !== undefined) {
+      const durchschnittArbeitsstundenProTag = values.annahmen_G16 / values.annahmen_G17 || 0;
+      setFieldValue('annahmen_G18', durchschnittArbeitsstundenProTag);
     }
-  }, [values.annahmen_produktivstunden_wochenarbeitszeit, values.annahmen_produktivstunden_wochenarbeitstage, setFieldValue]);
+  }, [values.annahmen_G16, values.annahmen_G17, setFieldValue]);
   useEffect(() => {
     const countWeekends = (year) => {
       let count = 0;
@@ -34,110 +30,93 @@ const StundensatzRechnerValueUpdater = () => {
 
     if (values.annahmen_allgemein_planjahr) {
       const weekendDays = countWeekends(values.annahmen_allgemein_planjahr);
-      if (weekendDays !== values.annahmen_produktivstunden_wochenendtageProJahr) {
-        setFieldValue('annahmen_produktivstunden_wochenendtageProJahr', weekendDays);
+      if (weekendDays !== values.annahmen_G22) {
+        setFieldValue('annahmen_G22', weekendDays);
       }
-    } else if (values.annahmen_produktivstunden_wochenendtageProJahr) {
-      setFieldvalue('annahmen_produktivstunden_wochenendtageProJahr', undefined);
+    } else if (values.annahmen_G22) {
+      setFieldvalue('annahmen_G22', undefined);
     }
-  }, [setFieldValue, values.annahmen_allgemein_planjahr, values.annahmen_produktivstunden_wochenendtageProJahr]);
+  }, [setFieldValue, values.annahmen_allgemein_planjahr, values.annahmen_G22]);
   useEffect(() => {
     if (
-      values.annahmen_produktivstunden_wochenarbeitszeit !== undefined &&
-      values.annahmen_produktivstunden_wochenarbeitstage !== undefined &&
-      values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag !== undefined &&
-      values.annahmen_produktivstunden_wochenendtageProJahr !== undefined
+      values.annahmen_G16 !== undefined &&
+      values.annahmen_G17 !== undefined &&
+      values.annahmen_G18 !== undefined &&
+      values.annahmen_G22 !== undefined
     ) {
-      const arbeitsstundenProJahr = 365 * values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0;
-      const wochenendArbeitsstundenProJahr =
-        values.annahmen_produktivstunden_wochenendtageProJahr * values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0;
-      const jahresarbeitszzeitInTagen = 365 - values.annahmen_produktivstunden_wochenendtageProJahr || 0;
+      const arbeitsstundenProJahr = 365 * values.annahmen_G18 || 0;
+      const wochenendArbeitsstundenProJahr = values.annahmen_G22 * values.annahmen_G18 || 0;
+      const jahresarbeitszzeitInTagen = 365 - values.annahmen_G22 || 0;
       const jahresArbeitszeitInStunden = arbeitsstundenProJahr - wochenendArbeitsstundenProJahr || 0;
 
-      jahresArbeitszeitInStunden !== values.annahmen_produktivstunden_jahresArbeitszeitInStunden &&
-        setFieldValue('annahmen_produktivstunden_jahresArbeitszeitInStunden', jahresArbeitszeitInStunden);
-      jahresarbeitszzeitInTagen !== values.annahmen_produktivstunden_jahresarbeitszzeitInTagen &&
-        setFieldValue('annahmen_produktivstunden_jahresarbeitszzeitInTagen', jahresarbeitszzeitInTagen);
+      jahresArbeitszeitInStunden !== values.annahmen_H23 && setFieldValue('annahmen_H23', jahresArbeitszeitInStunden);
+      jahresarbeitszzeitInTagen !== values.annahmen_G23 && setFieldValue('annahmen_G23', jahresarbeitszzeitInTagen);
     }
   }, [
-    values.annahmen_produktivstunden_wochenarbeitszeit,
-    values.annahmen_produktivstunden_wochenarbeitstage,
-    values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag,
-    values.annahmen_produktivstunden_wochenendtageProJahr,
+    values.annahmen_G16,
+    values.annahmen_G17,
+    values.annahmen_G18,
+    values.annahmen_G22,
     setFieldValue,
-    values.annahmen_produktivstunden_jahresArbeitszeitInStunden,
-    values.annahmen_produktivstunden_jahresarbeitszzeitInTagen
+    values.annahmen_H23,
+    values.annahmen_G23
   ]);
 
   // Produktivstunden 2
   useEffect(() => {
-    const summeNichtanwesenheitInTagen =
-      values.annahmen_produktivstunden_arbeitstageAlsFeiertag +
-        values.annahmen_produktivstunden_urlaubstageProMitarbeiter +
-        values.annahmen_produktivstunden_krankentageProMitarbeiter +
-        values.annahmen_produktivstunden_sonstigeArbeitsverhinderungen || 0;
+    const summeNichtanwesenheitInTagen = values.annahmen_G25 + values.annahmen_G26 + values.annahmen_G27 + values.annahmen_G28 || 0;
 
-    const summeNichtanwesenheitInStunden =
-      summeNichtanwesenheitInTagen * values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0;
+    const summeNichtanwesenheitInStunden = summeNichtanwesenheitInTagen * values.annahmen_G18 || 0;
 
-    summeNichtanwesenheitInTagen !== values.annahmen_produktivstunden_summeNichtanwesenheitInTagen &&
-      setFieldValue('annahmen_produktivstunden_summeNichtanwesenheitInTagen', summeNichtanwesenheitInTagen);
-    summeNichtanwesenheitInStunden !== values.annahmen_produktivstunden_summeNichtanwesenheitInStunden &&
-      setFieldValue('annahmen_produktivstunden_summeNichtanwesenheitInStunden', summeNichtanwesenheitInStunden);
+    summeNichtanwesenheitInTagen !== values.annahmen_G29 && setFieldValue('annahmen_G29', summeNichtanwesenheitInTagen);
+    summeNichtanwesenheitInStunden !== values.annahmen_H29 && setFieldValue('annahmen_H29', summeNichtanwesenheitInStunden);
   }, [
-    values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag,
-    values.annahmen_produktivstunden_arbeitstageAlsFeiertag,
-    values.annahmen_produktivstunden_urlaubstageProMitarbeiter,
-    values.annahmen_produktivstunden_krankentageProMitarbeiter,
-    values.annahmen_produktivstunden_sonstigeArbeitsverhinderungen,
+    values.annahmen_G18,
+    values.annahmen_G25,
+    values.annahmen_G26,
+    values.annahmen_G27,
+    values.annahmen_G28,
     setFieldValue,
-    values.annahmen_produktivstunden_summeNichtanwesenheitInTagen,
-    values.annahmen_produktivstunden_summeNichtanwesenheitInStunden
+    values.annahmen_G29,
+    values.annahmen_H29
   ]);
 
   // Produktivstunden 3
   useEffect(() => {
-    const anwesenheitszeitInTagen =
-      values.annahmen_produktivstunden_jahresarbeitszzeitInTagen - values.annahmen_produktivstunden_summeNichtanwesenheitInTagen || 0;
-    const anwesenheitszeitInStunden =
-      values.annahmen_produktivstunden_jahresArbeitszeitInStunden - values.annahmen_produktivstunden_summeNichtanwesenheitInStunden || 0;
+    const anwesenheitszeitInTagen = values.annahmen_G23 - values.annahmen_G29 || 0;
+    const anwesenheitszeitInStunden = values.annahmen_H23 - values.annahmen_H29 || 0;
 
-    anwesenheitszeitInTagen !== values.annahmen_produktivstunden_anwesenheitszeitInTagen &&
-      setFieldValue('annahmen_produktivstunden_anwesenheitszeitInTagen', anwesenheitszeitInTagen);
-    anwesenheitszeitInStunden !== values.annahmen_produktivstunden_anwesenheitszeitInStunden &&
-      setFieldValue('annahmen_produktivstunden_anwesenheitszeitInStunden', anwesenheitszeitInStunden);
+    anwesenheitszeitInTagen !== values.annahmen_G31 && setFieldValue('annahmen_G31', anwesenheitszeitInTagen);
+    anwesenheitszeitInStunden !== values.annahmen_H31 && setFieldValue('annahmen_H31', anwesenheitszeitInStunden);
   }, [
-    values.annahmen_produktivstunden_summeNichtanwesenheitInTagen,
-    values.annahmen_produktivstunden_summeNichtanwesenheitInStunden,
+    values.annahmen_G29,
+    values.annahmen_H29,
     setFieldValue,
-    values.annahmen_produktivstunden_anwesenheitszeitInTagen,
-    values.annahmen_produktivstunden_anwesenheitszeitInStunden,
-    values.annahmen_produktivstunden_jahresarbeitszzeitInTagen,
-    values.annahmen_produktivstunden_jahresArbeitszeitInStunden
+    values.annahmen_G31,
+    values.annahmen_H31,
+    values.annahmen_G23,
+    values.annahmen_H23
   ]);
 
   // Lohnnebenkostensatz
   useEffect(() => {
-    const jahresArbeitszeitFuerLaufendeBezuege =
-      values.annahmen_produktivstunden_summeNichtanwesenheitInTagen + values.annahmen_produktivstunden_anwesenheitszeitInTagen || 0;
-    const svAbgabenArbeitgeberInTagen =
-      (values.annahmen_lohnnebenkosten_svAbgabenArbeitgeber / 100) * jahresArbeitszeitFuerLaufendeBezuege || 0;
-    const sonstigeKostenInTagen = (values.annahmen_lohnnebenkosten_sonstigeKosten / 100) * jahresArbeitszeitFuerLaufendeBezuege || 0;
+    const jahresArbeitszeitFuerLaufendeBezuege = values.annahmen_G29 + values.annahmen_G31 || 0;
+    const svAbgabenArbeitgeberInTagen = (values.annahmen_E41 / 100) * jahresArbeitszeitFuerLaufendeBezuege || 0;
+    const sonstigeKostenInTagen = (values.annahmen_E42 / 100) * jahresArbeitszeitFuerLaufendeBezuege || 0;
     const gesamtkostensatzDerProduktivkapazitaet =
       jahresArbeitszeitFuerLaufendeBezuege + svAbgabenArbeitgeberInTagen + sonstigeKostenInTagen || 0;
-    const gesamtkostensatzDerProduktivkapazitaetInProzent =
-      (gesamtkostensatzDerProduktivkapazitaet / values.annahmen_produktivstunden_anwesenheitszeitInTagen - 1) * 100 || 0;
+    const gesamtkostensatzDerProduktivkapazitaetInProzent = (gesamtkostensatzDerProduktivkapazitaet / values.annahmen_G31 - 1) * 100 || 0;
 
-    gesamtkostensatzDerProduktivkapazitaetInProzent !== values.annahmen_lohnnebenkosten_lohnnebenkostensatz &&
-      setFieldValue('annahmen_lohnnebenkosten_lohnnebenkostensatz', gesamtkostensatzDerProduktivkapazitaetInProzent);
+    gesamtkostensatzDerProduktivkapazitaetInProzent !== values.annahmen_I46 &&
+      setFieldValue('annahmen_I46', gesamtkostensatzDerProduktivkapazitaetInProzent);
   }, [
     setFieldValue,
-    values.annahmen_lohnnebenkosten_lohnnebenkostensatz,
-    values.annahmen_lohnnebenkosten_sonderzahlungen,
-    values.annahmen_lohnnebenkosten_sonstigeKosten,
-    values.annahmen_lohnnebenkosten_svAbgabenArbeitgeber,
-    values.annahmen_produktivstunden_anwesenheitszeitInTagen,
-    values.annahmen_produktivstunden_summeNichtanwesenheitInTagen
+    values.annahmen_I46,
+    values.annahmen_E39,
+    values.annahmen_E42,
+    values.annahmen_E41,
+    values.annahmen_G31,
+    values.annahmen_G29
   ]);
 
   return <React.Fragment />;

@@ -26,6 +26,7 @@ const Annahmen = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             type="number"
+            onWheel={(event) => event.target.blur()}
             min="1900"
             max="2100"
             error={touched.annahmen_allgemein_planjahr && Boolean(errors.annahmen_allgemein_planjahr)}

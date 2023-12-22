@@ -11,7 +11,7 @@ import formFloat from 'utils/formUtils/formFloat';
 const Zusammenfassung = () => {
   const { values, handleChange, handleBlur } = useFormikContext();
 
-  if (!values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt) {
+  if (!values.pk_produktiv_P40) {
     return;
   }
 
@@ -25,10 +25,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
-              id={`pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt`}
-              name={`pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt`}
+              id={`pk_produktiv_P40`}
+              name={`pk_produktiv_P40`}
               label="Verrechnet (in EUR)"
-              value={formFloat(values.pk_produktiv_anwesenheitsEntgelteVerrechnetGesamt, 1)}
+              value={formFloat(values.pk_produktiv_P40, 1)}
               InputProps={{
                 readOnly: true
               }}
@@ -38,10 +38,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
-              id={`pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt`}
-              name={`pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt`}
+              id={`pk_produktiv_Q40`}
+              name={`pk_produktiv_Q40`}
               label="Nicht Verrechnet (in EUR)"
-              value={formFloat(values.pk_produktiv_anwesenheitsEntgelteNichtVerrechnetGesamt, 1)}
+              value={formFloat(values.pk_produktiv_Q40, 1)}
               InputProps={{
                 readOnly: true
               }}
@@ -51,10 +51,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
-              id={`pk_produktiv_anwesenheitsEntgeltGesamt`}
-              name={`pk_produktiv_anwesenheitsEntgeltGesamt`}
+              id={`pk_produktiv_S40`}
+              name={`pk_produktiv_S40`}
               label="Gesamt (in EUR)"
-              value={formFloat(values.pk_produktiv_anwesenheitsEntgeltGesamt, 1)}
+              value={formFloat(values.pk_produktiv_S40, 1)}
               InputProps={{
                 readOnly: true
               }}
@@ -64,10 +64,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={6}>
             <Field
               component={TextField}
-              id={`pk_produktiv_bruttoStundenEntgeltDurchschnitt`}
-              name={`pk_produktiv_bruttoStundenEntgeltDurchschnitt`}
+              id={`pk_produktiv_R40`}
+              name={`pk_produktiv_R40`}
               label="Durchschnittliches Bruttostundenentgelt (in EUR)"
-              value={formFloat(values.pk_produktiv_bruttoStundenEntgeltDurchschnitt, 1)}
+              value={formFloat(values.pk_produktiv_R40, 1)}
               InputProps={{
                 readOnly: true
               }}
@@ -82,10 +82,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
-              id={`pk_produktiv_lohnNKAnwesenheitVerrechnet`}
-              name={`pk_produktiv_lohnNKAnwesenheitVerrechnet`}
+              id={`pk_produktiv_P41`}
+              name={`pk_produktiv_P41`}
               label="Verrechnet (in EUR)"
-              value={formFloat(values.pk_produktiv_lohnNKAnwesenheitVerrechnet, 1)}
+              value={formFloat(values.pk_produktiv_P41, 1)}
               onChange={handleChange}
               onBlur={handleBlur}
               InputProps={{
@@ -97,10 +97,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
-              id={`pk_produktiv_lohnNKAnwesenheitNichtVerrechnet`}
-              name={`pk_produktiv_lohnNKAnwesenheitNichtVerrechnet`}
+              id={`pk_produktiv_Q41`}
+              name={`pk_produktiv_Q41`}
               label="Nicht verrechnet (in EUR)"
-              value={formFloat(values.pk_produktiv_lohnNKAnwesenheitNichtVerrechnet, 1)}
+              value={formFloat(values.pk_produktiv_Q41, 1)}
               onChange={handleChange}
               onBlur={handleBlur}
               InputProps={{
@@ -112,10 +112,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
-              id={`pk_produktiv_lohnNKEntgeltGesamt`}
-              name={`pk_produktiv_lohnNKEntgeltGesamt`}
+              id={`pk_produktiv_S41`}
+              name={`pk_produktiv_S41`}
               label="Gesamt"
-              value={formFloat(values.pk_produktiv_lohnNKEntgeltGesamt, 1)}
+              value={formFloat(values.pk_produktiv_S41, 1)}
               onChange={handleChange}
               onBlur={handleBlur}
               InputProps={{
@@ -127,10 +127,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={6}>
             <Field
               component={TextField}
-              id={`pk_produktiv_lohnNKAnwesenheitStundenEntgeltDurchschnitt`}
-              name={`pk_produktiv_lohnNKAnwesenheitStundenEntgeltDurchschnitt`}
+              id={`pk_produktiv_R41`}
+              name={`pk_produktiv_R41`}
               label="Durchschnittliches Bruttostundenentgelt (in EUR)"
-              value={formFloat(values.pk_produktiv_lohnNKAnwesenheitStundenEntgeltDurchschnitt, 1)}
+              value={formFloat(values.pk_produktiv_R41, 1)}
               onChange={handleChange}
               onBlur={handleBlur}
               InputProps={{
@@ -147,10 +147,10 @@ const Zusammenfassung = () => {
           <Grid item xs={12} sm={6}>
             <Field
               component={TextField}
-              id={`pk_produktiv_awInklPersonalNKDirektVerrechenbar`}
-              name={`pk_produktiv_awInklPersonalNKDirektVerrechenbar`}
+              id={`pk_produktiv_P42`}
+              name={`pk_produktiv_P42`}
               label="Verrechnet (in EUR)"
-              value={formFloat(values.pk_produktiv_awInklPersonalNKDirektVerrechenbar, 1)}
+              value={formFloat(values.pk_produktiv_P42, 1)}
               onChange={handleChange}
               onBlur={handleBlur}
               InputProps={{
@@ -159,7 +159,6 @@ const Zusammenfassung = () => {
               sx={{ mb: 2 }}
             />
           </Grid>
-          
         </Grid>
       </ReadOnlyBox>
     </>
