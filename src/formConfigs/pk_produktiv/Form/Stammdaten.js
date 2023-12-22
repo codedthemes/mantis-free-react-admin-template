@@ -7,12 +7,12 @@ import { Grid, TextField, Divider, Button, ButtonGroup, Typography } from '@mui/
 import { Field, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
-import { useParams } from 'react-router-dom/dist/index';
 import { uniqueId } from 'lodash';
+import getInitialMitarbeiterData from '../CalculationUpdater/getInitialMitarbeiterData';
+import formFloat from 'utils/formUtils/formFloat';
 
 const Stammdaten = () => {
   const { values, handleChange, handleBlur, touched, errors, isSubmitting } = useFormikContext();
-  let { openUser } = useParams();
 
   return (
     <>
@@ -30,7 +30,7 @@ const Stammdaten = () => {
                     values.pk_produktiv_mitarbeiter?.[index]?.nachname || ''
                   }`}
                   description="Pflegen Sie hier allgemeine Angaben zu Ihrem Mitarbeiter ein."
-                  defaultOpen={openUser === values.pk_produktiv_mitarbeiter?.[index]?.userId}
+                  defaultOpen={index === 0 && values.pk_produktiv_mitarbeiter?.length === 1}
                 >
                   <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
                     <Grid item xs={12}>
@@ -195,6 +195,28 @@ const Stammdaten = () => {
                           sx={{ mb: 2 }}
                         />
                       </Grid>
+                      <Grid item xs={12}>
+                        <ReadOnlyBox>
+                          <Grid container columnSpacing={{ xs: 2, md: 4 }}>
+                            <Grid item xs={12} sm={6}>
+                              <Field
+                                component={TextField}
+                                id={`pk_produktiv_mitarbeiter.${index}.anwesenheitsStdMa`}
+                                name={`pk_produktiv_mitarbeiter.${index}.anwesenheitsStdMa`}
+                                label="Anwesenheit (in Std.)"
+                                value={values.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsStdMa}
+                                InputProps={{
+                                  readOnly: true
+                                }}
+                                sx={{ mb: 2 }}
+                              />
+                            </Grid>
+                          </Grid>
+                        </ReadOnlyBox>
+                      </Grid>
+                      <Grid item xs={12} sm={12}>
+                        &nbsp;
+                      </Grid>
                       <Grid item xs={12} sm={6}>
                         <Field
                           component={TextField}
@@ -217,6 +239,38 @@ const Stammdaten = () => {
                           }
                           sx={{ mb: 2 }}
                         />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <ReadOnlyBox>
+                          <Grid container columnSpacing={{ xs: 2, md: 4 }}>
+                            <Grid item xs={12} sm={6}>
+                              <Field
+                                component={TextField}
+                                id={`pk_produktiv_mitarbeiter.${index}.direktVerrechnet`}
+                                name={`pk_produktiv_mitarbeiter.${index}.direktVerrechnet`}
+                                label="Direkt verrechnet (in Std.)"
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.direktVerrechnet, 1)}
+                                InputProps={{
+                                  readOnly: true
+                                }}
+                                sx={{ mb: 2 }}
+                              />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                              <Field
+                                component={TextField}
+                                id={`pk_produktiv_mitarbeiter.${index}.nichtDirektVerrechnet`}
+                                name={`pk_produktiv_mitarbeiter.${index}.nichtDirektVerrechnet`}
+                                label="Nicht direkt verrechnet (in Std.)"
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.nichtDirektVerrechnet, 1)}
+                                InputProps={{
+                                  readOnly: true
+                                }}
+                                sx={{ mb: 2 }}
+                              />
+                            </Grid>
+                          </Grid>
+                        </ReadOnlyBox>
                       </Grid>
                       <Grid item xs={12} sm={12}>
                         &nbsp;
@@ -267,27 +321,46 @@ const Stammdaten = () => {
                       </Grid>
                       <Grid item xs={12}>
                         <ReadOnlyBox alwaysOpen>
-                          <Grid container spacing={{ xs: 2, md: 4 }}>
+                          <Grid container columnSpacing={{ xs: 2, md: 4 }}>
                             <Grid item xs={12} sm={6}>
                               <Field
                                 component={TextField}
                                 id={`pk_produktiv_mitarbeiter.${index}.anwesenheitsentgelt`}
                                 name={`pk_produktiv_mitarbeiter.${index}.anwesenheitsentgelt`}
-                                label="Anwesenheitsentgelt (gesamt)"
+                                label="Anwesenheitsentgelt (gesamt, in EUR)"
                                 value={values.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsentgelt}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
                                 InputProps={{
                                   readOnly: true
                                 }}
-                                error={
-                                  touched.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsentgelt &&
-                                  Boolean(errors.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsentgelt)
-                                }
-                                helperText={
-                                  touched.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsentgelt &&
-                                  errors.pk_produktiv_mitarbeiter?.[index]?.anwesenheitsentgelt
-                                }
+                                sx={{ mb: 2 }}
+                              />
+                            </Grid>
+                            <Grid item xs={12} sm={12}>
+                              &nbsp;
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                              <Field
+                                component={TextField}
+                                id={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitDirektVerreichnet`}
+                                name={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitDirektVerreichnet`}
+                                label="Verrechenbarkeit (direkt verrechnet, in EUR)"
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.verrechenbarkeitDirektVerreichnet, 1)}
+                                InputProps={{
+                                  readOnly: true
+                                }}
+                                sx={{ mb: 2 }}
+                              />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                              <Field
+                                component={TextField}
+                                id={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitNichtDirektVerreichnet`}
+                                name={`pk_produktiv_mitarbeiter.${index}.verrechenbarkeitNichtDirektVerreichnet`}
+                                label="Verrechenbarkeit (direkt verrechnet, in EUR)"
+                                value={formFloat(values.pk_produktiv_mitarbeiter?.[index]?.verrechenbarkeitNichtDirektVerreichnet, 1)}
+                                InputProps={{
+                                  readOnly: true
+                                }}
                                 sx={{ mb: 2 }}
                               />
                             </Grid>
@@ -324,15 +397,7 @@ const Stammdaten = () => {
                 {index === values.pk_produktiv_mitarbeiter?.length - 1 && (
                   <Button
                     variant="contained"
-                    onClick={() =>
-                      push({
-                        userId: uniqueId(),
-                        sollarbeitsstdPA: values.annahmen_produktivstunden_jahresArbeitszeitInStunden,
-                        urlaubStd:
-                          (values.annahmen_produktivstunden_urlaubstageProMitarbeiter || 0) *
-                          (values.annahmen_produktivstunden_durchschnittArbeitsstundenProTag || 0)
-                      })
-                    }
+                    onClick={() => push(getInitialMitarbeiterData(values))}
                     disabled={isSubmitting}
                     sx={{ mb: 4 }}
                   >

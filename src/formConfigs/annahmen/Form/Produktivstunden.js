@@ -219,7 +219,7 @@ const Produktivstunden = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <ReadOnlyBox title={'Summe Nichtanwesenheit'}>
+          <ReadOnlyBox title={'Summe Nichtanwesenheit'} alwaysOpen>
             <Grid container spacing={{ xs: 2, md: 4 }}>
               <Grid item xs={12} md={6}>
                 <Field
@@ -251,7 +251,7 @@ const Produktivstunden = () => {
           </ReadOnlyBox>
         </Grid>
         <Grid item xs={12}>
-          <ReadOnlyBox title={'Summe Anwesenheitszeit'}>
+          <ReadOnlyBox title={'Summe Anwesenheitszeit'} alwaysOpen>
             <Grid container spacing={{ xs: 2, md: 4 }}>
               <Grid item xs={12} md={6}>
                 <Field

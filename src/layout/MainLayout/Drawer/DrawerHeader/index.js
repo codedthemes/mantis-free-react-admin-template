@@ -11,7 +11,7 @@ import Logo from 'components/Logo';
 const DrawerHeader = () => {
   return (
     <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-start" marginBottom={3}>
-      <Logo />
+      <Logo color="white" />
     </Stack>
   );
 };

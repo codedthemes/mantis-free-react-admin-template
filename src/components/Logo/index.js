@@ -23,7 +23,7 @@ const LogoSection = ({ sx, to }) => {
       to={!to ? config.defaultPath : to}
       sx={sx}
     >
-      <Logo />
+      <Logo color="white" />
     </ButtonBase>
   );
 };

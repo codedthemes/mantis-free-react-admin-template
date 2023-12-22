@@ -71,7 +71,7 @@ const Lohnnebenkostensatz = () => {
           />
         </Grid>
         <Grid item xs={12} md={12}>
-          <ReadOnlyBox title={'Lohnnebenkostensatz'}>
+          <ReadOnlyBox title={'Lohnnebenkostensatz'} alwaysOpen>
             <Grid container spacing={{ xs: 2, md: 4 }}>
               <Grid item xs={12} md={6}>
                 <Field

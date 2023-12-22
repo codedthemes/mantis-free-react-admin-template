@@ -15,6 +15,7 @@ import Header from './Header';
 // types
 import { NavigationContext } from 'context/navigation/index';
 import Profile from './Header/HeaderContent/Profile/index';
+import Logo from 'components/Logo/Logo';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
@@ -154,12 +155,7 @@ const MainLayout = () => {
       >
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
-            <Stack>
-              <Typography variant="h1" component="p" sx={{ fontWeight: 300, textAlign: { xs: 'center', sm: 'left' } }}>
-                Kalkulatrix
-              </Typography>
-              <Typography sx={{ fontWeight: 700 }}>Adel Consultant</Typography>
-            </Stack>
+            <Logo sx={{ maxWidth: '300px' }} />
           </Grid>
           <Grid item xs={12} sm={6}>
             <List
