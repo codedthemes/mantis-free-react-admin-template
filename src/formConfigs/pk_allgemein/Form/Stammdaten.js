@@ -7,12 +7,11 @@ import { Grid, TextField, Divider, Button, ButtonGroup, Typography } from '@mui/
 import { Field, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
-import { uniqueId } from 'lodash';
+import { v4 as uuid } from 'uuid';
 import getInitialMitarbeiterData from '../../helper/getInitialMitarbeiterData';
-import formFloat from 'utils/formUtils/formFloat';
 
 const Stammdaten = () => {
-  const { values, handleChange, handleBlur, touched, errors, isSubmitting } = useFormikContext();
+  const { values, errors, isSubmitting } = useFormikContext();
 
   return (
     <>
@@ -70,7 +69,7 @@ const Stammdaten = () => {
                             variant="outlined"
                             color="primary"
                             disabled={isSubmitting}
-                            onClick={() => push({ ...values.pk_allgemein_mitarbeiter?.[index], userId: uniqueId() })}
+                            onClick={() => push({ ...values.pk_allgemein_mitarbeiter?.[index], userId: uuid() })}
                           >
                             Mitarbeiter duplizieren
                           </Button>
@@ -98,7 +97,7 @@ const Stammdaten = () => {
               </>
             ))}
             {(!values.pk_allgemein_mitarbeiter || values.pk_allgemein_mitarbeiter?.length === 0) && (
-              <Button variant="contained" onClick={() => push({ userId: uniqueId() })} disabled={isSubmitting} sx={{ mb: 4 }}>
+              <Button variant="contained" onClick={() => push({ userId: uuid() })} disabled={isSubmitting} sx={{ mb: 4 }}>
                 neuen Mitarbeiter hinzufügen
               </Button>
             )}

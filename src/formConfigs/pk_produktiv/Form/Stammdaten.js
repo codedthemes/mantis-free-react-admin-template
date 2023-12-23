@@ -7,12 +7,12 @@ import { Grid, TextField, Divider, Button, ButtonGroup, Typography } from '@mui/
 import { FastField, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
-import { uniqueId } from 'lodash';
+import { v4 as uuid } from 'uuid';
 import getInitialMitarbeiterData from '../../helper/getInitialMitarbeiterData';
 import formFloat from 'utils/formUtils/formFloat';
 
 const Stammdaten = () => {
-  const { values, handleChange, handleBlur, touched, errors, isSubmitting } = useFormikContext();
+  const { values, errors, isSubmitting } = useFormikContext();
 
   return (
     <>
@@ -23,12 +23,10 @@ const Stammdaten = () => {
         {({ push, remove }) => (
           <>
             {values.pk_produktiv_mitarbeiter?.map((arrayField, index) => (
-              <React.Fragment key={index}>
+              <React.Fragment key={arrayField.userId || index}>
                 <FormSection
                   key={index}
-                  title={`${values.pk_produktiv_mitarbeiter?.[index]?.vorname || 'Mitarbeiter'} ${
-                    values.pk_produktiv_mitarbeiter?.[index]?.nachname || ''
-                  }`}
+                  title={`${arrayField?.vorname || 'Mitarbeiter'} ${arrayField?.nachname || ''}`}
                   description="Pflegen Sie hier allgemeine Angaben zu Ihrem Mitarbeiter ein."
                   defaultOpen={index === 0 && values.pk_produktiv_mitarbeiter?.length === 1}
                 >
@@ -343,7 +341,7 @@ const Stammdaten = () => {
                             variant="outlined"
                             color="primary"
                             disabled={isSubmitting}
-                            onClick={() => push({ ...values.pk_produktiv_mitarbeiter?.[index], userId: uniqueId() })}
+                            onClick={() => push({ ...values.pk_produktiv_mitarbeiter?.[index], userId: uuid() })}
                           >
                             Mitarbeiter duplizieren
                           </Button>
@@ -371,7 +369,7 @@ const Stammdaten = () => {
               </React.Fragment>
             ))}
             {(!values.pk_produktiv_mitarbeiter || values.pk_produktiv_mitarbeiter?.length === 0) && (
-              <Button variant="contained" onClick={() => push({ userId: uniqueId() })} disabled={isSubmitting} sx={{ mb: 4 }}>
+              <Button variant="contained" onClick={() => push({ userId: uuid() })} disabled={isSubmitting} sx={{ mb: 4 }}>
                 neuen Mitarbeiter hinzufügen
               </Button>
             )}
