@@ -64,9 +64,9 @@ const StundensatzRechnerValueUpdater = () => {
 
   // Produktivstunden 2
   useEffect(() => {
-    const summeNichtanwesenheitInTagen = values.annahmen_G25 + values.annahmen_G26 + values.annahmen_G27 + values.annahmen_G28 || 0;
+    const summeNichtanwesenheitInTagen = (values.annahmen_G25 || 0) + (values.annahmen_G26 || 0) + (values.annahmen_G27 || 0) + (values.annahmen_G28 || 0) || 0;
 
-    const summeNichtanwesenheitInStunden = summeNichtanwesenheitInTagen * values.annahmen_G18 || 0;
+    const summeNichtanwesenheitInStunden = summeNichtanwesenheitInTagen * (values.annahmen_G18 || 0) || 0;
 
     summeNichtanwesenheitInTagen !== values.annahmen_G29 && setFieldValue('annahmen_G29', summeNichtanwesenheitInTagen);
     summeNichtanwesenheitInStunden !== values.annahmen_H29 && setFieldValue('annahmen_H29', summeNichtanwesenheitInStunden);

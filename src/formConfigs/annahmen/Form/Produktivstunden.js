@@ -23,7 +23,7 @@ const Produktivstunden = () => {
             component={TextField}
             id="annahmen_G16"
             name="annahmen_G16"
-            label="Wochenarbeitszeit"
+            label="Wochenarbeitszeit (in Std.)"
             value={values.annahmen_G16}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -42,7 +42,7 @@ const Produktivstunden = () => {
             component={TextField}
             id="annahmen_G17"
             name="annahmen_G17"
-            label="Wochenarbeitstage"
+            label="Wochenarbeitstage (in Tagen)"
             type="number"
             onWheel={(event) => event.target.blur()}
             min="0"

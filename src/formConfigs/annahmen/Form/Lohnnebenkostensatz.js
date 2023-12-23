@@ -26,7 +26,7 @@ const Lohnnebenkostensatz = () => {
             component={TextField}
             id="annahmen_E39"
             name="annahmen_E39"
-            label="Sonderzahlungen"
+            label="Sonderzahlungen (in Monaten)"
             type="number"
             onWheel={(event) => event.target.blur()}
             min="0"
@@ -43,7 +43,7 @@ const Lohnnebenkostensatz = () => {
             component={TextField}
             id="annahmen_E41"
             name="annahmen_E41"
-            label="SV-Abgaben Arbeitgeber"
+            label="SV-Abgaben Arbeitgeber (in %)"
             type="number"
             onWheel={(event) => event.target.blur()}
             min="0"
@@ -60,7 +60,7 @@ const Lohnnebenkostensatz = () => {
             component={TextField}
             id="annahmen_E42"
             name="annahmen_E42"
-            label="Sonstige Kosten"
+            label="Sonstige Kosten (in %)"
             type="number"
             onWheel={(event) => event.target.blur()}
             min="0"
