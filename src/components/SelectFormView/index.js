@@ -27,8 +27,6 @@ const SelectFormView = ({ formType, sections }) => {
     return formsToUse;
   }, [formType, formsData]);
 
-  console.log('formsData', formsData);
-
   const theme = useTheme();
   const addForm = () => {
     createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}`, type: formType });

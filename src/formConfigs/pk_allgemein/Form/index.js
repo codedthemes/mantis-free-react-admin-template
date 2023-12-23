@@ -6,7 +6,6 @@ import { Formik, Form } from 'formik';
 import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
 import Stammdaten from './Stammdaten';
-import Zusammenfassung from './Zusammenfassung';
 import { UserContext } from 'context/user';
 
 const TestForm = () => {
@@ -26,7 +25,6 @@ const TestForm = () => {
           <CalculationUpdater />
           <Start />
           <Stammdaten />
-          {/* <Zusammenfassung /> */}
           <ButtonBar />
         </Form>
       )}

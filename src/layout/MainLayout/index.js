@@ -3,10 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Box, Button, Grid, Typography, List, ListItemButton, ListItem, Stack } from '@mui/material';
+import { Box, Button} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
-import { Link as RouterLink } from 'react-router-dom';
 
 // project import
 import Drawer from './Drawer';
@@ -15,20 +13,13 @@ import Header from './Header';
 // types
 import { NavigationContext } from 'context/navigation/index';
 import Profile from './Header/HeaderContent/Profile/index';
-import Logo from 'components/Logo/Logo';
+import Footer from 'layout/Footer/index';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
   const theme = useTheme();
   const { setNavOpen, navOpen, useDrawerNav } = useContext(NavigationContext);
-
-  const footerLinkStyles = {
-    fontWeight: 300,
-    fontSize: '1rem',
-    padding: 0,
-    '&:hover': { backgroundColor: 'transparent', textDecoration: 'underline' }
-  };
 
   return (
     <Box
@@ -143,43 +134,7 @@ const MainLayout = () => {
           <Outlet />
         </Box>
       </Box>
-      <Box
-        component="footer"
-        sx={{
-          backgroundColor: 'transparent',
-          padding: theme.shape.layoutDesignGutter,
-          position: 'relative',
-          zIndex: '1',
-          borderTop: `2px solid ${theme.palette.primary.main}`
-        }}
-      >
-        <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
-            <Logo sx={{ maxWidth: '300px' }} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <List
-              sx={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: { xs: 'center', sm: 'flex-end' },
-                gap: `${theme.spacing(1)} ${theme.spacing(3)}`
-              }}
-            >
-              <ListItem sx={{ padding: 0, flexBasis: '0', width: 'auto' }}>
-                <ListItemButton variant="subtitle2" component={RouterLink} to="#" sx={footerLinkStyles}>
-                  Impressum
-                </ListItemButton>
-              </ListItem>
-              <ListItem sx={{ padding: 0, flexBasis: '0', width: 'auto' }}>
-                <ListItemButton variant="subtitle2" component={RouterLink} to="#" sx={footerLinkStyles}>
-                  Datenschutz
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Grid>
-        </Grid>
-      </Box>
+      <Footer />
     </Box>
   );
 };

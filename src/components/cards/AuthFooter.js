@@ -15,7 +15,7 @@ const AuthFooter = () => {
         textAlign={matchDownSM ? 'center' : 'inherit'}
       >
         <Typography variant="subtitle2" color="secondary" component="span">
-          &copy; Stundensatzkalkulator&nbsp;
+          &copy; Kalkulatrix&nbsp;
           <Typography component={Link} variant="subtitle2" href="/" target="_blank" underline="hover">
             Adel Consultant
           </Typography>

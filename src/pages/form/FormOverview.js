@@ -27,7 +27,8 @@ const FormOverview = () => {
         formType="stundensatz"
         sections={[
           { linkPart: 'annahmen', label: 'Annahmen' },
-          { linkPart: 'pk_produktiv', label: 'Personalkosten Produktiv' }
+          { linkPart: 'pk_produktiv', label: 'Personalkosten Produktiv' },
+          { linkPart: 'pk_allgemein', label: 'Personalkosten Allgemein' }
         ]}
       />
       {/* <Typography variant="h2" sx={headlineSectionStyle}>
