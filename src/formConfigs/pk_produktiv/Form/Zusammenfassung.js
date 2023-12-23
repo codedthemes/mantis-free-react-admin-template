@@ -21,13 +21,13 @@ const Zusammenfassung = () => {
         Zusammenfassung
       </Typography>
       <ReadOnlyBox alwaysOpen white title="Anwesenheitsentgelt">
-        <Grid container spacing={{ xs: 2, md: 4 }}>
+        <Grid container spacing={{ xs: 2, md: 4 }} alignItems="flex-end">
           <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
               id={`pk_produktiv_P40`}
               name={`pk_produktiv_P40`}
-              label="Verrechnet (in EUR)"
+              label="Direkt verrechenbar (in EUR)"
               value={formFloat(values.pk_produktiv_P40, 1)}
               InputProps={{
                 readOnly: true
@@ -40,7 +40,7 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_Q40`}
               name={`pk_produktiv_Q40`}
-              label="Nicht Verrechnet (in EUR)"
+              label="Nicht direkt verrechenbar (in EUR)"
               value={formFloat(values.pk_produktiv_Q40, 1)}
               InputProps={{
                 readOnly: true
@@ -53,7 +53,7 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_S40`}
               name={`pk_produktiv_S40`}
-              label="Gesamt (in EUR)"
+              label="Gesamtkosten (p.a., in EUR)"
               value={formFloat(values.pk_produktiv_S40, 1)}
               InputProps={{
                 readOnly: true
@@ -66,7 +66,7 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_R40`}
               name={`pk_produktiv_R40`}
-              label="Durchschnittliches Bruttostundenentgelt (in EUR)"
+              label="Ø Kosten je Std. (inkl. Zulagen/ Zuschläge, in EUR)"
               value={formFloat(values.pk_produktiv_R40, 1)}
               InputProps={{
                 readOnly: true
@@ -84,10 +84,8 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_P41`}
               name={`pk_produktiv_P41`}
-              label="Verrechnet (in EUR)"
+              label="Direkt verrechenbar (in EUR)"
               value={formFloat(values.pk_produktiv_P41, 1)}
-              onChange={handleChange}
-              onBlur={handleBlur}
               InputProps={{
                 readOnly: true
               }}
@@ -99,10 +97,8 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_Q41`}
               name={`pk_produktiv_Q41`}
-              label="Nicht verrechnet (in EUR)"
+              label="Nicht direkt verrechenbar (in EUR)"
               value={formFloat(values.pk_produktiv_Q41, 1)}
-              onChange={handleChange}
-              onBlur={handleBlur}
               InputProps={{
                 readOnly: true
               }}
@@ -114,10 +110,8 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_S41`}
               name={`pk_produktiv_S41`}
-              label="Gesamt"
+              label="Gesamtkosten (p.a., in EUR)"
               value={formFloat(values.pk_produktiv_S41, 1)}
-              onChange={handleChange}
-              onBlur={handleBlur}
               InputProps={{
                 readOnly: true
               }}
@@ -129,10 +123,8 @@ const Zusammenfassung = () => {
               component={TextField}
               id={`pk_produktiv_R41`}
               name={`pk_produktiv_R41`}
-              label="Durchschnittliches Bruttostundenentgelt (in EUR)"
+              label="Ø Kosten je Std. (inkl. Zulagen/ Zuschläge, in EUR)"
               value={formFloat(values.pk_produktiv_R41, 1)}
-              onChange={handleChange}
-              onBlur={handleBlur}
               InputProps={{
                 readOnly: true
               }}
@@ -144,15 +136,52 @@ const Zusammenfassung = () => {
               Berechnet: Anwesenheitsentgelt inkl. Personalnebenkosten
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={4}>
             <Field
               component={TextField}
               id={`pk_produktiv_P42`}
               name={`pk_produktiv_P42`}
-              label="Verrechnet (in EUR)"
+              label="Direkt verrechenbar (in EUR)"
               value={formFloat(values.pk_produktiv_P42, 1)}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              InputProps={{
+                readOnly: true
+              }}
+              sx={{ mb: 2 }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Field
+              component={TextField}
+              id={`pk_produktiv_Q42`}
+              name={`pk_produktiv_Q42`}
+              label="Nicht direkt verrechenbar (in EUR)"
+              value={formFloat(values.pk_produktiv_Q42, 1)}
+              InputProps={{
+                readOnly: true
+              }}
+              sx={{ mb: 2 }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Field
+              component={TextField}
+              id={`pk_produktiv_S42`}
+              name={`pk_produktiv_S42`}
+              label="Gesamtkosten (p.a., in EUR)"
+              value={formFloat(values.pk_produktiv_S42, 1)}
+              InputProps={{
+                readOnly: true
+              }}
+              sx={{ mb: 2 }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Field
+              component={TextField}
+              id={`pk_produktiv_R42`}
+              name={`pk_produktiv_R42`}
+              label="Ø Kosten je Std. (inkl. Zulagen/ Zuschläge, in EUR)"
+              value={formFloat(values.pk_produktiv_R42, 1)}
               InputProps={{
                 readOnly: true
               }}

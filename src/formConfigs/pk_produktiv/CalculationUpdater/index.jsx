@@ -103,6 +103,9 @@ const StundensatzRechnerValueUpdater = () => {
       const R41 = ((values.annahmen_I46 || 0) / 100) * (values.pk_produktiv_R40 || 0);
       const S41 = (P41 || 0) + (Q41 || 0);
       const P42 = (P41 || 0) + (values.pk_produktiv_P40 || 0);
+      const Q42 = (Q41 || 0) + (values.pk_produktiv_Q40 || 0);
+      const R42 = (R41 || 0) + (values.pk_produktiv_R40 || 0);
+      const S42 = (S41 || 0) + (values.pk_produktiv_S40 || 0);
 
       if (!values.pk_produktiv_P41 !== P41) {
         setFieldValue('pk_produktiv_P41', P41);
@@ -119,8 +122,14 @@ const StundensatzRechnerValueUpdater = () => {
       if (values.pk_produktiv_P42 !== P42) {
         setFieldValue('pk_produktiv_P42', P42);
       }
-      if (values.pk_produktiv_P42 !== P42) {
-        setFieldValue('pk_produktiv_P42', P42);
+      if (values.pk_produktiv_Q42 !== Q42) {
+        setFieldValue('pk_produktiv_Q42', Q42);
+      }
+      if (values.pk_produktiv_R42 !== R42) {
+        setFieldValue('pk_produktiv_R42', R42);
+      }
+      if (values.pk_produktiv_S42 !== S42) {
+        setFieldValue('pk_produktiv_S42', S42);
       }
     };
 
@@ -141,7 +150,11 @@ const StundensatzRechnerValueUpdater = () => {
     values.pk_produktiv_Q41,
     values.pk_produktiv_R41,
     values.pk_produktiv_P41,
-    values.pk_produktiv_S41
+    values.pk_produktiv_S41,
+    values.pk_produktiv_Q42,
+    values.pk_produktiv_R42,
+    values.pk_produktiv_S40,
+    values.pk_produktiv_S42
   ]);
 
   return <React.Fragment />;
