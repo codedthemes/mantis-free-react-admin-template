@@ -10,6 +10,13 @@ const legal = {
   type: 'group',
   children: [
     {
+      id: 'billing',
+      title: 'Zahlung',
+      type: 'item',
+      url: 'office/billing',
+      icon: NotesIcon
+    },
+    {
       id: 'imprint',
       title: 'Impressum',
       type: 'item',

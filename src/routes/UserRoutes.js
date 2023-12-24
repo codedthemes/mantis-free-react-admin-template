@@ -10,6 +10,7 @@ import Redirect from './helper/Redirect';
 const FormOverview = Loadable(lazy(() => import('pages/form/FormOverview')));
 const Form = Loadable(lazy(() => import('pages/form/Form')));
 const Dashboard = Loadable(lazy(() => import('pages/dashboard')));
+const Billing = Loadable(lazy(() => import('pages/billing')));
 const Review = Loadable(lazy(() => import('pages/review')));
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -23,6 +24,14 @@ const UserRoutes = {
       element: (
         <ProtectedRoute>
           <Dashboard />
+        </ProtectedRoute>
+      )
+    },
+    {
+      path: 'office/billing',
+      element: (
+        <ProtectedRoute>
+          <Billing />
         </ProtectedRoute>
       )
     },
