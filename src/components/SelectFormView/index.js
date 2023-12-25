@@ -1,20 +1,26 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 
 // material-ui
-import { Grid, Stack, Typography } from '@mui/material';
+import { Grid, Stack, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+
+import TextTeaserCard from 'components/TextTeaserCard/index';
+import { Link } from 'react-router-dom';
 
 // icons
 import { Edit, ChevronRight } from '@mui/icons-material';
 
 // redux
 import { UserContext } from 'context/user';
-import TextTeaserCard from 'components/TextTeaserCard/index';
+import { StripeContext } from 'context/stripe/index';
 
 // eslint-disable-next-line react/prop-types
 const SelectFormView = ({ formType, sections }) => {
+  const theme = useTheme();
   const { createForm, formsData = {} } = useContext(UserContext);
+  const { hasActiveSubscription } = useContext(StripeContext);
+  const [openSubBanner, setOpenSubBanner] = useState(false);
   const visibleForms = useMemo(() => {
     const formsToUse = {};
     Object.keys(formsData).forEach((formKey) => {
@@ -27,9 +33,15 @@ const SelectFormView = ({ formType, sections }) => {
     return formsToUse;
   }, [formType, formsData]);
 
-  const theme = useTheme();
   const addForm = () => {
     createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}`, type: formType });
+  };
+
+  const handleOpenSub = () => {
+    setOpenSubBanner(true);
+  };
+  const handleCloseSub = () => {
+    setOpenSubBanner(false);
   };
 
   const formCardsDom = () => {
@@ -74,28 +86,30 @@ const SelectFormView = ({ formType, sections }) => {
           });
 
           return (
-            <Stack key={formId} flexDirection="column" sx={{ mb: { xs: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(6) } }}>
-              <Typography variant="h3" sx={{ mb: 1 }}>
-                {formData.title || 'Formular: ' + formData.id}
-              </Typography>
-              <Grid spacing={3} container>
-                {sectionsDom}
-              </Grid>
-            </Stack>
+            <Grid key={formId} item xs={12}>
+              <Stack flexDirection="column" sx={{ mb: { xs: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(6) } }}>
+                <Typography variant="h3" sx={{ mb: 1 }}>
+                  {formData.title || 'Formular: ' + formData.id}
+                </Typography>
+                <Grid spacing={3} container>
+                  {sectionsDom}
+                </Grid>
+              </Stack>
+            </Grid>
           );
         })
         .filter(Boolean) || [];
 
     return (
       <>
-        <Stack sx={{ marginBottom: theme.spacing(3) }}>
+        <Grid container spacing={3} sx={{ marginBottom: theme.spacing(3) }}>
           {formCards}
-          <Grid item xs={12} sm={6} sx={{ mt: theme.spacing(4)}}>
+          <Grid item xs={12} sm={6} sx={{ mt: theme.spacing(4) }}>
             <TextTeaserCard
-              onClick={addForm}
+              onClick={hasActiveSubscription ? addForm : handleOpenSub}
               primaryText={
                 <Stack flexDirection="row" alignItems="center">
-                  Neues Angabenset{' '}
+                  Neues Angabenset
                   <ChevronRight
                     sx={{
                       opacity: '0.2',
@@ -110,7 +124,26 @@ const SelectFormView = ({ formType, sections }) => {
               light
             ></TextTeaserCard>
           </Grid>
-        </Stack>
+        </Grid>
+        <Dialog
+          open={openSubBanner}
+          onClose={handleCloseSub}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">Ein neues Angabenset können Sie nur mit gültigem Abonnement erstellen.</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseSub}>schließen</Button>
+            <Button component={Link} to="/office/billing" autoFocus>
+              Abonnement verwalten
+            </Button>
+          </DialogActions>
+        </Dialog>
       </>
     );
   };
