@@ -21,7 +21,6 @@ const ButtonBar = () => {
   const saveAction = useCallback(async () => {
     const { errors } = validateFields(values, conditionalRules, validationRules);
     setErrors(errors);
-    console.log('errors', errors);
 
     if (Object.keys(errors).length === 0) {
       await saveForm(values);

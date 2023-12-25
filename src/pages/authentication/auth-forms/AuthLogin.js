@@ -49,7 +49,6 @@ const AuthLogin = () => {
 
   useEffect(() => {
     if (user.uid) {
-      console.log('navigate', user.uid);
       navigate('/office/dashboard');
     }
   }, [user.uid, navigate]);
@@ -78,8 +77,6 @@ const AuthLogin = () => {
           const { errors } = validateFields(values, conditionalRules, validationRules);
           formikBag.setErrors(errors);
 
-          console.log('login values', values);
-
           if (Object.keys(errors).length === 0) {
             await handleLogin({
               email: values.email,
@@ -95,7 +92,6 @@ const AuthLogin = () => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Stack spacing={3}>
-                  {console.log('values', values)}
                   <Field
                     component={TextField}
                     id="email"

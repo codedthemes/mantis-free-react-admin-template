@@ -5,7 +5,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { db, auth, app } from 'services/firebase';
 
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import { doc, query, where, getDocs, collection, addDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
+import { query, where, getDocs, collection, addDoc, onSnapshot } from 'firebase/firestore';
 
 export const StripeContext = createContext(null);
 
@@ -13,7 +13,6 @@ const getSubscriptions = async (userId) => {
   if (userId) {
     const checkoutSessionRef = collection(db, 'users', userId, 'subscriptions');
     const allDocs = await getDocs(query(checkoutSessionRef));
-    console.log('allDocs', allDocs);
     const snap = await getDocs(query(checkoutSessionRef, where('status', 'in', ['trialing', 'active'])));
 
     return snap;
@@ -32,7 +31,6 @@ export const StripeContextProvider = ({ children }) => {
   const updateSubscriptions = useCallback(async () => {
     setLoadingGetSubscriptionStatus(true);
     const subs = await getSubscriptions(user.uid);
-    console.log('subs', subs);
 
     setActiveSubscriptions(subs?.docs);
     setLoadingGetSubscriptionStatus(false);

@@ -47,7 +47,6 @@ const Profile = () => {
   };
 
   const handleClose = () => {
-    console.log('click away');
     setOpen(false);
   };
 

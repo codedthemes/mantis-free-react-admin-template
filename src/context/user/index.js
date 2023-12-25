@@ -173,7 +173,7 @@ export const UserContextProvider = ({ children }) => {
             });
         })
         .catch((error) => {
-          console.log('user not updated', error);
+          console.error('user not updated', error);
         });
       setCreateUser(StatusCodes.OK);
     },
