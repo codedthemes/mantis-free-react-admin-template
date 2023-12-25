@@ -77,7 +77,7 @@ const AuthLogin = () => {
           const { errors } = validateFields(values, conditionalRules, validationRules);
           formikBag.setErrors(errors);
 
-          if (Object.keys(errors).length === 0) {
+          if (Object.keys(errors)?.length === 0) {
             await handleLogin({
               email: values.email,
               password: values.password,

@@ -56,7 +56,7 @@ const StundensatzRechnerValueUpdater = () => {
         }
       });
 
-      const pk_produktiv_R40 = values.pk_produktiv_mitarbeiter.length ? pk_produktiv_Q9_SUMME / values.pk_produktiv_mitarbeiter.length : 0;
+      const pk_produktiv_R40 = values.pk_produktiv_mitarbeiter?.length ? pk_produktiv_Q9_SUMME / values.pk_produktiv_mitarbeiter.length : 0;
 
       const pk_produktiv_S40 = (pk_produktiv_P40 || 0) + (pk_produktiv_Q40 || 0);
 
@@ -89,7 +89,7 @@ const StundensatzRechnerValueUpdater = () => {
     setFieldValue,
     values.pk_produktiv_mitarbeiter,
     values.pk_produktiv_P40,
-    values.pk_produktiv_mitarbeiter.length,
+    values.pk_produktiv_mitarbeiter?.length,
     values.pk_produktiv_Q40,
     values.pk_produktiv_Q9_SUMME,
     values.pk_produktiv_R40,

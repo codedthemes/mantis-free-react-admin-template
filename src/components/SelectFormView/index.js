@@ -39,7 +39,7 @@ const SelectFormView = ({ formType, sections }) => {
     Object.keys(formsData).forEach((formKey) => {
       const currentForm = formsData[formKey];
       if (currentForm.type === formType) {
-        const shouldAddFormToView = hasActiveSubscription || Object.keys(formsToUse).length === 0;
+        const shouldAddFormToView = hasActiveSubscription || Object.keys(formsToUse)?.length === 0;
 
         if (shouldAddFormToView) {
           formsToUse[formKey] = currentForm;

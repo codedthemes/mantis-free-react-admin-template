@@ -258,7 +258,7 @@ export const UserContextProvider = ({ children }) => {
 
   const updateForms = useCallback(async () => {
     setLoadingForm(StatusCodes.PROCESSING);
-    if (user.userFormIds.length > 0) {
+    if (user.userFormIds?.length > 0) {
       const forms = await getForms(user.userFormIds);
       setFormsData(forms);
     } else {

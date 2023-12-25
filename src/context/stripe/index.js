@@ -25,8 +25,8 @@ export const StripeContextProvider = ({ children }) => {
   const [loadingCreateSubscription, setLoadingCreateSubscription] = useState(false);
   const [loadingGetSubscriptionStatus, setLoadingGetSubscriptionStatus] = useState(false);
 
-  const [activeSubscriptions, setActiveSubscriptions] = useState(false);
-  const hasActiveSubscription = useMemo(() => activeSubscriptions.length > 0, [activeSubscriptions]);
+  const [activeSubscriptions, setActiveSubscriptions] = useState([]);
+  const hasActiveSubscription = useMemo(() => activeSubscriptions?.length > 0, [activeSubscriptions]);
 
   const updateSubscriptions = useCallback(async () => {
     setLoadingGetSubscriptionStatus(true);
