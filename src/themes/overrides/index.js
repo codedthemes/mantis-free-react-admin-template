@@ -2,6 +2,7 @@
 import { merge } from 'lodash';
 
 // project import
+import Alert from './Alert';
 import Badge from './Badge';
 import Button from './Button';
 import CardContent from './CardContent';
@@ -29,6 +30,7 @@ import FormHelperText from './FormHelperText';
 
 export default function ComponentsOverrides(theme) {
   return merge(
+    Alert(theme),
     Button(theme),
     Badge(theme),
     CardContent(),

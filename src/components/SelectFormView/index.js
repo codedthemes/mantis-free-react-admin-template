@@ -2,7 +2,18 @@ import React, { useContext, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 
 // material-ui
-import { Grid, Stack, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material';
+import {
+  Alert,
+  Grid,
+  Stack,
+  Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button
+} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 import TextTeaserCard from 'components/TextTeaserCard/index';
@@ -21,17 +32,28 @@ const SelectFormView = ({ formType, sections }) => {
   const { createForm, formsData = {} } = useContext(UserContext);
   const { hasActiveSubscription } = useContext(StripeContext);
   const [openSubBanner, setOpenSubBanner] = useState(false);
+  const [showMoreFormsWarning, setShowMoreFormsWarning] = useState(false);
   const visibleForms = useMemo(() => {
     const formsToUse = {};
+    let shouldSetShowWarning = false;
     Object.keys(formsData).forEach((formKey) => {
       const currentForm = formsData[formKey];
       if (currentForm.type === formType) {
-        formsToUse[formKey] = currentForm;
+        const shouldAddFormToView = hasActiveSubscription || Object.keys(formsToUse).length === 0;
+
+        if (shouldAddFormToView) {
+          formsToUse[formKey] = currentForm;
+        } else {
+          console.log('set true', currentForm);
+          shouldSetShowWarning = true;
+        }
       }
     });
 
+    setShowMoreFormsWarning(shouldSetShowWarning);
+
     return formsToUse;
-  }, [formType, formsData]);
+  }, [formType, formsData, hasActiveSubscription]);
 
   const addForm = () => {
     createForm({ title: `Formular vom ${dayjs(new Date()).format('DD.MM.YYYY')}`, type: formType });
@@ -104,7 +126,13 @@ const SelectFormView = ({ formType, sections }) => {
       <>
         <Grid container spacing={3} sx={{ marginBottom: theme.spacing(3) }}>
           {formCards}
+
           <Grid item xs={12} sm={6} sx={{ mt: theme.spacing(4) }}>
+            {showMoreFormsWarning && (
+              <Alert sx={{ mb: 2 }} severity="warning">
+                Es gibt weitere Angabensets. Setzen Sie das Abonnement fort um alle Angabensets anzuzeigen.
+              </Alert>
+            )}
             <TextTeaserCard
               onClick={hasActiveSubscription ? addForm : handleOpenSub}
               primaryText={
@@ -134,7 +162,8 @@ const SelectFormView = ({ formType, sections }) => {
           <DialogTitle id="alert-dialog-title">Ein neues Angabenset können Sie nur mit gültigem Abonnement erstellen.</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
+              aliquyam
             </DialogContentText>
           </DialogContent>
           <DialogActions>
