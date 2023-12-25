@@ -83,7 +83,7 @@ const ProfileTab = ({ handleLogout }) => {
         <ListItemIcon>
           <WalletOutlined />
         </ListItemIcon>
-        <ListItemText primary="Zahlung" />
+        <ListItemText primary="Abonnement" />
       </ListItemButton>
       <ListItemButton sx={listItemButtonStyle} selected={selectedIndex === 2} onClick={handleLogout}>
         <ListItemIcon>

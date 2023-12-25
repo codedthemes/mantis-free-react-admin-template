@@ -14,7 +14,7 @@ import {
   db,
   onAuthStateChanged
 } from 'services/firebase';
-import { setPersistence, inMemoryPersistence, browserSessionPersistence } from 'firebase/auth';
+import { setPersistence, browserLocalPersistence, inMemoryPersistence } from 'firebase/auth';
 
 import { setDoc, doc, getDoc, getDocs, addDoc, collection, query, where, documentId, deleteDoc } from 'firebase/firestore';
 
@@ -127,7 +127,7 @@ export const UserContextProvider = ({ children }) => {
     async ({ emailCredentials }) => {
       const { email, password, keepSignedIn } = emailCredentials;
       setAuthUser(StatusCodes.PROCESSING);
-      const persistance = keepSignedIn ? browserSessionPersistence : inMemoryPersistence;
+      const persistance = keepSignedIn ? browserLocalPersistence : inMemoryPersistence;
       await setPersistence(auth, persistance);
       await signInWithEmailAndPassword(auth, email, password)
         .then(async (userAuth) => {

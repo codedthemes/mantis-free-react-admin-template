@@ -16,6 +16,7 @@ import TextField from './TextField';
 import MuiCard from './MuiCard';
 import LinearProgress from './LinearProgress';
 import Link from './Link';
+import List from './List';
 import ListItemIcon from './ListItemIcon';
 import OutlinedInput from './OutlinedInput';
 import Tab from './Tab';
@@ -43,6 +44,7 @@ export default function ComponentsOverrides(theme) {
     Input(theme),
     LinearProgress(),
     Link(),
+    List(),
     ListItemIcon(),
     OutlinedInput(theme),
     Tab(theme),

@@ -1,5 +1,5 @@
 // assets
-import { SwitchAccountOutlined, BackupTableOutlined } from '@mui/icons-material';
+import { SwitchAccountOutlined, BackupTableOutlined, WalletOutlined } from '@mui/icons-material';
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
 
@@ -22,6 +22,13 @@ const pages = {
       type: 'item',
       url: '/office/review',
       icon: SwitchAccountOutlined
+    },
+    {
+      id: 'billing',
+      title: 'Abonnement',
+      type: 'item',
+      url: 'office/billing',
+      icon: WalletOutlined
     }
   ]
 };
