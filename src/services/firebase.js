@@ -8,6 +8,7 @@ import {
   signOut
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -20,6 +21,7 @@ const firebaseConfig = {
 
 //init firebase app
 const app = initializeApp(firebaseConfig);
+const functions = getFunctions(app);
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
@@ -27,4 +29,4 @@ const db = getFirestore(app);
 //init services
 const auth = getAuth();
 
-export { db, app, auth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut };
+export { db, app, functions, httpsCallable, auth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut };

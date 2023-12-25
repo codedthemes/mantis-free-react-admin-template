@@ -1,8 +1,10 @@
 import { UserContext } from 'context/user/index';
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-// Firebase
-import { db } from 'services/firebase';
 
+// Firebase
+import { db, auth, app } from 'services/firebase';
+
+import { getFunctions, httpsCallable } from 'firebase/functions';
 import { doc, query, where, getDocs, collection, addDoc, deleteDoc, onSnapshot } from 'firebase/firestore';
 
 export const StripeContext = createContext(null);
@@ -10,9 +12,9 @@ export const StripeContext = createContext(null);
 const getSubscriptions = async (userId) => {
   if (userId) {
     const checkoutSessionRef = collection(db, 'users', userId, 'subscriptions');
+    const allDocs = await getDocs(query(checkoutSessionRef));
+    console.log('allDocs', allDocs);
     const snap = await getDocs(query(checkoutSessionRef, where('status', 'in', ['trialing', 'active'])));
-
-    console.log('snaps', snap);
 
     return snap;
   }
@@ -22,7 +24,6 @@ const getSubscriptions = async (userId) => {
 export const StripeContextProvider = ({ children }) => {
   const { user } = useContext(UserContext);
   const [loadingCreateSubscription, setLoadingCreateSubscription] = useState(false);
-  const [loadingCancelSubscription, setLoadingCancelSubscription] = useState(false);
   const [loadingGetSubscriptionStatus, setLoadingGetSubscriptionStatus] = useState(false);
 
   const [activeSubscriptions, setActiveSubscriptions] = useState(false);
@@ -31,29 +32,11 @@ export const StripeContextProvider = ({ children }) => {
   const updateSubscriptions = useCallback(async () => {
     setLoadingGetSubscriptionStatus(true);
     const subs = await getSubscriptions(user.uid);
+    console.log('subs', subs);
 
     setActiveSubscriptions(subs?.docs);
     setLoadingGetSubscriptionStatus(false);
   }, [user.uid]);
-
-  const cancelSubscriptions = useCallback(async () => {
-    setLoadingCancelSubscription(true);
-    if (user.uid) {
-      const checkoutSessionRef = collection(db, 'users', user.uid, 'subscriptions');
-      const promiseArray = [];
-
-      for (const subObj of activeSubscriptions) {
-        console.log('delete', subObj.id);
-        const docRef = doc(db, 'users', user.uid, 'subscriptions', subObj.id);
-        await deleteDoc(docRef);
-      }
-
-      await Promise.all(promiseArray);
-
-      await updateSubscriptions();
-      setLoadingCancelSubscription(false);
-    }
-  }, [user.uid, activeSubscriptions, updateSubscriptions]);
 
   const createSubscription = useCallback(
     async (priceId = 'price_1OQu81KhU0UrNVcbwBrW9GNg') => {
@@ -88,6 +71,33 @@ export const StripeContextProvider = ({ children }) => {
     [user.uid]
   );
 
+  const getPortalUrl = async () => {
+    const user = auth.currentUser;
+
+    let dataWithUrl;
+    try {
+      const functions = getFunctions(app, 'europe-west3');
+      const functionRef = httpsCallable(functions, 'ext-firestore-stripe-payments-createPortalLink');
+      const { data } = await functionRef({
+        customerId: user?.uid,
+        returnUrl: window.location.origin
+      });
+
+      // Add a type to the data
+      dataWithUrl = data;
+    } catch (error) {
+      console.error(error);
+    }
+
+    return new Promise((resolve, reject) => {
+      if (dataWithUrl.url) {
+        resolve(dataWithUrl.url);
+      } else {
+        reject(new Error('No url returned'));
+      }
+    });
+  };
+
   useEffect(() => {
     user.uid && updateSubscriptions();
   }, [user.uid, updateSubscriptions]);
@@ -96,10 +106,10 @@ export const StripeContextProvider = ({ children }) => {
     <StripeContext.Provider
       value={{
         createSubscription,
-        cancelSubscriptions,
         hasActiveSubscription,
         loadingCreateSubscription,
-        loadingGetSubscriptionStatus
+        loadingGetSubscriptionStatus,
+        getPortalUrl
       }}
     >
       {children}
