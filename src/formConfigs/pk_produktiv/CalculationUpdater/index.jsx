@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useFormikContext } from 'formik';
-import getInitialMitarbeiterData from '../../helper/getInitialMitarbeiterData';
+import getInitialMitarbeiterData from '../getInitialMitarbeiterData';
 
 let timeout = null;
 

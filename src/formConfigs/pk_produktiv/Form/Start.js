@@ -31,25 +31,6 @@ const Annahmen = () => {
             Formular Löschen
           </Button>
         </Stack>
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
-          <Grid item xs={12}>
-            <Divider sx={{ mt: 2, mb: 4 }} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Field
-              component={TextField}
-              id="formTitle"
-              name="formTitle"
-              label="Formulartitel"
-              value={values.formTitle}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.formTitle && Boolean(errors.formTitle)}
-              helperText={touched.formTitle && errors.formTitle}
-              sx={{ mb: 2 }}
-            />
-          </Grid>
-        </Grid>
       </FormSection>
     </>
   );

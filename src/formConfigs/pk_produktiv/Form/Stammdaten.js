@@ -8,7 +8,7 @@ import { FastField, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import { v4 as uuid } from 'uuid';
-import getInitialMitarbeiterData from '../../helper/getInitialMitarbeiterData';
+import getInitialMitarbeiterData from '../getInitialMitarbeiterData';
 import formFloat from 'utils/formUtils/formFloat';
 
 const Stammdaten = () => {
@@ -17,7 +17,7 @@ const Stammdaten = () => {
   return (
     <>
       <Typography variant="h2" sx={{ mb: { sm: 2, md: 3 }, mt: { sm: 4, md: 6, lg: 8 } }}>
-        Personalkosten Produktiv
+        Personalkosten: Löhne Produktivbereich
       </Typography>
       <FieldArray name="pk_produktiv_mitarbeiter">
         {({ push, remove }) => (
