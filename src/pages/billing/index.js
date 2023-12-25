@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { Grid, Button, Typography } from '@mui/material';
+import { Grid, Button, Typography, CircularProgress } from '@mui/material';
 import ColoredSection from 'components/pageLayout/header/ColoredSection';
 import { StripeContext } from 'context/stripe/index';
 
@@ -8,7 +8,8 @@ const Dashboard = () => {
   const theme = useTheme();
   const headerBgColor = `radial-gradient(circle at 2% 10%, ${theme.palette.primary.main}, transparent 100%),radial-gradient(circle at 95% 20%, ${theme.palette.primary.dark}, transparent 100%),radial-gradient(circle at 25% 90%, ${theme.palette.primary.light}, transparent 100%)`;
 
-  const { createSubscription, cancelSubscriptions, loadingCreateSubscription, loadingCancelSubscription, hasActiveSubscription } = useContext(StripeContext);
+  const { createSubscription, cancelSubscriptions, loadingCreateSubscription, loadingCancelSubscription, hasActiveSubscription } =
+    useContext(StripeContext);
 
   const stripeSub = async () => {
     const checkoutUrl = await createSubscription();
@@ -29,18 +30,28 @@ const Dashboard = () => {
       <Grid container>
         <Grid item xs={12}>
           {hasActiveSubscription && (
-            <Button variant="contained" color="primary" onClick={() => stripeCancelSub()}>
-              Abo kündigen {loadingCancelSubscription ? 'loading' : ''}
+            <Button
+              endIcon={loadingCancelSubscription ? <CircularProgress color="inherit" size="1rem" /> : ''}
+              variant="contained"
+              color="primary"
+              onClick={() => stripeCancelSub()}
+            >
+              Abo kündigen
             </Button>
           )}
           {!hasActiveSubscription && (
-            <Button variant="contained" color="primary" onClick={() => stripeSub()}>
-              Jetzt abonnieren {loadingCreateSubscription ? 'loading' : ''}
+            <Button
+              endIcon={loadingCreateSubscription ? <CircularProgress color="inherit" size="1rem" /> : ''}
+              variant="contained"
+              color="primary"
+              onClick={() => stripeSub()}
+            >
+              Jetzt abonnieren
             </Button>
           )}
         </Grid>
         <Grid item>
-          <Typography>Abonnement aktiv: {hasActiveSubscription.toString()}</Typography>
+          <Typography>Abonnement {hasActiveSubscription ? '' : 'nicht '}aktiv</Typography>
         </Grid>
       </Grid>
     </>

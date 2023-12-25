@@ -40,11 +40,15 @@ export const StripeContextProvider = ({ children }) => {
     setLoadingCancelSubscription(true);
     if (user.uid) {
       const checkoutSessionRef = collection(db, 'users', user.uid, 'subscriptions');
+      const promiseArray = [];
 
-      await activeSubscriptions.forEach(async (subObj) => {
+      for (const subObj of activeSubscriptions) {
         console.log('delete', subObj.id);
-        await deleteDoc(doc(db, checkoutSessionRef, subObj.id));
-      });
+        const docRef = doc(db, 'users', user.uid, 'subscriptions', subObj.id);
+        await deleteDoc(docRef);
+      }
+
+      await Promise.all(promiseArray);
 
       await updateSubscriptions();
       setLoadingCancelSubscription(false);
