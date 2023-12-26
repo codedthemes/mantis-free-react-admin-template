@@ -17,7 +17,7 @@ const FormOverview = () => {
     <Stack mb={6}>
       <ColoredSection
         bgColor={theme.palette.primary.dark}
-        headline="Angaben"
+        headline="Stundensatzkalkulator"
         description="asdojaosidj98 a9sudj ud 98ausd ujas98d jas9d ijoas9d9ash"
       />
       <Typography variant="h2" sx={headlineSectionStyle}>

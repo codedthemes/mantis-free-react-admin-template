@@ -5,12 +5,12 @@ import { SwitchAccountOutlined, BackupTableOutlined, WalletOutlined } from '@mui
 
 const pages = {
   id: 'authentication',
-  title: 'Angaben',
+  title: 'Stundensatzkalkulator',
   type: 'group',
   children: [
     {
       id: 'forms',
-      title: 'Angaben',
+      title: 'Stundensatzkalkulator',
       type: 'item',
       url: '/office/form/overview',
       matchingUrlRegexp: /\/form\/[^/]{8,}$/,
