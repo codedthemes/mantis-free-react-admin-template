@@ -266,7 +266,7 @@ const Stammdaten = () => {
           <ReadOnlyBox alwaysOpen title={'Materialgemeinkosten Gesamt'} headlineVariant="h3">
             <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} alignItems="flex-end">
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_material_F12">
+                <FastField name="gemeinkosten_F12">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -283,7 +283,7 @@ const Stammdaten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_material_H12">
+                <FastField name="gemeinkosten_H12">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -300,7 +300,7 @@ const Stammdaten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_material_I12">
+                <FastField name="gemeinkosten_I12">
                   {({ field, meta }) => (
                     <TextField
                       {...field}

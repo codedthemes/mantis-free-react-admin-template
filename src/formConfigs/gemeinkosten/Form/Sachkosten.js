@@ -130,7 +130,7 @@ const Sachkosten = () => {
           <ReadOnlyBox alwaysOpen title={'Materialgemeinkosten Gesamt'} headlineVariant="h3">
             <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} alignItems="flex-end">
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_sachkosten_FSUMME">
+                <FastField name="gemeinkosten_F39">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -147,7 +147,7 @@ const Sachkosten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_sachkosten_HSUMME">
+                <FastField name="gemeinkosten_H39">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -164,7 +164,7 @@ const Sachkosten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_sachkosten_ISUMME">
+                <FastField name="gemeinkosten_I39">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
