@@ -19,7 +19,7 @@ const Stammdaten = () => {
       </Grid>
       <Grid container alignItems="flex-end" columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
         <Grid item xs={12}>
-          <Typography variant="h3" sx={{ mb: 2 }}>
+          <Typography variant="h3" sx={{ mb: 1 }}>
             Nicht direkt verrechenbare Löhne (inkl. Lohn-NK)
           </Typography>
         </Grid>
@@ -99,7 +99,7 @@ const Stammdaten = () => {
           &nbsp;
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h3" sx={{ mb: 2 }}>
+          <Typography variant="h3" sx={{ mb: 1 }}>
             Gehälter (allg. Bereich) inkl. Lohn-NK
           </Typography>
         </Grid>
@@ -179,7 +179,7 @@ const Stammdaten = () => {
           &nbsp;
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h3" sx={{ mb: 2 }}>
+          <Typography variant="h3" sx={{ mb: 1 }}>
             Sonst. Personalkosten
           </Typography>
         </Grid>

@@ -49,6 +49,7 @@ const NavItem = ({ item }) => {
           marginBottom: theme.spacing(1),
           borderRadius: theme.shape.borderRadius / 4,
           transition: '.25s',
+          fontSize: '1.2rem',
           '&:after': {
             content: '""',
             height: '60%',

@@ -22,7 +22,8 @@ const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpe
   const theme = useTheme();
 
   const buttonStyles = {
-    aspectRatio: '1/1'
+    aspectRatio: '1/1',
+    padding: theme.spacing(1.25)
   };
 
   return (
@@ -30,9 +31,8 @@ const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpe
       <LayoutBox
         sx={{
           backgroundColor: theme.palette.common.white,
-          px: { xs: theme.spacing(4), md: theme.spacing(6), lg: theme.spacing(8) },
-          py: { xs: theme.spacing(3), md: theme.spacing(5), lg: theme.spacing(6) },
-          mb: { xs: theme.spacing(2), md: theme.spacing(2.5), lg: theme.spacing(3) },
+          padding: theme.shape.paddingBoxMedium,
+          mb: { xs: theme.spacing(1.5), md: theme.spacing(1.75), lg: theme.spacing(2) },
           overflow: 'hidden'
         }}
       >

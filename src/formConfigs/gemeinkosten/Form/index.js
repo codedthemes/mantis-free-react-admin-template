@@ -8,6 +8,7 @@ import Start from './Start';
 import Materialgemeinkosten from './Materialgemeinkosten';
 import Personalgemeinkosten from './Personalgemeinkosten';
 import Sachkosten from './Sachkosten';
+import Zusatzkosten from './Zusatzkosten';
 import { UserContext } from 'context/user';
 
 const TestForm = () => {
@@ -29,6 +30,7 @@ const TestForm = () => {
           <Materialgemeinkosten />
           <Personalgemeinkosten />
           <Sachkosten />
+          <Zusatzkosten />
           <ButtonBar />
         </Form>
       )}

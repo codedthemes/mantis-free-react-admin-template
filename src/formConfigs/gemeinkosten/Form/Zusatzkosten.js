@@ -9,38 +9,19 @@ import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import formFloat from 'utils/formUtils/formFloat';
 
-export const sachkosten_fieldTitles = [
-  'Reisekosten',
-  'Werbe- und Präsentationskosten',
-  'Kosten Betriebs- und Geschäftsfahrzeuge',
-  'Materialien',
-  'Miete/ Grundstückskosten',
-  'Energie- und Wasserkosten',
-  'Raumkosten',
-  'Transport und Verpackung',
-  'Telefon/Fax',
-  'Bürobedarf',
-  'Kosten EDV',
-  'Rechts- und Beratungskosten',
-  'Kosten Betiebs- und Geschäftsausstattung',
-  'Versicherungen, Beiträge, Gebühren',
-  'Sonstige Sachkosten',
-  'Sonstige Aufwendungen',
-  'Forderungsverluste',
-  'Sonstiges'
-];
-export const sachkosten_startingRow = 21;
+export const zusatzkosten_fieldTitles = ['Unternehmerlohn', 'Abschreibung', 'EK-Zinsen', 'FK-Zinsen', 'Kalkulatorische Wagnisse'];
+export const zusatzkosten_startingRow = 42;
 
-const Sachkosten = () => {
+const Zusatzkosten = () => {
   return (
-    <FormSection title="Sachkosten" description="In diesem Abschnitt werden Angaben zu Sachkosten eingetragen.">
+    <FormSection title="Zusatzkosten" description="In diesem Abschnitt werden Angaben zu Zusatzkosten eingetragen.">
       <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
         <Grid item xs={12}>
           <Divider sx={{ mt: 2, mb: 4 }} />
         </Grid>
       </Grid>
       <Grid container alignItems="flex-end" columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
-        {sachkosten_fieldTitles.map((title, index) => {
+        {zusatzkosten_fieldTitles.map((title, index) => {
           return (
             <>
               <Grid item xs={12}>
@@ -49,7 +30,7 @@ const Sachkosten = () => {
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name={`gemeinkosten_sachkosten_F${sachkosten_startingRow + index}`}>
+                <FastField name={`gemeinkosten_zusatzkosten_F${zusatzkosten_startingRow + index}`}>
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -65,7 +46,7 @@ const Sachkosten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name={`gemeinkosten_sachkosten_G${sachkosten_startingRow + index}`}>
+                <FastField name={`gemeinkosten_zusatzkosten_G${zusatzkosten_startingRow + index}`}>
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -84,7 +65,7 @@ const Sachkosten = () => {
                 <ReadOnlyBox>
                   <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
                     <Grid item xs={12} sm={6}>
-                      <FastField name={`gemeinkosten_sachkosten_H${sachkosten_startingRow + index}`}>
+                      <FastField name={`gemeinkosten_zusatzkosten_H${zusatzkosten_startingRow + index}`}>
                         {({ field, meta }) => (
                           <TextField
                             {...field}
@@ -101,7 +82,7 @@ const Sachkosten = () => {
                       </FastField>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                      <FastField name={`gemeinkosten_sachkosten_I${sachkosten_startingRow + index}`}>
+                      <FastField name={`gemeinkosten_zusatzkosten_I${zusatzkosten_startingRow + index}`}>
                         {({ field, meta }) => (
                           <TextField
                             {...field}
@@ -130,7 +111,7 @@ const Sachkosten = () => {
           <ReadOnlyBox alwaysOpen title={'Materialgemeinkosten Gesamt'} headlineVariant="h3">
             <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} alignItems="flex-end">
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_sachkosten_FSUMME">
+                <FastField name="gemeinkosten_zusatzkosten_FSUMME">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -147,7 +128,7 @@ const Sachkosten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_sachkosten_HSUMME">
+                <FastField name="gemeinkosten_zusatzkosten_HSUMME">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -164,7 +145,7 @@ const Sachkosten = () => {
                 </FastField>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <FastField name="gemeinkosten_sachkosten_ISUMME">
+                <FastField name="gemeinkosten_zusatzkosten_ISUMME">
                   {({ field, meta }) => (
                     <TextField
                       {...field}
@@ -188,4 +169,4 @@ const Sachkosten = () => {
   );
 };
 
-export default Sachkosten;
+export default Zusatzkosten;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useFormikContext } from 'formik';
-import { fieldTitles, startingRow } from '../Form/Sachkosten';
+import { sachkosten_fieldTitles, sachkosten_startingRow } from '../Form/Sachkosten';
 
 let timeout = null;
 let timeoutSachkosten = null;
@@ -234,8 +234,8 @@ const StundensatzRechnerValueUpdater = () => {
       let gemeinkosten_sachkosten_HSUMME = 0;
       let gemeinkosten_sachkosten_ISUMME = 0;
 
-      fieldTitles.forEach((_title, index) => {
-        const fieldRow = startingRow + index;
+      sachkosten_fieldTitles.forEach((_title, index) => {
+        const fieldRow = sachkosten_startingRow + index;
         const F_fieldKey = `gemeinkosten_sachkosten_F${fieldRow}`;
         const G_fieldKey = `gemeinkosten_sachkosten_G${fieldRow}`;
         const H_fieldKey = `gemeinkosten_sachkosten_H${fieldRow}`;

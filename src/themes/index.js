@@ -49,17 +49,17 @@ export default function ThemeCustomization({ children }) {
         paddingBoxMedium: {
           xs: `${theme.spacing(2.5)} ${theme.spacing(3)}`,
           sm: `${theme.spacing(3)} ${theme.spacing(4)}`,
-          md: `${theme.spacing(5)} ${theme.spacing(6)}`,
-          lg: `${theme.spacing(6)} ${theme.spacing(8)}`
+          md: `${theme.spacing(4)} ${theme.spacing(5)}`,
+          lg: `${theme.spacing(5)} ${theme.spacing(6)}`
         },
         paddingBoxLarge: {
-          xs: `${theme.spacing(4)} ${theme.spacing(4)}`,
-          sm: `${theme.spacing(6)} ${theme.spacing(7)}`,
-          md: `${theme.spacing(8)} ${theme.spacing(10)}`,
-          lg: `${theme.spacing(9)} ${theme.spacing(11)}`
+          xs: `${theme.spacing(3)} ${theme.spacing(4)}`,
+          sm: `${theme.spacing(5)} ${theme.spacing(6)}`,
+          md: `${theme.spacing(7)} ${theme.spacing(9)}`,
+          lg: `${theme.spacing(8)} ${theme.spacing(10)}`
         },
-        borderRadius: 4,
-        borderRadiusBox: 4,
+        borderRadius: 3,
+        borderRadiusBox: 3,
         drawerWidth: {
           xs: '320px',
           lg: '340px',
