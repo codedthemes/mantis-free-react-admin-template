@@ -11,10 +11,7 @@ import formFloat from 'utils/formUtils/formFloat';
 
 const Stammdaten = () => {
   return (
-    <FormSection
-      title="Personalgemeinkosten"
-      description="In diesem Abschnitt werden Angaben zu Personalgemeinkosten eingetragen."
-    >
+    <FormSection title="Personalgemeinkosten" description="In diesem Abschnitt werden Angaben zu Personalgemeinkosten eingetragen.">
       <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
         <Grid item xs={12}>
           <Divider sx={{ mt: 2, mb: 4 }} />
@@ -270,7 +267,7 @@ const Stammdaten = () => {
                     <TextField
                       {...field}
                       value={formFloat(field.value, 1)}
-                      label="Gesamt: Variable Kosten (berechnet, in EUR)"
+                      label="Gesamt: PLAN-Kosten (berechnet, in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
                       sx={{ mb: 2 }}
@@ -287,7 +284,7 @@ const Stammdaten = () => {
                     <TextField
                       {...field}
                       value={formFloat(field.value, 1)}
-                      label="Gesamt: Fixe Kosten (in EUR)"
+                      label="Gesamt: variabele Kosten (in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
                       sx={{ mb: 2 }}
@@ -304,7 +301,7 @@ const Stammdaten = () => {
                     <TextField
                       {...field}
                       value={formFloat(field.value, 1)}
-                      label="Gesamt: Fixe Kosten (in EUR)"
+                      label="Gesamt: fixe Kosten (in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
                       sx={{ mb: 2 }}

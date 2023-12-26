@@ -7,6 +7,7 @@ import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
 import Materialgemeinkosten from './Materialgemeinkosten';
 import Personalgemeinkosten from './Personalgemeinkosten';
+import Sachkosten from './Sachkosten';
 import { UserContext } from 'context/user';
 
 const TestForm = () => {
@@ -27,6 +28,7 @@ const TestForm = () => {
           <Start />
           <Materialgemeinkosten />
           <Personalgemeinkosten />
+          <Sachkosten />
           <ButtonBar />
         </Form>
       )}

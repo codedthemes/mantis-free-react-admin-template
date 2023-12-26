@@ -271,7 +271,7 @@ const Stammdaten = () => {
                     <TextField
                       {...field}
                       value={formFloat(field.value, 1)}
-                      label="Gesamt: Variable Kosten (berechnet, in EUR)"
+                      label="Gesamt: PLAN-Kosten (berechnet, in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
                       sx={{ mb: 2 }}
@@ -288,7 +288,7 @@ const Stammdaten = () => {
                     <TextField
                       {...field}
                       value={formFloat(field.value, 1)}
-                      label="Gesamt: Fixe Kosten (in EUR)"
+                      label="Gesamt: variabele Kosten (in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
                       sx={{ mb: 2 }}
@@ -305,7 +305,7 @@ const Stammdaten = () => {
                     <TextField
                       {...field}
                       value={formFloat(field.value, 1)}
-                      label="Gesamt: Fixe Kosten (in EUR)"
+                      label="Gesamt: fixe Kosten (in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
                       sx={{ mb: 2 }}

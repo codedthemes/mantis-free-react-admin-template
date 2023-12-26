@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useFormikContext } from 'formik';
+import { fieldTitles, startingRow } from '../Form/Sachkosten';
 
 let timeout = null;
+let timeoutSachkosten = null;
 
 const StundensatzRechnerValueUpdater = () => {
   const { values = {}, setFieldValue } = useFormikContext();
@@ -223,6 +225,60 @@ const StundensatzRechnerValueUpdater = () => {
   ]);
 
   // MATERIALGEMEINKOSTEN ENDE
+
+  // SACHKOSTENKOSTEN START
+
+  useEffect(() => {
+    const reCalculateSachkostenValues = () => {
+      let gemeinkosten_sachkosten_FSUMME = 0;
+      let gemeinkosten_sachkosten_HSUMME = 0;
+      let gemeinkosten_sachkosten_ISUMME = 0;
+
+      fieldTitles.forEach((_title, index) => {
+        const fieldRow = startingRow + index;
+        const F_fieldKey = `gemeinkosten_sachkosten_F${fieldRow}`;
+        const G_fieldKey = `gemeinkosten_sachkosten_G${fieldRow}`;
+        const H_fieldKey = `gemeinkosten_sachkosten_H${fieldRow}`;
+        const I_fieldKey = `gemeinkosten_sachkosten_I${fieldRow}`;
+
+        const H_fieldValue = ((values[F_fieldKey] || 0) * (values[G_fieldKey] || 0)) / 100;
+        const I_fieldValue = (values[F_fieldKey] || 0) - (H_fieldValue || 0);
+
+        gemeinkosten_sachkosten_FSUMME += values[F_fieldKey] || 0;
+        gemeinkosten_sachkosten_HSUMME += H_fieldValue || 0;
+        gemeinkosten_sachkosten_ISUMME += I_fieldValue || 0;
+
+        if (H_fieldValue !== values[H_fieldKey]) {
+          setFieldValue(H_fieldKey, H_fieldValue);
+        }
+        if (I_fieldValue !== values[I_fieldValue]) {
+          setFieldValue(I_fieldKey, I_fieldValue);
+        }
+      });
+
+      console.log('gemeinkosten_sachkosten_FSUMME', gemeinkosten_sachkosten_FSUMME);
+
+      if (gemeinkosten_sachkosten_FSUMME !== values.gemeinkosten_sachkosten_FSUMME) {
+        setFieldValue('gemeinkosten_sachkosten_FSUMME', gemeinkosten_sachkosten_FSUMME);
+      }
+      if (gemeinkosten_sachkosten_HSUMME !== values.gemeinkosten_sachkosten_HSUMME) {
+        setFieldValue('gemeinkosten_sachkosten_HSUMME', gemeinkosten_sachkosten_HSUMME);
+      }
+      if (gemeinkosten_sachkosten_ISUMME !== values.gemeinkosten_sachkosten_ISUMME) {
+        setFieldValue('gemeinkosten_sachkosten_ISUMME', gemeinkosten_sachkosten_ISUMME);
+      }
+    };
+
+    timeoutSachkosten = setTimeout(() => {
+      reCalculateSachkostenValues();
+    }, 600);
+
+    return () => {
+      clearTimeout(timeoutSachkosten);
+    };
+  }, [setFieldValue, values]);
+
+  // SACHKOSTENKOSTEN ENDE
 
   return <React.Fragment />;
 };
