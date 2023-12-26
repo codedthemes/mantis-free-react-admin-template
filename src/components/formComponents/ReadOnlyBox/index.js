@@ -6,7 +6,7 @@ import { UserContext } from 'context/user/index';
 import { useContext, useEffect, useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const ReadOnlyBox = ({ children, title, alwaysOpen, white }) => {
+const ReadOnlyBox = ({ children, title, alwaysOpen, white, headlineVariant = 'h4' }) => {
   const theme = useTheme();
   const { advancedMode } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ const ReadOnlyBox = ({ children, title, alwaysOpen, white }) => {
             mt: 1
           }}
         >
-          <Typography variant="h4" sx={{ mb: 2 }}>
+          <Typography variant={headlineVariant} sx={{ mb: 2 }}>
             Berechnet: {title}
           </Typography>
           {children}

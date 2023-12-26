@@ -55,7 +55,7 @@ const StundensatzRechnerValueUpdater = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [setFieldValue, values.pk_allgemein_K5, values.pk_allgemein_mitarbeiter]);
+  }, [setFieldValue, values.pk_allgemein_K5, values.pk_allgemein_mitarbeiter, values.pk_produktiv_N14_SUMME]);
 
   return <React.Fragment />;
 };

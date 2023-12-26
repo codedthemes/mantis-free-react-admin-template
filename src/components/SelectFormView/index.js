@@ -44,7 +44,6 @@ const SelectFormView = ({ formType, sections }) => {
         if (shouldAddFormToView) {
           formsToUse[formKey] = currentForm;
         } else {
-          console.log('set true', currentForm);
           shouldSetShowWarning = true;
         }
       }

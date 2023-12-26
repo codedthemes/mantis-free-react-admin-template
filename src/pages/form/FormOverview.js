@@ -28,7 +28,8 @@ const FormOverview = () => {
         sections={[
           { linkPart: 'annahmen', label: 'Annahmen' },
           { linkPart: 'pk_produktiv', label: 'Personalkosten Produktiv' },
-          { linkPart: 'pk_allgemein', label: 'Personalkosten Allgemein' }
+          { linkPart: 'pk_allgemein', label: 'Personalkosten Allgemein' },
+          { linkPart: 'gemeinkosten', label: 'Gemeinkosten' }
         ]}
       />
       {/* <Typography variant="h2" sx={headlineSectionStyle}>
