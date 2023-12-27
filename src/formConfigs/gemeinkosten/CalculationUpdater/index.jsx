@@ -121,12 +121,12 @@ const StundensatzRechnerValueUpdater = () => {
   }, [setFieldValue, values.gemeinkosten_personal_F15, values.pk_produktiv_Q42]);
 
   useEffect(() => {
-    const gemeinkosten_personal_F16 = values.pk_produktiv_N53 || 0;
+    const gemeinkosten_personal_F16 = values.pk_allgemein_N53 || 0;
 
     if (gemeinkosten_personal_F16 !== values.gemeinkosten_personal_F16) {
       setFieldValue('gemeinkosten_personal_F16', gemeinkosten_personal_F16);
     }
-  }, [setFieldValue, values.gemeinkosten_personal_F16, values.pk_produktiv_N53]);
+  }, [setFieldValue, values.gemeinkosten_personal_F16, values.pk_allgemein_N53]);
 
   useEffect(() => {
     const gemeinkosten_personal_H15 = ((values.gemeinkosten_personal_F15 || 0) * (values.gemeinkosten_personal_G15 || 0)) / 100;
@@ -380,6 +380,14 @@ const StundensatzRechnerValueUpdater = () => {
     values.gemeinkosten_I47,
     values.gemeinkosten_I49
   ]);
+
+  useEffect(() => {
+    const gemeinkosten_I53 = (values.gemeinkosten_I49 || 0) - (values.gemeinkosten_I51 || 0);
+
+    if (gemeinkosten_I53 !== values.gemeinkosten_I53) {
+      setFieldValue('gemeinkosten_I53', gemeinkosten_I53);
+    }
+  }, [setFieldValue, values.gemeinkosten_I49, values.gemeinkosten_I51, values.gemeinkosten_I53]);
 
   // GESAMTKOSTEN ENDE
 

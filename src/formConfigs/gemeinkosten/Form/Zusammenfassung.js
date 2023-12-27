@@ -1,7 +1,7 @@
 import React from 'react';
 
 // material-ui
-import { Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField, Typography, Stack } from '@mui/material';
 
 // formik
 import { FastField, useFormikContext } from 'formik';
@@ -63,6 +63,39 @@ const Zusammenfassung = () => {
                   {...field}
                   value={formFloat(field.value, 2)}
                   label="Gesamtsumme aller fixen-Gemeinkosten"
+                  error={meta?.touched && Boolean(meta.error)}
+                  helperText={meta?.touched && meta.error}
+                  sx={{ mb: 2 }}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                />
+              )}
+            </FastField>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FastField name="gemeinkosten_I51">
+              {({ field, meta }) => (
+                <TextField
+                  {...field}
+                  label="Kfix nicht ausgabenwirksam"
+                  error={meta?.touched && Boolean(meta.error)}
+                  helperText={meta?.touched && meta.error}
+                  sx={{ mb: 2 }}
+                  type="number"
+                  onWheel={(event) => event.target.blur()}
+                  min="0"
+                />
+              )}
+            </FastField>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <FastField name="gemeinkosten_I53">
+              {({ field, meta }) => (
+                <TextField
+                  {...field}
+                  value={formFloat(field.value, 2)}
+                  label="Kfix ausgabenwirksam (=Rest)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
