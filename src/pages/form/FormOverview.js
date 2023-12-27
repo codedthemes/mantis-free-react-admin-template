@@ -29,7 +29,8 @@ const FormOverview = () => {
           { linkPart: 'annahmen', label: 'Annahmen' },
           { linkPart: 'pk_produktiv', label: 'Personalkosten Produktiv' },
           { linkPart: 'pk_allgemein', label: 'Personalkosten Allgemein' },
-          { linkPart: 'gemeinkosten', label: 'Gemeinkosten' }
+          { linkPart: 'gemeinkosten', label: 'Gemeinkosten' },
+          { linkPart: 'gk_deckung', label: 'GK-Deckung' }
         ]}
       />
       {/* <Typography variant="h2" sx={headlineSectionStyle}>

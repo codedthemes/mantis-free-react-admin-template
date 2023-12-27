@@ -84,8 +84,11 @@ const Typography = (fontFamily) => ({
     lineHeight: 1.66
   },
   button: {
-    textTransform: 'capitalize',
-    fontSize: '1rem'
+    fontSize: '1rem',
+    textTransform: 'initial',
+    "&:first-letter": {
+      textTransform: 'uppercase'
+    }
   }
 });
 

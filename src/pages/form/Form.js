@@ -12,6 +12,7 @@ import Annahmen from 'formConfigs/annahmen/Form/index';
 import PersonalkostenProduktiv from 'formConfigs/pk_produktiv/Form/index';
 import PersonalkostenAllgemein from 'formConfigs/pk_allgemein/Form/index';
 import Gemeinkosten from 'formConfigs/gemeinkosten/Form/index';
+import GKDeckung from 'formConfigs/gk_deckung/Form/index';
 import FullPageLoader from 'components/FullPageLoader/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
@@ -39,7 +40,8 @@ const FormComponent = () => {
         annahmen: <Annahmen />,
         pk_produktiv: <PersonalkostenProduktiv />,
         pk_allgemein: <PersonalkostenAllgemein />,
-        gemeinkosten: <Gemeinkosten />
+        gemeinkosten: <Gemeinkosten />,
+        gk_deckung: <GKDeckung />
       };
 
       return formLiteral[formSection] || 'Es ist ein Fehler aufgetreten.';
