@@ -16,7 +16,7 @@ import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, ClearOutlined } f
 import { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true }) => {
+const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true, backgroundColor }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
   const [openPopup, setOpenPopup] = useState(false);
   const theme = useTheme();
@@ -30,7 +30,7 @@ const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpe
     <>
       <LayoutBox
         sx={{
-          backgroundColor: theme.palette.common.white,
+          backgroundColor: backgroundColor || theme.palette.common.white,
           padding: theme.shape.paddingBoxMedium,
           mb: { xs: theme.spacing(1.5), md: theme.spacing(1.75), lg: theme.spacing(2) },
           overflow: 'hidden'

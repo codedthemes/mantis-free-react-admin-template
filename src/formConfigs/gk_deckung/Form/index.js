@@ -5,7 +5,7 @@ import ButtonBar from 'components/formComponents/ButtonBar/index';
 import { Formik, Form } from 'formik';
 import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
-import MaterialzuschlagFremdleistungen from './MaterialzuschlagFremdleistungen';
+import Zuschlaege from './Zuschlaege';
 import { UserContext } from 'context/user';
 
 const GKDeckung = () => {
@@ -24,7 +24,7 @@ const GKDeckung = () => {
         <Form autoComplete="off">
           <CalculationUpdater />
           <Start />
-          <MaterialzuschlagFremdleistungen />
+          <Zuschlaege />
           <ButtonBar />
         </Form>
       )}
