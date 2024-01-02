@@ -203,7 +203,7 @@ const Stammdaten = () => {
                                 {({ field, meta }) => (
                                   <TextField
                                     {...field}
-                                    value={formFloat(field.value, 1)}
+                                    value={formFloat(field.value, 2)}
                                     label="Direkt verrechnet (in Std.)"
                                     error={meta?.touched && Boolean(meta.error)}
                                     helperText={meta?.touched && meta.error}
@@ -220,7 +220,7 @@ const Stammdaten = () => {
                                 {({ field, meta }) => (
                                   <TextField
                                     {...field}
-                                    value={formFloat(field.value, 1)}
+                                    value={formFloat(field.value, 2)}
                                     label="Nicht direkt verrechnet (in Std.)"
                                     error={meta?.touched && Boolean(meta.error)}
                                     helperText={meta?.touched && meta.error}
@@ -298,7 +298,7 @@ const Stammdaten = () => {
                                   <TextField
                                     {...field}
                                     label="Verrechenbarkeit (direkt verrechnet, in EUR)"
-                                    value={formFloat(field.value, 1)}
+                                    value={formFloat(field.value, 2)}
                                     error={meta?.touched && Boolean(meta.error)}
                                     helperText={meta?.touched && meta.error}
                                     InputProps={{
@@ -315,7 +315,7 @@ const Stammdaten = () => {
                                   <TextField
                                     {...field}
                                     label="Verrechenbarkeit (direkt verrechnet, in EUR)"
-                                    value={formFloat(field.value, 1)}
+                                    value={formFloat(field.value, 2)}
                                     error={meta?.touched && Boolean(meta.error)}
                                     helperText={meta?.touched && meta.error}
                                     InputProps={{

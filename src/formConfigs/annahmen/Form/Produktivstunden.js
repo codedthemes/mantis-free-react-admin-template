@@ -67,7 +67,7 @@ const Produktivstunden = () => {
                   id="annahmen_G18"
                   name="annahmen_G18"
                   label="Ø Arbeitsstunden pro Tag"
-                  value={formFloat(values.annahmen_G18, 1)}
+                  value={formFloat(values.annahmen_G18, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -108,7 +108,7 @@ const Produktivstunden = () => {
                   id="annahmen_G23"
                   name="annahmen_G23"
                   label="Jahresarbeitszeit in Tagen"
-                  value={formFloat(values.annahmen_G23, 1)}
+                  value={formFloat(values.annahmen_G23, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -121,7 +121,7 @@ const Produktivstunden = () => {
                   id="annahmen_H23"
                   name="annahmen_H23"
                   label="Jahresarbeitszeit in Stunden"
-                  value={formFloat(values.annahmen_H23, 1)}
+                  value={formFloat(values.annahmen_H23, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -218,7 +218,7 @@ const Produktivstunden = () => {
                   id="annahmen_G29"
                   name="annahmen_G29"
                   label="Summe Nichtanwesenheit in Tagen"
-                  value={formFloat(values.annahmen_G29, 1)}
+                  value={formFloat(values.annahmen_G29, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -231,7 +231,7 @@ const Produktivstunden = () => {
                   id="annahmen_H29"
                   name="annahmen_H29"
                   label="Summe Nichtanwesenheit in Stunden"
-                  value={formFloat(values.annahmen_H29, 1)}
+                  value={formFloat(values.annahmen_H29, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -250,7 +250,7 @@ const Produktivstunden = () => {
                   id="annahmen_G31"
                   name="annahmen_G31"
                   label="Summe Anwesenheit in Tagen"
-                  value={formFloat(values.annahmen_G31, 1)}
+                  value={formFloat(values.annahmen_G31, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -263,7 +263,7 @@ const Produktivstunden = () => {
                   id="annahmen_H31"
                   name="annahmen_H31"
                   label="Summe Anwesenheit in Stunden"
-                  value={formFloat(values.annahmen_H31, 1)}
+                  value={formFloat(values.annahmen_H31, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>

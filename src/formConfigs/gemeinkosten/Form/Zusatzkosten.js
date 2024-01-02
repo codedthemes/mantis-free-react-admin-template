@@ -69,7 +69,7 @@ const Zusatzkosten = () => {
                         {({ field, meta }) => (
                           <TextField
                             {...field}
-                            value={formFloat(field.value, 1)}
+                            value={formFloat(field.value, 2)}
                             label="Variable Kosten (in EUR)"
                             error={meta?.touched && Boolean(meta.error)}
                             helperText={meta?.touched && meta.error}
@@ -86,7 +86,7 @@ const Zusatzkosten = () => {
                         {({ field, meta }) => (
                           <TextField
                             {...field}
-                            value={formFloat(field.value, 1)}
+                            value={formFloat(field.value, 2)}
                             label="Fixe Kosten (in EUR)"
                             error={meta?.touched && Boolean(meta.error)}
                             helperText={meta?.touched && meta.error}
@@ -115,7 +115,7 @@ const Zusatzkosten = () => {
                   {({ field, meta }) => (
                     <TextField
                       {...field}
-                      value={formFloat(field.value, 1)}
+                      value={formFloat(field.value, 2)}
                       label="Gesamt: PLAN-Kosten (berechnet, in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
@@ -132,7 +132,7 @@ const Zusatzkosten = () => {
                   {({ field, meta }) => (
                     <TextField
                       {...field}
-                      value={formFloat(field.value, 1)}
+                      value={formFloat(field.value, 2)}
                       label="Gesamt: variabele Kosten (in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}
@@ -149,7 +149,7 @@ const Zusatzkosten = () => {
                   {({ field, meta }) => (
                     <TextField
                       {...field}
-                      value={formFloat(field.value, 1)}
+                      value={formFloat(field.value, 2)}
                       label="Gesamt: fixe Kosten (in EUR)"
                       error={meta?.touched && Boolean(meta.error)}
                       helperText={meta?.touched && meta.error}

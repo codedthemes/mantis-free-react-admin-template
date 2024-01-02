@@ -85,7 +85,7 @@ const Lohnnebenkostensatz = () => {
                   id="annahmen_I46"
                   name="annahmen_I46"
                   label="Lohnnebenkostensatz in %"
-                  value={formFloat(values.annahmen_I46, 1)}
+                  value={formFloat(values.annahmen_I46, 2)}
                   sx={{ mb: 2 }}
                 />
               </Grid>

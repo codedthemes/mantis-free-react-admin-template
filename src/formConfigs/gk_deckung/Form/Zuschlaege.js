@@ -68,7 +68,7 @@ const MaterialzuschlagFremdleistungen = () => {
                 {values.gk_deckung_zuschlaege?.map((outerField, outerIndex) => (
                   <TabPanel key={outerIndex} value={outerIndex.toString()} sx={{ padding: 0, marginTop: 3 }}>
                     <Grid container columnSpacing={2} alignItems="end">
-                      <Grid item xs={12} sm={6}>
+                      <Grid item xs={12} sm={5} md={4}>
                         <FastField name={`gk_deckung_zuschlaege.${openedTab}.groupTitle`}>
                           {({ field, meta }) => (
                             <TextField
@@ -126,9 +126,10 @@ const MaterialzuschlagFremdleistungen = () => {
                               <FormSection
                                 key={innerIndex}
                                 title={innerField?.D8 || 'Neues Element'}
-                                description="Angaben zu Gemeinkosten"
+                                description={`Zuschlag: ${formFloat(innerField.H8, 2)} €`}
                                 backgroundColor={theme.palette.primary[50]}
                                 onDelete={() => innerRemove(innerIndex)}
+                                headlineVariant="h3"
                               >
                                 <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
                                   <Grid item xs={12}>
@@ -193,7 +194,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                             {({ field, meta }) => (
                                               <TextField
                                                 {...field}
-                                                value={formFloat(field.value, 1)}
+                                                value={formFloat(field.value, 2)}
                                                 label="Erlös (in EUR)"
                                                 error={meta?.touched && Boolean(meta.error)}
                                                 helperText={meta?.touched && meta.error}
@@ -210,7 +211,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                             {({ field, meta }) => (
                                               <TextField
                                                 {...field}
-                                                value={formFloat(field.value, 1)}
+                                                value={formFloat(field.value, 2)}
                                                 label="Zuschlag (in EUR)"
                                                 error={meta?.touched && Boolean(meta.error)}
                                                 helperText={meta?.touched && meta.error}
@@ -271,6 +272,27 @@ const MaterialzuschlagFremdleistungen = () => {
                           >
                             Neuer Eintrag
                           </Button>
+                          <ReadOnlyBox title={' '} alwaysOpen>
+                            <Grid container columnSpacing={{ xs: 2, md: 4 }}>
+                              <Grid item xs={12} sm={6}>
+                                <FastField name={`gk_deckung_zuschlaege.${outerIndex}.H12`}>
+                                  {({ field, meta }) => (
+                                    <TextField
+                                      {...field}
+                                      value={formFloat(field.value, 2)}
+                                      label={`Summe ${outerField.groupTitle || 'Gruppe'}`}
+                                      error={meta?.touched && Boolean(meta.error)}
+                                      helperText={meta?.touched && meta.error}
+                                      InputProps={{
+                                        readOnly: true
+                                      }}
+                                      sx={{ mb: 2 }}
+                                    />
+                                  )}
+                                </FastField>
+                              </Grid>
+                            </Grid>
+                          </ReadOnlyBox>
                         </>
                       )}
                     </FieldArray>

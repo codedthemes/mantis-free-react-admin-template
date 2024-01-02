@@ -16,7 +16,7 @@ import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, ClearOutlined } f
 import { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true, backgroundColor }) => {
+const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true, backgroundColor, headlineVariant = 'h2' }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
   const [openPopup, setOpenPopup] = useState(false);
   const theme = useTheme();
@@ -38,7 +38,7 @@ const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpe
       >
         <Stack gap={2} direction="row" justifyContent="space-between" flexWrap={{ xs: 'wrap', sm: 'nowrap' }} alignItems="flex-start">
           <Stack>
-            <Typography variant="h2" sx={{ mr: 'auto' }}>
+            <Typography variant={headlineVariant} sx={{ mr: 'auto' }}>
               {title}
             </Typography>
             {description && (
