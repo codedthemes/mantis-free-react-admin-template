@@ -72,7 +72,7 @@ const Profile = () => {
         aria-controls={open ? 'profile-grow' : undefined}
         aria-haspopup="true"
         onClick={user.uid && handleToggle}
-        href={!user.uid && '/login'}
+        href={!user.uid ? '/login' : undefined}
       >
         <SettingsOutlined sx={{ color: open ? iconColorOpen : iconColorClosed }} />
       </ButtonBase>

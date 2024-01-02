@@ -7,6 +7,8 @@ import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
 import Zuschlaege from './Zuschlaege';
 import { UserContext } from 'context/user';
+import { getInitialGemeinkostenCategory } from '../getInitialGemeinkostenData';
+import Zusammenfassung from './Zusammenfassung';
 
 const GKDeckung = () => {
   const { activeFormData } = useContext(UserContext);
@@ -16,7 +18,8 @@ const GKDeckung = () => {
   const initialValues = {
     ...(activeFormData.values || {}),
     formTitle: activeFormData.title,
-    letzteAenderung: activeFormData?.values?.lastChanged
+    letzteAenderung: activeFormData?.values?.lastChanged,
+    gk_deckung_zuschlaege: activeFormData.values.gk_deckung_zuschlaege || [getInitialGemeinkostenCategory()]
   };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
@@ -25,6 +28,7 @@ const GKDeckung = () => {
           <CalculationUpdater />
           <Start />
           <Zuschlaege />
+          <Zusammenfassung />
           <ButtonBar />
         </Form>
       )}

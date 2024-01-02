@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { Grid, TextField, Divider, Button, Stack } from '@mui/material';
+import { DeleteOutlineOutlined } from '@mui/icons-material';
 import dayjs from 'dayjs';
 
 // formik
@@ -27,7 +28,7 @@ const Annahmen = () => {
         <Stack justifyContent="space-between" alignItems="center" direction="row" sx={{ width: '100%' }}>
           {/* <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} /> */}
           <FormReadonlyValue label="Letzte Änderung" value={dayjs(values.letzteAenderung).format('DD.MM.YYYY')} />
-          <Button color="primary" variant="contained" onClick={removeForm}>
+          <Button startIcon={<DeleteOutlineOutlined />} color="error" variant="outlined" onClick={removeForm}>
             Formular Löschen
           </Button>
         </Stack>

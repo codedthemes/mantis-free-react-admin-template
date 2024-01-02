@@ -49,21 +49,21 @@ const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpe
           </Stack>
           <ButtonGroup color="primary" variant="outlined">
             {onDelete ? (
-              <Button sx={{ ...buttonStyles }} onClick={() => setOpenPopup(true)}>
+              <Button color="error" sx={{ ...buttonStyles }} onClick={() => setOpenPopup(true)}>
                 <DeleteOutlineOutlined />
               </Button>
             ) : (
               ''
             )}
             {onAdd ? (
-              <Button sx={{ ...buttonStyles }} onClick={onAdd}>
+              <Button color="success" sx={{ ...buttonStyles }} onClick={onAdd}>
                 <NoteAddOutlined />
               </Button>
             ) : (
               ''
             )}
             {collapsable ? (
-              <Button sx={{ ...buttonStyles }} onClick={() => setIsOpen(!isOpen)}>
+              <Button color="primary" variant="contained" sx={{ ...buttonStyles }} onClick={() => setIsOpen(!isOpen)}>
                 {isOpen ? <ClearOutlined /> : <EditOutlined />}
               </Button>
             ) : (
