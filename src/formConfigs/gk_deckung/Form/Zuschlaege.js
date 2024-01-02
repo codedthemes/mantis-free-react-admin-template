@@ -47,7 +47,7 @@ const MaterialzuschlagFremdleistungen = () => {
           <FieldArray name="gk_deckung_zuschlaege">
             {({ push, remove }) => (
               <>
-                <Stack direction="row" flexWrap="wrap" mt={{ xs: 2, sm: 3 }}>
+                <Stack direction="row" flexWrap="wrap" mt={{ xs: 2, sm: 3, borderBottom: `1px solid ${theme.palette.primary.main}` }}>
                   <TabList onChange={changeTab} aria-label="lab API tabs example">
                     {values.gk_deckung_zuschlaege?.map((category, index) => {
                       return <Tab key={index} label={category.groupTitle || `Tab ${index + 1}`} value={index.toString()} />;
