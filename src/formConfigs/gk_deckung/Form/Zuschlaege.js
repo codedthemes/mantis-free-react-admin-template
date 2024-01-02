@@ -260,31 +260,17 @@ const MaterialzuschlagFremdleistungen = () => {
                                   </Grid>
                                 </Grid>
                               </FormSection>
-                              {innerIndex === values.gk_deckung_zuschlaege?.length - 1 && (
-                                <Button
-                                  variant="contained"
-                                  color="success"
-                                  onClick={() => innerPush({ itemId: uuid() })}
-                                  disabled={isSubmitting}
-                                  sx={{ mb: 4 }}
-                                >
-                                  Neuer Eintrag
-                                </Button>
-                              )}
                             </React.Fragment>
                           ))}
-                          {(!values.gk_deckung_zuschlaege[outerIndex].fields ||
-                            values.gk_deckung_zuschlaege[outerIndex].fields?.length === 0) && (
-                            <Button
-                              variant="contained"
-                              color="success"
-                              onClick={() => innerPush({ itemId: uuid() })}
-                              disabled={isSubmitting}
-                              sx={{ mb: 4 }}
-                            >
-                              Neuer Eintrag
-                            </Button>
-                          )}
+                          <Button
+                            variant="contained"
+                            color="success"
+                            onClick={() => innerPush({ itemId: uuid() })}
+                            disabled={isSubmitting}
+                            sx={{ mb: 4 }}
+                          >
+                            Neuer Eintrag
+                          </Button>
                         </>
                       )}
                     </FieldArray>
