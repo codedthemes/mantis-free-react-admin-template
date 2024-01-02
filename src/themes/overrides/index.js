@@ -25,6 +25,7 @@ import TableCell from './TableCell';
 import Tabs from './Tabs';
 import Typography from './Typography';
 import FormHelperText from './FormHelperText';
+import Stepper from './Stepper';
 
 // ==============================|| OVERRIDES - MAIN ||============================== //
 
@@ -52,6 +53,7 @@ export default function ComponentsOverrides(theme) {
     Tab(theme),
     TableCell(theme),
     Tabs(),
-    Typography()
+    Typography(),
+    Stepper(theme)
   );
 }

@@ -106,6 +106,8 @@ const SelectFormView = ({ formType, sections }) => {
             );
           });
 
+          console.log('formData', formData);
+
           return (
             <Grid key={formId} item xs={12}>
               <Stack flexDirection="column" sx={{ mb: { xs: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(6) } }}>

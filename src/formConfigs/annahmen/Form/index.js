@@ -7,7 +7,6 @@ import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
 import Annahmen from './Annahmen';
 import { UserContext } from 'context/user';
-import Test from './Test';
 import Produktivstunden from './Produktivstunden';
 import Lohnnebenkostensatz from './Lohnnebenkostensatz';
 
@@ -31,7 +30,6 @@ const TestForm = () => {
           <Annahmen />
           <Produktivstunden />
           <Lohnnebenkostensatz />
-          <Test />
           <ButtonBar />
         </Form>
       )}

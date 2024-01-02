@@ -59,7 +59,7 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
                     {headline}
                     <Box
                       sx={{
-                        mt: theme.spacing(2),
+                        mt: theme.spacing(1),
                         height: '4px',
                         width: '100%',
                         display: 'block',
@@ -75,8 +75,8 @@ const ColoredSectionTop = ({ headline, description, headerChildren, bgColor, bgG
                   </Typography>
                 )}
               </Stack>
-              {headerChildren}
             </Stack>
+            {headerChildren}
           </Grid>
         </Grid>
       </LayoutBox>

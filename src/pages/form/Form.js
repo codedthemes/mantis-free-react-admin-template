@@ -17,11 +17,18 @@ import FullPageLoader from 'components/FullPageLoader/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
+const formLiteral = {
+  annahmen: { content: <Annahmen />, title: 'Annahmen' },
+  pk_produktiv: { content: <PersonalkostenProduktiv />, title: 'Personalkosten produktiv' },
+  pk_allgemein: { content: <PersonalkostenAllgemein />, title: 'Personalkosten allgemein' },
+  gemeinkosten: { content: <Gemeinkosten />, title: 'Gemeinkosten' },
+  gk_deckung: { content: <GKDeckung />, title: 'Gemeinkosten Deckung' }
+};
+
 const FormComponent = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const { activeFormId, activeFormData, setActiveFormId } = useContext(UserContext);
-  const activeFormTitle = useMemo(() => activeFormData?.title, [activeFormData]);
   const { formId, formSection } = useParams();
 
   useEffect(() => {
@@ -34,16 +41,8 @@ const FormComponent = () => {
     }
   }, [activeFormId, formId, setActiveFormId, navigate]);
 
-  const content = useMemo(() => {
+  const activeFormConfig = useMemo(() => {
     if (activeFormData) {
-      const formLiteral = {
-        annahmen: <Annahmen />,
-        pk_produktiv: <PersonalkostenProduktiv />,
-        pk_allgemein: <PersonalkostenAllgemein />,
-        gemeinkosten: <Gemeinkosten />,
-        gk_deckung: <GKDeckung />
-      };
-
       return formLiteral[formSection] || 'Es ist ein Fehler aufgetreten.';
     }
 
@@ -52,12 +51,8 @@ const FormComponent = () => {
 
   return (
     <Box mb={theme.shape.layoutDesignGutterReset}>
-      <ColoredSection
-        backLink="/office/form/overview"
-        bgColor={theme.palette.primary[800]}
-        headline={`Formular${activeFormTitle ? `: ${activeFormTitle}` : ''}`}
-      />
-      {content}
+      <ColoredSection backLink="/office/form/overview" bgColor={theme.palette.primary[800]} headline={activeFormConfig.title} />
+      {activeFormConfig.content}
     </Box>
   );
 };
