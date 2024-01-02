@@ -30,7 +30,8 @@ const FormOverview = () => {
           { linkPart: 'pk_produktiv', label: 'Personalkosten Produktiv' },
           { linkPart: 'pk_allgemein', label: 'Personalkosten Allgemein' },
           { linkPart: 'gemeinkosten', label: 'Gemeinkosten' },
-          { linkPart: 'gk_deckung', label: 'GK-Deckung' }
+          { linkPart: 'gk_deckung', label: 'GK-Deckung' },
+          { linkPart: 'gk_stundensaetze', label: 'GK-Stundensätze' }
         ]}
       />
       {/* <Typography variant="h2" sx={headlineSectionStyle}>

@@ -13,6 +13,7 @@ import PersonalkostenProduktiv from 'formConfigs/pk_produktiv/Form/index';
 import PersonalkostenAllgemein from 'formConfigs/pk_allgemein/Form/index';
 import Gemeinkosten from 'formConfigs/gemeinkosten/Form/index';
 import GKDeckung from 'formConfigs/gk_deckung/Form/index';
+import GKStundensaetze from 'formConfigs/gk_stundensaetze/Form/index';
 import FullPageLoader from 'components/FullPageLoader/index';
 
 // ==============================|| SAMPLE PAGE ||============================== //
@@ -22,7 +23,8 @@ const formLiteral = {
   pk_produktiv: { content: <PersonalkostenProduktiv />, title: 'Personalkosten produktiv' },
   pk_allgemein: { content: <PersonalkostenAllgemein />, title: 'Personalkosten allgemein' },
   gemeinkosten: { content: <Gemeinkosten />, title: 'Gemeinkosten' },
-  gk_deckung: { content: <GKDeckung />, title: 'Gemeinkosten Deckung' }
+  gk_deckung: { content: <GKDeckung />, title: 'Gemeinkosten-Deckung' },
+  gk_stundensaetze: { content: <GKStundensaetze />, title: 'Gemeinkosten-Stundensätze' }
 };
 
 const FormComponent = () => {
