@@ -280,7 +280,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                     <TextField
                                       {...field}
                                       value={formFloat(field.value, 2)}
-                                      label={`Summe ${outerField.groupTitle || 'Gruppe'}`}
+                                      label={`Summe ${outerField.groupTitle || 'Gruppe'} (in EUR)`}
                                       error={meta?.touched && Boolean(meta.error)}
                                       helperText={meta?.touched && meta.error}
                                       InputProps={{

@@ -13,7 +13,7 @@ const Zusammenfassung = () => {
               <TextField
                 {...field}
                 value={formFloat(field.value, 2)}
-                label="Zuschlag (gesamt, in EUR)"
+                label="Gesamtsumme der Beiträge zu den Gemeinkosten (in EUR)"
                 error={meta?.touched && Boolean(meta.error)}
                 helperText={meta?.touched && meta.error}
                 sx={{ mb: 2 }}
