@@ -48,15 +48,15 @@ export default function ThemeCustomization({ children }) {
         paddingButton: `${theme.spacing(1.5)} ${theme.spacing(2)}`,
         paddingBoxMedium: {
           xs: `${theme.spacing(2.5)} ${theme.spacing(3)}`,
-          sm: `${theme.spacing(3)} ${theme.spacing(4)}`,
-          md: `${theme.spacing(4)} ${theme.spacing(5)}`,
-          lg: `${theme.spacing(5)} ${theme.spacing(6)}`
+          sm: `${theme.spacing(2.75)} ${theme.spacing(3.5)}`,
+          md: `${theme.spacing(3)} ${theme.spacing(4)}`,
+          lg: `${theme.spacing(4)} ${theme.spacing(5)}`
         },
         paddingBoxLarge: {
           xs: `${theme.spacing(3)} ${theme.spacing(4)}`,
           sm: `${theme.spacing(5)} ${theme.spacing(6)}`,
-          md: `${theme.spacing(7)} ${theme.spacing(9)}`,
-          lg: `${theme.spacing(8)} ${theme.spacing(10)}`
+          md: `${theme.spacing(6)} ${theme.spacing(7)}`,
+          lg: `${theme.spacing(6.5)} ${theme.spacing(8)}`
         },
         borderRadius: 3,
         borderRadiusBox: 3,
