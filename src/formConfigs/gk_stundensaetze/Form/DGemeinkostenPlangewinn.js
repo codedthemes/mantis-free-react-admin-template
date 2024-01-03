@@ -108,8 +108,7 @@ const DGemeinkostenPlangewinn = () => {
               {({ field, meta }) => (
                 <TextField
                   {...field}
-                  value={formFloat(field.value, 2)}
-                  label="Plangewinn für das Jahr 2019"
+                  label="Plangewinn (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -145,7 +144,7 @@ const DGemeinkostenPlangewinn = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Ø Plangewinnsatz pro Stunde"
+                  label="Ø Plangewinnsatz pro Stunde (in %)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}

@@ -22,8 +22,8 @@ const Zusammenfassung = () => {
       </Typography>
       <ReadOnlyBox alwaysOpen white>
         <Grid container spacing={{ xs: 2, md: 4 }} alignItems="flex-end">
-          <Grid item xs={12} sm={4}>
-            <FastField name="pk_produktiv_N14_SUMME">
+          <Grid item xs={12} sm={6}>
+            <FastField name="pk_allgemein_N53">
               {({ field, meta }) => (
                 <TextField
                   {...field}

@@ -28,7 +28,7 @@ const Zusammenfassung = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Gesamtsumme aller PLAN-Gemeinkosten"
+                  label="Gesamtsumme aller PLAN-Gemeinkosten (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -45,7 +45,7 @@ const Zusammenfassung = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Gesamtsumme aller variablen-Gemeinkosten"
+                  label="Gesamtsumme aller variablen-Gemeinkosten (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -62,7 +62,7 @@ const Zusammenfassung = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Gesamtsumme aller fixen-Gemeinkosten"
+                  label="Gesamtsumme aller fixen-Gemeinkosten (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -78,7 +78,7 @@ const Zusammenfassung = () => {
               {({ field, meta }) => (
                 <TextField
                   {...field}
-                  label="Kfix nicht ausgabenwirksam"
+                  label="Kfix nicht ausgabenwirksam (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -95,7 +95,7 @@ const Zusammenfassung = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Kfix ausgabenwirksam (=Rest)"
+                  label="Kfix ausgabenwirksam (=Rest, in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}

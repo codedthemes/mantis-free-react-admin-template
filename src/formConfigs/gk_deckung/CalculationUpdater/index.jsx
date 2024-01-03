@@ -37,6 +37,7 @@ const StundensatzRechnerValueUpdater = () => {
 
       if (H20 !== values.gk_deckung_H20) {
         setFieldValue(`gk_deckung_H20`, H20);
+        setFieldValue(`gk_deckung_H43`, H20);
       }
 
       // Anwesenheitsentgeld (gesamt) ENDE

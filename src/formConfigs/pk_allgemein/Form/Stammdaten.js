@@ -4,12 +4,11 @@ import React from 'react';
 import { Grid, TextField, Divider, Button, ButtonGroup, Typography } from '@mui/material';
 
 // formik
-import { FastField, FieldArray, useFormikContext } from 'formik';
+import { FastField, Field, FieldArray, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import { v4 as uuid } from 'uuid';
 import getInitialMitarbeiterData from '../getInitialMitarbeiterData';
-import formFloat from 'utils/formUtils/formFloat';
 
 const Stammdaten = () => {
   const { values, errors, isSubmitting } = useFormikContext();
@@ -29,6 +28,7 @@ const Stammdaten = () => {
                   title={`${arrayField?.vorname || 'Mitarbeiter'} ${arrayField?.nachname || ''}`}
                   description="Pflegen Sie hier allgemeine Angaben zu Ihrem Mitarbeiter ein."
                   defaultOpen={index === 0 && values.pk_allgemein_mitarbeiter?.length === 1}
+                  onDelete={() => remove(index)}
                 >
                   <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
                     <Grid item xs={12}>
@@ -171,11 +171,11 @@ const Stammdaten = () => {
                               </FastField>
                             </Grid>
                             <Grid item xs={12} sm={6}>
-                              <FastField name={`pk_allgemein_mitarbeiter.${index}.M14`}>
-                                {({ field, meta, form }) => (
+                              <Field name={`pk_allgemein_mitarbeiter.${index}.M14`}>
+                                {({ field, meta }) => (
                                   <TextField
                                     {...field}
-                                    label={`Lohn-Nebenkosten (${form.pk_allgemein_K5 ? form.pk_allgemein_K5 : ''} in EUR)`}
+                                    label={`Lohnnebenkosten ${values.pk_allgemein_K5 ? `(${values.pk_allgemein_K5}%) ` : ''}(in EUR)`}
                                     error={meta?.touched && Boolean(meta.error)}
                                     helperText={meta?.touched && meta.error}
                                     sx={{ mb: 2 }}
@@ -184,7 +184,7 @@ const Stammdaten = () => {
                                     }}
                                   />
                                 )}
-                              </FastField>
+                              </Field>
                             </Grid>
                             <Grid item xs={12} sm={6}>
                               <FastField name={`pk_allgemein_mitarbeiter.${index}.N14`}>
@@ -210,7 +210,7 @@ const Stammdaten = () => {
                       </Grid>
                       <Grid item xs={12}>
                         <ButtonGroup columnSpacing="2">
-                          <Button variant="contained" color="primary" disabled={isSubmitting} onClick={() => remove(index)}>
+                          <Button variant="outlined" color="error" disabled={isSubmitting} onClick={() => remove(index)}>
                             Mitarbeiter löschen
                           </Button>
                           <Button
@@ -232,23 +232,17 @@ const Stammdaten = () => {
                     </Grid>
                   </Grid>
                 </FormSection>
-                {index === values.pk_allgemein_mitarbeiter?.length - 1 && (
-                  <Button
-                    variant="contained"
-                    onClick={() => push(getInitialMitarbeiterData(values))}
-                    disabled={isSubmitting}
-                    sx={{ mb: 4 }}
-                  >
-                    neuen Mitarbeiter hinzufügen
-                  </Button>
-                )}
               </React.Fragment>
             ))}
-            {(!values.pk_allgemein_mitarbeiter || values.pk_allgemein_mitarbeiter?.length === 0) && (
-              <Button variant="contained" onClick={() => push({ userId: uuid() })} disabled={isSubmitting} sx={{ mb: 4 }}>
-                neuen Mitarbeiter hinzufügen
-              </Button>
-            )}
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => push(getInitialMitarbeiterData(values))}
+              disabled={isSubmitting}
+              sx={{ mb: 4 }}
+            >
+              Mitarbeiter hinzufügen
+            </Button>
           </>
         )}
       </FieldArray>

@@ -15,16 +15,16 @@ const StundensatzRechnerValueUpdater = () => {
 
   useEffect(() => {
     const reCalculateMaValues = () => {
-      let pk_produktiv_N14_SUMME = 0;
+      let pk_allgemein_N53 = 0;
 
       values.pk_allgemein_mitarbeiter?.forEach((ma, index) => {
-        const H14 = (ma.F14 || 0) + (ma.G14 || 0);
+        const H14 = (ma.G14 || 0) - (ma.F14 || 0) + 1;
         const J14 = (H14 || 0) * (ma.I14 || 0);
         const L14 = (J14 || 0) + (ma.K14 || 0);
-        const M14 = (L14 || 0) * (values.pk_allgemein_K5 || 0);
+        const M14 = (L14 || 0) * ((values.pk_allgemein_K5 || 0) / 100);
         const N14 = (L14 || 0) + (M14 || 0);
 
-        pk_produktiv_N14_SUMME += N14;
+        pk_allgemein_N53 += N14;Sonst. Personalkosten
 
         if (H14 !== ma.H14) {
           setFieldValue(`pk_allgemein_mitarbeiter.${index}.H14`, H14);
@@ -43,8 +43,8 @@ const StundensatzRechnerValueUpdater = () => {
         }
       });
 
-      if (pk_produktiv_N14_SUMME !== values.pk_produktiv_N14_SUMME) {
-        setFieldValue('pk_produktiv_N14_SUMME', pk_produktiv_N14_SUMME);
+      if (pk_allgemein_N53 !== values.pk_allgemein_N53) {
+        setFieldValue('pk_allgemein_N53', pk_allgemein_N53);
       }
     };
 
@@ -55,7 +55,7 @@ const StundensatzRechnerValueUpdater = () => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [setFieldValue, values.pk_allgemein_K5, values.pk_allgemein_mitarbeiter, values.pk_produktiv_N14_SUMME]);
+  }, [setFieldValue, values.pk_allgemein_K5, values.pk_allgemein_mitarbeiter, values.pk_allgemein_N53]);
 
   return <React.Fragment />;
 };
