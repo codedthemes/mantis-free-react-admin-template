@@ -9,7 +9,7 @@ import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import formFloat from 'utils/formUtils/formFloat';
 
 const Zusammenfassung = () => {
-  const { values, handleChange, handleBlur } = useFormikContext();
+  const { values } = useFormikContext();
 
   if (!values.pk_produktiv_P40) {
     return;

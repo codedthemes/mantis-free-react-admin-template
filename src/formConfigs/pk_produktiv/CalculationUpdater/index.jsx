@@ -17,8 +17,9 @@ const StundensatzRechnerValueUpdater = () => {
     const reCalculateMaValues = () => {
       let pk_produktiv_P40 = 0;
       let pk_produktiv_Q40 = 0;
+      let pk_produktiv_S36 = 0;
       let pk_produktiv_O36 = 0;
-      let pk_produktiv_Q9_SUMME = 0;
+      let pk_produktiv_Q36_tmp = 0;
 
       values.pk_produktiv_mitarbeiter?.forEach((ma, index) => {
         // Anwesenheitsentgeld (gesamt) START
@@ -32,8 +33,9 @@ const StundensatzRechnerValueUpdater = () => {
 
         pk_produktiv_P40 += U9;
         pk_produktiv_Q40 += V9;
+        pk_produktiv_S36 += S9;
         pk_produktiv_O36 += O9;
-        pk_produktiv_Q9_SUMME += ma.Q9 || 0;
+        pk_produktiv_Q36_tmp += ma.Q9 || 0;
 
         if (J9 !== ma.J9) {
           setFieldValue(`pk_produktiv_mitarbeiter.${index}.J9`, J9);
@@ -58,27 +60,28 @@ const StundensatzRechnerValueUpdater = () => {
         }
       });
 
-      const pk_produktiv_R40 = values.pk_produktiv_mitarbeiter?.length ? pk_produktiv_Q9_SUMME / values.pk_produktiv_mitarbeiter.length : 0;
-
-      const pk_produktiv_S40 = (pk_produktiv_P40 || 0) + (pk_produktiv_Q40 || 0);
+      const pk_produktiv_Q36 = pk_produktiv_Q36_tmp / (values.pk_produktiv_mitarbeiter?.length || 0);
+      const pk_produktiv_R40 = pk_produktiv_Q36;
+      const pk_produktiv_S40 = pk_produktiv_S36;
 
       if (pk_produktiv_P40 !== values.pk_produktiv_P40) {
-        setFieldValue(`pk_produktiv_P40`, pk_produktiv_P40);
+        setFieldValue('pk_produktiv_P40', pk_produktiv_P40);
       }
       if (pk_produktiv_Q40 !== values.pk_produktiv_Q40) {
-        setFieldValue(`pk_produktiv_Q40`, pk_produktiv_Q40);
+        setFieldValue('pk_produktiv_Q40', pk_produktiv_Q40);
       }
       if (pk_produktiv_O36 !== values.pk_produktiv_O36) {
-        setFieldValue(`pk_produktiv_O36`, pk_produktiv_O36);
+        setFieldValue('pk_produktiv_O36', pk_produktiv_O36);
       }
-      if (pk_produktiv_Q9_SUMME !== values.pk_produktiv_Q9_SUMME) {
-        setFieldValue(`pk_produktiv_Q9_SUMME`, pk_produktiv_Q9_SUMME);
+      if (pk_produktiv_Q36 !== values.pk_produktiv_Q36) {
+        setFieldValue('pk_produktiv_Q36', pk_produktiv_Q36);
       }
       if (pk_produktiv_R40 !== values.pk_produktiv_R40) {
-        setFieldValue(`pk_produktiv_R40`, pk_produktiv_R40);
+        setFieldValue('pk_produktiv_R40', pk_produktiv_R40);
       }
       if (pk_produktiv_S40 !== values.pk_produktiv_S40) {
-        setFieldValue(`pk_produktiv_S40`, pk_produktiv_S40);
+        setFieldValue('pk_produktiv_S40', pk_produktiv_S40);
+        setFieldValue('pk_produktiv_S36', pk_produktiv_S36);
       }
       // Anwesenheitsentgeld (gesamt) ENDE
     };
@@ -96,9 +99,10 @@ const StundensatzRechnerValueUpdater = () => {
     values.pk_produktiv_P40,
     values.pk_produktiv_mitarbeiter?.length,
     values.pk_produktiv_Q40,
-    values.pk_produktiv_Q9_SUMME,
+    values.pk_produktiv_Q36,
     values.pk_produktiv_R40,
-    values.pk_produktiv_S40
+    values.pk_produktiv_S40,
+    values.pk_produktiv_O36
   ]);
 
   useEffect(() => {

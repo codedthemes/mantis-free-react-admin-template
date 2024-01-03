@@ -13,7 +13,7 @@ const formLiteral = {
   gemeinkosten: { linkPart: 'gemeinkosten', content: <Gemeinkosten />, title: 'Gemeinkosten' },
   gk_deckung: { linkPart: 'gk_deckung', content: <GKDeckung />, title: 'Gemeinkosten-Deckung' },
   gk_stundensaetze: { linkPart: 'gk_stundensaetze', content: <GKStundensaetze />, title: 'Gemeinkosten-Stundensätze' },
-  std_verrechnugnssaetze: { linkPart: 'std_verrechnungssaetze', content: <StdVerrechnungssaetze />, title: 'Std-Verrechnungssätze' }
+  std_verrechnungssaetze: { linkPart: 'std_verrechnungssaetze', content: <StdVerrechnungssaetze />, title: 'Std-Verrechnungssätze' }
 };
 
 export default formLiteral;

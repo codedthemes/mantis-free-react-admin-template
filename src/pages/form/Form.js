@@ -31,11 +31,14 @@ const FormComponent = () => {
 
   const activeFormConfig = useMemo(() => {
     if (activeFormData) {
+      console.log('formSection', formSection, formLiteral);
       return formLiteral[formSection] || 'Es ist ein Fehler aufgetreten.';
     }
 
     return <FullPageLoader />;
   }, [activeFormData, formSection]);
+
+  console.log('activeFormConfig', activeFormConfig)
 
   return (
     <Box mb={theme.shape.layoutDesignGutterReset}>

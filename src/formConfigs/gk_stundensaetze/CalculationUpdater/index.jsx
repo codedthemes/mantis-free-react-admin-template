@@ -15,7 +15,7 @@ const StundensatzRechnerValueUpdater = () => {
       const H11 = values.pk_produktiv_O36;
       const H12 = H11 ? H10 / H11 : 0;
       const H15 = H11;
-      const H16 = H15 && values.gk_stundensaetze_H14 ? (values.gk_stundensaetze_H14 / H15) * 100 : 0;
+      const H16 = H15 && values.gk_stundensaetze_H14 ? values.gk_stundensaetze_H14 / H15 : 0;
 
       if (H8 !== values.gk_stundensaetze_H8) {
         setFieldValue('gk_stundensaetze_H8', H8);
@@ -69,11 +69,11 @@ const StundensatzRechnerValueUpdater = () => {
     const reCalculateDGPSValues = () => {
       const F23 = values.std_verrechnungssaetze_I10 || 0;
       const G23 = values.pk_produktiv_O20 || 0;
-      const H23 = (F23 / 100) * G23;
-      const H29 = ((values.gk_stundensaetze_H10 || 0) / H23) * 100;
-      const H33 = (F23 / 100) * values.gk_stundensaetze_H29;
-      const H38 = ((values.gk_stundensaetze_H10 || 0) / H23) * 100;
-      const H42 = (F23 / 100) * H38;
+      const H23 = F23 ? (F23 / 100) * G23 : 0;
+      const H29 = H23 ? ((values.gk_stundensaetze_H10 || 0) / H23) * 100 : 0;
+      const H33 = F23 ? (F23 / 100) * values.gk_stundensaetze_H29 : 0;
+      const H38 = H23 ? ((values.gk_stundensaetze_H14 || 0) / H23) * 100 : 0;
+      const H42 = F23 ? (F23 / 100) * H38 : 0;
 
       if (F23 !== values.gk_stundensaetze_F23) {
         setFieldValue('gk_stundensaetze_F23', F23);
@@ -113,6 +113,7 @@ const StundensatzRechnerValueUpdater = () => {
     values.gk_stundensaetze_F33,
     values.gk_stundensaetze_G23,
     values.gk_stundensaetze_H10,
+    values.gk_stundensaetze_H14,
     values.gk_stundensaetze_H23,
     values.gk_stundensaetze_H29,
     values.gk_stundensaetze_H33,

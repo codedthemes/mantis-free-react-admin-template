@@ -9,7 +9,7 @@ import DGemeinkostenPlangewinn from './DGemeinkostenPlangewinn';
 import AufschlagssaetzePK from './AufschlagssaetzePK';
 import { UserContext } from 'context/user';
 
-const GKDeckung = () => {
+const GKStundensaetze = () => {
   const { activeFormData } = useContext(UserContext);
   const onSubmit = useCallback(async (values) => {
     console.log('submit', values);
@@ -34,4 +34,4 @@ const GKDeckung = () => {
   );
 };
 
-export default GKDeckung;
+export default GKStundensaetze;

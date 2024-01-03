@@ -5,11 +5,10 @@ import ButtonBar from 'components/formComponents/ButtonBar/index';
 import { Formik, Form } from 'formik';
 import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
-import Stammdaten from './Stammdaten';
-import Zusammenfassung from './Zusammenfassung';
+import Stundenverrechnungssatz from './Stundenverrechnungssatz';
 import { UserContext } from 'context/user';
 
-const TestForm = () => {
+const StdVerrechnungssaetze = () => {
   const { activeFormData } = useContext(UserContext);
   const onSubmit = useCallback(async (values) => {
     console.log('submit', values);
@@ -25,8 +24,7 @@ const TestForm = () => {
         <Form autoComplete="off">
           <CalculationUpdater />
           <Start />
-          <Stammdaten />
-          <Zusammenfassung />
+          <Stundenverrechnungssatz />
           <ButtonBar />
         </Form>
       )}
@@ -34,4 +32,4 @@ const TestForm = () => {
   );
 };
 
-export default TestForm;
+export default StdVerrechnungssaetze;

@@ -87,7 +87,7 @@ const SelectFormView = ({ formType, sections }) => {
                       }}
                       component="span"
                     >
-                      {section.label}
+                      {section.title}
                       <Edit
                         sx={{
                           opacity: '0.2',

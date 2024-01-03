@@ -14,6 +14,7 @@ import InputLabel from './InputLabel';
 import Input from './Input';
 import FormControl from './FormControl';
 import TextField from './TextField';
+import Select from './Select';
 import MuiCard from './MuiCard';
 import LinearProgress from './LinearProgress';
 import Link from './Link';
@@ -40,6 +41,7 @@ export default function ComponentsOverrides(theme) {
     IconButton(theme),
     FormControl(theme),
     TextField(),
+    Select(),
     FormHelperText(),
     MuiCard(),
     Divider(theme),
