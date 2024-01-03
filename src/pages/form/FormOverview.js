@@ -3,6 +3,7 @@ import SelectFormView from 'components/SelectFormView/index';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Stack } from '@mui/material';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
+import formLiteral from './formLiteral';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
@@ -23,21 +24,7 @@ const FormOverview = () => {
       <Typography variant="h2" sx={headlineSectionStyle}>
         Angabensets
       </Typography>
-      <SelectFormView
-        formType="stundensatz"
-        sections={[
-          { linkPart: 'annahmen', label: 'Annahmen' },
-          { linkPart: 'pk_produktiv', label: 'Personalkosten Produktiv' },
-          { linkPart: 'pk_allgemein', label: 'Personalkosten Allgemein' },
-          { linkPart: 'gemeinkosten', label: 'Gemeinkosten' },
-          { linkPart: 'gk_deckung', label: 'GK-Deckung' },
-          { linkPart: 'gk_stundensaetze', label: 'GK-Stundensätze' }
-        ]}
-      />
-      {/* <Typography variant="h2" sx={headlineSectionStyle}>
-        Mitarbeiter
-      </Typography>
-      <SelectFormView formType="stundensatz" /> */}
+      <SelectFormView formType="stundensatz" sections={Object.values(formLiteral)} />
     </Stack>
   );
 };
