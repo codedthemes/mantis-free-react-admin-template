@@ -8,7 +8,29 @@ const DGemeinkostenPlangewinn = () => {
   const { values } = useFormikContext();
 
   return (
-    <>
+      <>
+      <FormSection
+        collapsable={false}
+        title="Auswahl Berechnungsmethode"
+        description="GK-Satz bzw. Plangewinnsatz für das Produktivpersonal (Bereiche)"
+      >
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+          <Grid item xs={12} sm={6}>
+            <FastField name="aaaaa">
+              {({ field, meta }) => (
+                <FormControl fullWidth>
+                  <InputLabel id="aaaaa-label">Auswahl der verwendeten Methode</InputLabel>
+                  <Select defaultValue={0} {...field} {...meta} labelId="aaaaa-label">
+                    <MenuItem value={0}>Bitte wählen</MenuItem>
+                    <MenuItem value={1}>a.) Durchschnittliche Gemeinkosten pro Stunde</MenuItem>
+                    <MenuItem value={2}>b.) Aufschlag auf individuelle Personalkosten</MenuItem>
+                  </Select>
+                </FormControl>
+              )}
+            </FastField>
+          </Grid>
+        </Grid>
+      </FormSection>
       <FormSection defaultOpen title="Kalkulation Stundenverrrechnungssatz">
         <Box sx={{ mt: 1 }} />
         <ReadOnlyBox alwaysOpen title="Alle Angaben im Durchschnitt, in EUR">
@@ -169,28 +191,6 @@ const DGemeinkostenPlangewinn = () => {
             </Grid>
           </Grid>
         </ReadOnlyBox>
-      </FormSection>
-      <FormSection
-        collapsable={false}
-        title="Auswahl Berechnungsmethode"
-        description="GK-Satz bzw. Plangewinnsatz für das Produktivpersonal (Bereiche)"
-      >
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
-          <Grid item xs={12} sm={6}>
-            <FastField name="aaaaa">
-              {({ field, meta }) => (
-                <FormControl fullWidth>
-                  <InputLabel id="aaaaa-label">Auswahl der verwendeten Methode</InputLabel>
-                  <Select defaultValue={0} {...field} {...meta} labelId="aaaaa-label">
-                    <MenuItem value={0}>Bitte wählen</MenuItem>
-                    <MenuItem value={1}>a.) Durchschnittliche Gemeinkosten pro Stunde</MenuItem>
-                    <MenuItem value={2}>b.) Aufschlag auf individuelle Personalkosten</MenuItem>
-                  </Select>
-                </FormControl>
-              )}
-            </FastField>
-          </Grid>
-        </Grid>
       </FormSection>
     </>
   );
