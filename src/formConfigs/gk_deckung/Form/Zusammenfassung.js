@@ -6,7 +6,7 @@ import formFloat from 'utils/formUtils/formFloat';
 const Zusammenfassung = () => {
   return (
     <FormSection collapsable={false} title="Zusammenfassung">
-      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }}>
+      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }}>
         <Grid item xs={12} sm={6}>
           <FastField name="gk_deckung_H20">
             {({ field, meta }) => (

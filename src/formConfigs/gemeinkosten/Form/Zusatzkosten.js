@@ -15,12 +15,12 @@ export const zusatzkosten_startingRow = 42;
 const Zusatzkosten = () => {
   return (
     <FormSection title="Zusatzkosten" description="In diesem Abschnitt werden Angaben zu Zusatzkosten eingetragen.">
-      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
         <Grid item xs={12}>
           <Divider sx={{ mt: 2, mb: 4 }} />
         </Grid>
       </Grid>
-      <Grid container alignItems="flex-end" columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+      <Grid container alignItems="flex-end" columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
         {zusatzkosten_fieldTitles.map((title, index) => {
           return (
             <>
@@ -63,7 +63,7 @@ const Zusatzkosten = () => {
               </Grid>
               <Grid item xs={12}>
                 <ReadOnlyBox>
-                  <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+                  <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
                     <Grid item xs={12} sm={6}>
                       <FastField name={`gemeinkosten_zusatzkosten_H${zusatzkosten_startingRow + index}`}>
                         {({ field, meta }) => (
@@ -109,7 +109,7 @@ const Zusatzkosten = () => {
         })}
         <Grid item xs={12}>
           <ReadOnlyBox alwaysOpen title={'Materialgemeinkosten Gesamt'} headlineVariant="h3">
-            <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} alignItems="flex-end">
+            <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} alignItems="flex-end">
               <Grid item xs={12} sm={6}>
                 <FastField name="gemeinkosten_F47">
                   {({ field, meta }) => (

@@ -9,7 +9,7 @@ const DGemeinkostenPlangewinn = () => {
     <FormSection defaultOpen title="1. Durchschnittliche Gemeinkosten und Plangewinn pro Stunde">
       <Box sx={{ mt: 1 }} />
       <ReadOnlyBox alwaysOpen title="Gemeinkostensatz">
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={6}>
             <FastField name="gk_stundensaetze_H8">
               {({ field, meta }) => (
@@ -102,7 +102,7 @@ const DGemeinkostenPlangewinn = () => {
       </ReadOnlyBox>
       <Box sx={{ mt: 2 }} />
       <ReadOnlyBox alwaysOpen title="Plangewinnsatz">
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={6}>
             <FastField name="gk_stundensaetze_H14">
               {({ field, meta }) => (

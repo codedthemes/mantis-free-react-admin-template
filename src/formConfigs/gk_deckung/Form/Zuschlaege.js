@@ -131,12 +131,12 @@ const MaterialzuschlagFremdleistungen = () => {
                                 onDelete={() => innerRemove(innerIndex)}
                                 headlineVariant="h3"
                               >
-                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
                                   <Grid item xs={12}>
                                     <Divider sx={{ mt: 2, mb: 4 }} />
                                   </Grid>
                                 </Grid>
-                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
                                   <Grid item xs={12} sm={6}>
                                     <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.D8`}>
                                       {({ field, meta }) => (
@@ -188,7 +188,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                   </Grid>
                                   <Grid item xs={12}>
                                     <ReadOnlyBox alwaysOpen>
-                                      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+                                      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
                                         <Grid item xs={12} sm={6}>
                                           <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.G8`}>
                                             {({ field, meta }) => (
@@ -230,7 +230,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                     &nbsp;
                                   </Grid>
                                 </Grid>
-                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
+                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
                                   <>
                                     <Grid item xs={12}>
                                       <ButtonGroup>

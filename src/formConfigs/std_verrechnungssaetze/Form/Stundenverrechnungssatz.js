@@ -14,7 +14,7 @@ const DGemeinkostenPlangewinn = () => {
         title="Auswahl Berechnungsmethode"
         description="GK-Satz bzw. Plangewinnsatz für das Produktivpersonal (Bereiche)"
       >
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={6}>
             <FastField name="aaaaa">
               {({ field, meta }) => (
@@ -37,7 +37,7 @@ const DGemeinkostenPlangewinn = () => {
           <Grid
             container
             columnSpacing={{ xs: 2, sm: 4, lg: 6 }}
-            rowSpacing={{ xs: 1, lg: 2 }}
+            rowSpacing={{ xs: 1, lg: 1.5 }}
             sx={{ mt: { xs: 1 } }}
             alignItems="flex-end"
           >

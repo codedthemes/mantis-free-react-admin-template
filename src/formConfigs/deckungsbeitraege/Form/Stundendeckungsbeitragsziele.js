@@ -1,5 +1,5 @@
-import { FastField, Field, useFormikContext } from 'formik';
-import { Grid, TextField, Box, Select, MenuItem, Typography, FormControl, InputLabel } from '@mui/material';
+import { FastField, useFormikContext } from 'formik';
+import { Grid, TextField, Box, Typography } from '@mui/material';
 import FormSection from 'components/formComponents/FormSection/index';
 import formFloat from 'utils/formUtils/formFloat';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
@@ -8,46 +8,48 @@ const DGemeinkostenPlangewinn = () => {
   const { values } = useFormikContext();
 
   return (
-      <>
-      <FormSection
-        collapsable={false}
-        title="Auswahl Berechnungsmethode"
-        description="GK-Satz bzw. Plangewinnsatz für das Produktivpersonal (Bereiche)"
-      >
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+    <>
+      <FormSection defaultOpen title="Stundendeckungsbeitragsziele">
+        <Box sx={{ mt: 1 }} />
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={6}>
-            <FastField name="aaaaa">
+            <FastField name="pk_produktiv_O36">
               {({ field, meta }) => (
-                <FormControl fullWidth>
-                  <InputLabel id="aaaaa-label">Auswahl der verwendeten Methode</InputLabel>
-                  <Select defaultValue={0} {...field} {...meta} labelId="aaaaa-label">
-                    <MenuItem value={0}>Bitte wählen</MenuItem>
-                    <MenuItem value={1}>a.) Durchschnittliche Gemeinkosten pro Stunde</MenuItem>
-                    <MenuItem value={2}>b.) Aufschlag auf individuelle Personalkosten</MenuItem>
-                  </Select>
-                </FormControl>
+                <TextField
+                  {...field}
+                  value={formFloat(field.value, 2)}
+                  label="Berechnungsbasis (Summe direkt verrechenb. Std.)"
+                  error={meta?.touched && Boolean(meta.error)}
+                  helperText={meta?.touched && meta.error}
+                  sx={{ mb: 2 }}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                />
               )}
             </FastField>
           </Grid>
         </Grid>
-      </FormSection>
-      <FormSection defaultOpen title="Kalkulation Stundenverrrechnungssatz">
-        <Box sx={{ mt: 1 }} />
-        <ReadOnlyBox alwaysOpen title="Alle Angaben im Durchschnitt, in EUR">
+        <ReadOnlyBox alwaysOpen headlineVariant="none" sx={{ mb: { xs: 2, md: 3 } }}>
           <Grid
             container
             columnSpacing={{ xs: 2, sm: 4, lg: 6 }}
-            rowSpacing={{ xs: 1, lg: 2 }}
-            sx={{ mt: { xs: 1 } }}
+            rowSpacing={{ xs: 1, lg: 1.5 }}
+            sx={{ mb: { xs: -2 } }}
             alignItems="flex-end"
           >
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0 }}>
+                Direkt verrechenbare Personalkosten
+              </Typography>
+            </Grid>
             <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G8">
+              <FastField name="deckungsbeitraege_I12">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Brutto-Stundenentgelt (inkl. Zulagen)"
+                    label="Gesamt"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -59,29 +61,12 @@ const DGemeinkostenPlangewinn = () => {
               </FastField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Field name="std_verrechnungssaetze_G9">
+              <FastField name="deckungsbeitraege_J12">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label={`Personalnebenkosten (${formFloat(values.annahmen_I46, 1)}%)`}
-                    error={meta?.touched && Boolean(meta.error)}
-                    helperText={meta?.touched && meta.error}
-                    sx={{ mb: 2 }}
-                    InputProps={{
-                      readOnly: true
-                    }}
-                  />
-                )}
-              </Field>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G10">
-                {({ field, meta }) => (
-                  <TextField
-                    {...field}
-                    value={formFloat(field.value, 2)}
-                    label="Personalkosten pro Stunde"
+                    label="pro verrechn. Std."
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -93,15 +78,17 @@ const DGemeinkostenPlangewinn = () => {
               </FastField>
             </Grid>
             <Grid item xs={12}>
-              &nbsp;
+              <Typography variant="h3" sx={{ mb: 0, mt: 1 }}>
+                Variable Gemeinkosten
+              </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G11">
+              <FastField name="deckungsbeitraege_I13">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="GK-Satz pro Stunde"
+                    label="Gesamt"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -113,15 +100,61 @@ const DGemeinkostenPlangewinn = () => {
               </FastField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              &nbsp;
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G12">
+              <FastField name="deckungsbeitraege_J13">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Selbstkosten pro Stunde"
+                    label="pro verrechn. Std."
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+          </Grid>
+        </ReadOnlyBox>
+        <ReadOnlyBox alwaysOpen headlineVariant="none" sx={{ mb: { xs: 2, md: 3 } }}>
+          <Grid
+            container
+            columnSpacing={{ xs: 2, sm: 4, lg: 6 }}
+            rowSpacing={{ xs: 1, lg: 1.5 }}
+            sx={{ mb: { xs: -2 } }}
+            alignItems="flex-end"
+          >
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0 }}>
+                Grenzkosten
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_I14">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Gesamt"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_J14">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="pro verrechn. Std."
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -133,15 +166,17 @@ const DGemeinkostenPlangewinn = () => {
               </FastField>
             </Grid>
             <Grid item xs={12}>
-              &nbsp;
+              <Typography variant="h3" sx={{ mb: 0, mt: 1 }}>
+                Fixe Gemeinkosten (ausgabenwirksam)
+              </Typography>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G13">
+              <FastField name="deckungsbeitraege_I15">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Plangewinnsatz pro Stunde"
+                    label="Gesamt"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -153,15 +188,34 @@ const DGemeinkostenPlangewinn = () => {
               </FastField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              &nbsp;
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G14">
+              <FastField name="deckungsbeitraege_J15">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Stundenverrechnungssatz (ohne USt.)"
+                    label="pro verrechn. Std."
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0, mt: 1 }}>
+                Beiträge zu den Gemeinkosten
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_I16">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Gesamt"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -173,12 +227,222 @@ const DGemeinkostenPlangewinn = () => {
               </FastField>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <FastField name="std_verrechnungssaetze_G15">
+              <FastField name="deckungsbeitraege_J16">
                 {({ field, meta }) => (
                   <TextField
                     {...field}
-                    value={formFloat(field.value, 0)}
-                    label="Durchschnittlicher Zuschlag Personalkosten (in %)"
+                    value={formFloat(field.value, 2)}
+                    label="pro verrechn. Std."
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+          </Grid>
+        </ReadOnlyBox>
+        <ReadOnlyBox alwaysOpen headlineVariant="none" sx={{ mb: { xs: 2, md: 3 } }}>
+          <Grid
+            container
+            columnSpacing={{ xs: 2, sm: 4, lg: 6 }}
+            rowSpacing={{ xs: 1, lg: 1.5 }}
+            sx={{ mb: { xs: -2 } }}
+            alignItems="flex-end"
+          >
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0 }}>
+                Selbstkosten (ausgabenwirksam)
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FastField name="deckungsbeitraege_I17">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Gesamt"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FastField name="deckungsbeitraege_J17">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="pro verrechn. Std."
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FastField name="deckungsbeitraege_L17">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Deckungsbeitragsziel 1"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0, mt: 1 }}>
+                Fixe Gemeinkosten (nicht ausgabenwirksam)
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_I18">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Gesamt"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_J18">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="pro verrechn. Std."
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+          </Grid>
+        </ReadOnlyBox>
+        <ReadOnlyBox alwaysOpen headlineVariant="none" sx={{ mb: { xs: 2, md: 3 } }}>
+          <Grid
+            container
+            columnSpacing={{ xs: 2, sm: 4, lg: 6 }}
+            rowSpacing={{ xs: 1, lg: 1.5 }}
+            sx={{ mb: { xs: -2 } }}
+            alignItems="flex-end"
+          >
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0 }}>
+                Selbstkosten
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FastField name="deckungsbeitraege_I19">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Gesamt"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FastField name="deckungsbeitraege_J19">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="pro verrechn. Std."
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <FastField name="deckungsbeitraege_L19">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Deckungsbeitragsziel 2"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h3" sx={{ mb: 0, mt: 1 }}>
+                Plangewinn
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_I18">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="Gesamt"
+                    error={meta?.touched && Boolean(meta.error)}
+                    helperText={meta?.touched && meta.error}
+                    sx={{ mb: 2 }}
+                    InputProps={{
+                      readOnly: true
+                    }}
+                  />
+                )}
+              </FastField>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FastField name="deckungsbeitraege_J18">
+                {({ field, meta }) => (
+                  <TextField
+                    {...field}
+                    value={formFloat(field.value, 2)}
+                    label="pro verrechn. Std."
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}

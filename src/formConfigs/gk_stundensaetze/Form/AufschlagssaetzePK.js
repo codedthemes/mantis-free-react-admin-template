@@ -8,7 +8,7 @@ const DGemeinkostenPlangewinn = () => {
   return (
     <FormSection title="2. Aufschlagssätze auf die Personalkosten pro Stunde">
       <ReadOnlyBox headlineVariant="h3" alwaysOpen title="a.) Direkt verrechenbare Personalkosten">
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={4}>
             <FastField name="gk_stundensaetze_F23">
               {({ field, meta }) => (
@@ -81,7 +81,7 @@ const DGemeinkostenPlangewinn = () => {
       </ReadOnlyBox>
       <Box sx={{ mt: 2 }} />
       <ReadOnlyBox headlineVariant="h3" alwaysOpen title="b.) Gemeinkostenstundensatz">
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={4}>
             <FastField name="gk_stundensaetze_F33">
               {({ field, meta }) => (
@@ -154,7 +154,7 @@ const DGemeinkostenPlangewinn = () => {
       </ReadOnlyBox>
       <Box sx={{ mt: 2 }} />
       <ReadOnlyBox headlineVariant="h3" alwaysOpen title="c.) Plangewinnsatz">
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
+        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }} sx={{ mt: { xs: 1 } }} alignItems="flex-end">
           <Grid item xs={12} sm={4}>
             <FastField name="gk_stundensaetze_F42">
               {({ field, meta }) => (
