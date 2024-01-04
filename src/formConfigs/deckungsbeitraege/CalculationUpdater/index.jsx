@@ -30,7 +30,7 @@ const StundensatzRechnerValueUpdater = () => {
       const L19 = L17 + J18;
       const I20 = values.gk_stundensaetze_H14 || 0;
       const J20 = I20 && J10 ? I20 / J10 : 0;
-      const I21 = I19 * I20;
+      const I21 = I19 + I20;
       const J21 = J19 + J20;
       const L21 = L19 + J20;
       const J26 = J14;
