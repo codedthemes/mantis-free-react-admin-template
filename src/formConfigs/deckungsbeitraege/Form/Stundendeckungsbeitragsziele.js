@@ -24,7 +24,7 @@ const DGemeinkostenPlangewinn = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Berechnungsbasis (Summe direkt verrechenb. Std.)"
+                  label="Berechnungsbasis (Summe direkt verrechenb. Std., in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -55,7 +55,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -72,7 +72,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -94,7 +94,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -111,7 +111,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -143,7 +143,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -160,7 +160,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -182,7 +182,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -199,7 +199,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -221,7 +221,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -238,7 +238,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -270,7 +270,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -287,7 +287,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -304,7 +304,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Deckungsbeitragsziel 1"
+                    label="Deckungsbeitragsziel 1 (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -326,7 +326,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesam (in EUR)t"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -343,7 +343,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -375,7 +375,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -392,7 +392,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -409,7 +409,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Deckungsbeitragsziel 2"
+                    label="Deckungsbeitragsziel 2 (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -431,7 +431,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -448,7 +448,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -480,7 +480,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Gesamt"
+                    label="Gesamt (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -497,7 +497,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="pro verrechn. Std."
+                    label="pro verrechn. Std. (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}
@@ -514,7 +514,7 @@ const DGemeinkostenPlangewinn = () => {
                   <TextField
                     {...field}
                     value={formFloat(field.value, 2)}
-                    label="Deckungsbeitragsziel 3"
+                    label="Deckungsbeitragsziel 3 (in EUR)"
                     error={meta?.touched && Boolean(meta.error)}
                     helperText={meta?.touched && meta.error}
                     sx={{ mb: 2 }}

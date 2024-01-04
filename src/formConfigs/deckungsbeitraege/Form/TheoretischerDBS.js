@@ -23,7 +23,7 @@ const DGemeinkostenPlangewinn = () => {
               {({ field, meta }) => (
                 <TextField
                   {...field}
-                  label="Erzielbarer Nettoverkaufspreis pro Std. (ohne USt.)"
+                  label="Erzielbarer Nettoverkaufspreis pro Std. (ohne USt., in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -43,7 +43,7 @@ const DGemeinkostenPlangewinn = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Grenzkosten pro Stunde"
+                  label="Grenzkosten pro Stunde (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
@@ -60,7 +60,7 @@ const DGemeinkostenPlangewinn = () => {
                 <TextField
                   {...field}
                   value={formFloat(field.value, 2)}
-                  label="Deckungsbeitrag pro Stunde"
+                  label="Deckungsbeitrag pro Stunde (in EUR)"
                   error={meta?.touched && Boolean(meta.error)}
                   helperText={meta?.touched && meta.error}
                   sx={{ mb: 2 }}
