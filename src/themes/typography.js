@@ -33,10 +33,10 @@ const Typography = (fontFamily) => ({
   },
   h3: {
     fontWeight: 600,
-    fontSize: '1.2rem',
-    lineHeight: 1.33,
+    fontSize: '1.175rem',
+    lineHeight: 1.2,
     [theme.breakpoints.up('md')]: {
-      fontSize: '1.4rem'
+      fontSize: '1.3rem'
     }
   },
   h4: {
@@ -49,11 +49,14 @@ const Typography = (fontFamily) => ({
   },
   h5: {
     fontWeight: 600,
-    fontSize: '1rem',
-    lineHeight: 1.5
+    fontSize: '1.05rem',
+    lineHeight: 1.5,
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.1rem'
+    }
   },
   h6: {
-    fontWeight: 400,
+    fontWeight: 600,
     fontSize: '1rem',
     lineHeight: 1.5
   },

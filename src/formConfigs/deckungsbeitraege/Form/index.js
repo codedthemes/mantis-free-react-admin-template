@@ -6,6 +6,7 @@ import { Formik, Form } from 'formik';
 import CalculationUpdater from '../CalculationUpdater/index';
 import Start from './Start';
 import Stundendeckungsbeitragsziele from './Stundendeckungsbeitragsziele';
+import TheoretischerDBS from './TheoretischerDBS';
 import { UserContext } from 'context/user';
 
 const StdVerrechnungssaetze = () => {
@@ -25,6 +26,7 @@ const StdVerrechnungssaetze = () => {
           <CalculationUpdater />
           <Start />
           <Stundendeckungsbeitragsziele />
+          <TheoretischerDBS />
           <ButtonBar />
         </Form>
       )}
