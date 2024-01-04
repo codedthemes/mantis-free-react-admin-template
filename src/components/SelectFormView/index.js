@@ -129,7 +129,7 @@ const SelectFormView = ({ formType, sections }) => {
                   <Typography variant="h3" sx={{ mb: 1 }}>
                     {formData.title || 'Formular: ' + formData.id}
                   </Typography>
-                  <Button startIcon={<DeleteOutlineOutlined />} color="error" variant="outlined" onClick={() => removeForm(formId)}>
+                  <Button startIcon={<DeleteOutlineOutlined />} color="error" variant="contained" onClick={() => removeForm(formId)}>
                     Formular Löschen
                   </Button>
                 </Stack>

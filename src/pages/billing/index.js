@@ -8,13 +8,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemIcon,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button
+  ListItemIcon
 } from '@mui/material';
 import { ChevronRight } from '@mui/icons-material';
 import ColoredSection from 'components/pageLayout/header/ColoredSection';
@@ -30,16 +24,21 @@ const iconStyles = {
 
 const Dashboard = () => {
   const theme = useTheme();
+  const [isLoadingSub, setIsLoadingSub] = useState();
   const headerBgColor = `radial-gradient(circle at 2% 10%, ${theme.palette.primary.main}, transparent 100%),radial-gradient(circle at 95% 20%, ${theme.palette.primary.dark}, transparent 100%),radial-gradient(circle at 25% 90%, ${theme.palette.primary.light}, transparent 100%)`;
 
   const { getPortalUrl, createSubscription, loadingCreateSubscription, hasActiveSubscription } = useContext(StripeContext);
 
   const stripeSub = async () => {
+    setIsLoadingSub(true);
     const checkoutUrl = await createSubscription();
+    setIsLoadingSub(false);
     window.open(checkoutUrl, '_blank', 'noreferrer');
   };
   const handleOpenCancelSub = async () => {
+    setIsLoadingSub(true);
     const url = await getPortalUrl();
+    setIsLoadingSub(false);
     window.open(url, '_blank', 'noreferrer');
   };
 
@@ -111,7 +110,7 @@ const Dashboard = () => {
                   </Stack>
                 }
                 // prefixText={`zuletzt bearbeitet: ${dayjs(formData.creationDate).format('DD.MM.YYYY')}`}
-                prefixText={'Verwalten Sie Ihr'}
+                prefixText={isLoadingSub ? 'lädt...' : 'Verwalten Sie Ihr'}
                 onClick={handleOpenCancelSub}
                 light
                 color={theme.palette.common.white}
