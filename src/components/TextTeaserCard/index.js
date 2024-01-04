@@ -82,7 +82,8 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, children, light,
             textTransform: 'none',
             fontWeight: theme.typography.fontWeightLight,
             margin: '0px',
-            color: textColor
+            color: textColor,
+            textAlign: textAlign
           }}
         >
           {primaryText}

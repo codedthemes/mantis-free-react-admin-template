@@ -16,7 +16,17 @@ import { DeleteOutlineOutlined, NoteAddOutlined, EditOutlined, ClearOutlined } f
 import { useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const FormSection = ({ children, title, description, onAdd, onDelete, defaultOpen, collapsable = true, backgroundColor, headlineVariant = 'h2' }) => {
+const FormSection = ({
+  children,
+  title,
+  description,
+  onAdd,
+  onDelete,
+  defaultOpen,
+  collapsable = true,
+  backgroundColor,
+  headlineVariant = 'h2'
+}) => {
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
   const [openPopup, setOpenPopup] = useState(false);
   const theme = useTheme();
