@@ -2,18 +2,18 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // material-ui
-import { Grid, TextField, Divider, Button, Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { DeleteOutlineOutlined } from '@mui/icons-material';
 import dayjs from 'dayjs';
 
 // formik
-import { Field, useFormikContext } from 'formik';
+import { useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import { UserContext } from 'context/user/index';
 import FormReadonlyValue from 'components/formComponents/FormReadonlyValue/index';
 
 const Annahmen = () => {
-  const { values, errors, handleChange, handleBlur, touched } = useFormikContext();
+  const { values } = useFormikContext();
   const { activeFormId, deleteForm } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -28,27 +28,7 @@ const Annahmen = () => {
         <Stack justifyContent="space-between" alignItems="center" direction="row" sx={{ width: '100%' }}>
           {/* <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} /> */}
           <FormReadonlyValue label="Letzte Änderung" value={dayjs(values.letzteAenderung).format('DD.MM.YYYY')} />
-          
         </Stack>
-        <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 2 }}>
-          <Grid item xs={12}>
-            <Divider sx={{ mt: 2, mb: 4 }} />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Field
-              component={TextField}
-              id="formTitle"
-              name="formTitle"
-              label="Formulartitel"
-              value={values.formTitle}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.formTitle && Boolean(errors.formTitle)}
-              helperText={touched.formTitle && errors.formTitle}
-              sx={{ mb: 2 }}
-            />
-          </Grid>
-        </Grid>
       </FormSection>
     </>
   );

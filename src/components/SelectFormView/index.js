@@ -17,10 +17,10 @@ import {
 import { useTheme } from '@mui/material/styles';
 
 import TextTeaserCard from 'components/TextTeaserCard/index';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // icons
-import { Edit, ChevronRight } from '@mui/icons-material';
+import { Edit, ChevronRight, DeleteOutlineOutlined } from '@mui/icons-material';
 
 // redux
 import { UserContext } from 'context/user';
@@ -29,10 +29,18 @@ import { StripeContext } from 'context/stripe/index';
 // eslint-disable-next-line react/prop-types
 const SelectFormView = ({ formType, sections }) => {
   const theme = useTheme();
-  const { createForm, formsData = {} } = useContext(UserContext);
+  const { createForm, formsData = {}, deleteForm } = useContext(UserContext);
   const { hasActiveSubscription } = useContext(StripeContext);
   const [openSubBanner, setOpenSubBanner] = useState(false);
   const [showMoreFormsWarning, setShowMoreFormsWarning] = useState(false);
+
+  const navigate = useNavigate();
+
+  const removeForm = async (formId) => {
+    await deleteForm(formId);
+    navigate('/office/dashboard');
+  };
+
   const visibleForms = useMemo(() => {
     const formsToUse = {};
     let shouldSetShowWarning = false;
@@ -91,7 +99,7 @@ const SelectFormView = ({ formType, sections }) => {
                       <Edit
                         sx={{
                           opacity: '0.2',
-                          fontSize: 55,
+                          fontSize: { xs: 40, md: 48, lg: 55 },
                           margin: '0 -0.35em -0.2em'
                         }}
                       />
@@ -111,10 +119,21 @@ const SelectFormView = ({ formType, sections }) => {
           return (
             <Grid key={formId} item xs={12}>
               <Stack flexDirection="column" sx={{ mb: { xs: theme.spacing(4), md: theme.spacing(5), lg: theme.spacing(6) } }}>
-                <Typography variant="h3" sx={{ mb: 1 }}>
-                  {formData.title || 'Formular: ' + formData.id}
-                </Typography>
-                <Grid spacing={3} container>
+                <Stack
+                  flexDirection="row"
+                  alignItems="flex-end"
+                  justifyContent="space-between"
+                  sx={{ mb: { xs: 2, sm: 3 } }}
+                  flexWrap="wrap"
+                >
+                  <Typography variant="h3" sx={{ mb: 1 }}>
+                    {formData.title || 'Formular: ' + formData.id}
+                  </Typography>
+                  <Button startIcon={<DeleteOutlineOutlined />} color="error" variant="outlined" onClick={() => removeForm(formId)}>
+                    Formular Löschen
+                  </Button>
+                </Stack>
+                <Grid spacing={{ xs: 2, lg: 3 }} container>
                   {sectionsDom}
                 </Grid>
               </Stack>

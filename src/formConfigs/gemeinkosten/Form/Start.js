@@ -28,9 +28,7 @@ const Annahmen = () => {
         <Stack justifyContent="space-between" alignItems="center" direction="row" sx={{ width: '100%' }}>
           {/* <DateTimePicker readOnly label="Letzte Änderung" value={dayjs(values.letzteAenderung)} /> */}
           <FormReadonlyValue label="Letzte Änderung" value={dayjs(values.letzteAenderung).format('DD.MM.YYYY')} />
-          <Button startIcon={<DeleteOutlineOutlined />} color="error" variant="outlined" onClick={removeForm}>
-            Formular Löschen
-          </Button>
+          
         </Stack>
       </FormSection>
     </>

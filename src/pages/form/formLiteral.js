@@ -5,6 +5,7 @@ import Gemeinkosten from 'formConfigs/gemeinkosten/Form/index';
 import GKDeckung from 'formConfigs/gk_deckung/Form/index';
 import GKStundensaetze from 'formConfigs/gk_stundensaetze/Form/index';
 import StdVerrechnungssaetze from 'formConfigs/std_verrechnungssaetze/Form/index';
+import Deckungsbeitraege from 'formConfigs/deckungsbeitraege/Form/index';
 
 const formLiteral = {
   annahmen: { linkPart: 'annahmen', content: <Annahmen />, title: 'Annahmen' },
@@ -13,7 +14,8 @@ const formLiteral = {
   gemeinkosten: { linkPart: 'gemeinkosten', content: <Gemeinkosten />, title: 'Gemeinkosten' },
   gk_deckung: { linkPart: 'gk_deckung', content: <GKDeckung />, title: 'Gemeinkosten-Deckung' },
   gk_stundensaetze: { linkPart: 'gk_stundensaetze', content: <GKStundensaetze />, title: 'Gemeinkosten-Stundensätze' },
-  std_verrechnungssaetze: { linkPart: 'std_verrechnungssaetze', content: <StdVerrechnungssaetze />, title: 'Std-Verrechnungssätze' }
+  std_verrechnungssaetze: { linkPart: 'std_verrechnungssaetze', content: <StdVerrechnungssaetze />, title: 'Std-Verrechnungssätze' },
+  deckungsbeitraege: { linkPart: 'deckungsbeitraege', content: <Deckungsbeitraege />, title: 'Deckungsbeiträge' }
 };
 
 export default formLiteral;

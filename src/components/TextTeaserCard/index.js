@@ -23,7 +23,10 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, children, light,
         flexGrow: grow && '1',
         background: bgColor,
         color: textColor,
-        padding: `${theme.spacing(4)} ${theme.spacing(5)}`,
+        padding: {
+          xs: `${theme.spacing(3)} ${theme.spacing(4)}`,
+          md: `${theme.spacing(4)} ${theme.spacing(5)}`
+        },
         borderRadius: theme.shape.borderRadiusBox,
         transition: '.25s',
         justifyContent: 'flex-start',
@@ -54,13 +57,13 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, children, light,
         }
       }}
     >
-      <Stack direction="column" textAlign={textAlign || 'left'} spacing={1} sx={{ width: '100%' }}>
+      <Stack direction="column" textAlign={textAlign || 'left'} spacing={{ xs: 0, md: 1 }} sx={{ width: '100%' }}>
         {/* <Icon sx={{ fontSize: { xs: 32, md: 32, lg: 40 }, color: textColor }} /> */}
         {prefixText && (
           <Typography
             paragraph
             sx={{
-              fontSize: 24,
+              fontSize: { xs: 18, md: 22, lg: 24 },
               lineHeight: '1em',
               textTransform: 'none',
               fontWeight: theme.typography.fontWeightBolder,
@@ -74,7 +77,7 @@ const TextTeaserCard = ({ primaryText, prefixText, link, color, children, light,
         <Typography
           paragraph
           sx={{
-            fontSize: 44,
+            fontSize: { xs: 28, md: 34, lg: 38 },
             lineHeight: '1em',
             textTransform: 'none',
             fontWeight: theme.typography.fontWeightLight,
