@@ -17,13 +17,6 @@ const pages = {
       icon: BackupTableOutlined
     },
     {
-      id: 'auswertung',
-      title: 'Auswertung',
-      type: 'item',
-      url: '/office/review',
-      icon: SwitchAccountOutlined
-    },
-    {
       id: 'billing',
       title: 'Abonnement',
       type: 'item',

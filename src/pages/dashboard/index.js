@@ -15,9 +15,6 @@ const Dashboard = () => {
           <TextTeaserCard primaryText="Angaben" prefixText="zu den" link="/office/form/overview" color={theme.palette.primary.dark} />
         </Grid>
         <Grid item xs={12} sm={6} xl={4}>
-          <TextTeaserCard primaryText="Auswertung" prefixText="zur" link="/office/review" color={theme.palette.secondary.main} />
-        </Grid>
-        <Grid item xs={12} sm={6} xl={4}>
           <TextTeaserCard primaryText="Profil" prefixText="zum" link="/" color={theme.palette.primary.light} />
         </Grid>
       </Grid>
