@@ -9,13 +9,14 @@ import { Box } from '@mui/material';
 import { UserContext } from 'context/user';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
 import FullPageLoader from 'components/FullPageLoader/index';
-import formLiteral from './formLiteral';
+import useFormLiteral from './useFormLiteral';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const FormComponent = () => {
   const navigate = useNavigate();
   const theme = useTheme();
+  const formLiteral = useFormLiteral();
   const { activeFormId, activeFormData, setActiveFormId } = useContext(UserContext);
   const { formId, formSection } = useParams();
 
@@ -36,7 +37,7 @@ const FormComponent = () => {
     }
 
     return <FullPageLoader />;
-  }, [activeFormData, formSection]);
+  }, [activeFormData, formLiteral, formSection]);
 
   console.log('activeFormConfig', activeFormConfig)
 

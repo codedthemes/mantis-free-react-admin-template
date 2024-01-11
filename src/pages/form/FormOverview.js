@@ -3,12 +3,13 @@ import SelectFormView from 'components/SelectFormView/index';
 import { useTheme } from '@mui/material/styles';
 import { Typography, Stack } from '@mui/material';
 import ColoredSection from 'components/pageLayout/header/ColoredSection/index';
-import formLiteral from './formLiteral';
+import useFormLiteral from './useFormLiteral';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const FormOverview = () => {
   const theme = useTheme();
+  const formLiteral = useFormLiteral();
   const headlineSectionStyle = {
     mb: { xs: 2, md: 2, lg: 3 },
     mt: { xs: 5, md: 6, lg: 7 }
