@@ -96,6 +96,7 @@ const Sachkosten = () => {
                             InputProps={{
                               readOnly: true
                             }}
+                            type="number"
                           />
                         )}
                       </FastField>
@@ -113,6 +114,7 @@ const Sachkosten = () => {
                             InputProps={{
                               readOnly: true
                             }}
+                            type="number"
                           />
                         )}
                       </FastField>
@@ -142,6 +144,7 @@ const Sachkosten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -159,6 +162,7 @@ const Sachkosten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -176,6 +180,7 @@ const Sachkosten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>

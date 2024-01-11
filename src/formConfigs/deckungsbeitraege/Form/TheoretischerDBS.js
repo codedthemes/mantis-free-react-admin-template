@@ -50,6 +50,7 @@ const DGemeinkostenPlangewinn = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>
@@ -67,6 +68,7 @@ const DGemeinkostenPlangewinn = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>

@@ -170,6 +170,7 @@ const Stammdaten = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}
@@ -213,6 +214,7 @@ const Stammdaten = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}
@@ -230,6 +232,7 @@ const Stammdaten = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}
@@ -287,6 +290,7 @@ const Stammdaten = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}
@@ -307,6 +311,7 @@ const Stammdaten = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}
@@ -324,6 +329,7 @@ const Stammdaten = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}

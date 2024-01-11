@@ -202,6 +202,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                                 InputProps={{
                                                   readOnly: true
                                                 }}
+                                                type="number"
                                               />
                                             )}
                                           </FastField>
@@ -219,6 +220,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                                 InputProps={{
                                                   readOnly: true
                                                 }}
+                                                type="number"
                                               />
                                             )}
                                           </FastField>
@@ -286,6 +288,7 @@ const MaterialzuschlagFremdleistungen = () => {
                                       InputProps={{
                                         readOnly: true
                                       }}
+                                      type="number"
                                       sx={{ mb: 2 }}
                                     />
                                   )}

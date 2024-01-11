@@ -32,6 +32,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -45,6 +46,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -58,6 +60,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -71,6 +74,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -89,6 +93,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -102,6 +107,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -115,6 +121,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -128,6 +135,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -146,6 +154,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -159,6 +168,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -172,6 +182,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>
@@ -185,6 +196,7 @@ const Zusammenfassung = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               sx={{ mb: 2 }}
             />
           </Grid>

@@ -64,6 +64,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_G18"
                   name="annahmen_G18"
                   label="Ø Arbeitsstunden pro Tag"
@@ -93,6 +94,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   sx={{ mb: 2 }}
                 />
               </Grid>
@@ -105,6 +107,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_G23"
                   name="annahmen_G23"
                   label="Jahresarbeitszeit in Tagen"
@@ -118,6 +121,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_H23"
                   name="annahmen_H23"
                   label="Jahresarbeitszeit in Stunden"
@@ -215,6 +219,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_G29"
                   name="annahmen_G29"
                   label="Summe Nichtanwesenheit in Tagen"
@@ -228,6 +233,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_H29"
                   name="annahmen_H29"
                   label="Summe Nichtanwesenheit in Stunden"
@@ -247,6 +253,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_G31"
                   name="annahmen_G31"
                   label="Summe Anwesenheit in Tagen"
@@ -260,6 +267,7 @@ const Produktivstunden = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                   id="annahmen_H31"
                   name="annahmen_H31"
                   label="Summe Anwesenheit in Stunden"

@@ -3,6 +3,11 @@
 export default function InputLabel() {
   return {
     MuiInputBase: {
+      defaultProps: {
+        inputProps: {
+          lang: 'de'
+        }
+      },
       styleOverrides: {
         root: {
           '&.Mui-readOnly': {

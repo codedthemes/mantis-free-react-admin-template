@@ -35,6 +35,7 @@ const Stammdaten = () => {
                 InputProps={{
                   readOnly: true
                 }}
+                type="number"
               />
             )}
           </FastField>
@@ -71,6 +72,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -88,6 +90,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -115,6 +118,7 @@ const Stammdaten = () => {
                 InputProps={{
                   readOnly: true
                 }}
+                type="number"
               />
             )}
           </FastField>
@@ -151,6 +155,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -168,6 +173,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -231,6 +237,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -248,6 +255,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -274,6 +282,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -291,6 +300,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -308,6 +318,7 @@ const Stammdaten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>

@@ -77,6 +77,7 @@ const Zusatzkosten = () => {
                             InputProps={{
                               readOnly: true
                             }}
+                            type="number"
                           />
                         )}
                       </FastField>
@@ -94,6 +95,7 @@ const Zusatzkosten = () => {
                             InputProps={{
                               readOnly: true
                             }}
+                            type="number"
                           />
                         )}
                       </FastField>
@@ -123,6 +125,7 @@ const Zusatzkosten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -140,6 +143,7 @@ const Zusatzkosten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>
@@ -157,6 +161,7 @@ const Zusatzkosten = () => {
                       InputProps={{
                         readOnly: true
                       }}
+                      type="number"
                     />
                   )}
                 </FastField>

@@ -83,6 +83,7 @@ const Lohnnebenkostensatz = () => {
                     InputProps={{
                       readOnly: true
                     }}
+                    type="number"
                     id="annahmen_I46"
                     name="annahmen_I46"
                     label="Lohnnebenkostensatz in %"
@@ -103,6 +104,7 @@ const Lohnnebenkostensatz = () => {
               InputProps={{
                 readOnly: true
               }}
+              type="number"
               id="annahmen_I46"
               name="annahmen_I46"
               label="Lohnnebenkostensatz in %"

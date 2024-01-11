@@ -35,6 +35,7 @@ const Zusammenfassung = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>

@@ -35,6 +35,7 @@ const Zusammenfassung = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>
@@ -52,6 +53,7 @@ const Zusammenfassung = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>
@@ -69,6 +71,7 @@ const Zusammenfassung = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>
@@ -102,6 +105,7 @@ const Zusammenfassung = () => {
                   InputProps={{
                     readOnly: true
                   }}
+                  type="number"
                 />
               )}
             </FastField>
