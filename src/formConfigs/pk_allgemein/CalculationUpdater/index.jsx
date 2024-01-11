@@ -24,7 +24,7 @@ const StundensatzRechnerValueUpdater = () => {
         const M14 = (L14 || 0) * ((values.pk_allgemein_K5 || 0) / 100);
         const N14 = (L14 || 0) + (M14 || 0);
 
-        pk_allgemein_N53 += N14;Sonst. Personalkosten
+        pk_allgemein_N53 += N14;
 
         if (H14 !== ma.H14) {
           setFieldValue(`pk_allgemein_mitarbeiter.${index}.H14`, H14);
