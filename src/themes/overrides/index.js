@@ -27,6 +27,7 @@ import Tabs from './Tabs';
 import Typography from './Typography';
 import FormHelperText from './FormHelperText';
 import Stepper from './Stepper';
+import Popover from './Popover';
 
 // ==============================|| OVERRIDES - MAIN ||============================== //
 
@@ -56,6 +57,7 @@ export default function ComponentsOverrides(theme) {
     TableCell(theme),
     Tabs(),
     Typography(),
-    Stepper(theme)
+    Stepper(theme),
+    Popover(theme),
   );
 }

@@ -8,6 +8,7 @@ import { Field, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import formFloat from 'utils/formUtils/formFloat';
+import EnrichedField from 'components/formComponents/EnrichedField/index';
 
 const Lohnnebenkostensatz = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
@@ -40,21 +41,36 @@ const Lohnnebenkostensatz = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Field
-              component={TextField}
-              id="annahmen_E41"
-              name="annahmen_E41"
-              label="SV-Abgaben Arbeitgeber (in %)"
-              type="number"
-              onWheel={(event) => event.target.blur()}
-              min="0"
-              max="100"
-              value={values.annahmen_E41}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.annahmen_E41 && Boolean(errors.annahmen_E41)}
-              helperText={touched.annahmen_E41 && errors.annahmen_E41}
-            />
+            <EnrichedField
+              infoText={
+                <>
+                  <p>Beitragssätze für Deutschland (2024)</p>
+                  <ul>
+                    <li>Rentenversicherung (RV): 18,6%</li>
+                    <li>Arbeitslosenversicherung (AV): 2,6%</li>
+                    <li>Krankenversicherung (KV): 14,6%</li>
+                    <li>Pflegeversicherung (PV): 3,4%</li>
+                  </ul>
+                  <p>={'>'} Davon 50% für Arbeitgeber: 19,33%</p>
+                </>
+              }
+            >
+              <Field
+                component={TextField}
+                id="annahmen_E41"
+                name="annahmen_E41"
+                label="SV-Abgaben Arbeitgeber (in %)"
+                type="number"
+                onWheel={(event) => event.target.blur()}
+                min="0"
+                max="100"
+                value={values.annahmen_E41}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.annahmen_E41 && Boolean(errors.annahmen_E41)}
+                helperText={touched.annahmen_E41 && errors.annahmen_E41}
+              />
+            </EnrichedField>
           </Grid>
           <Grid item xs={12} md={6}>
             <Field

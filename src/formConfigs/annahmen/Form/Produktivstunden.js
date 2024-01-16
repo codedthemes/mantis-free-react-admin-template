@@ -8,6 +8,7 @@ import { Field, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import formFloat from 'utils/formUtils/formFloat';
+import EnrichedField from 'components/formComponents/EnrichedField/index';
 
 const Produktivstunden = () => {
   const { values, errors, touched, handleChange, handleBlur } = useFormikContext();
@@ -193,22 +194,24 @@ const Produktivstunden = () => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            id="annahmen_G28"
-            name="annahmen_G28"
-            label="Sonstige Arbeitsverhinderungen"
-            value={values.annahmen_G28}
-            type="number"
-            onWheel={(event) => event.target.blur()}
-            min="0"
-            max="365"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.annahmen_G28 && Boolean(errors.annahmen_G28)}
-            helperText={touched.annahmen_G28 && errors.annahmen_G28}
-            sx={{ mb: 2 }}
-          />
+          <EnrichedField infoText="z.B. wg. Freistellung, Umzug, Behörden etc.">
+            <Field
+              component={TextField}
+              id="annahmen_G28"
+              name="annahmen_G28"
+              label="Sonstige Arbeitsverhinderungen"
+              value={values.annahmen_G28}
+              type="number"
+              onWheel={(event) => event.target.blur()}
+              min="0"
+              max="365"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched.annahmen_G28 && Boolean(errors.annahmen_G28)}
+              helperText={touched.annahmen_G28 && errors.annahmen_G28}
+              sx={{ mb: 2 }}
+            />
+          </EnrichedField>
         </Grid>
         <Grid item xs={12}>
           <ReadOnlyBox title={'Summe Nichtanwesenheit'} alwaysOpen>
