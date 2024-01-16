@@ -66,7 +66,6 @@ const Stammdaten = () => {
               </Stack>
               {values.pk_allgemein_mitarbeiter?.map((outerField, outerIndex) => (
                 <TabPanel key={outerIndex} value={outerIndex.toString()} sx={{ padding: 0, marginTop: 3 }}>
-                  {' '}
                   <Grid container columnSpacing={2} alignItems="end">
                     <Grid item xs={12} sm={5} md={4}>
                       <FastField name={`pk_allgemein_mitarbeiter.${openedTab}.groupTitle`}>
@@ -123,7 +122,7 @@ const Stammdaten = () => {
                       <>
                         {values.pk_allgemein_mitarbeiter?.[outerIndex]?.fields?.map((innerField, innerIndex) => (
                           <FormSection
-                            key={outerIndex}
+                            key={innerIndex}
                             title={`${innerField?.vorname || 'Mitarbeiter'} ${innerField?.nachname || ''}`}
                             description="Pflegen Sie hier allgemeine Angaben zu Ihrem Mitarbeiter ein."
                             defaultOpen={outerIndex === 0 && values.pk_allgemein_mitarbeiter?.length === 1}

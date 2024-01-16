@@ -21,43 +21,45 @@ const StundensatzRechnerValueUpdater = () => {
       let pk_produktiv_O36 = 0;
       let pk_produktiv_Q36_tmp = 0;
 
-      values.pk_produktiv_mitarbeiter?.forEach((ma, index) => {
-        // Anwesenheitsentgeld (gesamt) START
-        const J9 = 0 + (ma.F9 || 0) + (ma.G9 || 0) + (ma.H9 || 0) + (ma.I9 || 0);
-        const M9 = (ma.E9 || 0) - J9;
-        const O9 = (M9 * (ma.N9 || 100)) / 100;
-        const P9 = M9 - O9;
-        const S9 = M9 * ((ma.Q9 || 0) + (ma.R9 || 0));
-        const U9 = O9 * ((ma.Q9 || 0) + (ma.R9 || 0));
-        const V9 = P9 * ((ma.Q9 || 0) + (ma.R9 || 0));
+      values.pk_produktiv_mitarbeiter?.forEach((category, outerIndex) => {
+        category.fields?.forEach((ma, innerIndex) => {
+          // Anwesenheitsentgeld (gesamt) START
+          const J9 = 0 + (ma.F9 || 0) + (ma.G9 || 0) + (ma.H9 || 0) + (ma.I9 || 0);
+          const M9 = (ma.E9 || 0) - J9;
+          const O9 = (M9 * (ma.N9 || 100)) / 100;
+          const P9 = M9 - O9;
+          const S9 = M9 * ((ma.Q9 || 0) + (ma.R9 || 0));
+          const U9 = O9 * ((ma.Q9 || 0) + (ma.R9 || 0));
+          const V9 = P9 * ((ma.Q9 || 0) + (ma.R9 || 0));
 
-        pk_produktiv_P40 += U9;
-        pk_produktiv_Q40 += V9;
-        pk_produktiv_S36 += S9;
-        pk_produktiv_O36 += O9;
-        pk_produktiv_Q36_tmp += ma.Q9 || 0;
+          pk_produktiv_P40 += U9;
+          pk_produktiv_Q40 += V9;
+          pk_produktiv_S36 += S9;
+          pk_produktiv_O36 += O9;
+          pk_produktiv_Q36_tmp += ma.Q9 || 0;
 
-        if (J9 !== ma.J9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.J9`, J9);
-        }
-        if (M9 !== ma.M9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.M9`, M9);
-        }
-        if (O9 !== ma.O9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.O9`, O9);
-        }
-        if (P9 !== ma.P9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.P9`, P9);
-        }
-        if (S9 !== ma.S9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.S9`, S9);
-        }
-        if (U9 !== ma.U9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.U9`, U9);
-        }
-        if (V9 !== ma.V9) {
-          setFieldValue(`pk_produktiv_mitarbeiter.${index}.V9`, V9);
-        }
+          if (J9 !== ma.J9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.J9`, J9);
+          }
+          if (M9 !== ma.M9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.M9`, M9);
+          }
+          if (O9 !== ma.O9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.O9`, O9);
+          }
+          if (P9 !== ma.P9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.P9`, P9);
+          }
+          if (S9 !== ma.S9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.S9`, S9);
+          }
+          if (U9 !== ma.U9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.U9`, U9);
+          }
+          if (V9 !== ma.V9) {
+            setFieldValue(`pk_produktiv_mitarbeiter.${outerIndex}.fields.${innerIndex}.V9`, V9);
+          }
+        });
       });
 
       const pk_produktiv_Q36 = pk_produktiv_Q36_tmp / (values.pk_produktiv_mitarbeiter?.length || 0);
@@ -95,14 +97,13 @@ const StundensatzRechnerValueUpdater = () => {
     };
   }, [
     setFieldValue,
-    values.pk_produktiv_mitarbeiter,
+    values.pk_produktiv_O36,
     values.pk_produktiv_P40,
-    values.pk_produktiv_mitarbeiter?.length,
-    values.pk_produktiv_Q40,
     values.pk_produktiv_Q36,
+    values.pk_produktiv_Q40,
     values.pk_produktiv_R40,
     values.pk_produktiv_S40,
-    values.pk_produktiv_O36
+    values.pk_produktiv_mitarbeiter
   ]);
 
   useEffect(() => {
