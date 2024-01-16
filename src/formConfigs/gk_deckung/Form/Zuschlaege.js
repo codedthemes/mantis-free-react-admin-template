@@ -48,7 +48,7 @@ const MaterialzuschlagFremdleistungen = () => {
             {({ push, remove }) => (
               <>
                 <Stack direction="row" flexWrap="wrap" mt={{ xs: 2, sm: 3, borderBottom: `1px solid ${theme.palette.primary.main}` }}>
-                  <TabList onChange={changeTab} aria-label="lab API tabs example">
+                  <TabList onChange={changeTab}>
                     {values.gk_deckung_zuschlaege?.map((category, index) => {
                       return <Tab key={index} label={category.groupTitle || `Tab ${index + 1}`} value={index.toString()} />;
                     })}
@@ -122,148 +122,143 @@ const MaterialzuschlagFremdleistungen = () => {
                       {({ push: innerPush, remove: innerRemove }) => (
                         <>
                           {values.gk_deckung_zuschlaege[outerIndex].fields?.map((innerField, innerIndex) => (
-                            <React.Fragment key={innerField.itemId || innerIndex}>
-                              <FormSection
-                                key={innerIndex}
-                                title={innerField?.D8 || 'Neues Element'}
-                                description={`Zuschlag: ${formFloat(innerField.H8, 2)} €`}
-                                backgroundColor={theme.palette.primary[50]}
-                                onDelete={() => innerRemove(innerIndex)}
-                                headlineVariant="h3"
-                              >
-                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
-                                  <Grid item xs={12}>
-                                    <Divider sx={{ mt: 2, mb: 4 }} />
-                                  </Grid>
+                            <FormSection
+                              key={innerIndex}
+                              title={innerField?.D8 || 'Neues Element'}
+                              description={`Zuschlag: ${formFloat(innerField.H8, 2)} €`}
+                              backgroundColor={theme.palette.primary[50]}
+                              onDelete={() => innerRemove(innerIndex)}
+                              headlineVariant="h3"
+                            >
+                              <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
+                                <Grid item xs={12}>
+                                  <Divider sx={{ mt: 2, mb: 4 }} />
                                 </Grid>
-                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
-                                  <Grid item xs={12} sm={6}>
-                                    <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.D8`}>
-                                      {({ field, meta }) => (
-                                        <TextField
-                                          {...field}
-                                          label="Bezeichnung"
-                                          error={meta?.touched && Boolean(meta.error)}
-                                          helperText={meta?.touched && meta.error}
-                                          sx={{ mb: 2 }}
-                                        />
-                                      )}
-                                    </FastField>
-                                  </Grid>
-                                  <Grid item xs={12} sm={6}>
-                                    &nbsp;
-                                  </Grid>
-                                  <Grid item xs={12} sm={6}>
-                                    <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.E8`}>
-                                      {({ field, meta }) => (
-                                        <TextField
-                                          {...field}
-                                          label="Einsatz  (in EUR)"
-                                          error={meta?.touched && Boolean(meta.error)}
-                                          helperText={meta?.touched && meta.error}
-                                          sx={{ mb: 2 }}
-                                          type="number"
-                                          onWheel={(event) => event.target.blur()}
-                                          min="0"
-                                        />
-                                      )}
-                                    </FastField>
-                                  </Grid>
-                                  <Grid item xs={12} sm={6}>
-                                    <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.F8`}>
-                                      {({ field, meta }) => (
-                                        <TextField
-                                          {...field}
-                                          label="Zuschlagssatz (in %)"
-                                          error={meta?.touched && Boolean(meta.error)}
-                                          helperText={meta?.touched && meta.error}
-                                          sx={{ mb: 2 }}
-                                          type="number"
-                                          onWheel={(event) => event.target.blur()}
-                                          min="0"
-                                          max="100"
-                                        />
-                                      )}
-                                    </FastField>
-                                  </Grid>
-                                  <Grid item xs={12}>
-                                    <ReadOnlyBox alwaysOpen>
-                                      <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
-                                        <Grid item xs={12} sm={6}>
-                                          <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.G8`}>
-                                            {({ field, meta }) => (
-                                              <TextField
-                                                {...field}
-                                                value={formFloat(field.value, 2)}
-                                                label="Erlös (in EUR)"
-                                                error={meta?.touched && Boolean(meta.error)}
-                                                helperText={meta?.touched && meta.error}
-                                                sx={{ mb: 2 }}
-                                                InputProps={{
-                                                  readOnly: true
-                                                }}
-                                                type="number"
-                                              />
-                                            )}
-                                          </FastField>
-                                        </Grid>
-                                        <Grid item xs={12} sm={6}>
-                                          <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.H8`}>
-                                            {({ field, meta }) => (
-                                              <TextField
-                                                {...field}
-                                                value={formFloat(field.value, 2)}
-                                                label="Zuschlag (in EUR)"
-                                                error={meta?.touched && Boolean(meta.error)}
-                                                helperText={meta?.touched && meta.error}
-                                                sx={{ mb: 2 }}
-                                                InputProps={{
-                                                  readOnly: true
-                                                }}
-                                                type="number"
-                                              />
-                                            )}
-                                          </FastField>
-                                        </Grid>
+                              </Grid>
+                              <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
+                                <Grid item xs={12} sm={6}>
+                                  <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.D8`}>
+                                    {({ field, meta }) => (
+                                      <TextField
+                                        {...field}
+                                        label="Bezeichnung"
+                                        error={meta?.touched && Boolean(meta.error)}
+                                        helperText={meta?.touched && meta.error}
+                                        sx={{ mb: 2 }}
+                                      />
+                                    )}
+                                  </FastField>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                  &nbsp;
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                  <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.E8`}>
+                                    {({ field, meta }) => (
+                                      <TextField
+                                        {...field}
+                                        label="Einsatz  (in EUR)"
+                                        error={meta?.touched && Boolean(meta.error)}
+                                        helperText={meta?.touched && meta.error}
+                                        sx={{ mb: 2 }}
+                                        type="number"
+                                        onWheel={(event) => event.target.blur()}
+                                        min="0"
+                                      />
+                                    )}
+                                  </FastField>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                  <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.F8`}>
+                                    {({ field, meta }) => (
+                                      <TextField
+                                        {...field}
+                                        label="Zuschlagssatz (in %)"
+                                        error={meta?.touched && Boolean(meta.error)}
+                                        helperText={meta?.touched && meta.error}
+                                        sx={{ mb: 2 }}
+                                        type="number"
+                                        onWheel={(event) => event.target.blur()}
+                                        min="0"
+                                        max="100"
+                                      />
+                                    )}
+                                  </FastField>
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <ReadOnlyBox alwaysOpen>
+                                    <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
+                                      <Grid item xs={12} sm={6}>
+                                        <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.G8`}>
+                                          {({ field, meta }) => (
+                                            <TextField
+                                              {...field}
+                                              value={formFloat(field.value, 2)}
+                                              label="Erlös (in EUR)"
+                                              error={meta?.touched && Boolean(meta.error)}
+                                              helperText={meta?.touched && meta.error}
+                                              sx={{ mb: 2 }}
+                                              InputProps={{
+                                                readOnly: true
+                                              }}
+                                              type="number"
+                                            />
+                                          )}
+                                        </FastField>
                                       </Grid>
-                                    </ReadOnlyBox>
-                                  </Grid>
-                                  <Grid item xs={12}>
-                                    &nbsp;
-                                  </Grid>
-                                </Grid>
-                                <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
-                                  <>
-                                    <Grid item xs={12}>
-                                      <ButtonGroup>
-                                        <Button
-                                          variant="outlined"
-                                          color="error"
-                                          disabled={isSubmitting}
-                                          onClick={() => innerRemove(innerIndex)}
-                                        >
-                                          Eintrag löschen
-                                        </Button>
-                                        <Button
-                                          variant="outlined"
-                                          color="primary"
-                                          disabled={isSubmitting}
-                                          onClick={() => innerPush({ ...innerField, itemId: uuid() })}
-                                        >
-                                          Eintrag duplizieren
-                                        </Button>
-                                      </ButtonGroup>
+                                      <Grid item xs={12} sm={6}>
+                                        <FastField name={`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.H8`}>
+                                          {({ field, meta }) => (
+                                            <TextField
+                                              {...field}
+                                              value={formFloat(field.value, 2)}
+                                              label="Zuschlag (in EUR)"
+                                              error={meta?.touched && Boolean(meta.error)}
+                                              helperText={meta?.touched && meta.error}
+                                              sx={{ mb: 2 }}
+                                              InputProps={{
+                                                readOnly: true
+                                              }}
+                                              type="number"
+                                            />
+                                          )}
+                                        </FastField>
+                                      </Grid>
                                     </Grid>
-                                  </>
-
-                                  <Grid item>
-                                    {typeof errors.gk_deckung_zuschlaege === 'string' ? (
-                                      <Typography color="error">{errors.gk_deckung_zuschlaege}</Typography>
-                                    ) : null}
-                                  </Grid>
+                                  </ReadOnlyBox>
                                 </Grid>
-                              </FormSection>
-                            </React.Fragment>
+                                <Grid item xs={12}>
+                                  &nbsp;
+                                </Grid>
+                              </Grid>
+                              <Grid container columnSpacing={{ xs: 2, sm: 4, lg: 6 }} rowSpacing={{ xs: 1, lg: 1.5 }}>
+                                <Grid item xs={12}>
+                                  <ButtonGroup>
+                                    <Button
+                                      variant="outlined"
+                                      color="error"
+                                      disabled={isSubmitting}
+                                      onClick={() => innerRemove(innerIndex)}
+                                    >
+                                      Eintrag löschen
+                                    </Button>
+                                    <Button
+                                      variant="outlined"
+                                      color="primary"
+                                      disabled={isSubmitting}
+                                      onClick={() => innerPush({ ...innerField, itemId: uuid() })}
+                                    >
+                                      Eintrag duplizieren
+                                    </Button>
+                                  </ButtonGroup>
+                                </Grid>
+                                <Grid item>
+                                  {typeof errors.gk_deckung_zuschlaege === 'string' ? (
+                                    <Typography color="error">{errors.gk_deckung_zuschlaege}</Typography>
+                                  ) : null}
+                                </Grid>
+                              </Grid>
+                            </FormSection>
                           ))}
                           <Button
                             variant="contained"

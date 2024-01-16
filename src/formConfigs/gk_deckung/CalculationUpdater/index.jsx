@@ -19,7 +19,7 @@ const StundensatzRechnerValueUpdater = () => {
           const H8 = (G8 || 0) - (item.E8 || 0);
 
           H12 += H8;
-  
+
           if (G8 !== item.G8) {
             setFieldValue(`gk_deckung_zuschlaege.${outerIndex}.fields.${innerIndex}.G8`, G8);
           }
