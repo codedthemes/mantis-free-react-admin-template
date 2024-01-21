@@ -4,7 +4,7 @@ import React from 'react';
 import { Grid, TextField, Divider, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
 // formik
-import { Field, useFormikContext } from 'formik';
+import { Field, FastField, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 
 const Annahmen = () => {
@@ -67,7 +67,20 @@ const Annahmen = () => {
             sx={{ mb: 2 }}
           />
         </Grid>
-        <Grid item xs={12} sm={6}></Grid>
+        <Grid item xs={12} sm={6}>
+          <Field
+            component={TextField}
+            id="annahmen_allgemein_planungsverantwortlicher"
+            name="annahmen_allgemein_planungsverantwortlicher"
+            label="Planungsverantwortlicher"
+            value={values.annahmen_allgemein_planungsverantwortlicher}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={touched.annahmen_allgemein_planungsverantwortlicher && Boolean(errors.annahmen_allgemein_planungsverantwortlicher)}
+            helperText={touched.annahmen_allgemein_planungsverantwortlicher && errors.annahmen_allgemein_planungsverantwortlicher}
+            sx={{ mb: 2 }}
+          />
+        </Grid>
         <Grid item xs={12} sm={6}>
           <Field
             component={TextField}
@@ -81,6 +94,9 @@ const Annahmen = () => {
             helperText={touched.annahmen_allgemein_unternehmensstrasse && errors.annahmen_allgemein_unternehmensstrasse}
             sx={{ mb: 2 }}
           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          &nbsp;
         </Grid>
         <Grid item xs={12} sm={6}>
           <Field
@@ -97,20 +113,34 @@ const Annahmen = () => {
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            id="annahmen_allgemein_planungsverantwortlicher"
-            name="annahmen_allgemein_planungsverantwortlicher"
-            label="Planungsverantwortlicher"
-            value={values.annahmen_allgemein_planungsverantwortlicher}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.annahmen_allgemein_planungsverantwortlicher && Boolean(errors.annahmen_allgemein_planungsverantwortlicher)}
-            helperText={touched.annahmen_allgemein_planungsverantwortlicher && errors.annahmen_allgemein_planungsverantwortlicher}
-            sx={{ mb: 2 }}
-          />
+          <FastField name="annahmen_allgemein_unternehmensBundesland">
+            {({ field, meta }) => (
+              <FormControl fullWidth>
+                <InputLabel id="annahmen_allgemein_unternehmensBundesland-label">Bundesland</InputLabel>
+                <Select defaultValue={'NATIONAL'} {...field} {...meta} labelId="annahmen_allgemein_unternehmensBundesland-label">
+                  <MenuItem value={'NATIONAL'}>Bitte wählen</MenuItem>
+                  <MenuItem value={'BW'}>Baden-Württemberg</MenuItem>
+                  <MenuItem value={'BY'}>Bayern</MenuItem>
+                  <MenuItem value={'BE'}>Berlin</MenuItem>
+                  <MenuItem value={'BB'}>Brandenburg</MenuItem>
+                  <MenuItem value={'HB'}>Bremen</MenuItem>
+                  <MenuItem value={'HH'}>Hamburg</MenuItem>
+                  <MenuItem value={'HE'}>Hessen</MenuItem>
+                  <MenuItem value={'MV'}>Mecklenburg-Vorpommern</MenuItem>
+                  <MenuItem value={'NI'}>Niedersachsen</MenuItem>
+                  <MenuItem value={'NW'}>Nordrhei-Westfalen</MenuItem>
+                  <MenuItem value={'RP'}>Rheinland-Pfalz</MenuItem>
+                  <MenuItem value={'SL'}>Saarland</MenuItem>
+                  <MenuItem value={'SN'}>Sachsen</MenuItem>
+                  <MenuItem value={'ST'}>Sachsen-Anhalt</MenuItem>
+                  <MenuItem value={'SH'}>Schleswig-Holstein</MenuItem>
+                  <MenuItem value={'TH'}>Thüringen</MenuItem>
+                </Select>
+              </FormControl>
+            )}
+          </FastField>
         </Grid>
-      </Grid>
+        </Grid>
     </FormSection>
   );
 };

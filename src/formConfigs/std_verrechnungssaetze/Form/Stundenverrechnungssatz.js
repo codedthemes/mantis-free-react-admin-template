@@ -1,5 +1,5 @@
 import { FastField, Field, useFormikContext } from 'formik';
-import { Grid, TextField, Box, Select, MenuItem, Typography, FormControl, InputLabel } from '@mui/material';
+import { Grid, TextField, Box, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import FormSection from 'components/formComponents/FormSection/index';
 import formFloat from 'utils/formUtils/formFloat';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';

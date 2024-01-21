@@ -1,10 +1,10 @@
 import React from 'react';
 
 // material-ui
-import { Typography, Grid, TextField, Divider } from '@mui/material';
+import { Typography, Grid, TextField, Divider, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 
 // formik
-import { Field, useFormikContext } from 'formik';
+import { Field, FastField, useFormikContext } from 'formik';
 import FormSection from 'components/formComponents/FormSection/index';
 import ReadOnlyBox from 'components/formComponents/ReadOnlyBox/index';
 import formFloat from 'utils/formUtils/formFloat';
@@ -38,26 +38,32 @@ const Produktivstunden = () => {
             sx={{ mb: 2 }}
           />
         </Grid>
+        <Grid item xs={12} sm={12}>
+          <FastField name="annahmen_G17_days">
+            {({ field, meta }) => (
+              <FormControl fullWidth>
+                <InputLabel id="annahmen_G17_days-label">Wochenarbeitstage</InputLabel>
+                <Select multiple defaultValue={[1, 2, 3, 4, 5]} {...field} {...meta} labelId="annahmen_G17_days-label">
+                  <MenuItem value={1}>Montag</MenuItem>
+                  <MenuItem value={2}>Dienstag</MenuItem>
+                  <MenuItem value={3}>Mittwoch</MenuItem>
+                  <MenuItem value={4}>Donnerstag</MenuItem>
+                  <MenuItem value={5}>Freitag</MenuItem>
+                  <MenuItem value={6}>Samstag</MenuItem>
+                  <MenuItem value={0}>Sonntag</MenuItem>
+                </Select>
+              </FormControl>
+            )}
+          </FastField>
+        </Grid>
         <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            id="annahmen_G17"
-            name="annahmen_G17"
-            label="Wochenarbeitstage (in Tagen)"
-            type="number"
-            onWheel={(event) => event.target.blur()}
-            min="0"
-            max="7"
-            value={values.annahmen_G17}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.annahmen_G17 && Boolean(errors.annahmen_G17)}
-            helperText={touched.annahmen_G17 && errors.annahmen_G17}
-            sx={{ mb: 2 }}
-          />
+          &nbsp;
         </Grid>
         <Grid item xs={12}>
-          <ReadOnlyBox>
+          <Typography variant="h3">Ermittlung der Anwesenheitszeit</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <ReadOnlyBox title={`Jahresarbeitszeit gesamt (${values.annahmen_G23 || 0} Tage)`}>
             <Grid container spacing={{ xs: 2, md: 4 }}>
               <Grid item xs={12} md={6}>
                 <Field
@@ -73,18 +79,19 @@ const Produktivstunden = () => {
                   sx={{ mb: 2 }}
                 />
               </Grid>
-            </Grid>
-          </ReadOnlyBox>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          &nbsp;
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h3">Ermittlung der Anwesenheitszeit</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <ReadOnlyBox title={'Jahresarbeitszeit gesamt'} alwaysOpen>
-            <Grid container spacing={{ xs: 2, md: 4 }}>
+              <Grid item xs={12} sm={6}>
+                <Field
+                  component={TextField}
+                  InputProps={{
+                    readOnly: true
+                  }}
+                  id="annahmen_G25"
+                  name="annahmen_G25"
+                  label="Feiertage die auf Arbeitstage fallen"
+                  value={values.annahmen_G25}
+                  sx={{ mb: 2 }}
+                />
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <Field
                   component={TextField}
@@ -98,9 +105,6 @@ const Produktivstunden = () => {
                   type="number"
                   sx={{ mb: 2 }}
                 />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                &nbsp;
               </Grid>
               <Grid item xs={12} md={6}>
                 <Field
@@ -134,27 +138,6 @@ const Produktivstunden = () => {
           </ReadOnlyBox>
         </Grid>
         <Grid item xs={12} sm={12}>
-          &nbsp;
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Field
-            component={TextField}
-            id="annahmen_G25"
-            name="annahmen_G25"
-            label="Feiertage die auf Arbeitstage fallen"
-            value={values.annahmen_G25}
-            type="number"
-            onWheel={(event) => event.target.blur()}
-            min="0"
-            max="365"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.annahmen_G25 && Boolean(errors.annahmen_G25)}
-            helperText={touched.annahmen_G25 && errors.annahmen_G25}
-            sx={{ mb: 2 }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
           &nbsp;
         </Grid>
         <Grid item xs={12} sm={6}>

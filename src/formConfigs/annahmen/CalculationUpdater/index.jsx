@@ -1,8 +1,29 @@
 import React, { useEffect } from 'react';
 import { useFormikContext } from 'formik';
+import useGetFeiertage from 'hooks/useGetFeiertage';
 
 const StundensatzRechnerValueUpdater = () => {
   const { values = {}, setFieldValue } = useFormikContext();
+  const { feiertageWochentage } = useGetFeiertage(
+    values.annahmen_allgemein_unternehmensBundesland,
+    values.annahmen_allgemein_planjahr,
+    values.annahmen_G17_days || undefined
+  );
+
+  // Wochenarbeitstage
+  useEffect(() => {
+    const arbeitsTageCount = values.annahmen_G17_days ? values.annahmen_G17_days.length : 5;
+    if (arbeitsTageCount !== values.annahmen_G17) {
+      setFieldValue('annahmen_G17', arbeitsTageCount);
+    }
+  }, [values.annahmen_G17_days, values.annahmen_G17, setFieldValue]);
+
+  // Feiertage
+  useEffect(() => {
+    if (feiertageWochentage > 0) {
+      setFieldValue('annahmen_G25', feiertageWochentage);
+    }
+  }, [feiertageWochentage, setFieldValue]);
 
   // Produktivstunden
   useEffect(() => {
@@ -18,7 +39,7 @@ const StundensatzRechnerValueUpdater = () => {
 
       while (date.getFullYear() === year) {
         const dayOfWeek = date.getDay();
-        if (dayOfWeek === 0 || dayOfWeek === 6) {
+        if (!(values.annahmen_G17_days || [1, 2, 3, 4, 5]).includes(dayOfWeek)) {
           // 0 steht für Sonntag, 6 für Samstag
           count++;
         }
@@ -36,7 +57,7 @@ const StundensatzRechnerValueUpdater = () => {
     } else if (values.annahmen_G22) {
       setFieldvalue('annahmen_G22', undefined);
     }
-  }, [setFieldValue, values.annahmen_allgemein_planjahr, values.annahmen_G22]);
+  }, [setFieldValue, values.annahmen_allgemein_planjahr, values.annahmen_G22, values.annahmen_G17_days]);
   useEffect(() => {
     if (
       values.annahmen_G16 !== undefined &&
@@ -64,7 +85,8 @@ const StundensatzRechnerValueUpdater = () => {
 
   // Produktivstunden 2
   useEffect(() => {
-    const summeNichtanwesenheitInTagen = (values.annahmen_G25 || 0) + (values.annahmen_G26 || 0) + (values.annahmen_G27 || 0) + (values.annahmen_G28 || 0) || 0;
+    const summeNichtanwesenheitInTagen =
+      (values.annahmen_G25 || 0) + (values.annahmen_G26 || 0) + (values.annahmen_G27 || 0) + (values.annahmen_G28 || 0) || 0;
 
     const summeNichtanwesenheitInStunden = summeNichtanwesenheitInTagen * (values.annahmen_G18 || 0) || 0;
 
