@@ -71,16 +71,27 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 - [Author](#author)
 - [Issues?](#issues)
 - [License](#license)
-- [More products](#more-free-react-material-admin-templates)
+- [More Free React Templates](#more-free-react-material-admin-dashboard-templates)
+- [More Pro React Templates](#more-premium-react-material-admin-dashboard-templates)
 - [Follow us](#follow-us)
 
-## Getting started
+## Getting Started
 
-Clone from GitHub
+1. Clone from Github
 
 ```
 git clone https://github.com/codedthemes/mantis-free-react-admin-template.git
+```
+
+2. Install packages
+
+```
 yarn
+```
+
+3. Run project
+
+```
 yarn start
 ```
 
@@ -111,12 +122,12 @@ Please generate a [GitHub issue](https://github.com/codedthemes/mantis-free-reac
 
 - Licensed under [MIT](https://github.com/codedthemes/datta-able-bootstrap-dashboard/blob/master/LICENSE)
 
-## Checkout free React Material admin dashboard templates
+## More Free React Material Admin Dashboard Templates
 
 - [Free Materially](https://codedthemes.com/item/materially-free-reactjs-admin-template/)
 - [Free Berry](https://mui.com/store/items/berry-react-material-admin-free/)
 
-## Checkout premium React Material admin dashboard templates
+## More premium React Material Admin Dashboard Templates
 
 - [Materially](https://codedthemes.com/item/materially-reactjs-admin-dashboard/)
 - [Berry](https://mui.com/store/items/berry-react-material-admin/)
