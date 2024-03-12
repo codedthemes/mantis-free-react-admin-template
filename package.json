@@ -2,7 +2,7 @@
   "name": "mantis-free-react-admin-template",
   "version": "1.2.0",
   "private": true,
-  "homepage": "https://mantisdashboard.io/free",
+  "homepage": "https://github.com/alexisbouletsis/mantis-free-react-admin-template.git",
   "dependencies": {
     "@ant-design/colors": "^7.0.2",
     "@ant-design/icons": "^5.2.6",
