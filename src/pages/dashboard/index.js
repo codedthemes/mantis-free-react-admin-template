@@ -3,7 +3,7 @@ import { useState } from 'react';
 // material-ui
 import {
   Avatar,
-  AvatarGroup,
+  // AvatarGroup,
   Box,
   Button,
   Grid,
@@ -29,10 +29,10 @@ import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 
 // assets
 import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-import avatar1 from 'assets/images/users/avatar-1.png';
-import avatar2 from 'assets/images/users/avatar-2.png';
-import avatar3 from 'assets/images/users/avatar-3.png';
-import avatar4 from 'assets/images/users/avatar-4.png';
+// import avatar1 from 'assets/images/users/avatar-1.png';
+// import avatar2 from 'assets/images/users/avatar-2.png';
+// import avatar3 from 'assets/images/users/avatar-3.png';
+// import avatar4 from 'assets/images/users/avatar-4.png';
 
 // avatar style
 const avatarSX = {
@@ -80,16 +80,16 @@ const DashboardDefault = () => {
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
+        <AnalyticEcommerce title="Average Transaction Value" count="3,2 €"/>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Users" count="78,250" percentage={70.5} extra="8,900" />
+        <AnalyticEcommerce title="New members" count="53" />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Order" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
+        <AnalyticEcommerce title="Total Orders" count="16,000"   />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Sales" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" />
+        <AnalyticEcommerce title="Revenue" count="48,000 €" />
       </Grid>
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
@@ -98,7 +98,7 @@ const DashboardDefault = () => {
       <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            <Typography variant="h5">Unique Visitor</Typography>
+            <Typography variant="h5">Beverages and Foods</Typography>
           </Grid>
           <Grid item>
             <Stack direction="row" alignItems="center" spacing={0}>
@@ -140,7 +140,7 @@ const DashboardDefault = () => {
               <Typography variant="h6" color="textSecondary">
                 This Week Statistics
               </Typography>
-              <Typography variant="h3">$7,650</Typography>
+              <Typography variant="h3">10,500 €</Typography>
             </Stack>
           </Box>
           <MonthlyBarChart />
@@ -249,7 +249,7 @@ const DashboardDefault = () => {
                   <GiftOutlined />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary={<Typography variant="subtitle1">Order #002434</Typography>} secondary="Today, 2:00 AM" />
+              <ListItemText primary={<Typography variant="subtitle1">Order #13286564</Typography>} secondary="Today, 2:00 AM" />
               <ListItemSecondaryAction>
                 <Stack alignItems="flex-end">
                   <Typography variant="subtitle1" noWrap>
@@ -309,7 +309,7 @@ const DashboardDefault = () => {
             </ListItemButton>
           </List>
         </MainCard>
-        <MainCard sx={{ mt: 2 }}>
+        {/* <MainCard sx={{ mt: 2 }}>
           <Stack spacing={3}>
             <Grid container justifyContent="space-between" alignItems="center">
               <Grid item>
@@ -335,7 +335,7 @@ const DashboardDefault = () => {
               Need Help?
             </Button>
           </Stack>
-        </MainCard>
+        </MainCard> */}
       </Grid>
     </Grid>
   );
