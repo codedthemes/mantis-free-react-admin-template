@@ -11,21 +11,21 @@ import { NumericFormat } from 'react-number-format';
 // project import
 import Dot from 'components/@extended/Dot';
 
-function createData(trackingNo, name, fat, carbs, protein) {
-  return { trackingNo, name, fat, carbs, protein };
+function createData(trackingNo, name,  carbs, protein) {
+  return { trackingNo, name,  carbs, protein };
 }
 
 const rows = [
-  createData(84564564, 'Camera Lens', 40, 2, 40570),
-  createData(98764564, 'Laptop', 300, 0, 180139),
-  createData(98756325, 'Mobile', 355, 1, 90989),
-  createData(98652366, 'Handset', 50, 1, 10239),
-  createData(13286564, 'Computer Accessories', 100, 1, 83348),
-  createData(86739658, 'TV', 99, 0, 410780),
-  createData(13256498, 'Keyboard', 125, 2, 70999),
-  createData(98753263, 'Mouse', 89, 2, 10570),
-  createData(98753275, 'Desktop', 185, 1, 98063),
-  createData(98753291, 'Chair', 100, 0, 14001)
+  createData(84564564, 'Espresso',  2, 5/2),
+  createData(98764564, 'Caffe Americano',  0, 2),
+  createData(98756325, 'Espresso',  1, 5/2),
+  createData(98652366, 'Latte',  1, 4),
+  createData(13286564, 'Mocha',  1, 4),
+  createData(86739658, 'Cappuccino',  0, 3),
+  createData(13256498, 'Tuna Sandwich',  2, 7/2),
+  createData(98753263, 'Turkey and Avocado',  2, 8),
+  createData(98753275, 'Cappuccino',  1, 3),
+  createData(98753291, 'Nitro Cold Brew',  0, 5)
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -68,12 +68,6 @@ const headCells = [
     align: 'left',
     disablePadding: true,
     label: 'Product Name'
-  },
-  {
-    id: 'fat',
-    align: 'right',
-    disablePadding: false,
-    label: 'Total Order'
   },
   {
     id: 'carbs',
@@ -125,15 +119,15 @@ const OrderStatus = ({ status }) => {
   switch (status) {
     case 0:
       color = 'warning';
-      title = 'Pending';
+      title = 'On the way';
       break;
     case 1:
       color = 'success';
-      title = 'Approved';
+      title = 'Delivered';
       break;
     case 2:
       color = 'error';
-      title = 'Rejected';
+      title = 'Canceled';
       break;
     default:
       color = 'primary';
@@ -206,12 +200,11 @@ export default function OrderTable() {
                     </Link>
                   </TableCell>
                   <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
                   <TableCell align="left">
                     <OrderStatus status={row.carbs} />
                   </TableCell>
                   <TableCell align="right">
-                    <NumericFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
+                    <NumericFormat value={row.protein} displayType="text" thousandSeparator suffix="€" />
                   </TableCell>
                 </TableRow>
               );

@@ -30,7 +30,7 @@ const columnChartOptions = {
     colors: ['transparent']
   },
   xaxis: {
-    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+    categories: ['Jan', 'Feb', 'Mar']
   },
   yaxis: {
     title: {
@@ -94,11 +94,11 @@ const SalesColumnChart = () => {
   const [series] = useState([
     {
       name: 'Net Profit',
-      data: [180, 90, 135, 114, 120, 145]
+      data: [180, 90, 135]
     },
     {
       name: 'Revenue',
-      data: [120, 45, 78, 150, 168, 99]
+      data: [120, 45, 78]
     }
   ]);
 
@@ -107,7 +107,7 @@ const SalesColumnChart = () => {
   useEffect(() => {
     setOptions((prevState) => ({
       ...prevState,
-      colors: [warning, primaryMain],
+      colors: ['#47A992', '#7A3E3E'],
       xaxis: {
         labels: {
           style: {
