@@ -12,14 +12,14 @@ import { RiseOutlined, FallOutlined } from '@ant-design/icons';
 // ==============================|| STATISTICS - ECOMMERCE CARD  ||============================== //
 
 const AnalyticEcommerce = ({ color, title, count, percentage, isLoss }) => (
-  <MainCard contentSX={{ p: 2.25 }}>
+  <MainCard contentSX={{ p: 2.25 }} sx={{ backgroundColor: '#D6C7AE' }}>
     <Stack spacing={0.5}>
-      <Typography variant="h6" color="textSecondary">
+      <Typography variant="h6" color="textSecondary" sx={{ color: '#000000' }}>
         {title}
       </Typography>
       <Grid container alignItems="center">
         <Grid item>
-          <Typography variant="h4" color="inherit">
+          <Typography variant="h4" color="inherit" sx={{ marginTop: '1rem' }}>
             {count}
           </Typography>
         </Grid>
@@ -43,7 +43,7 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss }) => (
       </Grid>
     </Stack>
     <Box sx={{ pt: 2.25 }}>
-      <Typography variant="caption" color="textSecondary">
+      <Typography variant="caption" color="textSecondary" sx={{ color: '#000000' }}>
         For Jan-Feb-Mar
         {/* <Typography component="span" variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
           {extra}

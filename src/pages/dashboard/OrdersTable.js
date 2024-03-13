@@ -11,21 +11,21 @@ import { NumericFormat } from 'react-number-format';
 // project import
 import Dot from 'components/@extended/Dot';
 
-function createData(trackingNo, name,  carbs, protein) {
-  return { trackingNo, name,  carbs, protein };
+function createData(trackingNo, itemPic, name, carbs, protein) {
+  return { trackingNo, itemPic, name, carbs, protein };
 }
 
 const rows = [
-  createData(84564564, 'Espresso',  2, 5/2),
-  createData(98764564, 'Caffe Americano',  0, 2),
-  createData(98756325, 'Espresso',  1, 5/2),
-  createData(98652366, 'Latte',  1, 4),
-  createData(13286564, 'Mocha',  1, 4),
-  createData(86739658, 'Cappuccino',  0, 3),
-  createData(13256498, 'Tuna Sandwich',  2, 7/2),
-  createData(98753263, 'Turkey and Avocado',  2, 8),
-  createData(98753275, 'Cappuccino',  1, 3),
-  createData(98753291, 'Nitro Cold Brew',  0, 5)
+  createData(84564564, "/images/esp.jpg", 'Espresso', 2, 5 / 2),
+  createData(98756325, "/images/esp.jpg", 'Espresso', 1, 5 / 2),
+  createData(98652366, "/images/cappucino.jpg", 'Cappuccino', 1, 3),
+  createData(13286564, "/images/mocha.jpg", 'Mocha', 1, 4),
+  createData(98764564, "/images/americano.jpg", 'Caffe Americano', 0, 2),
+  createData(86739658, "/images/cappucino.jpg", 'Cappuccino', 0, 3),
+  createData(13256498, "/images/chi_sal.jpg", 'Chicken salad', 2, 11 / 2),
+  createData(98753263, "/images/tur_avo.jpg", 'Turkey and Avocado', 2, 8),
+  createData(98753275, "/images/cappucino.jpg", 'Cappuccino', 1, 3),
+  createData(98753291, "/images/nitro_coffee.jpg", 'Nitro Cold Brew', 0, 5)
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -59,26 +59,31 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: 'trackingNo',
-    align: 'left',
+    align: 'center',
     disablePadding: false,
     label: 'Tracking No.'
   },
   {
+    id: 'itemPic',
+    align: 'center',
+    disablePadding: false,
+    label: 'Product Image'
+  },
+  {
     id: 'name',
-    align: 'left',
+    align: 'center',
     disablePadding: true,
     label: 'Product Name'
   },
   {
     id: 'carbs',
-    align: 'left',
+    align: 'center',
     disablePadding: false,
-
     label: 'Status'
   },
   {
     id: 'protein',
-    align: 'right',
+    align: 'center',
     disablePadding: false,
     label: 'Total Amount'
   }
@@ -194,16 +199,17 @@ export default function OrderTable() {
                   key={row.trackingNo}
                   selected={isItemSelected}
                 >
-                  <TableCell component="th" id={labelId} scope="row" align="left">
+                  <TableCell component="th" id={labelId} scope="row" align="center">
                     <Link color="secondary" component={RouterLink} to="">
                       {row.trackingNo}
                     </Link>
                   </TableCell>
-                  <TableCell align="left">{row.name}</TableCell>
-                  <TableCell align="left">
+                  <TableCell align="center"><img src={row.itemPic} alt="product" style={{ width: '100px', height: 'auto' }}></img></TableCell>
+                  <TableCell align="center">{row.name}</TableCell>
+                  <TableCell align="center">
                     <OrderStatus status={row.carbs} />
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     <NumericFormat value={row.protein} displayType="text" thousandSeparator suffix="€" />
                   </TableCell>
                 </TableRow>

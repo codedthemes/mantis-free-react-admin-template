@@ -80,7 +80,7 @@ const DashboardDefault = () => {
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Average Transaction Value" count="3,2 €." />
+        <AnalyticEcommerce title="Average Transaction Value" count="3,2 €" />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <AnalyticEcommerce title="New members" count="53" />
