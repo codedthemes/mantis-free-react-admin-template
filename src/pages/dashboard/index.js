@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 // material-ui
 import {
@@ -12,9 +14,9 @@ import {
   ListItemButton,
   ListItemSecondaryAction,
   ListItemText,
-  MenuItem,
+  // MenuItem,
   Stack,
-  TextField,
+  // TextField,
   Typography
 } from '@mui/material';
 
@@ -22,13 +24,13 @@ import {
 import OrdersTable from './OrdersTable';
 import IncomeAreaChart from './IncomeAreaChart';
 import MonthlyBarChart from './MonthlyBarChart';
-import ReportAreaChart from './ReportAreaChart';
+// import ReportAreaChart from './ReportAreaChart';
 import SalesColumnChart from './SalesColumnChart';
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 
 // assets
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import { GiftOutlined, MessageOutlined, SettingOutlined, EuroCircleFilled, ShoppingCartOutlined, AreaChartOutlined, UserOutlined } from '@ant-design/icons';
 // import avatar1 from 'assets/images/users/avatar-1.png';
 // import avatar2 from 'assets/images/users/avatar-2.png';
 // import avatar3 from 'assets/images/users/avatar-3.png';
@@ -52,25 +54,25 @@ const actionSX = {
 };
 
 // sales report status
-const status = [
-  {
-    value: 'today',
-    label: 'Today'
-  },
-  {
-    value: 'month',
-    label: 'This Month'
-  },
-  {
-    value: 'year',
-    label: 'This Year'
-  }
-];
+// const status = [
+//   {
+//     value: 'today',
+//     label: 'Today'
+//   },
+//   {
+//     value: 'month',
+//     label: 'This Month'
+//   },
+//   {
+//     value: 'year',
+//     label: 'This Year'
+//   }
+// ];
 
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const DashboardDefault = () => {
-  const [value, setValue] = useState('today');
+  // const [value, setValue] = useState('today');
   const [slot, setSlot] = useState('week');
 
   return (
@@ -79,17 +81,17 @@ const DashboardDefault = () => {
       <Grid item xs={12} sx={{ mb: -2.25 }}>
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Average Transaction Value" count="3,2 €" />
+      <Grid item xs={12} sm={6} md={4} lg={3} >
+        <AnalyticEcommerce title="Average Transaction Value  " count="3,2 €" icon={<EuroCircleFilled />} />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="New members" count="53" />
+        <AnalyticEcommerce title="New members" count="53" icon={<UserOutlined />} />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Orders" count="16,000" />
+        <AnalyticEcommerce title="Total Orders" count="16,000" icon={<ShoppingCartOutlined />} />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Revenue" count="48,000 €" />
+        <AnalyticEcommerce title="Revenue" count="48,000 €" icon={<AreaChartOutlined />} />
       </Grid>
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
@@ -159,7 +161,7 @@ const DashboardDefault = () => {
           <OrdersTable />
         </MainCard>
       </Grid>
-      <Grid item xs={12} md={5} lg={4}>
+      {/* <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Analytics Report</Typography>
@@ -183,7 +185,7 @@ const DashboardDefault = () => {
           </List>
           <ReportAreaChart />
         </MainCard>
-      </Grid>
+      </Grid> */}
 
       {/* row 4 */}
       <Grid item xs={12} md={7} lg={8}>
@@ -192,7 +194,7 @@ const DashboardDefault = () => {
             <Typography variant="h5">Sales Report</Typography>
           </Grid>
           <Grid item>
-            <TextField
+            {/* <TextField
               id="standard-select-currency"
               size="small"
               select
@@ -205,7 +207,7 @@ const DashboardDefault = () => {
                   {option.label}
                 </MenuItem>
               ))}
-            </TextField>
+            </TextField> */}
           </Grid>
         </Grid>
         <MainCard sx={{ mt: 1.75 }}>
