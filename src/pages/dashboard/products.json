@@ -1,22 +1,26 @@
 {
   "products": [
     {
-      "productID": 8,
-      "productPic": "/images/esp.jpg",
       "productName": "Espresso",
-      "productCost": 2.5
+      "productCategory": "Coffee",
+      "productCost": 2.5,
+      "productQuantity": 100,
+      "productDate": "15-3-2024"
+
     },
     {
-      "productID": 4,
-      "productPic": "/images/cappucino.jpg",
       "productName": "Cappuccino",
-      "productCost": 3
+      "productCategory": "Coffee",
+      "productCost": 3,
+      "productQuantity": 100,
+      "productDate": "15-3-2024"
     },
     {
-      "productID": 1,
-      "productPic": "/images/mocha.jpg",
       "productName": "Mocha",
-      "productCost": 4
+      "productCategory": "Coffee",
+      "productCost": 4,
+      "productQuantity": 100,
+      "productDate": "15-3-2024"
     }
   ]
 }
