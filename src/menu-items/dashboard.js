@@ -1,9 +1,11 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
+import { DashboardOutlined, MenuOutlined, PlusSquareOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
-  DashboardOutlined
+  DashboardOutlined,
+  MenuOutlined,
+  PlusSquareOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -19,6 +21,22 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/default',
       icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'products',
+      title: 'Our Products',
+      type: 'item',
+      url: '/ourproducts',
+      icon: icons.MenuOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'addProds',
+      title: 'Add Products',
+      type: 'item',
+      url: '/addproducts',
+      icon: icons.PlusSquareOutlined,
       breadcrumbs: false
     }
   ]

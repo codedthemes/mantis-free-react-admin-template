@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "productID": 8,
+      "productPic": "/images/esp.jpg",
+      "productName": "Espresso",
+      "productCost": 2.5
+    },
+    {
+      "productID": 4,
+      "productPic": "/images/cappucino.jpg",
+      "productName": "Cappuccino",
+      "productCost": 3
+    },
+    {
+      "productID": 1,
+      "productPic": "/images/mocha.jpg",
+      "productName": "Mocha",
+      "productCost": 4
+    }
+  ]
+}

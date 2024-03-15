@@ -15,7 +15,7 @@ const Navigation = () => {
       default:
         return (
           <Typography key={item.id} variant="h6" color="error" align="center">
-            Fix - Navigation Group
+            {/* Fix - Navigation  */}
           </Typography>
         );
     }
