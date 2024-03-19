@@ -1,27 +1,25 @@
 {
   "products": [
     {
-      "productName": "Espresso",
-      "productCategory": "Coffee",
-      "productCost": 2.5,
-      "productQuantity": 100,
-      "productDate": "3-15-2024"
-
+      "name": "Espresso",
+      "category": "Coffee",
+      "cost": 2.5,
+      "quantity": 100,
+      "orderDate": "2024-15-03"
     },
     {
-      "productName": "Cappuccino",
-      "productCategory": "Coffee",
-      "productCost": 3,
-      "productQuantity": 100,
-      "productDate": "3-15-2024"
-
+      "name": "Cappuccino",
+      "category": "Coffee",
+      "cost": 3,
+      "quantity": 100,
+      "orderDate": "2024-15-03"
     },
     {
-      "productName": "Mocha",
-      "productCategory": "Coffee",
-      "productCost": 4,
-      "productQuantity": 100,
-      "productDate": "3-15-2024"
+      "name": "Mocha",
+      "category": "Coffee",
+      "cost": 4,
+      "quantity": 100,
+      "orderDate": "2024-15-03"
     }
   ]
 }
