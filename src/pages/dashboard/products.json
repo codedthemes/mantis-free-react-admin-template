@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "id": 123,
       "name": "Espresso",
       "category": "Coffee",
       "cost": 2.5,
@@ -8,6 +9,7 @@
       "orderDate": "2024-15-03"
     },
     {
+      "id": 125,
       "name": "Cappuccino",
       "category": "Coffee",
       "cost": 3,
@@ -15,11 +17,20 @@
       "orderDate": "2024-15-03"
     },
     {
+      "id": 124,
       "name": "Mocha",
       "category": "Coffee",
       "cost": 4,
       "quantity": 100,
       "orderDate": "2024-15-03"
+    },
+    {
+      "id": "08e7",
+      "name": "Freddo Espresso",
+      "category": "Coffee",
+      "cost": "10",
+      "quantity": "2",
+      "orderDate": "2024-03-06"
     }
   ]
 }

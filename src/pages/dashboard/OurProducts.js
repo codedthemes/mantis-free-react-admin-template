@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import productsData from './products.json';
 import Axios from 'axios';
+import { DeleteOutlined } from '@ant-design/icons';
 
 // material-ui
 import { Box,  Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
@@ -102,6 +103,11 @@ export default function OurProducts() {
 
   const [products, setProducts] = useState(null);
   
+  const handleDelete = (id) => {
+    const newProducts = products.filter(product => product.id !== id);
+    setProducts(newProducts);
+  }
+
   useEffect(() => {
     Axios.get("http://localhost:8000/products").then((res) => {
     setProducts(res.data);
@@ -158,6 +164,7 @@ export default function OurProducts() {
                     <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
                   </TableCell>
                   <TableCell align="center">{product.orderDate}</TableCell>
+                  <TableCell align="center"><button onClick={() => handleDelete(product.id)}><DeleteOutlined /></button></TableCell>
                   
                 </TableRow>
               );
