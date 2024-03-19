@@ -1,7 +1,7 @@
 // material-ui
 import { Box, FormControl, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
-import Axios from "axios";
+import axios from 'axios';
 
 
 const AddProducts = () => {
@@ -24,7 +24,7 @@ const AddProducts = () => {
       //   console.log(product);
       // })
 
-      Axios.post('http://localhost:8000/products', {name,category,cost,quantity,orderDate})
+      axios.post('http://localhost:8000/products', {name,category,cost,quantity,orderDate})
       .then(data => {
         console.log(data);
       }
