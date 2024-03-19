@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import productsData from './products.json';
-import axios from 'axios';
+import Axios from 'axios';
 
 // material-ui
 import { Box,  Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
@@ -103,7 +103,7 @@ export default function OurProducts() {
   const [products, setProducts] = useState(null);
   
   useEffect(() => {
-    axios.get("http://localhost:8000/products").then((res) => {
+    Axios.get("http://localhost:8000/products").then((res) => {
     setProducts(res.data);
     });
   },[]);
