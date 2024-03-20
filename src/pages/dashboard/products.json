@@ -6,23 +6,31 @@
       "category": "Coffee",
       "cost": 2.5,
       "quantity": 100,
-      "orderDate": "2024-15-03"
+      "orderDate": "2024-03-13"
     },
     {
       "id": 125,
       "name": "Cappuccino",
       "category": "Coffee",
       "cost": 3,
-      "quantity": 100,
-      "orderDate": "2024-15-03"
+      "quantity": 50,
+      "orderDate": "2021-03-03"
     },
     {
       "id": 124,
       "name": "Mocha",
       "category": "Coffee",
       "cost": 4,
-      "quantity": 100,
-      "orderDate": "2024-15-03"
+      "quantity": 180,
+      "orderDate": "2023-03-30"
+    },
+    {
+      "id": "54c2",
+      "name": "Croissant",
+      "category": "Bakery",
+      "cost": "1",
+      "quantity": "20",
+      "orderDate": "2018-06-20"
     }
   ]
 }

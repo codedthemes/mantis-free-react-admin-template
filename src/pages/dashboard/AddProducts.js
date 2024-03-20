@@ -10,7 +10,7 @@ const AddProducts = () => {
   const [cost ,setCost] = useState(''); 
   const [quantity ,setQuantity] = useState(''); 
   const [category ,setCategory] = useState('Coffee'); 
-  const [orderDate ,setOrderDate] = useState(''); 
+  const [orderDate ,setOrderDate] = useState('');
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -18,10 +18,9 @@ const AddProducts = () => {
       // fetch('http://localhost:8000/products', {
       //   method: 'POST',
       //   headers: {"Content-Type": "application/json"},
-      //   body: JSON.stringify(product)
+      //   body: JSON.stringify({name,category,cost,quantity,orderDate})
       // }).then(() => {
       //   console.log('new product added');
-      //   console.log(product);
       // })
 
       Axios.post('http://localhost:8000/products', {name,category,cost,quantity,orderDate})
@@ -35,7 +34,7 @@ const AddProducts = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }} onSubmit={handleSubmit}>
+      <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }} >
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '10vh'}}>
           <h1>Add new product</h1>
         </div>
