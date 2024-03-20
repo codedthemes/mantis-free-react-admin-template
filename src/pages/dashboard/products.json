@@ -23,14 +23,6 @@
       "cost": 4,
       "quantity": 100,
       "orderDate": "2024-15-03"
-    },
-    {
-      "id": "08e7",
-      "name": "Freddo Espresso",
-      "category": "Coffee",
-      "cost": "10",
-      "quantity": "2",
-      "orderDate": "2024-03-06"
     }
   ]
 }
