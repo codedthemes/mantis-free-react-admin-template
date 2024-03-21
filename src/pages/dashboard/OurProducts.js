@@ -1,13 +1,12 @@
 // import PropTypes from 'prop-types';
-import { useState ,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import productsData from './products.json';
-import Axios from 'axios';
 import { DeleteOutlined } from '@ant-design/icons';
 
 
 // material-ui
-import { Box,  Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 // third-party
 import { NumericFormat } from 'react-number-format';
@@ -17,21 +16,20 @@ import { NumericFormat } from 'react-number-format';
 
 
 
-function createData( id,name, cost,quantity,category,orderDate) {
-  return { id,name, cost ,quantity, category,orderDate};
+function createData(id, name, cost, quantity, category, orderDate) {
+  return { id, name, cost, quantity, category, orderDate };
 }
 
 
-let rows = productsData.products.map((product,index) =>  createData(
+let rows = productsData.products.map((product, index) => createData(
   index,
   product.name,
   product.cost,
   product.quantity,
   product.category,
   product.orderDate
-  )
+)
 );
-
 
 
 
@@ -141,7 +139,7 @@ export default function OurProducts() {
     }
   }, []);
 
-  
+
 
   // useEffect(() => {
   //   axios.get("http://localhost:8000/products")
@@ -153,7 +151,7 @@ export default function OurProducts() {
   //     //   product.category,
   //     //   product.orderDate
   //     // ))
-    
+
   //     // rows.sort((a, b) => {
   //     //   const dateA = new Date(a.orderDate).getTime();
   //     //   const dateB = new Date(b.orderDate).getTime();
@@ -177,7 +175,7 @@ export default function OurProducts() {
   // useEffect(() => {
   //   const data = JSON.parse(localStorage.getItem('product'));
   //   if (data !== null) setProducts(JSON.parse(data));    
-    
+
   // },[]);
 
   // useEffect(() => {
@@ -188,18 +186,8 @@ export default function OurProducts() {
 
   const handleDelete = (id) => {
 
-    Axios.delete(`http://localhost:8000/products/${id}`)
-      .then(res => {
-        console.log('Product deleted', res);
-
-        const newProducts = products.filter(product => product.id !== id);
-        setProducts(newProducts);
-        localStorage.setItem('products',JSON.stringify(newProducts));
-      })
-      .catch(err => {
-        console.error('Error deleting product:', err);
-      })
-    
+    const newProducts = products.filter(product => product.id !== id);
+    setProducts(newProducts);
   };
 
   // Sort the rows by the oldest date of order
@@ -224,13 +212,13 @@ export default function OurProducts() {
   //   }
   // }, [products]);
 
-  
 
-  
+
+
 
   return (
     <Box>
-      <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '10vh'}}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh' }}>
         <h1>Our Products </h1>
       </div>
       <TableContainer
@@ -257,7 +245,7 @@ export default function OurProducts() {
           <OrderTableHead />
           <TableBody>
             {sortedProducts.map((product, index) => {
-              
+
               return (
                 <TableRow
                   hover
@@ -278,7 +266,7 @@ export default function OurProducts() {
                   {/* <TableCell align="center">{product.orderDate.toLocaleDateString()}</TableCell> */}
                   <TableCell align="center">{product.orderDate}</TableCell>
                   <TableCell align="center"><button onClick={() => handleDelete(product.id)}><DeleteOutlined /></button></TableCell>
-                  
+
                 </TableRow>
               );
             })}
