@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 123,
+      "id": "dfg",
       "name": "Espresso",
       "category": "Coffee",
       "cost": 2.5,
@@ -9,7 +9,7 @@
       "orderDate": "2024-03-13"
     },
     {
-      "id": 125,
+      "id": "12jy5",
       "name": "Cappuccino",
       "category": "Coffee",
       "cost": 3,
@@ -17,7 +17,7 @@
       "orderDate": "2021-03-03"
     },
     {
-      "id": 124,
+      "id": "12wer4",
       "name": "Mocha",
       "category": "Coffee",
       "cost": 4,

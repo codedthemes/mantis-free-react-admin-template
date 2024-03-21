@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 // import { Link as RouterLink } from 'react-router-dom';
 import productsData from './products.json';
-// import axios from 'axios';
+import Axios from 'axios';
 import { DeleteOutlined } from '@ant-design/icons';
 
 
@@ -15,31 +15,25 @@ import { NumericFormat } from 'react-number-format';
 // project import
 // import Dot from 'components/@extended/Dot';
 
+
+
 function createData( id,name, cost,quantity,category,orderDate) {
   return { id,name, cost ,quantity, category,orderDate};
 }
 
 
 let rows = productsData.products.map((product,index) =>  createData(
-    index,
-    product.name,
-    product.cost,
-    product.quantity,
-    product.category,
-    product.orderDate
-    // new Date(product.orderDate)
+  index,
+  product.name,
+  product.cost,
+  product.quantity,
+  product.category,
+  product.orderDate
   )
 );
 
-// Sort the rows by the oldest date of order
-// rows.sort((a, b) => {
-//   const dateA = new Date(a.orderDate).getTime();
-//   const dateB = new Date(b.orderDate).getTime();
-//   return dateA - dateB;
-// });
 
-rows.sort((a,b) => a.cost - b.cost);
-console.log(rows);
+
 
 
 // ==============================|| PRODUCTS TABLE - HEADER CELL ||============================== //
@@ -114,6 +108,39 @@ export default function OurProducts() {
 
   const [products, setProducts] = useState(rows);
 
+
+  // let uniqueId = 0;
+
+  // const createData = (name, cost, quantity, category, orderDate) => ({
+  //   id: uniqueId++,
+  //   name,
+  //   cost,
+  //   quantity,
+  //   category,
+  //   orderDate
+  // });
+
+  useEffect(() => {
+    localStorage.clear();
+
+    // Load products from local storage on component mount
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+      setProducts(JSON.parse(storedProducts));
+    } else {
+      const initialProducts = productsData.products.map(product => createData(
+        product.id,
+        product.name,
+        product.cost,
+        product.quantity,
+        product.category,
+        product.orderDate
+      ));
+      localStorage.setItem('products', JSON.stringify(initialProducts));
+      setProducts(initialProducts);
+    }
+  }, []);
+
   
 
   // useEffect(() => {
@@ -160,11 +187,27 @@ export default function OurProducts() {
   // },[products]);
 
   const handleDelete = (id) => {
-    const newProducts = products.filter(product => product.id !== id);
-    setProducts(newProducts);
+
+    Axios.delete(`http://localhost:8000/products/${id}`)
+      .then(res => {
+        console.log('Product deleted', res);
+
+        const newProducts = products.filter(product => product.id !== id);
+        setProducts(newProducts);
+        localStorage.setItem('products',JSON.stringify(newProducts));
+      })
+      .catch(err => {
+        console.error('Error deleting product:', err);
+      })
+    
   };
 
-  
+  // Sort the rows by the oldest date of order
+  const sortedProducts = [...products].sort((a, b) => {
+    const dateA = new Date(a.orderDate).getTime();
+    const dateB = new Date(b.orderDate).getTime();
+    return dateA - dateB;
+  });
 
   // // UseEffect to sort the products when the 'products' state changes
   // useEffect(() => {
@@ -213,7 +256,7 @@ export default function OurProducts() {
         >
           <OrderTableHead />
           <TableBody>
-            {products && products.map((product, index) => {
+            {sortedProducts.map((product, index) => {
               
               return (
                 <TableRow

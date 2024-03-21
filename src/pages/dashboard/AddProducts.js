@@ -11,8 +11,9 @@ const AddProducts = () => {
   const [quantity ,setQuantity] = useState(''); 
   const [category ,setCategory] = useState('Coffee'); 
   const [orderDate ,setOrderDate] = useState('');
+  const [products ,setProducts] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
 
       // fetch('http://localhost:8000/products', {
@@ -22,14 +23,20 @@ const AddProducts = () => {
       // }).then(() => {
       //   console.log('new product added');
       // })
+      try{
+        const res = await Axios.post('http://localhost:8000/products', {name,category,cost,quantity,orderDate});
+        console.log('New product added: ',res.data);
 
-      Axios.post('http://localhost:8000/products', {name,category,cost,quantity,orderDate})
-      .then(data => {
-        console.log(data);
+        setProducts([...products, res.data]);
+
+        // Update local storage with the updated product list
+        localStorage.setItem('products', JSON.stringify([...products, response.data]));
+        window.location.reload();
+      }catch(err) {
+        console.log('Error adding new product', err);  
       }
-      )
-      .catch(err => console.log(err))
-  }
+      
+  };
   
 
   return (
