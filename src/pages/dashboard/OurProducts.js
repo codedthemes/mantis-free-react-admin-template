@@ -112,7 +112,7 @@ const OurProducts = () => {
 
   return (
     <Box>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh', backgroundColor: "#D6C7AE" }}>
         <h1>Our Products </h1>
       </div>
       <TableContainer
