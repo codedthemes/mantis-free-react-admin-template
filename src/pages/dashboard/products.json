@@ -1,36 +1,41 @@
-{
-  "products": [
-    {
-      "id": "dfg",
-      "name": "Espresso",
-      "category": "Coffee",
-      "cost": 2.5,
-      "quantity": 100,
-      "orderDate": "2024-03-13"
-    },
-    {
-      "id": "12jy5",
-      "name": "Cappuccino",
-      "category": "Coffee",
-      "cost": 3,
-      "quantity": 50,
-      "orderDate": "2021-03-03"
-    },
-    {
-      "id": "12wer4",
-      "name": "Mocha",
-      "category": "Coffee",
-      "cost": 4,
-      "quantity": 180,
-      "orderDate": "2023-03-30"
-    },
-    {
-      "id": "54c2",
-      "name": "Croissant",
-      "category": "Bakery",
-      "cost": "1",
-      "quantity": "20",
-      "orderDate": "2018-06-20"
-    }
-  ]
-}
+[
+  {
+    "id": "dfg",
+    "name": "Espresso",
+    "category": "Coffee",
+    "cost": "2.5",
+    "quantity": "100",
+    "orderDate": "2024-03-13"
+  },
+  {
+    "id": "12jy5",
+    "name": "Cappuccino",
+    "category": "Coffee",
+    "cost": "3",
+    "quantity": "50",
+    "orderDate": "2021-03-03"
+  },
+  {
+    "id": "12wer4",
+    "name": "Mocha",
+    "category": "Coffee",
+    "cost": "4",
+    "quantity": "180",
+    "orderDate": "2023-03-30"
+  },
+  {
+    "id": "54c2",
+    "name": "Croissant",
+    "category": "Bakery",
+    "cost": "1",
+    "quantity": "20",
+    "orderDate": "2018-06-20"
+  },
+  {
+    "name": "das",
+    "cost": "1",
+    "quantity": "1",
+    "category": "Coffee",
+    "orderDate": "2024-03-08"
+  }
+]

@@ -1,8 +1,7 @@
-// import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-// import { Link as RouterLink } from 'react-router-dom';
-import productsData from './products.json';
+import { useEffect, useState } from 'react';
 import { DeleteOutlined } from '@ant-design/icons';
+import { getDocs, deleteDoc, doc } from 'firebase/firestore';
+import getColRef from './../../databaseHook';
 
 
 // material-ui
@@ -10,28 +9,6 @@ import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow }
 
 // third-party
 import { NumericFormat } from 'react-number-format';
-
-// project import
-// import Dot from 'components/@extended/Dot';
-
-
-
-function createData(id, name, cost, quantity, category, orderDate) {
-  return { id, name, cost, quantity, category, orderDate };
-}
-
-
-let rows = productsData.products.map((product, index) => createData(
-  index,
-  product.name,
-  product.cost,
-  product.quantity,
-  product.category,
-  product.orderDate
-)
-);
-
-
 
 
 // ==============================|| PRODUCTS TABLE - HEADER CELL ||============================== //
@@ -75,6 +52,7 @@ const headCells = [
   }
 ];
 
+
 // ==============================|| PRODUCTS TABLE - HEADER ||============================== //
 
 function OrderTableHead() {
@@ -102,116 +80,32 @@ function OrderTableHead() {
 
 // ==============================|| PRODUCTS TABLE ||============================== //
 
-export default function OurProducts() {
+const OurProducts = () => {
 
-  const [products, setProducts] = useState(rows);
-
-
-  // let uniqueId = 0;
-
-  // const createData = (name, cost, quantity, category, orderDate) => ({
-  //   id: uniqueId++,
-  //   name,
-  //   cost,
-  //   quantity,
-  //   category,
-  //   orderDate
-  // });
+  const [productsList, setProductsList] = useState([]);
+  let colRef = getColRef();
 
   useEffect(() => {
-    localStorage.clear();
+    const getProduct = async () => {
+      const data = await getDocs(colRef);
+      setProductsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
 
-    // Load products from local storage on component mount
-    const storedProducts = localStorage.getItem('products');
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
-    } else {
-      const initialProducts = productsData.products.map(product => createData(
-        product.id,
-        product.name,
-        product.cost,
-        product.quantity,
-        product.category,
-        product.orderDate
-      ));
-      localStorage.setItem('products', JSON.stringify(initialProducts));
-      setProducts(initialProducts);
-    }
-  }, []);
+    getProduct();
+  });
 
-
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:8000/products")
-  //   .then((res) => {
-  //     // const rows = res.productsData.products.map((product) =>  createData(
-  //     //   product.name,
-  //     //   product.cost,
-  //     //   product.quantity,
-  //     //   product.category,
-  //     //   product.orderDate
-  //     // ))
-
-  //     // rows.sort((a, b) => {
-  //     //   const dateA = new Date(a.orderDate).getTime();
-  //     //   const dateB = new Date(b.orderDate).getTime();
-  //     //   return dateA - dateB;
-  //     // });
-  //     setProducts(res.data);
-  //     // setProducts(rows);
-
-  //   });
-  // },[]);
-
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem('myData');
-
-  //   if (storedData) {
-  //     setData(JSON.parse(storedData));
-  //   }
-  // }, []);
-
-
-  // useEffect(() => {
-  //   const data = JSON.parse(localStorage.getItem('product'));
-  //   if (data !== null) setProducts(JSON.parse(data));    
-
-  // },[]);
-
-  // useEffect(() => {
-  //   if(products){
-  //     window.localStorage.setItem('product',JSON.stringify(products));
-  //   }
-  // },[products]);
-
-  const handleDelete = (id) => {
-
-    const newProducts = products.filter(product => product.id !== id);
-    setProducts(newProducts);
+  const deleteProduct = async (id) => {
+    const productDoc = doc(colRef, id);
+    await deleteDoc(productDoc);
   };
 
+
   // Sort the rows by the oldest date of order
-  const sortedProducts = [...products].sort((a, b) => {
+  const sortedProducts = [...productsList].sort((a, b) => {
     const dateA = new Date(a.orderDate).getTime();
     const dateB = new Date(b.orderDate).getTime();
     return dateA - dateB;
   });
-
-  // // UseEffect to sort the products when the 'products' state changes
-  // useEffect(() => {
-  //   if (products) {
-  //     const sortedProducts = [...products].sort((a, b) => {
-  //       const dateA = new Date(a.orderDate).getTime();
-  //       const dateB = new Date(b.orderDate).getTime();
-  //       return dateA - dateB;
-  //     });
-  //     // Update the products state with the sorted array
-  //     setProducts(sortedProducts);
-  //     console.log(sortedProducts);
-
-  //   }
-  // }, [products]);
-
 
 
 
@@ -253,9 +147,9 @@ export default function OurProducts() {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   tabIndex={-1}
                   key={index}
-                  products={products}
+                  products={product}
                 >
-                  <TableCell align="center">{product.name}</TableCell>
+                  <TableCell align="center">{product.name || location.state?.name}</TableCell>
                   <TableCell align="center">{product.category}</TableCell>
                   <TableCell align="center">
                     <NumericFormat value={product.cost} displayType="text" thousandSeparator suffix="€" />
@@ -263,9 +157,8 @@ export default function OurProducts() {
                   <TableCell align="center">
                     <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
                   </TableCell>
-                  {/* <TableCell align="center">{product.orderDate.toLocaleDateString()}</TableCell> */}
                   <TableCell align="center">{product.orderDate}</TableCell>
-                  <TableCell align="center"><button onClick={() => handleDelete(product.id)}><DeleteOutlined /></button></TableCell>
+                  <TableCell align="center"><button onClick={() => deleteProduct(product.id)}><DeleteOutlined /></button></TableCell>
 
                 </TableRow>
               );
@@ -275,4 +168,8 @@ export default function OurProducts() {
       </TableContainer>
     </Box>
   );
-}
+};
+
+export default OurProducts;
+
+

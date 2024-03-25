@@ -1,128 +1,125 @@
 // material-ui
 import { Box, FormControl, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
-import Axios from 'axios';
+import getColRef from './../../databaseHook';
+import {
+  addDoc,
+} from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+
+let colRef = getColRef();
 
 
 const AddProducts = () => {
+  const [name, setName] = useState('');
+  const [cost, setCost] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [category, setCategory] = useState('Coffee');
+  const [orderDate, setOrderDate] = useState('');
+  let navigate = useNavigate();
 
-  const [name ,setName] = useState(''); 
-  const [cost ,setCost] = useState(''); 
-  const [quantity ,setQuantity] = useState(''); 
-  const [category ,setCategory] = useState('Coffee'); 
-  const [orderDate ,setOrderDate] = useState('');
-  const [products ,setProducts] = useState([]);
+  const addProduct = (e) => {
 
-  const handleSubmit = async (e) => {
-      e.preventDefault();
+    e.preventDefault();
+    addDoc(colRef, {
+      name: name,
+      cost: cost,
+      quantity: quantity,
+      category: category,
+      orderDate: orderDate,
+    })
+      .then(() => {
+        console.log("product added");
+        console.log({ name, cost, quantity, category, orderDate });
+      })
+    navigate("/ourproducts")
+  }
 
-      // fetch('http://localhost:8000/products', {
-      //   method: 'POST',
-      //   headers: {"Content-Type": "application/json"},
-      //   body: JSON.stringify({name,category,cost,quantity,orderDate})
-      // }).then(() => {
-      //   console.log('new product added');
-      // })
-      try{
-        const res = await Axios.post('http://localhost:8000/products', {name,category,cost,quantity,orderDate});
-        console.log('New product added: ',res.data);
 
-        setProducts([...products, res.data]);
-
-        // Update local storage with the updated product list
-        localStorage.setItem('products', JSON.stringify([...products, response.data]));
-        window.location.reload();
-      }catch(err) {
-        console.log('Error adding new product', err);  
-      }
-      
-  };
-  
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }} >
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '10vh'}}>
-          <h1>Add new product</h1>
-        </div>
-
+    <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }} >
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh' }}>
+        <h1>Add new product</h1>
+      </div>
+      <form >
         {/* ==============================|| Add name of the product ||============================== */}
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-          <h3>Add name of the product</h3>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <h3>Add name of the product </h3>
         </div>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-          <FormControl sx={{ width: { xs: '100%', md: 250 }}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
             <OutlinedInput
-              type="text" required value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
+              type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}
+              placeholder="Name" required
             />
           </FormControl>
         </div>
 
 
         {/* ==============================|| Add quantity of the product ||============================== */}
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h3>Add quantity of the product in kilograms</h3>
         </div>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-          <FormControl sx={{ width: { xs: '100%', md: 250 }}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
             <OutlinedInput
-              type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)}
-              placeholder="Quantity"
+              type="text" name="quantity" value={quantity} onChange={(e) => setQuantity(e.target.value)}
+              placeholder="Quantity" required
             />
           </FormControl>
         </div>
 
         {/* ==============================|| Add cost of the product ||============================== */}
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h3>Add cost of the product in Euro</h3>
         </div>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
-          <FormControl sx={{ width: { xs: '100%', md: 250 }}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
             <OutlinedInput
-              type="text" value={cost} onChange={(e) => setCost(e.target.value)}
-              placeholder="Cost"
+              type="text" name="cost" value={cost} onChange={(e) => setCost(e.target.value)}
+              placeholder="Cost" required
             />
           </FormControl>
         </div>
 
         {/* ==============================|| Select category of the product ||============================== */}
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h3>Select category of the product</h3>
         </div>
-        <div style={{display: 'flex',justifyContent:'center', alignItems:'center' }}>
-          <FormControl sx={{ width: { xs: '100%', md: 250 }}}>
-            <select name="category" id="categoryID" value={category} onChange={(e) => setCategory(e.target.value)}>  
-              <option value="Coffee">Coffee</option>  
-              <option value="Non coffee">Non coffee</option>  
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
+            <select name="category" id="categoryID" value={category} onChange={(e) => setCategory(e.target.value)}>
+              <option value="Coffee">Coffee</option>
+              <option value="Non coffee">Non coffee</option>
               <option value="Bakery">Bakery</option>
               <option value="Desert">Desert</option>
               <option value="Salad">Salad</option>
-            </select> 
+            </select>
           </FormControl>
         </div>
 
         {/* ==============================|| Select date of order for the product ||============================== */}
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <h3>Select date of order</h3>
         </div>
-        <div style={{display: 'flex',justifyContent:'center', alignItems:'center' }}>
-          <FormControl sx={{ width: { xs: '100%', md: 250 }}}>
-            <input type="date" id="date" value={orderDate} onChange={(e) => setOrderDate(e.target.value)}></input>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
+            <input type="date" name='orderDate' id="date" value={orderDate} onChange={(e) => setOrderDate(e.target.value)} required></input>
           </FormControl>
         </div>
 
 
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '10vh'}}>
-          <button >Add product</button>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh' }}>
+          <button onClick={(e) => addProduct(e)}>Add product</button>
         </div>
+      </form>
+
+    </Box>
 
 
-      </Box>
-    </form>
-
-    
   );
 }
 
 export default AddProducts;
+
