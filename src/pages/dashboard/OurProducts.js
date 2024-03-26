@@ -92,7 +92,7 @@ const OurProducts = () => {
     };
 
     getProduct();
-  });
+  },[]);
 
   const deleteProduct = async (id) => {
     const productDoc = doc(colRef, id);
@@ -112,60 +112,62 @@ const OurProducts = () => {
 
   return (
     <Box>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh', backgroundColor: "#D6C7AE" }}>
-        <h1>Our Products </h1>
-      </div>
-      <TableContainer
-        sx={{
-          width: '100%',
-          overflowX: 'auto',
-          position: 'relative',
-          display: 'block',
-          maxWidth: '100%',
-          '& td, & th': { whiteSpace: 'nowrap' }
-        }}
-      >
-        <Table
-          aria-labelledby="tableTitle"
+      <div style={{borderRadius: '5px', overflow: 'hidden'}} >
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh', backgroundColor: "#D6C7AE" }}>
+          <h1>Our Products </h1>
+        </div>
+        <TableContainer
           sx={{
-            '& .MuiTableCell-root:first-of-type': {
-              pl: 2
-            },
-            '& .MuiTableCell-root:last-of-type': {
-              pr: 3
-            }
+            width: '100%',
+            overflowX: 'auto',
+            position: 'relative',
+            display: 'block',
+            maxWidth: '100%',
+            '& td, & th': { whiteSpace: 'nowrap' }
           }}
         >
-          <OrderTableHead />
-          <TableBody>
-            {sortedProducts.map((product, index) => {
+          <Table
+            aria-labelledby="tableTitle"
+            sx={{
+              '& .MuiTableCell-root:first-of-type': {
+                pl: 2
+              },
+              '& .MuiTableCell-root:last-of-type': {
+                pr: 3
+              }
+            }}
+          >
+            <OrderTableHead />
+            <TableBody>
+              {sortedProducts.map((product, index) => {
 
-              return (
-                <TableRow
-                  hover
-                  role="checkbox"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  tabIndex={-1}
-                  key={index}
-                  products={product}
-                >
-                  <TableCell align="center">{product.name || location.state?.name}</TableCell>
-                  <TableCell align="center">{product.category}</TableCell>
-                  <TableCell align="center">
-                    <NumericFormat value={product.cost} displayType="text" thousandSeparator suffix="€" />
-                  </TableCell>
-                  <TableCell align="center">
-                    <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
-                  </TableCell>
-                  <TableCell align="center">{product.orderDate}</TableCell>
-                  <TableCell align="center"><button onClick={() => deleteProduct(product.id)}><DeleteOutlined /></button></TableCell>
+                return (
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    tabIndex={-1}
+                    key={index}
+                    products={product}
+                  >
+                    <TableCell align="center">{product.name || location.state?.name}</TableCell>
+                    <TableCell align="center">{product.category}</TableCell>
+                    <TableCell align="center">
+                      <NumericFormat value={product.cost} displayType="text" thousandSeparator suffix="€" />
+                    </TableCell>
+                    <TableCell align="center">
+                      <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
+                    </TableCell>
+                    <TableCell align="center">{product.orderDate}</TableCell>
+                    <TableCell align="center"><button onClick={() => deleteProduct(product.id)}><DeleteOutlined /></button></TableCell>
 
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     </Box>
   );
 };
