@@ -1,0 +1,38 @@
+form{
+    background-color: #D6C7AE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: #D6C7AE ;
+    width: 100%;
+}
+
+.label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 10vh;
+    border-radius: 5px;
+    background-color: #D6C7AE;
+}
+
+.button{
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
+}
