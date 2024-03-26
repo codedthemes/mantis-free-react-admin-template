@@ -17,6 +17,7 @@ const AddProducts = () => {
   const [quantity, setQuantity] = useState('');
   const [category, setCategory] = useState('Coffee');
   const [orderDate, setOrderDate] = useState('');
+  const [stock, setStock] = useState('');
   let navigate = useNavigate();
 
   const addProduct = (e) => {
@@ -28,10 +29,11 @@ const AddProducts = () => {
       quantity: quantity,
       category: category,
       orderDate: orderDate,
+      stock: stock
     })
       .then(() => {
         console.log("product added");
-        console.log({ name, cost, quantity, category, orderDate });
+        
       })
     navigate("/ourproducts")
   }
@@ -79,6 +81,19 @@ const AddProducts = () => {
             <OutlinedInput
               type="text" name="cost" value={cost} onChange={(e) => setCost(e.target.value)}
               placeholder="Cost" style={{ backgroundColor: 'white' }} required
+            />
+          </FormControl>
+        </div>
+
+        {/* ==============================|| Add amount of the product in stock ||============================== */}
+        <div className="label">
+          <h3>Add amount of the product in stock</h3>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
+          <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
+            <OutlinedInput
+              type="number" name="stock" value={stock} onChange={(e) => setStock(parseInt(e.target.value,10))}
+              placeholder="Amount" style={{ backgroundColor: 'white' }} required
             />
           </FormControl>
         </div>

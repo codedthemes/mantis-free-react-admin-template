@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { DeleteOutlined } from '@ant-design/icons';
-import { getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { DeleteOutlined ,PlusCircleOutlined,MinusCircleOutlined} from '@ant-design/icons';
+import { getDocs,getDoc, deleteDoc, doc,updateDoc } from 'firebase/firestore';
 import getColRef from './../../databaseHook';
 
 
@@ -89,6 +89,9 @@ function OrderTableHead() {
 const OurProducts = () => {
 
   const [productsList, setProductsList] = useState([]);
+  
+  const [stock,setStock] = useState('');
+
   let colRef = getColRef();
 
   useEffect(() => {
@@ -103,6 +106,48 @@ const OurProducts = () => {
   const deleteProduct = async (id) => {
     const productDoc = doc(colRef, id);
     await deleteDoc(productDoc);
+  };
+
+  const increaseAmount = async (e,id) => {
+    e.preventDefault();
+    
+    const productDoc = doc(colRef, id);
+    const productDocSnap = await getDoc(productDoc);
+
+    if(productDocSnap.exists()){
+      const currentStock = productDocSnap.data().stock;
+      const updatedStock = currentStock + 1;
+
+      try {
+        await updateDoc(productDoc, {stock: updatedStock});
+        console.log('Stock updated succesfullly');
+      }catch(error){
+        console.error('Error updating stock', error);
+      }
+    }else{
+      console.error('Document does not exist.');
+    }
+  };
+
+  const decreaseAmount = async (e,id) => {
+    e.preventDefault();
+    
+    const productDoc = doc(colRef, id);
+    const productDocSnap = await getDoc(productDoc);
+
+    if(productDocSnap.exists()){
+      const currentStock = productDocSnap.data().stock;
+      const updatedStock = currentStock - 1;
+
+      try {
+        await updateDoc(productDoc, {stock: updatedStock});
+        console.log('Stock updated succesfullly');
+      }catch(error){
+        console.error('Error updating stock', error);
+      }
+    }else{
+      console.error('Document does not exist.');
+    }
   };
 
 
@@ -165,10 +210,12 @@ const OurProducts = () => {
                       <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
                     </TableCell>
                     <TableCell align="center">
-                      <NumericFormat value={product.stock} displayType="text"  />
+                      <button style={{margin: '10px'}} value={stock} onClick={(e) => decreaseAmount(e,product.id)} onChange={(e) => setStock(e.target.value)}><MinusCircleOutlined></MinusCircleOutlined></button>
+                      <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
+                      <button style={{margin: '10px'}} value={stock} onClick={(e) => increaseAmount(e,product.id)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button>
                     </TableCell>
                     <TableCell align="center">{product.orderDate}</TableCell>
-                    <TableCell align="center"><button onClick={() => deleteProduct(product.id)}><DeleteOutlined /></button></TableCell>
+                    <TableCell align="center"><button onClick={() => deleteProduct(product.id)}  ><DeleteOutlined /></button></TableCell>
 
                   </TableRow>
                 );
