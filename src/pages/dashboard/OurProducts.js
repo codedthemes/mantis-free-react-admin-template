@@ -30,13 +30,19 @@ const headCells = [
     id: 'productCost',
     align: 'center',
     disablePadding: false,
-    label: 'Cost (€)'
+    label: 'Cost (€) per piece'
   },
   {
     id: 'productQuantity',
     align: 'center',
     disablePadding: false,
-    label: 'Quantity (Kg)'
+    label: 'Quantity per piece'
+  },
+  {
+    id: 'productInStock',
+    align: 'center',
+    disablePadding: false,
+    label: 'Amount In Stock'
   },
   {
     id: 'productDate',
@@ -157,6 +163,9 @@ const OurProducts = () => {
                     </TableCell>
                     <TableCell align="center">
                       <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
+                    </TableCell>
+                    <TableCell align="center">
+                      <NumericFormat value={product.stock} displayType="text"  />
                     </TableCell>
                     <TableCell align="center">{product.orderDate}</TableCell>
                     <TableCell align="center"><button onClick={() => deleteProduct(product.id)}><DeleteOutlined /></button></TableCell>
