@@ -20,7 +20,6 @@ import reportWebVitals from './reportWebVitals';
 
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
-// console.log('hello from index.js')
 root.render(
   <ReduxProvider store={store}>
     <BrowserRouter basename="/">

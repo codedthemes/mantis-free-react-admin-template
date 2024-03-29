@@ -8,6 +8,7 @@ import {
 const firebaseConfig = {
   apiKey: "AIzaSyAMN5ITUWUtL0d8c_hY4LrYU0XVMSG9Pro",
   authDomain: "products-project-3e404.firebaseapp.com",
+  databaseURL: "https://products-project-3e404-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "products-project-3e404",
   storageBucket: "products-project-3e404.appspot.com",
   messagingSenderId: "891166572925",
@@ -22,7 +23,7 @@ const getColRef = () => {
   const db = getFirestore()
 
   //collection ref
-  const colRef = collection(db, 'products')
+  const colRef = collection(db, 'ourproducts')
   return colRef;
 }
 export default getColRef;

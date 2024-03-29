@@ -1,18 +1,14 @@
 // material-ui
 import { Box, FormControl, OutlinedInput } from '@mui/material';
 import { useState } from 'react';
-import getColRef from './../../databaseHook';
-import {
-  addDoc,
-} from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import './AddProduct.css';
+import instance from './instance';
 
-let colRef = getColRef();
 
 
 const AddProducts = () => {
-  const [name, setName] = useState('');
+  const [productName, setProductName] = useState('');
   const [cost, setCost] = useState('');
   const [quantity, setQuantity] = useState('');
   const [category, setCategory] = useState('Coffee');
@@ -23,19 +19,27 @@ const AddProducts = () => {
   const addProduct = (e) => {
 
     e.preventDefault();
-    addDoc(colRef, {
-      name: name,
+    
+    const Data = {
+      productName: productName,
       cost: cost,
       quantity: quantity,
       category: category,
       orderDate: orderDate,
       stock: stock
-    })
+    }
+
+    instance.post('ourproducts.json', Data)
       .then(() => {
-        console.log("product added");
-        
+        console.log(Data);
       })
-    navigate("/ourproducts")
+    // Refresh the page after a short delay
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000); // Adjust the delay as needed 
+    navigate("/ourproducts");
+      
+
   }
 
 
@@ -50,11 +54,11 @@ const AddProducts = () => {
         <div className="label">
           <h3>Add name of the product </h3>
         </div>
-        <div  style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px',backgroundColor: 'red' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px', backgroundColor: 'red' }}>
           <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
             <OutlinedInput
-              type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Name" style={{ backgroundColor: 'white' }} required
+              type="text" name="productName" value={productName} onChange={(e) => setProductName(e.target.value)}
+              placeholder="Product Name" style={{ backgroundColor: 'white' }} required
             />
           </FormControl>
         </div>
@@ -92,7 +96,7 @@ const AddProducts = () => {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
           <FormControl sx={{ width: { xs: '100%', md: 250 } }}>
             <OutlinedInput
-              type="number" name="stock" value={stock} onChange={(e) => setStock(parseInt(e.target.value,10))}
+              type="number" name="stock" value={stock} onChange={(e) => setStock(parseInt(e.target.value, 10))}
               placeholder="Amount" style={{ backgroundColor: 'white' }} required
             />
           </FormControl>
@@ -126,7 +130,7 @@ const AddProducts = () => {
         </div>
       </form>
       <div className="add-button">
-        <button className="button"  onClick={(e) => addProduct(e)}>Add product</button>
+        <button className="button" onClick={(e) => addProduct(e)}>Add product</button>
       </div>
 
     </Box>
@@ -136,4 +140,6 @@ const AddProducts = () => {
 }
 
 export default AddProducts;
+
+
 

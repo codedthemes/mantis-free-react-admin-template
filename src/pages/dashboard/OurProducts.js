@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
-import { DeleteOutlined ,PlusCircleOutlined,MinusCircleOutlined} from '@ant-design/icons';
-import { getDocs,getDoc, deleteDoc, doc,updateDoc } from 'firebase/firestore';
-import getColRef from './../../databaseHook';
-
+import { DeleteOutlined, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
 
 // material-ui
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 
 // third-party
 import { NumericFormat } from 'react-number-format';
+import instance from './instance';
 
 
 // ==============================|| PRODUCTS TABLE - HEADER CELL ||============================== //
@@ -62,8 +60,6 @@ const headCells = [
 // ==============================|| PRODUCTS TABLE - HEADER ||============================== //
 
 function OrderTableHead() {
-
-
   return (
     <TableHead>
       <TableRow>
@@ -89,81 +85,124 @@ function OrderTableHead() {
 const OurProducts = () => {
 
   const [productsList, setProductsList] = useState([]);
-  
-  const [stock,setStock] = useState('');
 
-  let colRef = getColRef();
+  const [stock, setStock] = useState('');
+
 
   useEffect(() => {
-    const getProduct = async () => {
-      const data = await getDocs(colRef);
-      setProductsList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+   
+    const fetchData = async () => {
+      try {
+        const res = await instance.get('/ourproducts.json');
+
+        const keys = Object.keys(res.data);
+        const productsArray = keys.map((key) => ({ key, ...res.data[key] }));
+
+        const sortedProducts = sortProductsByDate(productsArray);
+        setProductsList(sortedProducts);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
+    fetchData();
+  }, []);
 
-    getProduct();
-  },[]);
+  useEffect(() => {
+  }, [productsList]);
 
-  const deleteProduct = async (id) => {
-    const productDoc = doc(colRef, id);
-    await deleteDoc(productDoc);
-  };
 
-  const increaseAmount = async (e,id) => {
-    e.preventDefault();
-    
-    const productDoc = doc(colRef, id);
-    const productDocSnap = await getDoc(productDoc);
+  const deleteProductVol2 = async (id) => {
+    try {
+      console.log(`Product with key ${id} deleted successfully`);
+      instance.delete(`/ourproducts/${id}.json`);
+      // Refresh the page after a short delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 300); // Adjust the delay as needed
+    } catch (error) {
+      console.error('Error deleting product:', error);
+      console.log(error.response.data);
 
-    if(productDocSnap.exists()){
-      const currentStock = productDocSnap.data().stock;
-      const updatedStock = currentStock + 1;
-
-      try {
-        await updateDoc(productDoc, {stock: updatedStock});
-        console.log('Stock updated succesfullly');
-      }catch(error){
-        console.error('Error updating stock', error);
-      }
-    }else{
-      console.error('Document does not exist.');
     }
   };
 
-  const decreaseAmount = async (e,id) => {
+
+
+  const increaseAmount = async (e, id) => {
     e.preventDefault();
-    
-    const productDoc = doc(colRef, id);
-    const productDocSnap = await getDoc(productDoc);
 
-    if(productDocSnap.exists()){
-      const currentStock = productDocSnap.data().stock;
-      const updatedStock = currentStock - 1;
+    // Find the product in the productsList array based on its id
+    const productToUpdate = productsList.find(product => product.key === id);
 
-      try {
-        await updateDoc(productDoc, {stock: updatedStock});
-        console.log('Stock updated succesfullly');
-      }catch(error){
-        console.error('Error updating stock', error);
-      }
-    }else{
-      console.error('Document does not exist.');
+    console.log(productToUpdate);
+    if (productToUpdate) {
+      // Increase the stock amount of the product
+      productToUpdate.stock += 1; 
+
+      const payload = { ...productToUpdate,stock: productToUpdate.stock };
+
+      await instance.put(`ourproducts/${id}.json`, payload)
+          .then((res) => {
+              console.log(res);
+          })
+          .catch((error) => {
+              console.error(error);
+          });
     }
+    // Refresh the page
+    setTimeout(() => {
+      window.location.reload();
+    }, 300); 
+
+  };
+
+  const decreaseAmount = async (e, id) => {
+    e.preventDefault();
+
+     // Find the product in the productsList array based on its id
+     const productToUpdate = productsList.find(product => product.key === id);
+     console.log(productToUpdate);
+     if (productToUpdate) {
+       // Increase the stock amount of the product
+       productToUpdate.stock -= 1; 
+       if(productToUpdate.stock === -1){
+          alert(`Can't have negative stock.`)
+       } else {
+        
+        const payload = { ...productToUpdate,stock: productToUpdate.stock };
+  
+        
+        await instance.put(`ourproducts/${id}.json`, payload)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        }
+     }
+     // Refresh the page 
+     setTimeout(() => {
+      window.location.reload();
+    }, 300); 
   };
 
 
   // Sort the rows by the oldest date of order
-  const sortedProducts = [...productsList].sort((a, b) => {
-    const dateA = new Date(a.orderDate).getTime();
-    const dateB = new Date(b.orderDate).getTime();
-    return dateA - dateB;
-  });
+  const sortProductsByDate = (productsList) => {
+    return [...productsList].sort((a, b) => {
+      const dateA = new Date(a.orderDate).getTime();
+      const dateB = new Date(b.orderDate).getTime();
+      return dateA - dateB;
+    });
+  };
 
 
 
 
   return (
     <Box>
-      <div style={{borderRadius: '5px', overflow: 'hidden'}} >
+      <div style={{ borderRadius: '5px', overflow: 'hidden' }} >
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh', backgroundColor: "#D6C7AE" }}>
           <h1>Our Products </h1>
         </div>
@@ -190,8 +229,7 @@ const OurProducts = () => {
           >
             <OrderTableHead />
             <TableBody>
-              {sortedProducts.map((product, index) => {
-
+              {productsList.map((product, index) => {
                 return (
                   <TableRow
                     hover
@@ -199,9 +237,8 @@ const OurProducts = () => {
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     tabIndex={-1}
                     key={index}
-                    products={product}
                   >
-                    <TableCell align="center">{product.name || location.state?.name}</TableCell>
+                    <TableCell align="center">{product.productName || location.state?.productName}</TableCell>
                     <TableCell align="center">{product.category}</TableCell>
                     <TableCell align="center">
                       <NumericFormat value={product.cost} displayType="text" thousandSeparator suffix="€" />
@@ -210,12 +247,12 @@ const OurProducts = () => {
                       <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
                     </TableCell>
                     <TableCell align="center">
-                      <button style={{margin: '10px'}} value={stock} onClick={(e) => decreaseAmount(e,product.id)} onChange={(e) => setStock(e.target.value)}><MinusCircleOutlined></MinusCircleOutlined></button>
+                      <button style={{ margin: '10px' }} value={stock} onClick={(e) => decreaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><MinusCircleOutlined></MinusCircleOutlined></button>
                       <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
-                      <button style={{margin: '10px'}} value={stock} onClick={(e) => increaseAmount(e,product.id)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button>
+                      <button style={{ margin: '10px' }} value={stock} onClick={(e) => increaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button>
                     </TableCell>
                     <TableCell align="center">{product.orderDate}</TableCell>
-                    <TableCell align="center"><button onClick={() => deleteProduct(product.id)}  ><DeleteOutlined /></button></TableCell>
+                    <TableCell align="center"><button onClick={() => deleteProductVol2(product.key)}><DeleteOutlined /></button></TableCell>
 
                   </TableRow>
                 );
@@ -229,5 +266,3 @@ const OurProducts = () => {
 };
 
 export default OurProducts;
-
-
