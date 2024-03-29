@@ -46,7 +46,7 @@ const headCells = [
     id: 'productDate',
     align: 'center',
     disablePadding: false,
-    label: 'Last time ordered'
+    label: 'Last time ordered (yyyy-mm-dd)'
   },
   {
     id: 'productAction',
