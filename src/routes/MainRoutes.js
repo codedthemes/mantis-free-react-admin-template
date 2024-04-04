@@ -5,7 +5,9 @@ import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 import OurProducts from 'pages/dashboard/OurProducts';
 import AddProducts from 'pages/dashboard/AddProducts';
-
+// render - login
+const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
+const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 
@@ -56,6 +58,14 @@ const MainRoutes = {
     {
       path: 'icons/ant',
       element: <AntIcons />
+    },
+    {
+      path: 'login',
+      element: <AuthLogin />
+    },
+    {
+      path: 'register',
+      element: <AuthRegister/>
     }
   ]
 };
