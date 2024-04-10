@@ -11,6 +11,7 @@ import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow }
 // third-party
 import { NumericFormat } from 'react-number-format';
 import instance from './instance';
+import Popup from './Popup';
 
 
 // ==============================|| PRODUCTS TABLE - HEADER CELL ||============================== //
@@ -81,6 +82,7 @@ const OurProducts = () => {
   const [productsList, setProductsList] = useState([]);
   const [sort, setSort] = useState({ keyToSort: "productQuantity", direction: "desc" });
   const [stock, setStock] = useState('');
+  const [buttonPopup, setButtonPopup] = useState(false);
 
 
   useEffect(() => {
@@ -109,7 +111,9 @@ const OurProducts = () => {
     const clickedKey = headCell.id;
     const direction = headCell.id === sort.keyToSort ? (sort.direction === 'desc' ? 'asc' : 'desc') : 'asc';
 
-    // console.log("Sorted List:", sortedList);
+    if(headCell.id != "productAction"){
+      setSort({keyToSort: clickedKey, direction: direction});
+    }
 
     setSort({ keyToSort: clickedKey, direction: direction });
     // console.log("products list", productsList)
@@ -276,6 +280,10 @@ const OurProducts = () => {
                   tabIndex={-1}
                   key={index}
                   product={product}
+                  onClick={() => {
+                    console.log("Test");
+                    setButtonPopup(true);
+                  }}
                 >
                   <TableCell align="center" >{product.productName || location.state?.productName}</TableCell>
                   <TableCell align="center">{product.category}</TableCell>
@@ -300,6 +308,9 @@ const OurProducts = () => {
           </Table>
         </TableContainer>
       </div>
+      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+        <h2>Hello world</h2>
+      </Popup>
     </Box>
   );
 };
