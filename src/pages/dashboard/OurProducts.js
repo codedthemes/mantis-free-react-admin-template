@@ -18,6 +18,12 @@ import Popup from './Popup';
 
 const headCells = [
   {
+    id: 'productPopup',
+    align: 'center',
+    disablePadding: true,
+    label: 'Product Overview'
+  },
+  {
     id: 'productName',
     align: 'center',
     disablePadding: true,
@@ -82,7 +88,7 @@ const OurProducts = () => {
   const [productsList, setProductsList] = useState([]);
   const [sort, setSort] = useState({ keyToSort: "productQuantity", direction: "desc" });
   const [stock, setStock] = useState('');
-  const [buttonPopup, setButtonPopup] = useState(false);
+  // const [buttonPopup, setButtonPopup] = useState(false);
 
 
   useEffect(() => {
@@ -121,6 +127,8 @@ const OurProducts = () => {
   };
 
   const getSortedArray = (productsList) => {
+    console.log(productsList);
+
     return productsList.sort((a, b) => {
       if (sort.direction === 'asc') {
         return a[sort.keyToSort] < b[sort.keyToSort] ? -1 : 1;
@@ -204,10 +212,14 @@ const OurProducts = () => {
           });
       }
     }
-    // Refresh the page 
-    //  setTimeout(() => {
-    //   window.location.reload();
-    // }, 300); 
+   
+  };
+  const [popupStates, setPopupStates] = useState(Array(getSortedArray(productsList).length).fill(false));
+
+  const togglePopup = (index) => {
+    const newPopupStates = [...popupStates];
+    newPopupStates[index] = !newPopupStates[index];
+    setPopupStates(newPopupStates);
   };
 
 
@@ -273,40 +285,50 @@ const OurProducts = () => {
             </TableHead>
             <TableBody>
               {getSortedArray(productsList).map((product, index) => (
-                <TableRow
-                  hover
-                  role="checkbox"
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  tabIndex={-1}
-                  key={index}
-                  product={product}
-                >
-                  <TableCell align="center" onClick={() => setButtonPopup(true)}>{product.productName || location.state?.productName}</TableCell>
-                  <TableCell align="center" onClick={() => setButtonPopup(true)}>{product.category}</TableCell>
-                  <TableCell align="center" onClick={() => setButtonPopup(true)}>{product.expDate}</TableCell>
-                  <TableCell align="center" onClick={() => setButtonPopup(true)}>
-                    <NumericFormat value={product.cost} displayType="text" thousandSeparator />
-                  </TableCell>
-                  <TableCell align="center" onClick={() => setButtonPopup(true)}>
-                    <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
-                  </TableCell>
-                  <TableCell align="center" >
-                    <button style={{ margin: '10px' }} value={stock} onClick={(e) => decreaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><MinusCircleOutlined></MinusCircleOutlined></button>
-                    <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
-                    <button style={{ margin: '10px' }} value={stock} onClick={(e) => increaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button>
-                  </TableCell>
-                  <TableCell align="center">{product.cost * product.stock}</TableCell>
-                  <TableCell align="center">{product.orderDate}</TableCell>
-                  <TableCell align="center"><button onClick={() => deleteProductVol2(product.key)}><DeleteOutlined /></button></TableCell>
-                </TableRow>
+                <>
+                  
+                    <TableRow
+                      hover
+                      role="checkbox"
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                      tabIndex={-1}
+                      key={index}
+                      product={product}
+                    >
+                      {/* <TableCell align="center" onClick={() => setButtonPopup(true)}>hey</TableCell> */}
+                      
+                      <button onClick={() => togglePopup(index)}>overview</button>
+                      <Popup trigger={popupStates[index]} setTrigger={(value) => setPopupStates(prevState => {
+                        const newState = [...prevState];
+                        newState[index] = value;
+                        return newState;
+                      })} productName={product.productName }>
+                        <h2>Hello world</h2>
+                      </Popup>
+                      <TableCell align="center" >{product.productName || location.state?.productName}</TableCell>
+                      <TableCell align="center" >{product.category}</TableCell>
+                      <TableCell align="center" >{product.expDate}</TableCell>
+                      <TableCell align="center" >
+                        <NumericFormat value={product.cost} displayType="text" thousandSeparator />
+                      </TableCell>
+                      <TableCell align="center" >
+                        <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
+                      </TableCell>
+                      <TableCell align="center" >
+                        <button style={{ margin: '10px' }} value={stock} onClick={(e) => decreaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><MinusCircleOutlined></MinusCircleOutlined></button>
+                        <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
+                        <button style={{ margin: '10px' }} value={stock} onClick={(e) => increaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button>
+                      </TableCell>
+                      <TableCell align="center">{product.cost * product.stock}</TableCell>
+                      <TableCell align="center">{product.orderDate}</TableCell>
+                      <TableCell align="center"><button onClick={() => deleteProductVol2(product.key)}><DeleteOutlined /></button></TableCell>
+                    </TableRow>
+                </>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </div>
-      <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-        <h2>Hello world</h2>
-      </Popup>
     </Box>
   );
 };
