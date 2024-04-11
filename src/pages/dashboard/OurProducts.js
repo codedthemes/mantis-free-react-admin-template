@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import {
-  DeleteOutlined, PlusCircleOutlined, MinusCircleOutlined, CaretUpOutlined, CaretDownOutlined
+  DeleteOutlined,  CaretUpOutlined, CaretDownOutlined, ZoomInOutlined
 } from '@ant-design/icons';
 
 // material-ui
@@ -87,8 +87,6 @@ const OurProducts = () => {
 
   const [productsList, setProductsList] = useState([]);
   const [sort, setSort] = useState({ keyToSort: "productQuantity", direction: "desc" });
-  const [stock, setStock] = useState('');
-  // const [buttonPopup, setButtonPopup] = useState(false);
 
 
   useEffect(() => {
@@ -121,8 +119,6 @@ const OurProducts = () => {
       setSort({keyToSort: clickedKey, direction: direction});
     }
 
-    setSort({ keyToSort: clickedKey, direction: direction });
-    // console.log("products list", productsList)
 
   };
 
@@ -159,61 +155,7 @@ const OurProducts = () => {
 
 
 
-  const increaseAmount = async (e, id) => {
-    e.preventDefault();
 
-    // Find the product in the productsList array based on its id
-    const productToUpdate = productsList.find(product => product.key === id);
-
-    console.log(productToUpdate);
-    if (productToUpdate) {
-      // Increase the stock amount of the product
-      productToUpdate.stock += 1;
-
-      const payload = { ...productToUpdate, stock: productToUpdate.stock };
-
-      await instance.put(`ourproducts/${id}.json`, payload)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-    // Refresh the page
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 300); 
-
-  };
-
-  const decreaseAmount = async (e, id) => {
-    e.preventDefault();
-
-    // Find the product in the productsList array based on its id
-    const productToUpdate = productsList.find(product => product.key === id);
-    console.log(productToUpdate);
-    if (productToUpdate) {
-      // Increase the stock amount of the product
-      productToUpdate.stock -= 1;
-      if (productToUpdate.stock <= -1) {
-        alert(`Can't have negative stock.`);
-      } else {
-
-        const payload = { ...productToUpdate, stock: productToUpdate.stock };
-
-
-        await instance.put(`ourproducts/${id}.json`, payload)
-          .then((res) => {
-            console.log(res);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }
-    }
-   
-  };
   const [popupStates, setPopupStates] = useState(Array(getSortedArray(productsList).length).fill(false));
 
   const togglePopup = (index) => {
@@ -221,17 +163,6 @@ const OurProducts = () => {
     newPopupStates[index] = !newPopupStates[index];
     setPopupStates(newPopupStates);
   };
-
-
-
-  // Sort the rows by the oldest date of order
-  // const sortProductsByDate = (productsList) => {
-  //   return [...productsList].sort((a, b) => {
-  //     const dateA = new Date(a.orderDate).getTime();
-  //     const dateB = new Date(b.orderDate).getTime();
-  //     return dateA - dateB;
-  //   });
-  // };
 
 
   return (
@@ -297,14 +228,21 @@ const OurProducts = () => {
                     >
                       {/* <TableCell align="center" onClick={() => setButtonPopup(true)}>hey</TableCell> */}
                       
-                      <button onClick={() => togglePopup(index)}>overview</button>
-                      <Popup trigger={popupStates[index]} setTrigger={(value) => setPopupStates(prevState => {
-                        const newState = [...prevState];
-                        newState[index] = value;
-                        return newState;
-                      })} productName={product.productName }>
-                        <h2>Hello world</h2>
-                      </Popup>
+                      <TableCell align="center"><button onClick={() => togglePopup(index)}><ZoomInOutlined/></button>
+                        <Popup 
+                          trigger={popupStates[index]} 
+                          setTrigger={(value) => setPopupStates(prevState => {
+                            const newState = [...prevState];
+                            newState[index] = value;
+                            return newState;
+                          })} 
+                          name={product.productName} 
+                          stock={product.stock}
+                          product={product}
+                          productId={product.key}>
+                          <h2>Hello world</h2>
+                        </Popup>
+                      </TableCell>
                       <TableCell align="center" >{product.productName || location.state?.productName}</TableCell>
                       <TableCell align="center" >{product.category}</TableCell>
                       <TableCell align="center" >{product.expDate}</TableCell>
@@ -315,9 +253,7 @@ const OurProducts = () => {
                         <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
                       </TableCell>
                       <TableCell align="center" >
-                        <button style={{ margin: '10px' }} value={stock} onClick={(e) => decreaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><MinusCircleOutlined></MinusCircleOutlined></button>
                         <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
-                        <button style={{ margin: '10px' }} value={stock} onClick={(e) => increaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button>
                       </TableCell>
                       <TableCell align="center">{product.cost * product.stock}</TableCell>
                       <TableCell align="center">{product.orderDate}</TableCell>
