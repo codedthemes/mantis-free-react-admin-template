@@ -82,6 +82,7 @@ function Popup(props){
                     Amount in stock: {props.stock}
                     {/* <button style={{ margin: '10px' }} value={stock} onClick={(e) => increaseAmount(e, product.key)} onChange={(e) => setStock(e.target.value)}><PlusCircleOutlined></PlusCircleOutlined></button> */}
                 </p>
+                <p>Set the amount in stock:
                 {/* <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock - 1)}><MinusCircleOutlined /></button> */}
                 <input
                     type="number"
@@ -91,7 +92,7 @@ function Popup(props){
                 />
                 {/* <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock + 1)}><PlusCircleOutlined /></button> */}
                 <button style={{ margin: '10px' }} onClick={updateAmount}>Update Stock</button>
-
+                </p>
             </div>
         </div>
     ): "";
