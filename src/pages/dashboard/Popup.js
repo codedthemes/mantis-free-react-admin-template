@@ -91,14 +91,19 @@ function Popup(props) {
                     />
                 </p>
                 <p>
-                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock - 5)}><MinusCircleOutlined /></button>
-                    Increase or decrease by 5
-                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock + 5)}><PlusCircleOutlined /></button>
+                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock = product.stock - 1)}><MinusCircleOutlined /></button>
+                    Increase or decrease by 1
+                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock = product.stock + 1)}><PlusCircleOutlined /></button>
                 </p>
                 <p>
-                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock - 10)}><MinusCircleOutlined /></button>
+                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock = product.stock - 5)}><MinusCircleOutlined /></button>
+                    Increase or decrease by 5
+                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock = product.stock + 5)}><PlusCircleOutlined /></button>
+                </p>
+                <p>
+                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock = product.stock - 10)}><MinusCircleOutlined /></button>
                     Increase or decrease by 10
-                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock + 10)}><PlusCircleOutlined /></button>
+                    <button style={{ margin: '10px' }} onClick={() => setNewStock(product.stock = product.stock + 10)}><PlusCircleOutlined /></button>
                 </p>
 
                 <button style={{ margin: '10px' }} onClick={updateAmount}>Update Stock</button>
