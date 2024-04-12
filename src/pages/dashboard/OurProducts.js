@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import {
-  DeleteOutlined,  CaretUpOutlined, CaretDownOutlined, ZoomInOutlined
+  DeleteOutlined, CaretUpOutlined, CaretDownOutlined, ZoomInOutlined
 } from '@ant-design/icons';
 
 // material-ui
@@ -115,8 +115,8 @@ const OurProducts = () => {
     const clickedKey = headCell.id;
     const direction = headCell.id === sort.keyToSort ? (sort.direction === 'desc' ? 'asc' : 'desc') : 'asc';
 
-    if(headCell.id != "productAction" && headCell.id != "productPopup"){
-      setSort({keyToSort: clickedKey, direction: direction});
+    if (headCell.id != "productAction" && headCell.id != "productPopup") {
+      setSort({ keyToSort: clickedKey, direction: direction });
     }
 
 
@@ -142,10 +142,7 @@ const OurProducts = () => {
     try {
       console.log(`Product with key ${id} deleted successfully`);
       instance.delete(`/ourproducts/${id}.json`);
-      // Refresh the page after a short delay
-      setTimeout(() => {
-        window.location.reload();
-      }, 300); // Adjust the delay as needed
+
     } catch (error) {
       console.error('Error deleting product:', error);
       console.log(error.response.data);
@@ -204,7 +201,7 @@ const OurProducts = () => {
                       handleHeaderClick(headCell)
                     }}
                   >
-                    {headCell.id === sort.keyToSort && headCell.id !== 'productAction' && headCell.id !== 'productPopup' &&(
+                    {headCell.id === sort.keyToSort && headCell.id !== 'productAction' && headCell.id !== 'productPopup' && (
                       <span>
                         {sort.direction === 'asc' ? <CaretUpOutlined /> : <CaretDownOutlined />}
                       </span>
@@ -217,47 +214,47 @@ const OurProducts = () => {
             <TableBody>
               {getSortedArray(productsList).map((product, index) => (
                 <>
-                  
-                    <TableRow
-                      hover
-                      role="checkbox"
-                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                      tabIndex={-1}
-                      key={index}
-                      product={product}
-                    >
-                      {/* <TableCell align="center" onClick={() => setButtonPopup(true)}>hey</TableCell> */}
-                      
-                      <TableCell align="center"><button onClick={() => togglePopup(index)}><ZoomInOutlined/></button>
-                        <Popup 
-                          trigger={popupStates[index]} 
-                          setTrigger={(value) => setPopupStates(prevState => {
-                            const newState = [...prevState];
-                            newState[index] = value;
-                            return newState;
-                          })} 
-                          name={product.productName} 
-                          stock={product.stock}
-                          product={product}
-                          productId={product.key}>
-                        </Popup>
-                      </TableCell>
-                      <TableCell align="center" >{product.productName || location.state?.productName}</TableCell>
-                      <TableCell align="center" >{product.category}</TableCell>
-                      <TableCell align="center" >{product.expDate}</TableCell>
-                      <TableCell align="center" >
-                        <NumericFormat value={product.cost} displayType="text" thousandSeparator />
-                      </TableCell>
-                      <TableCell align="center" >
-                        <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
-                      </TableCell>
-                      <TableCell align="center" >
-                        <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
-                      </TableCell>
-                      <TableCell align="center">{product.cost * product.stock}</TableCell>
-                      <TableCell align="center">{product.orderDate}</TableCell>
-                      <TableCell align="center"><button onClick={() => deleteProductVol2(product.key)}><DeleteOutlined /></button></TableCell>
-                    </TableRow>
+
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    tabIndex={-1}
+                    key={index}
+                    product={product}
+                  >
+                    {/* <TableCell align="center" onClick={() => setButtonPopup(true)}>hey</TableCell> */}
+
+                    <TableCell align="center"><button onClick={() => togglePopup(index)}><ZoomInOutlined /></button>
+                      <Popup
+                        trigger={popupStates[index]}
+                        setTrigger={(value) => setPopupStates(prevState => {
+                          const newState = [...prevState];
+                          newState[index] = value;
+                          return newState;
+                        })}
+                        name={product.productName}
+                        stock={product.stock}
+                        product={product}
+                        productId={product.key}>
+                      </Popup>
+                    </TableCell>
+                    <TableCell align="center" >{product.productName || location.state?.productName}</TableCell>
+                    <TableCell align="center" >{product.category}</TableCell>
+                    <TableCell align="center" >{product.expDate}</TableCell>
+                    <TableCell align="center" >
+                      <NumericFormat value={product.cost} displayType="text" thousandSeparator />
+                    </TableCell>
+                    <TableCell align="center" >
+                      <NumericFormat value={product.quantity} displayType="text" thousandSeparator suffix="Kg" />
+                    </TableCell>
+                    <TableCell align="center" >
+                      <NumericFormat value={product.stock} displayType="text" ></NumericFormat>
+                    </TableCell>
+                    <TableCell align="center">{product.cost * product.stock}</TableCell>
+                    <TableCell align="center">{product.orderDate}</TableCell>
+                    <TableCell align="center"><button onClick={() => deleteProductVol2(product.key)}><DeleteOutlined /></button></TableCell>
+                  </TableRow>
                 </>
               ))}
             </TableBody>
