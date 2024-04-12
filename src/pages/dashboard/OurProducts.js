@@ -115,7 +115,7 @@ const OurProducts = () => {
     const clickedKey = headCell.id;
     const direction = headCell.id === sort.keyToSort ? (sort.direction === 'desc' ? 'asc' : 'desc') : 'asc';
 
-    if(headCell.id != "productAction"){
+    if(headCell.id != "productAction" && headCell.id != "productPopup"){
       setSort({keyToSort: clickedKey, direction: direction});
     }
 
@@ -204,7 +204,7 @@ const OurProducts = () => {
                       handleHeaderClick(headCell)
                     }}
                   >
-                    {headCell.id === sort.keyToSort && headCell.id !== 'productAction' &&(
+                    {headCell.id === sort.keyToSort && headCell.id !== 'productAction' && headCell.id !== 'productPopup' &&(
                       <span>
                         {sort.direction === 'asc' ? <CaretUpOutlined /> : <CaretDownOutlined />}
                       </span>
@@ -240,7 +240,6 @@ const OurProducts = () => {
                           stock={product.stock}
                           product={product}
                           productId={product.key}>
-                          <h2>Hello world</h2>
                         </Popup>
                       </TableCell>
                       <TableCell align="center" >{product.productName || location.state?.productName}</TableCell>

@@ -5539,6 +5539,13 @@ eslint-module-utils@^2.8.0:
   dependencies:
     debug "^3.2.7"
 
+eslint-plugin-disable@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/eslint-plugin-disable/-/eslint-plugin-disable-2.0.3.tgz"
+  integrity sha512-JWT4TPhcIhd8jcwACbsDValvAtHl7BQDhbTZC40vqcp4Fciz2oTnEAFtOCGojdskviN3VGOObVCrjjWe8DGYIg==
+  dependencies:
+    resolve "^1.1.6"
+
 eslint-plugin-flowtype@^8.0.3:
   version "8.0.3"
   resolved "https://registry.npmjs.org/eslint-plugin-flowtype/-/eslint-plugin-flowtype-8.0.3.tgz"
@@ -5688,7 +5695,7 @@ eslint-webpack-plugin@^3.1.1:
     normalize-path "^3.0.0"
     schema-utils "^4.0.0"
 
-eslint@*, "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8", "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8", "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0", "eslint@^6.0.0 || ^7.0.0 || ^8.0.0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", "eslint@^7.0.0 || ^8.0.0", "eslint@^7.5.0 || ^8.0.0", eslint@^8.0.0, eslint@^8.1.0, eslint@^8.3.0, eslint@^8.56.0, "eslint@>= 6", eslint@>=7.0.0, eslint@>=8.0.0:
+eslint@*, "eslint@^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8", "eslint@^3 || ^4 || ^5 || ^6 || ^7 || ^8", "eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0", "eslint@^6.0.0 || ^7.0.0 || ^8.0.0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", "eslint@^7.0.0 || ^8.0.0", "eslint@^7.5.0 || ^8.0.0", eslint@^8.0.0, eslint@^8.1.0, eslint@^8.3.0, eslint@^8.56.0, "eslint@>= 6", eslint@>=0.16.0, eslint@>=7.0.0, eslint@>=8.0.0:
   version "8.56.0"
   resolved "https://registry.npmjs.org/eslint/-/eslint-8.56.0.tgz"
   integrity sha512-Go19xM6T9puCOWntie1/P997aXxFsOi37JIHRWI514Hc6ZnaHGKY9xFhrU65RT6CcBEzZoGG1e6Nq+DT04ZtZQ==
@@ -10299,7 +10306,7 @@ resolve.exports@^2.0.0:
   resolved "https://registry.npmjs.org/resolve.exports/-/resolve.exports-2.0.2.tgz"
   integrity sha512-X2UW6Nw3n/aMgDVy+0rSqgHlv39WZAlZrXCdnbyEiKm17DSqHX4MmQMaST3FbeWR5FTuRcUwYAziZajji0Y7mg==
 
-resolve@^1.1.7, resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.22.2, resolve@^1.22.4:
+resolve@^1.1.6, resolve@^1.1.7, resolve@^1.14.2, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.22.2, resolve@^1.22.4:
   version "1.22.8"
   resolved "https://registry.npmjs.org/resolve/-/resolve-1.22.8.tgz"
   integrity sha512-oKWePCxqpd6FlLvGV1VU0x7bkPmmCNolxzjMf4NczoDnQcIWrAF+cPtZn5i6n+RfD2d9i0tzpKnG6Yk168yIyw==

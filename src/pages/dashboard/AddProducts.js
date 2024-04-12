@@ -18,7 +18,6 @@ const AddProducts = () => {
   const [expDate, setExpDate] = useState('');
   const [totalCost, setTotalCost] = useState('');
   // let navigate = useNavigate();
-
   const addProduct = (e) => {
     e.preventDefault();
     
