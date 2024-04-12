@@ -1,37 +1,37 @@
-.brown-form{
-    background-color: #D6C7AE;
+.brown-form {
+    background-color: #E4CFAC;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.title{
+.title {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 10vh;
-    background-color: #D6C7AE ;
+    background-color: #E4CFAC;
     width: 100%;
 }
 
-.label{
+.label {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.add-button{
+.add-button {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     height: 10vh;
     border-radius: 5px;
-    background-color: #D6C7AE;
+    background-color: #E4CFAC;
 }
 
-.button{
+.button {
     border-radius: 5px;
     width: 100px;
     height: 50px;

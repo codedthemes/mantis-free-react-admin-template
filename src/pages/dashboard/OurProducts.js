@@ -165,7 +165,7 @@ const OurProducts = () => {
   return (
     <Box>
       <div style={{ borderRadius: '5px', overflow: 'hidden' }} >
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh', backgroundColor: "#D6C7AE" }}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '10vh', backgroundColor: "#E4CFAC" }}>
           <h1>Our Products </h1>
         </div>
         <TableContainer
