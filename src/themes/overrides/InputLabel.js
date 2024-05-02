@@ -8,7 +8,8 @@ export default function InputLabel(theme) {
           color: theme.palette.grey[600]
         },
         outlined: {
-          lineHeight: '0.8em',
+          lineHeight: '1rem',
+          top: -4,
           '&.MuiInputLabel-sizeSmall': {
             lineHeight: '1em'
           },
@@ -16,7 +17,8 @@ export default function InputLabel(theme) {
             background: theme.palette.background.paper,
             padding: '0 8px',
             marginLeft: -6,
-            lineHeight: '1.4375em'
+            top: 2,
+            lineHeight: '1rem'
           }
         }
       }

@@ -1,3 +1,7 @@
+/**
+ * Password validator for login pages
+ */
+
 // has number
 const hasNumber = (number) => new RegExp(/[0-9]/).test(number);
 
