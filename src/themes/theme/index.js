@@ -1,6 +1,6 @@
 // ==============================|| PRESET THEME - THEME SELECTOR ||============================== //
 
-const Theme = (colors) => {
+export default function Theme(colors) {
   const { blue, red, gold, cyan, green, grey } = colors;
   const greyColors = {
     0: grey[0],
@@ -87,6 +87,4 @@ const Theme = (colors) => {
     },
     grey: greyColors
   };
-};
-
-export default Theme;
+}
