@@ -17,7 +17,7 @@ const AppBarStyled = styled(AppBar, { shouldForwardProp: (prop) => prop !== 'ope
     duration: theme.transitions.duration.leavingScreen
   }),
   ...(!open && {
-    width: `calc(100% - ${theme.spacing(7.5)})`
+    width: `calc(100%)`
   }),
   ...(open && {
     marginLeft: drawerWidth,
