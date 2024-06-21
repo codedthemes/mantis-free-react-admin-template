@@ -64,11 +64,11 @@ export default function Header() {
   return (
     <>
       {!downLG ? (
-        <AppBarStyled open={!!drawerOpen} {...appBar}>
+        <AppBarStyled open={!!drawerOpen} {...appBar} style={{width:`${downLG ? "100%":"auto"}`}} >
           {mainHeader}
         </AppBarStyled>
       ) : (
-        <AppBar {...appBar}>{mainHeader}</AppBar>
+        <AppBar {...appBar} >{mainHeader}</AppBar>
       )}
     </>
   );

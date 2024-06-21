@@ -1,12 +1,10 @@
 {
-  "name": "mantis-free-react-admin-template",
+  "name": "refund-policy-admin-app",
   "version": "1.3.0",
   "private": true,
-  "homepage": "https://mantisdashboard.io/free",
   "author": {
-    "name": "CodedThemes",
-    "email": "codedthemes@gmail.com",
-    "url": "https://codedthemes.com/"
+    "name": "Shadab",
+    "email": "shadab19it@gmail.com"
   },
   "scripts": {
     "start": "vite",
