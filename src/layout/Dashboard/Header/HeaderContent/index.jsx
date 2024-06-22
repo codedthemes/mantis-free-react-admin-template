@@ -18,6 +18,7 @@ export default function HeaderContent() {
 
   return (
     <>
+    
  
       {!downLG && <Box sx={{ width: '100%', ml: 1 }} />}
     
@@ -25,6 +26,7 @@ export default function HeaderContent() {
       <Notification />
       {!downLG && <Profile />}
       {downLG && <MobileSection />}
+    
     </>
   );
 }

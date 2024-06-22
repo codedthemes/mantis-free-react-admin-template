@@ -35,18 +35,20 @@ export default function Header() {
   // common header
   const mainHeader = (
     <Toolbar>
-      <IconButton
-        disableRipple
-        aria-label="open drawer"
-        onClick={() => handlerDrawerOpen(!drawerOpen)}
-        edge="start"
-        color="secondary"
-        variant="light"
-        sx={{ color: 'text.primary', bgcolor: drawerOpen ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
-      >
-        {!drawerOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-      </IconButton>
-      {headerContent}
+      <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+        <IconButton
+          disableRipple
+          aria-label="open drawer"
+          onClick={() => handlerDrawerOpen(!drawerOpen)}
+          edge="start"
+          color="secondary"
+          variant="light"
+          sx={{ color: 'text.primary', bgcolor: drawerOpen ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
+        >
+          {!drawerOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </IconButton>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>{headerContent}</div>
+      </div>
     </Toolbar>
   );
 
@@ -64,11 +66,11 @@ export default function Header() {
   return (
     <>
       {!downLG ? (
-        <AppBarStyled open={!!drawerOpen} {...appBar} style={{width:`${downLG ? "100%":"auto"}`}} >
+        <AppBarStyled open={!!drawerOpen} {...appBar} style={{ width: `${downLG ? '100%' : 'auto'}` }}>
           {mainHeader}
         </AppBarStyled>
       ) : (
-        <AppBar {...appBar} >{mainHeader}</AppBar>
+        <AppBar {...appBar}>{mainHeader}</AppBar>
       )}
     </>
   );
