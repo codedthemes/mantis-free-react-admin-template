@@ -125,7 +125,7 @@ export default function NavItem({ item, level }) {
           size={item.chip.size}
           label={item.chip.label}
           avatar={item.chip.avatar && <Avatar>{item.chip.avatar}</Avatar>}
-        />
+        /> 
       )}
     </ListItemButton>
   );
