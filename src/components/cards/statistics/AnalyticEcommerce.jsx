@@ -14,11 +14,12 @@ import MainCard from 'components/MainCard';
 import RiseOutlined from '@ant-design/icons/RiseOutlined';
 import FallOutlined from '@ant-design/icons/FallOutlined';
 
+
 const iconSX = { fontSize: '0.75rem', color: 'inherit', marginLeft: 0, marginRight: 0 };
 
-export default function AnalyticEcommerce({ color = 'primary', title, count, percentage, isLoss, extra }) {
+export default function AnalyticEcommerce({ color = 'primary', title, count, percentage, isLoss, extra,isMoney }) {
   return (
-    <MainCard contentSX={{ p: 2.25 }}>
+    <MainCard contentSX={{ p: 2.25, }}>
       <Stack spacing={0.5}>
         <Typography variant="h6" color="text.secondary">
           {title}
@@ -43,15 +44,18 @@ export default function AnalyticEcommerce({ color = 'primary', title, count, per
           )}
         </Grid>
       </Stack>
+      {
+        extra &&
       <Box sx={{ pt: 2.25 }}>
         <Typography variant="caption" color="text.secondary">
-          You made an extra{' '}
+        {isLoss ? "Down" :"Up"}  {" "}
           <Typography variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
             {extra}
           </Typography>{' '}
-          this year
+          this month
         </Typography>
       </Box>
+      }
     </MainCard>
   );
 }

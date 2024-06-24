@@ -54,19 +54,37 @@ export default function DashboardDefault() {
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
       <Grid item xs={12} sx={{ mb: -2.25 }}>
-        <Typography variant="h5">Dashboard</Typography>
+        <Typography variant="h5">Value</Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Request" count="6,500" percentage={59.3} extra="35,000" />
+        <AnalyticEcommerce title="Total Sales" count="$26,500" percentage={59.3} extra="$1,000" isMoney  />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <AnalyticEcommerce title="Total Claims" count="$10,250" percentage={70.5} extra="$1,000" isMoney  />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Pending Request" count="78,250" percentage={70.5} extra="8,900" />
+        <AnalyticEcommerce title="Profit" count="16,250" percentage={27.4} isLoss color="warning"  extra="$1,000" isMoney />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Paid Request" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
+        <AnalyticEcommerce title="No of Claims" count="1,078" percentage={27.4} isLoss color="warning"  extra="$1,000" isMoney />
+      </Grid>
+{/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+      <Grid item xs={12} sx={{ mb: -2.25 }}>
+        <Typography variant="h5">Counts</Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Sales" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" />
+        <AnalyticEcommerce title="Total Request" count="26,500" percentage={59.3} extra="1,000"  />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <AnalyticEcommerce title="Un-confirmed Request" count="10,250" percentage={70.5} extra="1,000"  />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <AnalyticEcommerce title="Paid Request" count="16,250" percentage={27.4} isLoss color="warning"  extra="1,000" />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+        <AnalyticEcommerce title="No of Claims" count="1,078" percentage={27.4} isLoss color="warning" extra="1,000" />
       </Grid>
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
