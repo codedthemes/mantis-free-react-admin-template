@@ -55,8 +55,11 @@ import { useState,useEffect } from 'react';
 
 export default function DashboardDefault() {
   const [reqCount,setReqCount] = useState(0)
-  const [settledReq,setSettledRes] = useState(0)
-  const [claimReq,setClaimRes] = useState(0)
+  const [settledReq,setSettledRes] = useState([])
+  const [claimReq,setClaimRes] = useState([])
+  const [unconfirmed,setUnconfirmed] = useState(0)
+
+  
 
   const getAllRequest = async () => {
     try {
@@ -72,34 +75,70 @@ export default function DashboardDefault() {
   };
   const getSettledRes = async () => {
     try {
-      const { data, error } = await supabase.from('refundpolicy').select('id', { count: 'exact' }).eq("status","SETTLED");
+      const { data, error } = await supabase.from('refundpolicy').select('charge_amount', { count: 'exact' }).eq("status","POLICY");
       if (error) {
         throw error;
       }
 
-      setSettledRes(data.length);
+      setSettledRes(data);
     } catch (error) {
       alert(error.message);
     }
   };
   const getClaimRes = async () => {
     try {
-      const { data, error } = await supabase.from('refundpolicy').select('id', { count: 'exact' }).eq("status","CLAIM");
+      const { data, error } = await supabase.from('refundpolicy').select('charge_amount,ticket_price', { count: 'exact' }).eq("status","CLAIM");
       if (error) {
         throw error;
       }
 
-      setClaimRes(data.length);
+      setClaimRes(data);
     } catch (error) {
       alert(error.message);
     }
   };
+  const getUnConfirmed = async () => {
+    try {
+      const { data, error } = await supabase.from('refundpolicy').select('id', { count: 'exact' }).eq("status","OFFER");
+      if (error) {
+        throw error;
+      }
+
+      setUnconfirmed(data.length);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+  // const test = async () => {
+  //   try {
+
+  //     const { data, error } = await supabase
+  //     .from('refundpolicy')
+  //     .update({ status: 'POLICY' })
+  //     .eq("status","CLAIM")
+  //     if (error) {
+  //       throw error;
+  //     }
+
+  //     setUnconfirmed(data.length);
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
+  
+  // Amount Data fetching
+
 
   useEffect(() => {
     getAllRequest();
     getSettledRes()
     getClaimRes()
+    getUnConfirmed()
+    // test()
   }, []);
+
+
+
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
@@ -107,17 +146,26 @@ export default function DashboardDefault() {
         <Typography variant="h5">Value</Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Sales" count="$26,500" percentage={59.3} extra="$1,000" isMoney />
+        <AnalyticEcommerce title="Total Sales" count={` ${
+      (settledReq?.reduce((sum, record) => sum + record.charge_amount, 0) +
+        claimReq?.reduce((sum, record) => sum + record.charge_amount, 0)).toFixed(2)
+        }`} percentage={59.3} extra="$1,000" isMoney />
       </Grid>
 
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Total Claims" count="$10,250" percentage={70.5} extra="$1,000" isMoney />
+        <AnalyticEcommerce title="Total Claims" count={`${claimReq?.reduce((sum, record) => sum + record.ticket_price, 0).toFixed(2)}`} percentage={70.5} extra="$1,000" isMoney />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Profit" count="16,250" percentage={27.4} isLoss color="warning" extra="$1,000" isMoney />
+        <AnalyticEcommerce title="Profit" count={` ${
+
+          (settledReq?.reduce((sum, record) => sum + record.charge_amount, 0) +
+        claimReq?.reduce((sum, record) => sum + record.charge_amount, 0)).toFixed(2) - claimReq?.reduce((sum, record) => sum + record.ticket_price, 0).toFixed(2)
+        
+        
+        }`} percentage={27.4} isLoss color="warning" extra="$1,000" isMoney />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="No of Claims" count="1,078" percentage={27.4} isLoss color="warning" extra="$1,000" isMoney />
+        <AnalyticEcommerce title="Claim Percent" count={(((claimReq.length / (settledReq?.length + claimReq.length) )* 100)).toFixed(2) + " %"} percentage={27.4} isLoss color="warning" extra="$1,000"  />
       </Grid>
       {/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
       <Grid item xs={12} sx={{ mb: -2.25 }}>
@@ -128,13 +176,13 @@ export default function DashboardDefault() {
       </Grid>
 
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Un-confirmed Request" count="10,250" percentage={70.5} extra="1,000" />
+        <AnalyticEcommerce title="Not Purchased" count={unconfirmed} percentage={70.5} extra="1,000" />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="Paid Request" count={settledReq} percentage={27.4} isLoss color="warning" extra="1,000" />
+        <AnalyticEcommerce title="Purchased" count={settledReq?.length + claimReq.length} percentage={27.4} isLoss color="warning" extra="1,000" />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce title="No of Claims" count={claimReq} percentage={27.4} isLoss color="warning" extra="1,000" />
+        <AnalyticEcommerce title="No of Claims" count={claimReq.length} percentage={27.4} isLoss color="warning" extra="1,000" />
       </Grid>
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />

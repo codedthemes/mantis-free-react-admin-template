@@ -151,7 +151,7 @@ export default function OrderTable() {
 
   const getAllRequest = async () => {
     try {
-      const { data, error } = await supabase.from('refundpolicy').select('*').limit(10).order("created_at",{ascending:false});
+      const { data, error } = await supabase.from('refundpolicy').select('*').limit(10).order("created_at",{ascending:true});
       if (error) {
         throw error;
       }
@@ -199,10 +199,10 @@ export default function OrderTable() {
                   <TableCell>{row.booking_date}</TableCell>
              
                   <TableCell align="right">
-                    <NumericFormat value={row.ticketAmount} displayType="text" thousandSeparator prefix="$" />
+                    <NumericFormat value={row.ticketAmount} displayType="text" thousandSeparator prefix="£ " />
                   </TableCell>
                   <TableCell align="right">
-                    <NumericFormat value={row.charge_amount} displayType="text" thousandSeparator prefix="$" />
+                    <NumericFormat value={row.charge_amount} displayType="text" thousandSeparator prefix="£ " />
                   </TableCell>
                  
                   <TableCell align="left">

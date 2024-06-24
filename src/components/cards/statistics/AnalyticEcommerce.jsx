@@ -27,7 +27,7 @@ export default function AnalyticEcommerce({ color = 'primary', title, count, per
         <Grid container alignItems="center">
           <Grid item>
             <Typography variant="h4" color="inherit">
-              {count}
+             {isMoney && <span>&#163;</span>} {count}
             </Typography>
           </Grid>
           {percentage && (
