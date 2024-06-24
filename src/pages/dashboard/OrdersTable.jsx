@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 // material-ui
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -16,82 +15,80 @@ import { NumericFormat } from 'react-number-format';
 
 // project import
 import Dot from 'components/@extended/Dot';
+import { useState, useEffect } from 'react';
+import supabase from 'service/supabase';
 
-function createData(tracking_no, name, fat, carbs, protein) {
-  return { tracking_no, name, fat, carbs, protein };
-}
 
-const rows = [
-  createData(84564564, 'Camera Lens', 40, 2, 40570),
-  createData(98764564, 'Laptop', 300, 0, 180139),
-  createData(98756325, 'Mobile', 355, 1, 90989),
-  createData(98652366, 'Handset', 50, 1, 10239),
-  createData(13286564, 'Computer Accessories', 100, 1, 83348),
-  createData(86739658, 'TV', 99, 0, 410780),
-  createData(13256498, 'Keyboard', 125, 2, 70999),
-  createData(98753263, 'Mouse', 89, 2, 10570),
-  createData(98753275, 'Desktop', 185, 1, 98063),
-  createData(98753291, 'Chair', 100, 0, 14001)
-];
 
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
+// function descendingComparator(a, b, orderBy) {
+//   if (b[orderBy] < a[orderBy]) {
+//     return -1;
+//   }
+//   if (b[orderBy] > a[orderBy]) {
+//     return 1;
+//   }
+//   return 0;
+// }
 
-function getComparator(order, orderBy) {
-  return order === 'desc' ? (a, b) => descendingComparator(a, b, orderBy) : (a, b) => -descendingComparator(a, b, orderBy);
-}
+// function getComparator(order, orderBy) {
+//   return order === 'desc' ? (a, b) => descendingComparator(a, b, orderBy) : (a, b) => -descendingComparator(a, b, orderBy);
+// }
 
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) {
-      return order;
-    }
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
+// function stableSort(array, comparator) {
+//   const stabilizedThis = array.map((el, index) => [el, index]);
+//   stabilizedThis.sort((a, b) => {
+//     const order = comparator(a[0], b[0]);
+//     if (order !== 0) {
+//       return order;
+//     }
+//     return a[1] - b[1];
+//   });
+//   return stabilizedThis.map((el) => el[0]);
+// }
 
 const headCells = [
   {
-    id: 'tracking_no',
+    id: 'fromAirport',
     align: 'left',
     disablePadding: false,
-    label: 'Tracking No.'
+    label: 'From Airport'
   },
   {
-    id: 'name',
+    id: 'toAirport',
     align: 'left',
     disablePadding: true,
-    label: 'Product Name'
+    label: 'To Airport'
   },
   {
-    id: 'fat',
+    id: 'booking_date',
+    align: 'left',
+    disablePadding: true,
+    label: 'Booking Date'
+  },
+  {
+    id: 'ticketAmount',
     align: 'right',
     disablePadding: false,
-    label: 'Total Order'
+    label: 'Ticket Amount'
   },
   {
-    id: 'carbs',
+    id: 'charge_amount',
+    align: 'right',
+    disablePadding: false,
+    label: 'Assurance Amount'
+  },
+  {
+    id: 'status',
     align: 'left',
     disablePadding: false,
-
     label: 'Status'
   },
   {
-    id: 'protein',
-    align: 'right',
+    id: 'policy_no',
+    align: 'left',
     disablePadding: false,
-    label: 'Total Amount'
-  }
+    label: 'Policy No'
+  },
 ];
 
 // ==============================|| ORDER TABLE - HEADER ||============================== //
@@ -120,21 +117,21 @@ function OrderStatus({ status }) {
   let title;
 
   switch (status) {
-    case 0:
+    case "POLICY":
       color = 'warning';
-      title = 'Pending';
+      title = 'POLICY';
       break;
-    case 1:
+    case "SETTLED":
       color = 'success';
-      title = 'Approved';
+      title = 'SETTLED';
       break;
-    case 2:
+    case "Underprocess":
       color = 'error';
-      title = 'Rejected';
+      title = 'Underprocess';
       break;
     default:
       color = 'primary';
-      title = 'None';
+      title = 'OFFER';
   }
 
   return (
@@ -148,8 +145,26 @@ function OrderStatus({ status }) {
 // ==============================|| ORDER TABLE ||============================== //
 
 export default function OrderTable() {
+  const [allRequest, setAllRequest] = useState([]);
   const order = 'asc';
   const orderBy = 'tracking_no';
+
+  const getAllRequest = async () => {
+    try {
+      const { data, error } = await supabase.from('refundpolicy').select('*').limit(10).order("created_at",{ascending:false});
+      if (error) {
+        throw error;
+      }
+
+      setAllRequest(data);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  useEffect(() => {
+    getAllRequest();
+  }, []);
 
   return (
     <Box>
@@ -166,7 +181,7 @@ export default function OrderTable() {
         <Table aria-labelledby="tableTitle">
           <OrderTableHead order={order} orderBy={orderBy} />
           <TableBody>
-            {stableSort(rows, getComparator(order, orderBy)).map((row, index) => {
+            {allRequest.map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`;
 
               return (
@@ -175,19 +190,26 @@ export default function OrderTable() {
                   role="checkbox"
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   tabIndex={-1}
-                  key={row.tracking_no}
+                  key={row.id}
                 >
                   <TableCell component="th" id={labelId} scope="row">
-                    <Link color="secondary"> {row.tracking_no}</Link>
+                     {row.fromAirport}
                   </TableCell>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell>
-                    <OrderStatus status={row.carbs} />
+                  <TableCell>{row.toAirport}</TableCell>
+                  <TableCell>{row.booking_date}</TableCell>
+             
+                  <TableCell align="right">
+                    <NumericFormat value={row.ticketAmount} displayType="text" thousandSeparator prefix="$" />
                   </TableCell>
                   <TableCell align="right">
-                    <NumericFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
+                    <NumericFormat value={row.charge_amount} displayType="text" thousandSeparator prefix="$" />
                   </TableCell>
+                 
+                  <TableCell align="left">
+                    <OrderStatus status={row.status} />
+                  </TableCell>
+                  <TableCell>{row.policy_no ?? "Not Taken"}</TableCell>
+
                 </TableRow>
               );
             })}
@@ -200,4 +222,4 @@ export default function OrderTable() {
 
 OrderTableHead.propTypes = { order: PropTypes.any, orderBy: PropTypes.string };
 
-OrderStatus.propTypes = { status: PropTypes.number };
+OrderStatus.propTypes = { status: PropTypes.string };

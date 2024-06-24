@@ -28,6 +28,7 @@
     "@mui/lab": "^5.0.0-alpha.167",
     "@mui/material": "^5.15.12",
     "@mui/system": "^5.15.12",
+    "@supabase/supabase-js": "^2.43.5",
     "@svgr/webpack": "^8.1.0",
     "@vitejs/plugin-react": "^4.2.1",
     "apexcharts": "^3.49.0",
