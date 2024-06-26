@@ -40,5 +40,5 @@ jobs:
           SOURCE: 'dist/'
           REMOTE_HOST: 192.34.62.123
           REMOTE_USER: mantis
-          TARGET: public_html/free
+          TARGET: public_html/app
           EXCLUDE: '/build/, /node_modules/'

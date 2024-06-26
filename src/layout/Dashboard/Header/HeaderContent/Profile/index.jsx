@@ -91,7 +91,7 @@ export default function Profile() {
         <Stack direction="row" spacing={1.25} alignItems="center" sx={{ p: 0.5 }}>
           <Avatar alt="profile user" src={avatar1} size="sm" />
           <Typography variant="subtitle1" sx={{ textTransform: 'capitalize' }}>
-            John Doe
+            Unfare
           </Typography>
         </Stack>
       </ButtonBase>
