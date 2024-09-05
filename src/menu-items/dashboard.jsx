@@ -1,9 +1,10 @@
 // assets
-import { DashboardOutlined } from '@ant-design/icons';
+import { DashboardOutlined, CalculatorOutlined  } from '@ant-design/icons';
 
 // icons
 const icons = {
-  DashboardOutlined
+  Dashboard: DashboardOutlined,
+  Calculator: CalculatorOutlined
 };
 
 // ==============================|| MENU ITEMS - DASHBOARD ||============================== //
@@ -18,7 +19,15 @@ const dashboard = {
       title: 'Dashboard',
       type: 'item',
       url: '/dashboard/default',
-      icon: icons.DashboardOutlined,
+      icon: icons.Dashboard,
+      breadcrumbs: false
+    },
+    {
+      id: 'calculator',
+      title: 'Calculator',
+      type: 'item',
+      url: '/calculator',
+      icon: icons.Calculator,
       breadcrumbs: false
     }
   ]
