@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // material-ui
 import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -19,10 +19,10 @@ export default function UniqueVisitorCard() {
   return (
     <>
       <Grid container alignItems="center" justifyContent="space-between">
-        <Grid item>
+        <Grid>
           <Typography variant="h5">Unique Visitor</Typography>
         </Grid>
-        <Grid item>
+        <Grid>
           <Stack direction="row" alignItems="center" spacing={0}>
             <Button
               size="small"

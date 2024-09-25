@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 // material-ui
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
@@ -33,10 +33,10 @@ export default function SaleReportCard() {
   return (
     <>
       <Grid container alignItems="center" justifyContent="space-between">
-        <Grid item>
+        <Grid>
           <Typography variant="h5">Sales Report</Typography>
         </Grid>
-        <Grid item>
+        <Grid>
           <TextField
             id="standard-select-currency"
             size="small"
