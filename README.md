@@ -4,7 +4,7 @@
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/main/LICENSE)
 [![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template)](https://github.com/codedthemes/mantis-free-react-admin-template/)
 
-Mantis is a free and open source React dashboard template made using the Material UI React component library with aim of flexibility and better customizability.
+Mantis is a free and open source React overview template made using the Material UI React component library with aim of flexibility and better customizability.
 
 ### Name Derived From Nature
 
@@ -14,7 +14,7 @@ Mantis has Ant Design principal on top of the MAterial UI React component librar
 
 :star: :star: :star: Support us by giving star (Top right of this page) if you like the theme :star: :star: :star:
 
-![mantis-free-react-dashboard-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social-v1.1.0.png)
+![mantis-free-react-overview-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social-v1.1.0.png)
 
 The [Pro version](https://mantisdashboard.io) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
 
@@ -33,7 +33,7 @@ The [Pro version](https://mantisdashboard.io) of Mantis react template includes 
 
 ## Why Mantis?
 
-Mantis offers everything needed to build an advanced dashboard application. In the initial release, we included following high-end features,
+Mantis offers everything needed to build an advanced overview application. In the initial release, we included following high-end features,
 
 - Support React18.
 - Professional user interface.
