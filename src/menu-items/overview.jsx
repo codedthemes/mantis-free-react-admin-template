@@ -1,23 +1,19 @@
-// assets
 import { DashboardOutlined } from '@ant-design/icons';
 
-// icons
 const icons = {
   DashboardOutlined
 };
 
-// ==============================|| MENU ITEMS - DASHBOARD ||============================== //
-
 const overview = {
   id: 'group-overview',
-  title: 'Navigation',
+  title: 'Dashboard',
   type: 'group',
   children: [
     {
-      id: 'overview',
-      title: 'Overview',
+      id: 'portfolio',
+      title: 'Portifólio',
       type: 'item',
-      url: '/overview',
+      url: '/',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }
