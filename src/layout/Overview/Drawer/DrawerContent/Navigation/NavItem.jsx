@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 
 // project import
-import { handlerActiveItem, useGetMenuMaster } from 'api/menu';
+import { handlerActiveItem, useGetMenuMaster } from 'api/internal/menu';
 
 export default function NavItem({ item, level }) {
   const theme = useTheme();

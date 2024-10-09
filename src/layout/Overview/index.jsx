@@ -13,7 +13,7 @@ import navigation from 'menu-items';
 import Loader from 'components/Loader';
 import Breadcrumbs from 'components/@extended/Breadcrumbs';
 
-import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
+import { handlerDrawerOpen, useGetMenuMaster } from 'api/internal/menu';
 
 // ==============================|| MAIN LAYOUT ||============================== //
 

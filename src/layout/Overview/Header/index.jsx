@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import AppBarStyled from './AppBarStyled';
 import HeaderContent from './HeaderContent';
 
-import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
+import { handlerDrawerOpen, useGetMenuMaster } from 'api/internal/menu';
 
 // assets
 import MenuFoldOutlined from '@ant-design/icons/MenuFoldOutlined';
