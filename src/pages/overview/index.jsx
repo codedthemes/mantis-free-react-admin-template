@@ -12,6 +12,8 @@ import { useQuery } from 'react-query';
 import { useEffect, useState } from 'react';
 import transactionService from '../../api/external/services/TransactionService';
 import { CircularProgress } from '@mui/material';
+import Button from '@mui/material/Button';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 function createData(
   coingecko_index,
@@ -75,7 +77,7 @@ export default function DashboardDefault() {
   }
 
   if (error) {
-    return <div>Muitas requisições ao mesmo tempo... Por favor, aguarde!</div>;
+    return <div>Ops... Houve algum problema, tente novamente ou contate nosso suporte!</div>;
   }
 
   return (
@@ -133,10 +135,9 @@ export default function DashboardDefault() {
           <Grid item>
             <Typography variant="h5">Ativos</Typography>
           </Grid>
-          <Grid item />
           {/*<Grid item>*/}
-          {/*  <Button variant="outlined" startIcon={<PlusCircleOutlined />}>*/}
-          {/*    Adicionar*/}
+          {/*  <Button variant="outlined" color="success" startIcon={<PlusCircleOutlined />}>*/}
+          {/*    Add*/}
           {/*  </Button>*/}
           {/*</Grid>*/}
         </Grid>
@@ -146,7 +147,7 @@ export default function DashboardDefault() {
       </Grid>
 
       <Grid item xs={12} md={5} lg={4}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container alignItems="center" justifyContent="space-between" sx={{ marginBottom: '28px' }}>
           <Grid item>
             <Typography variant="h5">Expectativa de Retorno</Typography>
           </Grid>

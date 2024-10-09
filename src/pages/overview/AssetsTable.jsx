@@ -13,6 +13,7 @@ import { NumericFormat } from 'react-number-format';
 
 import Dot from 'components/@extended/Dot';
 import Avatar from '@mui/material/Avatar';
+import { PlusCircleOutlined } from '@ant-design/icons';
 
 const headCells = [
   {
