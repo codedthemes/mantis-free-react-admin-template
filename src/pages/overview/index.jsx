@@ -14,6 +14,7 @@ import transactionService from '../../api/external/services/TransactionService';
 import { CircularProgress } from '@mui/material';
 import Button from '@mui/material/Button';
 import { PlusCircleOutlined } from '@ant-design/icons';
+import AddCoinModal from '../modals/coin/AddCoinModal';
 
 function createData(
   coingecko_index,
@@ -47,7 +48,15 @@ export default function DashboardDefault() {
   const [coins, setCoins] = useState([]);
   const [overviewData, setOverviewData] = useState({});
 
-  // Use useEffect to handle state updates when data changes
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleAddCoin = (coin) => {
+    console.log('Coin added:', coin);
+  };
+
   useEffect(() => {
     if (data && !isLoading && !error) {
       const transactionsOverviewData = data.data;
@@ -135,11 +144,12 @@ export default function DashboardDefault() {
           <Grid item>
             <Typography variant="h5">Ativos</Typography>
           </Grid>
-          {/*<Grid item>*/}
-          {/*  <Button variant="outlined" color="success" startIcon={<PlusCircleOutlined />}>*/}
-          {/*    Add*/}
-          {/*  </Button>*/}
-          {/*</Grid>*/}
+          <Grid item>
+            <Button variant="outlined" color="success" startIcon={<PlusCircleOutlined />} onClick={handleOpen}>
+              Add
+            </Button>
+            <AddCoinModal open={open} onClose={handleClose} onAddCoin={handleAddCoin} />
+          </Grid>
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
           <AssetsTable rows={coins} />
