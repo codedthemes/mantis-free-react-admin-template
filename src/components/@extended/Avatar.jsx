@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import MuiAvatar from '@mui/material/Avatar';
 
 // project import
@@ -95,10 +95,8 @@ const AvatarStyle = styled(MuiAvatar, { shouldForwardProp: (prop) => prop !== 'c
 );
 
 export default function Avatar({ children, color = 'primary', type, size = 'md', ...others }) {
-  const theme = useTheme();
-
   return (
-    <AvatarStyle theme={theme} color={color} type={type} size={size} {...others}>
+    <AvatarStyle color={color} type={type} size={size} {...others}>
       {children}
     </AvatarStyle>
   );

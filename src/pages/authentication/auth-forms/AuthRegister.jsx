@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Link from '@mui/material/Link';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -70,7 +70,7 @@ export default function AuthRegister() {
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
                   <OutlinedInput
@@ -91,7 +91,7 @@ export default function AuthRegister() {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
                   <OutlinedInput
@@ -113,7 +113,7 @@ export default function AuthRegister() {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="company-signup">Company</InputLabel>
                   <OutlinedInput
@@ -134,7 +134,7 @@ export default function AuthRegister() {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
                   <OutlinedInput
@@ -156,7 +156,7 @@ export default function AuthRegister() {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="password-signup">Password</InputLabel>
                   <OutlinedInput
@@ -195,10 +195,10 @@ export default function AuthRegister() {
                 )}
                 <FormControl fullWidth sx={{ mt: 2 }}>
                   <Grid container spacing={2} alignItems="center">
-                    <Grid item>
+                    <Grid>
                       <Box sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }} />
                     </Grid>
-                    <Grid item>
+                    <Grid>
                       <Typography variant="subtitle1" fontSize="0.75rem">
                         {level?.label}
                       </Typography>
@@ -206,7 +206,7 @@ export default function AuthRegister() {
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Typography variant="body2">
                   By Signing up, you agree to our &nbsp;
                   <Link variant="subtitle2" component={RouterLink} to="#">
@@ -219,11 +219,11 @@ export default function AuthRegister() {
                 </Typography>
               </Grid>
               {errors.submit && (
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <FormHelperText error>{errors.submit}</FormHelperText>
                 </Grid>
               )}
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
                     Create Account

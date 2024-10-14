@@ -12,7 +12,6 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemSecondaryAction from '@mui/material/ListItemSecondaryAction';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import Tooltip from '@mui/material/Tooltip';
@@ -38,12 +37,13 @@ const avatarSX = {
 };
 
 const actionSX = {
-  mt: '6px',
+  mt: 1,
   ml: 1,
   top: 'auto',
   right: 'auto',
   alignSelf: 'flex-start',
-
+  position: 'relative',
+  overflow: 'inherit',
   transform: 'none'
 };
 
@@ -122,8 +122,7 @@ export default function Notification() {
                       '& .MuiListItemButton-root': {
                         py: 0.5,
                         '&.Mui-selected': { bgcolor: 'grey.50', color: 'text.primary' },
-                        '& .MuiAvatar-root': avatarSX,
-                        '& .MuiListItemSecondaryAction-root': { ...actionSX, position: 'relative' }
+                        '& .MuiAvatar-root': avatarSX
                       }
                     }}
                   >
@@ -145,11 +144,9 @@ export default function Notification() {
                         }
                         secondary="2 min ago"
                       />
-                      <ListItemSecondaryAction>
-                        <Typography variant="caption" noWrap>
-                          3:00 AM
-                        </Typography>
-                      </ListItemSecondaryAction>
+                      <Typography sx={actionSX} variant="caption" noWrap>
+                        3:00 AM
+                      </Typography>
                     </ListItemButton>
                     <Divider />
                     <ListItemButton>
@@ -169,11 +166,9 @@ export default function Notification() {
                         }
                         secondary="5 August"
                       />
-                      <ListItemSecondaryAction>
-                        <Typography variant="caption" noWrap>
-                          6:00 PM
-                        </Typography>
-                      </ListItemSecondaryAction>
+                      <Typography sx={actionSX} variant="caption" noWrap>
+                        6:00 PM
+                      </Typography>
                     </ListItemButton>
                     <Divider />
                     <ListItemButton selected={read > 0}>
@@ -193,11 +188,9 @@ export default function Notification() {
                         }
                         secondary="7 hours ago"
                       />
-                      <ListItemSecondaryAction>
-                        <Typography variant="caption" noWrap>
-                          2:45 PM
-                        </Typography>
-                      </ListItemSecondaryAction>
+                      <Typography sx={actionSX} variant="caption" noWrap>
+                        2:45 PM
+                      </Typography>
                     </ListItemButton>
                     <Divider />
                     <ListItemButton>
@@ -218,11 +211,9 @@ export default function Notification() {
                         }
                         secondary="Daily scrum meeting time"
                       />
-                      <ListItemSecondaryAction>
-                        <Typography variant="caption" noWrap>
-                          9:10 PM
-                        </Typography>
-                      </ListItemSecondaryAction>
+                      <Typography sx={actionSX} variant="caption" noWrap>
+                        9:10 PM
+                      </Typography>
                     </ListItemButton>
                     <Divider />
                     <ListItemButton sx={{ textAlign: 'center', py: `${12}px !important` }}>

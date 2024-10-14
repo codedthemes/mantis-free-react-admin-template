@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 // material-ui
 import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 // project import
 import MainCard from 'components/MainCard';
-import ComponentWrapper from './ComponentWrapper';
 import ComponentSkeleton from './ComponentSkeleton';
 
 function ColorBox({ bgcolor, title, data, dark, main }) {
@@ -26,21 +25,17 @@ function ColorBox({ bgcolor, title, data, dark, main }) {
         }}
       >
         {title && (
-          <Grid container justifyContent="space-around" alignItems="center">
-            <Grid item>
-              {data && (
-                <Stack spacing={0.75} alignItems="center">
-                  <Typography variant="subtitle2">{data.label}</Typography>
-                  <Typography variant="subtitle1">{data.color}</Typography>
-                </Stack>
-              )}
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="inherit">
-                {title}
-              </Typography>
-            </Grid>
-          </Grid>
+          <Stack direction="row" justifyContent="space-around" width="100%" alignItems="center">
+            {data && (
+              <Stack spacing={0.75} alignItems="center">
+                <Typography variant="subtitle2">{data.label}</Typography>
+                <Typography variant="subtitle1">{data.color}</Typography>
+              </Stack>
+            )}
+            <Typography variant="subtitle1" color="inherit">
+              {title}
+            </Typography>
+          </Stack>
         )}
       </Box>
     </Card>
@@ -53,7 +48,7 @@ export default function ComponentColor() {
   return (
     <ComponentSkeleton>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <MainCard title="Primary Color">
             <Stack>
               <ColorBox bgcolor="primary.lighter" data={{ label: 'Blue-1', color: '#e6f7ff' }} title="primary.lighter" dark />
@@ -69,7 +64,7 @@ export default function ComponentColor() {
             </Stack>
           </MainCard>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <MainCard title="Secondary Color">
             <Stack>
               <ColorBox bgcolor="secondary.lighter" data={{ label: 'Grey-1', color: '#fafafa' }} title="secondary.lighter" dark />
@@ -85,7 +80,7 @@ export default function ComponentColor() {
             </Stack>
           </MainCard>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <MainCard title="Other Color">
             <Stack>
               <ColorBox bgcolor="secondary.A100" data={{ label: 'Grey-A1', color: '#ffffff' }} title="secondary.A100" dark />
@@ -94,7 +89,7 @@ export default function ComponentColor() {
             </Stack>
           </MainCard>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <MainCard title="Success Color">
             <Stack>
               <ColorBox bgcolor="success.lighter" data={{ label: 'Green-1', color: '#f6ffed' }} title="success.lighter" dark />
@@ -105,7 +100,7 @@ export default function ComponentColor() {
             </Stack>
           </MainCard>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <MainCard title="Error Color">
             <Stack>
               <ColorBox bgcolor="error.lighter" data={{ label: 'Red-1', color: '#fff1f0' }} title="error.lighter" dark />
@@ -116,7 +111,7 @@ export default function ComponentColor() {
             </Stack>
           </MainCard>
         </Grid>
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid size={{ xs: 12, sm: 6, md: 4 }}>
           <MainCard title="Warning Color">
             <Stack>
               <ColorBox bgcolor="warning.lighter" data={{ label: 'Gold-1', color: '#fffbe6' }} title="warning.lighter" dark />

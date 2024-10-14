@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import Chip from '@mui/material/Chip';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -24,13 +24,13 @@ export default function AnalyticEcommerce({ color = 'primary', title, count, per
           {title}
         </Typography>
         <Grid container alignItems="center">
-          <Grid item>
+          <Grid>
             <Typography variant="h4" color="inherit">
               {count}
             </Typography>
           </Grid>
           {percentage && (
-            <Grid item>
+            <Grid>
               <Chip
                 variant="combined"
                 color={color}

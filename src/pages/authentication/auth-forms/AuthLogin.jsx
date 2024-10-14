@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormHelperText from '@mui/material/FormHelperText';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Link from '@mui/material/Link';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -31,7 +31,7 @@ import FirebaseSocial from './FirebaseSocial';
 
 // ============================|| JWT - LOGIN ||============================ //
 
-export default function AuthLogin({ isDemo = false }) {
+export default function AuthLogin() {
   const [checked, setChecked] = React.useState(false);
 
   const [showPassword, setShowPassword] = React.useState(false);
@@ -59,7 +59,7 @@ export default function AuthLogin({ isDemo = false }) {
         {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit}>
             <Grid container spacing={3}>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="email-login">Email Address</InputLabel>
                   <OutlinedInput
@@ -80,7 +80,7 @@ export default function AuthLogin({ isDemo = false }) {
                   </FormHelperText>
                 )}
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="password-login">Password</InputLabel>
                   <OutlinedInput
@@ -115,7 +115,7 @@ export default function AuthLogin({ isDemo = false }) {
                 )}
               </Grid>
 
-              <Grid item xs={12} sx={{ mt: -1 }}>
+              <Grid size={12} sx={{ mt: -1 }}>
                 <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
                   <FormControlLabel
                     control={
@@ -135,23 +135,23 @@ export default function AuthLogin({ isDemo = false }) {
                 </Stack>
               </Grid>
               {errors.submit && (
-                <Grid item xs={12}>
+                <Grid size={12}>
                   <FormHelperText error>{errors.submit}</FormHelperText>
                 </Grid>
               )}
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <AnimateButton>
                   <Button disableElevation disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained" color="primary">
                     Login
                   </Button>
                 </AnimateButton>
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Divider>
                   <Typography variant="caption"> Login with</Typography>
                 </Divider>
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <FirebaseSocial />
               </Grid>
             </Grid>
