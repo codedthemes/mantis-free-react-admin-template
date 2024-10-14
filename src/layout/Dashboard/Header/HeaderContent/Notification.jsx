@@ -122,8 +122,7 @@ export default function Notification() {
                       '& .MuiListItemButton-root': {
                         py: 0.5,
                         '&.Mui-selected': { bgcolor: 'grey.50', color: 'text.primary' },
-                        '& .MuiAvatar-root': avatarSX,
-                        '& .MuiListItem-root': { p: 0 }
+                        '& .MuiAvatar-root': avatarSX
                       }
                     }}
                   >
