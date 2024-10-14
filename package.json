@@ -52,7 +52,7 @@
     "util": "^0.12.5",
     "vite": "^5.4.8",
     "vite-jsconfig-paths": "^2.0.1",
-    "web-vitals": "^3.5.2",
+    "web-vitals": "^4.2.3",
     "yup": "^1.4.0"
   },
   "eslintConfig": {
