@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
+
+// style.scss
+import 'assets/style.css';
 
 // scroll bar
 import 'simplebar-react/dist/simplebar.min.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+
+// apex-chart
+import 'assets/third-party/apex-chart.css';
+import 'assets/third-party/react-table.css';
 
 // google-fonts
 import '@fontsource/roboto/400.css';
@@ -27,11 +31,12 @@ import '@fontsource/public-sans/500.css';
 import '@fontsource/public-sans/600.css';
 import '@fontsource/public-sans/700.css';
 
-// project import
+// project imports
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 // ==============================|| MAIN - REACT DOM RENDER ||============================== //
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-// project import
+// project imports
 import getColors from 'utils/getColors';
 
 // assets

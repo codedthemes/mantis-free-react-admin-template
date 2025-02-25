@@ -1,6 +1,6 @@
 // ==============================|| CUSTOM FUNCTION - COLORS ||============================== //
 
-const getColors = (theme, color) => {
+export default function getColors(theme, color) {
   switch (color) {
     case 'secondary':
       return theme.palette.secondary;
@@ -15,6 +15,4 @@ const getColors = (theme, color) => {
     default:
       return theme.palette.primary;
   }
-};
-
-export default getColors;
+}

@@ -11,23 +11,21 @@ export default function AuthFooter() {
     <Container maxWidth="xl">
       <Stack
         direction={{ xs: 'column', sm: 'row' }}
-        justifyContent={{ xs: 'center', sm: 'space-between' }}
-        spacing={2}
-        textAlign={{ xs: 'center', sm: 'inherit' }}
+        sx={{ gap: 2, justifyContent: { xs: 'center', sm: 'space-between', textAlign: { xs: 'center', sm: 'inherit' } } }}
       >
         <Typography variant="subtitle2" color="secondary">
-          This site is protected by{' '}
-          <Typography component={Link} variant="subtitle2" href="#mantis-privacy" target="_blank" underline="hover">
-            Privacy Policy
-          </Typography>
+          © Made with love by Team{' '}
+          <Link href="https://codedthemes.com/" target="_blank" underline="hover">
+            CodedThemes
+          </Link>
         </Typography>
 
-        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 1, sm: 3 }} textAlign={{ xs: 'center', sm: 'inherit' }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ gap: { xs: 1, sm: 3 }, textAlign: { xs: 'center', sm: 'inherit' } }}>
           <Typography
             variant="subtitle2"
             color="secondary"
             component={Link}
-            href="https://codedthemes.com"
+            href="https://mui.com/store/terms/"
             target="_blank"
             underline="hover"
           >
@@ -37,21 +35,11 @@ export default function AuthFooter() {
             variant="subtitle2"
             color="secondary"
             component={Link}
-            href="https://codedthemes.com"
+            href="https://mui.com/legal/privacy/"
             target="_blank"
             underline="hover"
           >
             Privacy Policy
-          </Typography>
-          <Typography
-            variant="subtitle2"
-            color="secondary"
-            component={Link}
-            href="https://codedthemes.com"
-            target="_blank"
-            underline="hover"
-          >
-            CA Privacy Notice
           </Typography>
         </Stack>
       </Stack>

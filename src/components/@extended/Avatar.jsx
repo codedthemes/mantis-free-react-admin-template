@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import MuiAvatar from '@mui/material/Avatar';
 
-// project import
+// project imports
 import getColors from 'utils/getColors';
 
 function getColorStyle({ theme, color, type }) {
@@ -85,20 +85,23 @@ function getSizeStyle(size) {
 }
 
 const AvatarStyle = styled(MuiAvatar, { shouldForwardProp: (prop) => prop !== 'color' && prop !== 'type' && prop !== 'size' })(
-  ({ theme, color, type, size }) => ({
+  ({ theme, size, color, type }) => ({
     ...getSizeStyle(size),
     ...getColorStyle({ theme, color, type }),
-    ...(size === 'badge' && {
-      borderColor: theme.palette.background.default
-    })
+    variants: [
+      {
+        props: { size: 'badge' },
+        style: {
+          borderColor: theme.palette.background.default
+        }
+      }
+    ]
   })
 );
 
 export default function Avatar({ children, color = 'primary', type, size = 'md', ...others }) {
-  const theme = useTheme();
-
   return (
-    <AvatarStyle theme={theme} color={color} type={type} size={size} {...others}>
+    <AvatarStyle color={color} type={type} size={size} {...others}>
       {children}
     </AvatarStyle>
   );
@@ -107,7 +110,7 @@ export default function Avatar({ children, color = 'primary', type, size = 'md',
 getColorStyle.propTypes = { theme: PropTypes.any, color: PropTypes.any, type: PropTypes.any };
 
 Avatar.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   color: PropTypes.string,
   type: PropTypes.any,
   size: PropTypes.string,

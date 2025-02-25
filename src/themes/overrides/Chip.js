@@ -1,4 +1,4 @@
-// project import
+// project imports
 import getColors from 'utils/getColors';
 
 // ==============================|| CHIP - COLORS ||============================== //
@@ -17,12 +17,13 @@ function getColor({ color, theme }) {
 
 function getColorStyle({ color, theme }) {
   const colors = getColors(theme, color);
-  const { light, lighter, main } = colors;
+  const { light, lighter, main, darker } = colors;
 
   return {
     color: main,
     backgroundColor: lighter,
     borderColor: light,
+    ...theme.applyStyles('dark', { color: darker }),
     '& .MuiChip-deleteIcon': {
       color: main,
       '&:hover': {
