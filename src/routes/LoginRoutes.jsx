@@ -1,26 +1,31 @@
 import { lazy } from 'react';
 
-// project import
+// project imports
+import AuthLayout from 'layout/Auth';
 import Loadable from 'components/Loadable';
-import MinimalLayout from 'layout/MinimalLayout';
 
-// render - login
-const AuthLogin = Loadable(lazy(() => import('pages/authentication/login')));
-const AuthRegister = Loadable(lazy(() => import('pages/authentication/register')));
+// jwt auth
+const LoginPage = Loadable(lazy(() => import('pages/auth/Login')));
+const RegisterPage = Loadable(lazy(() => import('pages/auth/Register')));
 
 // ==============================|| AUTH ROUTING ||============================== //
 
 const LoginRoutes = {
   path: '/',
-  element: <MinimalLayout />,
   children: [
     {
-      path: '/login',
-      element: <AuthLogin />
-    },
-    {
-      path: '/register',
-      element: <AuthRegister />
+      path: '/',
+      element: <AuthLayout />,
+      children: [
+        {
+          path: '/login',
+          element: <LoginPage />
+        },
+        {
+          path: '/register',
+          element: <RegisterPage />
+        }
+      ]
     }
   ]
 };

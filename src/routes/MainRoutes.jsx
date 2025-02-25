@@ -1,13 +1,16 @@
 import { lazy } from 'react';
 
-// project import
+// project imports
 import Loadable from 'components/Loadable';
-import Dashboard from 'layout/Dashboard';
+import DashboardLayout from 'layout/Dashboard';
 
+// render- Dashboard
+const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/default')));
+
+// render - color
 const Color = Loadable(lazy(() => import('pages/component-overview/color')));
 const Typography = Loadable(lazy(() => import('pages/component-overview/typography')));
 const Shadow = Loadable(lazy(() => import('pages/component-overview/shadows')));
-const DashboardDefault = Loadable(lazy(() => import('pages/dashboard/index')));
 
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')));
@@ -16,15 +19,11 @@ const SamplePage = Loadable(lazy(() => import('pages/extra-pages/sample-page')))
 
 const MainRoutes = {
   path: '/',
-  element: <Dashboard />,
+  element: <DashboardLayout />,
   children: [
     {
       path: '/',
       element: <DashboardDefault />
-    },
-    {
-      path: 'color',
-      element: <Color />
     },
     {
       path: 'dashboard',
@@ -36,16 +35,20 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'sample-page',
-      element: <SamplePage />
+      path: 'typography',
+      element: <Typography />
+    },
+    {
+      path: 'color',
+      element: <Color />
     },
     {
       path: 'shadow',
       element: <Shadow />
     },
     {
-      path: 'typography',
-      element: <Typography />
+      path: 'sample-page',
+      element: <SamplePage />
     }
   ]
 };

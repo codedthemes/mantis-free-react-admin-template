@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 
-// project import
+// project imports
 import router from 'routes';
 import ThemeCustomization from 'themes';
 

@@ -5,7 +5,14 @@ export default function IconButton(theme) {
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: 4
+          borderRadius: 4,
+          '&.MuiIconButton-loading': {
+            pointerEvents: 'none !important',
+            '& svg': {
+              width: 'inherit !important',
+              height: 'inherit !important'
+            }
+          }
         },
         sizeLarge: {
           width: theme.spacing(5.5),
