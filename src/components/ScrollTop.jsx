@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 // ==============================|| NAVIGATION - SCROLL TO TOP ||============================== //
 
-const ScrollTop = ({ children }) => {
+export default function ScrollTop({ children }) {
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -13,10 +13,6 @@ const ScrollTop = ({ children }) => {
   }, []);
 
   return children || null;
-};
+}
 
-ScrollTop.propTypes = {
-  children: PropTypes.node
-};
-
-export default ScrollTop;
+ScrollTop.propTypes = { children: PropTypes.oneOfType([PropTypes.node, PropTypes.any]) };

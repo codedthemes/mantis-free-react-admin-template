@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 
 // third-party
@@ -20,14 +20,18 @@ const SimpleBarStyle = styled(SimpleBar)(({ theme }) => ({
   maxHeight: '100%',
   '& .simplebar-scrollbar': {
     '&:before': {
-      background: alpha(theme.palette.grey[500], 0.48)
+      background: alpha(theme.palette.grey[500], 0.48),
+      ...theme.applyStyles('dark', { background: alpha(theme.palette.grey[200], 0.48) })
     },
     '&.simplebar-visible:before': {
       opacity: 1
     }
   },
-  '& .simplebar-track.simplebar-vertical': {
-    width: 10
+  '& .simplebar-track': {
+    zIndex: 1201,
+    '&.simplebar-vertical': {
+      width: 10
+    }
   },
   '& .simplebar-track.simplebar-horizontal .simplebar-scrollbar': {
     height: 6
@@ -40,10 +44,12 @@ const SimpleBarStyle = styled(SimpleBar)(({ theme }) => ({
 // ==============================|| SIMPLE SCROLL BAR ||============================== //
 
 export default function SimpleBarScroll({ children, sx, ...other }) {
+  const theme = useTheme();
+
   return (
     <>
       <RootStyle>
-        <SimpleBarStyle clickOnTrack={false} sx={sx} {...other}>
+        <SimpleBarStyle clickOnTrack={false} sx={sx} data-simplebar-direction="ltr" {...other}>
           {children}
         </SimpleBarStyle>
       </RootStyle>

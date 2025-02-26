@@ -1,7 +1,7 @@
 // material-ui
 import { alpha } from '@mui/material/styles';
 
-// project import
+// project imports
 import getColors from 'utils/getColors';
 import getShadow from 'utils/getShadow';
 
@@ -85,7 +85,8 @@ export default function Button(theme) {
   const primaryShadow = getColorStyle({ variant: 'shadow', color: 'primary', theme });
 
   const disabledStyle = {
-    '&.Mui-disabled': {
+    backgroundColor: theme.palette.grey[200],
+    '&:hover': {
       backgroundColor: theme.palette.grey[200]
     }
   };
@@ -126,10 +127,19 @@ export default function Button(theme) {
           }
         },
         contained: {
-          ...disabledStyle
+          '&.Mui-disabled': {
+            ...disabledStyle
+          }
         },
         outlined: {
-          ...disabledStyle
+          '&.Mui-disabled': {
+            ...disabledStyle,
+            '&:hover': {
+              backgroundColor: theme.palette.grey[200],
+              color: `${theme.palette.grey[300]} !important`,
+              borderColor: 'inherit'
+            }
+          }
         },
         text: {
           boxShadow: 'none',
@@ -194,6 +204,16 @@ export default function Button(theme) {
           minWidth: 56,
           fontSize: '0.625rem',
           padding: '2px 8px'
+        },
+        loading: {
+          pointerEvents: 'none !important',
+          '& svg': {
+            width: 'inherit',
+            height: 'inherit'
+          },
+          '&.MuiButton-loadingPositionCenter': {
+            color: 'transparent !important'
+          }
         }
       }
     }

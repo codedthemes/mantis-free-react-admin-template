@@ -2,9 +2,9 @@
 import { createTheme } from '@mui/material/styles';
 
 // third-party
-import { presetPalettes } from '@ant-design/colors';
+import { presetDarkPalettes, presetPalettes } from '@ant-design/colors';
 
-// project import
+// project imports
 import ThemeOption from './theme';
 
 // ==============================|| DEFAULT THEME - PALETTE ||============================== //
