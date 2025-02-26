@@ -100,11 +100,11 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 [Mantis documentation](https://codedthemes.gitbook.io/mantis) helps you out in all aspects from Installation to deployment.
 
 ## Browser support 🌐
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="45" height="45" >
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" height="45" >
 
 ## Technology Stack ⚡️
 
-- Material UI V5
+- Material UI V6
 - Built with React Hooks API.
 - React context API for state management.
 - SWR.
@@ -123,23 +123,21 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 
 ## More React Dashboard Templates 🔗
 
-| [Free Materially](https://via.placeholder.com/100) |                     
-|-----------------------------------------------|
-| [Free Berry](https://example.com/free)  |
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/berry-mui-free-react-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/berry-material-react-admin-template/)</span>
+
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta Able.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)</span>
+
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/)</span>
                                          
 
 ## Other Technologies
-**Able pro**
 
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="25" height="25" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**]() &nbsp;| &nbsp;[**Pro**]()</span>
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Angular.png" width="25" height="25" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/mantis-angular-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/mantis-angular-admin-template/)</span>
 
-**Able pro**
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Bootstrap.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/mantis-bootstrap-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/mantis-bootstrap-admin-dashboard/)</span>
 
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="25" height="25" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**]() &nbsp;| &nbsp;[**Pro**]()</span>
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Vue.png" width="25" height="25" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/mantis-vue-admin-template/)</span>
 
-**Able pro**
-
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="25" height="25" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**]() &nbsp;| &nbsp;[**Pro**]()</span>
 
 ## Contributor 👩‍💻
 
