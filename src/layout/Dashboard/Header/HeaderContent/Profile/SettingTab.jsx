@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 // material-ui
 import List from '@mui/material/List';
@@ -19,7 +19,6 @@ import UnorderedListOutlined from '@ant-design/icons/UnorderedListOutlined';
 
 export default function SettingTab() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handleListItemClick = (event, index, route = '') => {
@@ -29,14 +28,6 @@ export default function SettingTab() {
       navigate(route);
     }
   };
-
-  useEffect(() => {
-    const pathToIndex = {
-      '/apps/profiles/account/settings': 1
-    };
-
-    setSelectedIndex(pathToIndex[location.pathname] ?? undefined);
-  }, [location.pathname]);
 
   return (
     <List component="nav" sx={{ p: 0, '& .MuiListItemIcon-root': { minWidth: 32 } }}>
@@ -48,7 +39,7 @@ export default function SettingTab() {
           <ListItemText primary="Support" />
         </ListItemButton>
       </Link>
-      <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1, '/apps/profiles/account/settings')}>
+      <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
         <ListItemIcon>
           <UserOutlined />
         </ListItemIcon>
