@@ -123,9 +123,17 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 
 ## More React Dashboard Templates 🔗
 
+| THEME | Free | PRO |
+| ----- | :----| :---|
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry with name.png" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/berry-mui-free-react-admin-template/) | [**Pro**](https://codedthemes.com/item/berry-material-react-admin-template/) |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta with name.png" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/) | [**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/) |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient with name.png" height="40" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) | [**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/) |
+
+
+
 <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/berry-mui-free-react-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/berry-material-react-admin-template/)</span>
 
-<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta Able.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)</span>
+<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)</span>
 
 <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/)</span>
                                          
@@ -155,8 +163,6 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 - [More Admin Templates From CodedThemes](https://codedthemes.com/item/category/admin-templates/)
 - [Freebies From CodedThemes](https://codedthemes.com/item/category/free-templates/)
 - [Big Bundles](https://codedthemes.com/item/big-bundle/)
-
-
 - [Figma UI Kits](https://codedthemes.com/item/category/templates/figma/)
 - [Affiliate Program](https://codedthemes.com/affiliate/)
 - [Blogs](https://blog.codedthemes.com/)
