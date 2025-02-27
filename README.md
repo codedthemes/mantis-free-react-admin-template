@@ -61,7 +61,7 @@ yarn run start
 ## Download 🔽
 
 - Mantis Free 
-    - [Live Preview](https://mantisdashboard.io/free/) 
+    - <a href="https://mantisdashboard.io/free/" target="_blank">Live Preview</a>
     - [Download](https://codedthemes.com/item/mantis-free-mui-admin-template/)
 - Mantis Pro 
     - [Live Preview](https://mantisdashboard.io/) 
