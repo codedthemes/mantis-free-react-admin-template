@@ -24,8 +24,8 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 
 - [Getting Started](#getting-started)
 - [Download](#download)
-- [What's include in Premium Version?](#whats-include-in-premium-version?)
-- [Why Mantis?](#why-mantis?)
+- [What's include in Premium Version?](#whats-include-in-premium-version)
+- [Why Mantis?](#why-mantis)
 - [Documentation](#documentation)
 - [Browser support](#browser-support)
 - [Technology Stack](#technology-stack)
@@ -38,7 +38,7 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 - [Community](#community)
 - [Follow us](#follow-us)
 
-## Getting Started 🚀
+## Getting Started 
 
 1. Clone from Github
 
@@ -58,7 +58,7 @@ yarn
 yarn run start
 ```
 
-## Download 🔽
+## Download 
 
 - Mantis Free 
     - [Live Preview](https://mantisdashboard.io/free/) 
@@ -67,7 +67,7 @@ yarn run start
     - [Live Preview](https://mantisdashboard.io/) 
     - [Download](https://codedthemes.com/item/mantis-mui-react-dashboard-template/)
 
-## What's include in Premium Version? 🔓
+## What's include in Premium Version?
 The [Pro version](https://mantisdashboard.io/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
 
 | [Mantis Free](https://mantisdashboard.io/free/) | [Mantis](https://mantisdashboard.io/) |
@@ -99,10 +99,10 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 [Mantis documentation](https://codedthemes.gitbook.io/mantis) helps you out in all aspects from Installation to deployment.
 
-## Browser support 🌐
+## Browser support
 <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" height="45" >
 
-## Technology Stack ⚡️
+## Technology Stack
 
 - Material UI V6
 - Built with React Hooks API.
@@ -113,7 +113,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 - Code splitting.
 - CSS-in-JS.
 
-## Issues ❓ 
+## Issues
 
 Please generate a [Github issue](https://github.com/codedthemes/mantis-free-react-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
 
@@ -121,7 +121,7 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 - Licensed under [MIT](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)
 - Copyright © [CodedThemes](https://codedthemes.com/)
 
-## More React Dashboard Templates 🔗
+## More React Dashboard Templates
 
 <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry.png" width="30" height="30" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/berry-mui-free-react-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/berry-material-react-admin-template/)</span>
 
@@ -139,7 +139,7 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Vue.png" width="25" height="25" style="display:inline-block; vertical-align:middle;"> <span style="vertical-align:middle;"> &nbsp;&nbsp;-&nbsp;&nbsp; [**Free**](https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/) &nbsp;| &nbsp;[**Pro**](https://codedthemes.com/item/mantis-vue-admin-template/)</span>
 
 
-## Contributor 👩‍💻
+## Contributor
 
 **CodedThemes Team**
 - https://x.com/codedthemes
@@ -151,7 +151,7 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 **Brijesh Dobariya**
 - https://x.com/dobaria_brijesh
 
-## Useful Resources 📌
+## Useful Resources
 - [More Admin Templates From CodedThemes](https://codedthemes.com/item/category/admin-templates/)
 - [Freebies From CodedThemes](https://codedthemes.com/item/category/free-templates/)
 - [Big Bundles](https://codedthemes.com/item/big-bundle/)
