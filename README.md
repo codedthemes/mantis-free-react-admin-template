@@ -123,7 +123,7 @@ The [Pro version](https://mantisdashboard.io/) of Mantis react template includes
 
 ## Save more with Big Bundle
 
-[![bundle-image](https://codedthemes.com/wp-content/uploads/edd/2024/05/main_bundle-2-1.webp)](https://links.codedthemes.com/jhFBJ)
+[![bundle-image](https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Bundle+banner.png)](https://links.codedthemes.com/jhFBJ)
 
 ## More React Dashboard Templates
 
