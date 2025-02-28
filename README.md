@@ -24,15 +24,15 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 
 - [Getting Started](#getting-started)
 - [Download](#download)
-- [What's include in Premium Version?](#whats-include-in-premium-version)
 - [Why Mantis?](#why-mantis)
+- [What's include in Premium Version?](#whats-include-in-premium-version)
 - [Documentation](#documentation)
 - [Browser support](#browser-support)
 - [Technology Stack](#technology-stack)
+- [Other Technologies](#other-technologies)
+- [More React Dashboard Templates](#more-react-dashboard-templates)
 - [Issues?](#issues)
 - [License](#license)
-- [More React Dashboard Templates](#more-react-dashboard-templates)
-- [Other Technologies](#other-technologies)
 - [Contributor](#contributor)   
 - [Useful Resources](#useful-resources)
 - [Community](#community)
@@ -66,6 +66,18 @@ yarn run start
 - Mantis Pro 
     - [Live Preview](https://mantisdashboard.io/) 
     - [Download](https://codedthemes.com/item/mantis-mui-react-dashboard-template/)
+      
+## Why Mantis? 
+
+Mantis offers everything needed to build an advanced dashboard application. In the initial release, we included following high-end features,
+
+- Support React18.
+- Professional user interface.
+- Material UI React components.
+- Fully responsive, all modern browser supported.
+- Easy to use code structure
+- Flexible & high-Performance code
+- Simple documentation
 
 ## What's include in Premium Version?
 The [Pro version](https://mantisdashboard.io/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
@@ -83,18 +95,6 @@ The [Pro version](https://mantisdashboard.io/) of Mantis react template includes
 | -                                                     | ✓ [More components](https://mantisdashboard.io/components-overview/autocomplete)                                                                                     |
 | ✓ MIT License                                         | ✓ [Pro License](https://mui.com/store/license/)
 
-## Why Mantis? 
-
-Mantis offers everything needed to build an advanced dashboard application. In the initial release, we included following high-end features,
-
-- Support React18.
-- Professional user interface.
-- Material UI React components.
-- Fully responsive, all modern browser supported.
-- Easy to use code structure
-- Flexible & high-Performance code
-- Simple documentation
-     
 ## Documentation
 
 [Mantis documentation](https://codedthemes.gitbook.io/mantis) helps you out in all aspects from Installation to deployment.
@@ -113,13 +113,12 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 - Code splitting.
 - CSS-in-JS.
 
-## Issues
-
-Please generate a [Github issue](https://github.com/codedthemes/mantis-free-react-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
-
-## License 
-- Licensed under [MIT](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)
-- Copyright © [CodedThemes](https://codedthemes.com/)
+## Other Technologies 
+| Technology | Free | Pro |
+|-----------|------|------|
+| <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Angular.png" width="25" height="25"></p> | [**Free**](https://codedthemes.com/item/mantis-angular-free-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-angular-admin-template/) |
+| <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Bootstrap.png" width="30" height="30"></p> | [**Free**](https://codedthemes.com/item/mantis-bootstrap-free-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-bootstrap-admin-dashboard/) |
+| <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Vue.png" width="25" height="25"></p> | [**Free**](https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-vue-admin-template/) |
 
 ## More React Dashboard Templates
 
@@ -129,12 +128,13 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 | <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;">  | [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/) | [**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)</span>|
 | <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) | [**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/)</span>|
 
-## Other Technologies 
-| Technology | Free | Pro |
-|-----------|------|------|
-| <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Angular.png" width="25" height="25"></p> | [**Free**](https://codedthemes.com/item/mantis-angular-free-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-angular-admin-template/) |
-| <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Bootstrap.png" width="30" height="30"></p> | [**Free**](https://codedthemes.com/item/mantis-bootstrap-free-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-bootstrap-admin-dashboard/) |
-| <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Vue.png" width="25" height="25"></p> | [**Free**](https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-vue-admin-template/) |
+## Issues
+
+Please generate a [Github issue](https://github.com/codedthemes/mantis-free-react-admin-template/issues) if you found a bug in any version. We are try our best to resolve the issue.
+
+## License 
+- Licensed under [MIT](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)
+- Copyright © [CodedThemes](https://codedthemes.com/)
 
 ## Contributor
 
@@ -152,8 +152,6 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 - [More Admin Templates From CodedThemes](https://codedthemes.com/item/category/admin-templates/)
 - [Freebies From CodedThemes](https://codedthemes.com/item/category/free-templates/)
 - [Big Bundles](https://codedthemes.com/item/big-bundle/)
-
-
 - [Figma UI Kits](https://codedthemes.com/item/category/templates/figma/)
 - [Affiliate Program](https://codedthemes.com/affiliate/)
 - [Blogs](https://blog.codedthemes.com/)
