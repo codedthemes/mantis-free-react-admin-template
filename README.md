@@ -157,15 +157,14 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 - [Blogs](https://blog.codedthemes.com/)
 
 ## Community
-- Follow [@codedthemes](https://x.com/codedthemes)
-- Join [Discord](https://discord.com/invite/p2E2WhCb6s)
-- subscribe to [Codedtheme Blogs](https://blog.codedthemes.com/)
+- 👥Follow [@codedthemes](https://x.com/codedthemes)
+- 🔗Join [Discord](https://discord.com/invite/p2E2WhCb6s)
+- 🔔Subscribe to [Codedtheme Blogs](https://blog.codedthemes.com/)
 
 ## Follow Us
-
-- [Twitter](https://twitter.com/codedthemes)
-- [Dribbble](https://dribbble.com/codedthemes)
-- [Github](https://github.com/codedthemes)
-- [LinkedIn](https://www.linkedin.com/company/codedthemes/)
-- [Instagram](https://www.instagram.com/codedthemes/)
-- [Facebook](https://www.facebook.com/codedthemes)
+- [Twitter](https://twitter.com/codedthemes) 🐦
+- [Dribbble](https://dribbble.com/codedthemes) 🏀
+- [Github](https://github.com/codedthemes) 🐙
+- [LinkedIn](https://www.linkedin.com/company/codedthemes/) 💼
+- [Instagram](https://www.instagram.com/codedthemes/) 📷
+- [Facebook](https://www.facebook.com/codedthemes) 🟦
