@@ -25,11 +25,12 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 - [Getting Started](#getting-started)
 - [Download](#download)
 - [Why Mantis?](#why-mantis)
-- [What's include in Premium Version?](#whats-include-in-premium-version)
+- [What's included in Premium Version?](#whats-included-in-premium-version)
 - [Documentation](#documentation)
 - [Browser support](#browser-support)
 - [Technology Stack](#technology-stack)
 - [Other Technologies](#other-technologies)
+- 💰[Save more with Big Bundle](#save-more-with-big-bundle)💰
 - [More React Dashboard Templates](#more-react-dashboard-templates)
 - [Issues?](#issues)
 - [License](#license)
@@ -79,7 +80,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 - Flexible & high-Performance code
 - Simple documentation
 
-## What's include in Premium Version?
+## What's included in Premium Version?
 The [Pro version](https://mantisdashboard.io/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
 
 | [Mantis Free](https://mantisdashboard.io/free/) | [Mantis](https://mantisdashboard.io/) |
@@ -119,6 +120,10 @@ The [Pro version](https://mantisdashboard.io/) of Mantis react template includes
 | <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Angular.png" width="25" height="25"></p> | [**Free**](https://codedthemes.com/item/mantis-angular-free-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-angular-admin-template/) |
 | <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Bootstrap.png" width="30" height="30"></p> | [**Free**](https://codedthemes.com/item/mantis-bootstrap-free-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-bootstrap-admin-dashboard/) |
 | <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Vue.png" width="25" height="25"></p> | [**Free**](https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-vue-admin-template/) |
+
+## Save more with Big Bundle
+
+[![bundle-image](https://codedthemes.com/wp-content/uploads/edd/2024/05/main_bundle-2-1.webp)](https://links.codedthemes.com/jhFBJ)
 
 ## More React Dashboard Templates
 
