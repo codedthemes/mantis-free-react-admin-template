@@ -1,6 +1,7 @@
 {
   "name": "mantis-material-free-react",
   "version": "1.4.1",
+  "private": false,
   "homepage": "https://mantisdashboard.io/free",
   "author": {
     "name": "CodedThemes",
