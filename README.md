@@ -118,10 +118,10 @@ The [Pro version](https://mantisdashboard.io/) of Mantis react template includes
 ## Mantis Figma UI Kit
 
 <div>
-  <a href="https://codedthemes.com/item/berry-free-figma-ui-kit/">
+  <a href="https://codedthemes.com/item/mantis-free-figma-ui-kit/">
     <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Figma_Free_Mantis.png" width="450" alt="Figma Free">
   </a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://codedthemes.com/item/berry-figma-ui-kit/">
+  <a href="https://codedthemes.com/item/mantis-figma-ui-kit/">
     <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Figma_Pro_Mantis.png" width="450" alt="Figma Pro">
   </a>
 </div>
