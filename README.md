@@ -73,7 +73,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 - Support React18.
 - Professional user interface.
-- Material UI React components.
+- Material UI React components(MUI v6).
 - Fully responsive, all modern browser supported.
 - Easy to use code structure
 - Flexible & high-Performance code
@@ -81,7 +81,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 ## What's included in Premium Version?
 
-The [Pro version](https://mantisdashboard.io/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase), advance components, form plugins, layouts, widgets, and more.
+The [Pro version](https://mantisdashboard.io/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase, AWS, Supabase), advance components, form plugins, layouts, widgets, and more.
 
 | [Mantis Free](https://mantisdashboard.io/free/) | [Mantis](https://mantisdashboard.io/)                                            |
 | ----------------------------------------------- | :------------------------------------------------------------------------------- |
@@ -94,7 +94,7 @@ The [Pro version](https://mantisdashboard.io/) of Mantis react template includes
 | -                                               | ✓ RTL                                                                            |
 | -                                               | ✓ JWT authentications                                                            |
 | -                                               | ✓ [More components](https://mantisdashboard.io/components-overview/autocomplete) |
-| ✓ MIT License                                   | ✓ [Pro License](https://mui.com/store/license/)                                  |
+| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)                                   | ✓ [Pro License](https://mui.com/store/license/)                                  |
 
 ## Documentation
 
