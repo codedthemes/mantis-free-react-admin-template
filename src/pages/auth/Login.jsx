@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom';
 
 // material-ui
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 

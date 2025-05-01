@@ -156,7 +156,7 @@ const IconButtonStyle = styled(MuiIconButton, { shouldForwardProp: (prop) => pro
   })
 );
 
-function IconButton({ variant = 'text', shape = 'square', children, color = 'primary', ...others }, ref) {
+function IconButton({ variant = 'text', shape = 'square', children, color = 'primary', ref, ...others }) {
   return (
     <IconButtonStyle ref={ref} disableRipple variant={variant} shape={shape} color={color} {...others}>
       {children}
@@ -166,7 +166,7 @@ function IconButton({ variant = 'text', shape = 'square', children, color = 'pri
 
 IconButton.displayName = 'IconButton';
 
-export default forwardRef(IconButton);
+export default IconButton;
 
 getColorStyle.propTypes = { variant: PropTypes.any, theme: PropTypes.any, color: PropTypes.any };
 
@@ -175,5 +175,6 @@ IconButton.propTypes = {
   shape: PropTypes.string,
   children: PropTypes.node,
   color: PropTypes.string,
+  ref: PropTypes.any,
   others: PropTypes.any
 };

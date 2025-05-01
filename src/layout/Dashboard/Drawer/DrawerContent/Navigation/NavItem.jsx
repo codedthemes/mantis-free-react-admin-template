@@ -177,5 +177,5 @@ NavItem.propTypes = {
   item: PropTypes.any,
   level: PropTypes.number,
   isParents: PropTypes.bool,
-  setSelectedID: PropTypes.oneOfType([PropTypes.func, PropTypes.any])
+  setSelectedID: PropTypes.oneOfType([PropTypes.any, PropTypes.func])
 };
