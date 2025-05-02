@@ -22,9 +22,7 @@ export default function Search() {
             </InputAdornment>
           }
           aria-describedby="header-search-text"
-          inputProps={{
-            'aria-label': 'weight'
-          }}
+          slotProps={{ input: { 'aria-label': 'weight' } }}
           placeholder="Ctrl + K"
         />
       </FormControl>

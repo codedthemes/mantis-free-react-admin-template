@@ -18,6 +18,6 @@
     "baseUrl": "src"
   },
   "exclude": ["node_modules"],
-  "include": ["src", "**/*.ts", "**/*.tsx", "src/**/*"],
+  "include": ["src", "**/*.js", "**/*.jsx", "src/**/*"],
   "references": [{ "path": "./jsconfig.node.json" }]
 }

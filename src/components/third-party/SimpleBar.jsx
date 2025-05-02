@@ -28,7 +28,6 @@ const SimpleBarStyle = styled(SimpleBar)(({ theme }) => ({
     }
   },
   '& .simplebar-track': {
-    zIndex: 1201,
     '&.simplebar-vertical': {
       width: 10
     }
