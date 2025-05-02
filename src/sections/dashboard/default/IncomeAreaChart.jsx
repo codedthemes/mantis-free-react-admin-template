@@ -85,11 +85,12 @@ export default function IncomeAreaChart({ view }) {
   return (
     <>
       <LineChart
+        hideLegend
         grid={{ horizontal: true }}
         xAxis={[{ scaleType: 'point', data: labels, disableLine: true, tickLabelStyle: axisFonstyle }]}
         yAxis={[{ disableLine: true, disableTicks: true, tickLabelStyle: axisFonstyle }]}
         height={450}
-        margin={{ top: 40, bottom: 20, right: 20 }}
+        margin={{ top: 40, bottom: -5, right: 20, left: 5 }}
         series={visibleSeries
           .filter((series) => series.visible)
           .map((series) => ({
@@ -103,7 +104,6 @@ export default function IncomeAreaChart({ view }) {
             stroke: series.color,
             strokeWidth: 2
           }))}
-        slotProps={{ legend: { hidden: true } }}
         sx={{
           '& .MuiAreaElement-series-Germany': { fill: "url('#myGradient1')", strokeWidth: 2, opacity: 0.8 },
           '& .MuiAreaElement-series-UK': { fill: "url('#myGradient2')", strokeWidth: 2, opacity: 0.8 },

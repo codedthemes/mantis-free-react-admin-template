@@ -14,11 +14,12 @@ export default function MonthlyBarChart() {
 
   return (
     <BarChart
+      hideLegend
       height={380}
       series={[{ data, label: 'Series-1' }]}
       xAxis={[{ data: xLabels, scaleType: 'band', disableLine: true, disableTicks: true, tickLabelStyle: axisFonstyle }]}
-      leftAxis={null}
-      slotProps={{ legend: { hidden: true }, bar: { rx: 5, ry: 5 } }}
+      yAxis={[{ position: 'none' }]}
+      slotProps={{ bar: { rx: 5, ry: 5 } }}
       axisHighlight={{ x: 'none' }}
       margin={{ left: 20, right: 20 }}
       colors={[theme.palette.info.light]}

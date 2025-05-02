@@ -14,10 +14,10 @@ export default function ReportAreaChart() {
 
   return (
     <LineChart
+      hideLegend
       grid={{ horizontal: true }}
       xAxis={[{ data: labels, scaleType: 'point', disableLine: true, disableTicks: true, tickLabelStyle: axisFonstyle }]}
-      yAxis={[{ tickMaxStep: 10 }]}
-      leftAxis={null}
+      yAxis={[{ position: 'none', tickMaxStep: 10 }]}
       series={[
         {
           data,
@@ -27,9 +27,8 @@ export default function ReportAreaChart() {
           label: 'Series 1'
         }
       ]}
-      slotProps={{ legend: { hidden: true } }}
       height={340}
-      margin={{ top: 30, bottom: 50, left: 20, right: 20 }}
+      margin={{ top: 30, bottom: 25, left: 20, right: 20 }}
       sx={{ '& .MuiLineElement-root': { strokeWidth: 1 }, [`& .${chartsGridClasses.line}`]: { strokeDasharray: '5 3' } }}
     />
   );

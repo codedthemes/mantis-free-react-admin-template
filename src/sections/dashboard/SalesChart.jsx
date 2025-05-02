@@ -34,7 +34,7 @@ export default function SalesChart() {
   const primaryColor = theme.palette.primary.main;
   const warningColor = theme.palette.warning.main;
 
-  const lables = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const data = [
     { data: [180, 90, 135, 114, 120, 145, 170, 200, 170, 230, 210, 180], label: 'Income', color: warningColor, valueFormatter },
     { data: [120, 45, 78, 150, 168, 99, 180, 220, 180, 210, 220, 200], label: 'Cost of Sales', color: primaryColor, valueFormatter }
@@ -80,17 +80,17 @@ export default function SalesChart() {
         </Stack>
 
         <BarChart
+          hideLegend
           height={380}
           grid={{ horizontal: true }}
-          xAxis={[{ data: lables, scaleType: 'band', tickLabelStyle: { ...axisFonstyle, fontSize: 12 } }]}
+          xAxis={[{ id: 'sales-x-axis', data: labels, scaleType: 'band', tickLabelStyle: { ...axisFonstyle, fontSize: 12 } }]}
           yAxis={[{ disableLine: true, disableTicks: true, tickMaxStep: 20, tickLabelStyle: axisFonstyle }]}
           series={data
             .filter((series) => (series.label === 'Income' && showIncome) || (series.label === 'Cost of Sales' && showCostOfSales))
             .map((series) => ({ ...series, type: 'bar' }))}
-          slotProps={{ legend: { hidden: true }, bar: { rx: 5, ry: 5 } }}
+          slotProps={{ bar: { rx: 5, ry: 5 }, tooltip: { trigger: 'item' } }}
           axisHighlight={{ x: 'none' }}
-          margin={{ top: 30, left: 40, right: 10 }}
-          tooltip={{ trigger: 'item' }}
+          margin={{ top: 30, left: -5, bottom: 25, right: 10 }}
           sx={{
             '& .MuiBarElement-root:hover': { opacity: 0.6 },
             '& .MuiChartsAxis-directionX .MuiChartsAxis-tick, & .MuiChartsAxis-root line': { stroke: theme.palette.divider }
