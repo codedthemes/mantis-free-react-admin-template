@@ -16,7 +16,7 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 
 ✨ Support us! If you like this theme, click the ⭐ (Top right) and let it shine
 
-![mantis-free-react-dashboard-template.jpg](https://mantisdashboard.io/adv-banner-images/og-social-v1.1.0.png)
+![mantis-free-react-dashboard-template.jpg](https://org-public-assets.s3.us-west-2.amazonaws.com/Free-Version-Banners/GITHUB-FREE-REACT-REPO+-+Mantis.png)
 
 ## Table of contents
 
