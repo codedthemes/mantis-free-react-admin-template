@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
 
 // material-ui
 import MuiIconButton from '@mui/material/IconButton';
