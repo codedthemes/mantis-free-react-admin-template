@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 
 // project imports
-import AuthLayout from 'layout/Auth';
 import Loadable from 'components/Loadable';
 
 // jwt auth
@@ -15,7 +14,6 @@ const LoginRoutes = {
   children: [
     {
       path: '/',
-      element: <AuthLayout />,
       children: [
         {
           path: '/login',
