@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink, useSearchParams } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import Button from '@mui/material/Button';
@@ -45,9 +45,6 @@ export default function AuthRegister() {
     const temp = strengthIndicator(value);
     setLevel(strengthColor(temp));
   };
-
-  const [searchParams] = useSearchParams();
-  const auth = searchParams.get('auth'); // get auth and set route based on that
 
   useEffect(() => {
     changePassword('');

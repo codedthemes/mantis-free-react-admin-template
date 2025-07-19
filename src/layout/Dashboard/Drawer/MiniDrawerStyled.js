@@ -42,17 +42,11 @@ const MiniDrawerStyled = styled(Drawer, { shouldForwardProp: (prop) => prop !== 
   variants: [
     {
       props: ({ open }) => open,
-      style: {
-        ...openedMixin(theme),
-        '& .MuiDrawer-paper': openedMixin(theme)
-      }
+      style: { ...openedMixin(theme), '& .MuiDrawer-paper': openedMixin(theme) }
     },
     {
       props: ({ open }) => !open,
-      style: {
-        ...closedMixin(theme),
-        '& .MuiDrawer-paper': closedMixin(theme)
-      }
+      style: { ...closedMixin(theme), '& .MuiDrawer-paper': closedMixin(theme) }
     }
   ]
 }));

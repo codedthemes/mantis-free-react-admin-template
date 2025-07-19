@@ -4,6 +4,9 @@ export default function TableCell(theme) {
   const commonCell = {
     '&:not(:last-of-type)': {
       position: 'relative',
+      '&.MuiTableCell-stickyHeader': {
+        position: 'sticky'
+      },
       '&:after': {
         position: 'absolute',
         content: '""',
