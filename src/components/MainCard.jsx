@@ -77,7 +77,7 @@ MainCard.propTypes = {
   border: PropTypes.bool,
   boxShadow: PropTypes.bool,
   children: PropTypes.node,
-  subheader: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  subheader: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   content: PropTypes.bool,
   contentSX: PropTypes.object,
   darkTitle: PropTypes.bool,
@@ -86,7 +86,7 @@ MainCard.propTypes = {
   secondary: PropTypes.any,
   shadow: PropTypes.string,
   sx: PropTypes.object,
-  title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   modal: PropTypes.bool,
   ref: PropTypes.object,
   others: PropTypes.any
