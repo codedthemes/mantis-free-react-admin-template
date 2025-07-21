@@ -2,7 +2,7 @@
 import { createTheme } from '@mui/material/styles';
 
 // third-party
-import { presetDarkPalettes, presetPalettes } from '@ant-design/colors';
+import { presetPalettes } from '@ant-design/colors';
 
 // project imports
 import ThemeOption from './theme';

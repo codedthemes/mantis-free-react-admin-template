@@ -8,6 +8,8 @@ import Box from '@mui/material/Box';
 import NavItem from './NavItem';
 import { useGetMenuMaster } from 'api/menu';
 
+// ==============================|| NAVIGATION - LIST GROUP ||============================== //
+
 export default function NavGroup({ item }) {
   const { menuMaster } = useGetMenuMaster();
   const drawerOpen = menuMaster.isDashboardDrawerOpened;
