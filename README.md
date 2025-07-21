@@ -1,4 +1,4 @@
-# Mantis Free React Material UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20Mantis%20Free%20React%20-%20The%20Most%20Beautiful%20Material-UI%20Designed%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.io/free&via=codedthemes&hashtags=react,materialui,nextjs,webdev,developers,typescript)
+# Mantis Free React Material UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20Mantis%20Free%20React%20-%20The%20Most%20Beautiful%20Material-UI%20Designed%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.com/free&via=codedthemes&hashtags=react,materialui,nextjs,webdev,developers,typescript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)
@@ -61,10 +61,10 @@ yarn run start
 ## Download
 
 - Mantis Free
-  - [Live Preview](https://mantisdashboard.io/free/)
+  - [Live Preview](https://mantisdashboard.com/free/)
   - [Download](https://codedthemes.com/item/mantis-free-mui-admin-template/)
 - Mantis Pro
-  - [Live Preview](https://mantisdashboard.io/)
+  - [Live Preview](https://mantisdashboard.com/)
   - [Download](https://codedthemes.com/item/mantis-mui-react-dashboard-template/)
 
 ## Why Mantis?
@@ -81,20 +81,20 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 ## What's included in Premium Version?
 
-The [Pro version](https://mantisdashboard.io/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase, AWS, Supabase), advance components, form plugins, layouts, widgets, and more.
+The [Pro version](https://mantisdashboard.com/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase, AWS, Supabase), advance components, form plugins, layouts, widgets, and more.
 
-| [Mantis Free](https://mantisdashboard.io/free/)                                                      | [Mantis](https://mantisdashboard.io/)                                            |
-| ---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- |
-| **7** Demo pages                                                                                     | **85+** demo pages                                                               |
-| -                                                                                                    | ✓ Multi-language                                                                 |
-| -                                                                                                    | ✓ Dark/Light Mode 🌓                                                             |
-| -                                                                                                    | ✓ TypeScript version                                                             |
-| -                                                                                                    | ✓ Design files (Figma)                                                           |
-| -                                                                                                    | ✓ Multiple color options                                                         |
-| -                                                                                                    | ✓ RTL                                                                            |
-| -                                                                                                    | ✓ JWT authentications                                                            |
-| -                                                                                                    | ✓ [More components](https://mantisdashboard.io/components-overview/autocomplete) |
-| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE) | ✓ [Pro License](https://mui.com/store/license/)                                  |
+| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis](https://mantisdashboard.com/)                                            |
+| ---------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| **7** Demo pages                                                                                     | **85+** demo pages                                                                |
+| -                                                                                                    | ✓ Multi-language                                                                  |
+| -                                                                                                    | ✓ Dark/Light Mode 🌓                                                              |
+| -                                                                                                    | ✓ TypeScript version                                                              |
+| -                                                                                                    | ✓ Design files (Figma)                                                            |
+| -                                                                                                    | ✓ Multiple color options                                                          |
+| -                                                                                                    | ✓ RTL                                                                             |
+| -                                                                                                    | ✓ JWT authentications                                                             |
+| -                                                                                                    | ✓ [More components](https://mantisdashboard.com/components-overview/autocomplete) |
+| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE) | ✓ [Pro License](https://mui.com/store/license/)                                   |
 
 ## Documentation
 

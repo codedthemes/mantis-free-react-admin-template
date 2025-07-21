@@ -26,7 +26,7 @@ export default function NavCard() {
           </Typography>
         </Stack>
         <AnimateButton>
-          <Button component={Link} target="_blank" href="https://mantisdashboard.io" variant="contained" color="success" size="small">
+          <Button component={Link} target="_blank" href="https://mantisdashboard.com" variant="contained" color="success" size="small">
             Pro
           </Button>
         </AnimateButton>
