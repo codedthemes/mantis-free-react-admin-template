@@ -1,4 +1,4 @@
-**Note:** *This README file is maintained to ensure the product structure aligns with the Pro version, making migration to Pro seamless when you choose to upgrade. This alignment aims to provide a smoother experience during the upgrade, especially regarding directory structure. You may notice these files and folders appearing throughout the project where they are part of the Pro version. While this might feel slightly inconvenient, it is intended to simplify your migration process and provide assistance. If these files are unnecessary for your use case, you can easily remove them.*
+**Note:** _This README file is maintained to ensure the product structure aligns with the Pro version, making migration to Pro seamless when you choose to upgrade. This alignment aims to provide a smoother experience during the upgrade, especially regarding directory structure. You may notice these files and folders appearing throughout the project where they are part of the Pro version. While this might feel slightly inconvenient, it is intended to simplify your migration process and provide assistance. If these files are unnecessary for your use case, you can easily remove them._
 
 Please continue reading below to explore the features of the Pro version:
 
@@ -10,25 +10,25 @@ This page (folder) is a sneak peek into the premium features available in <b>ver
 
 ## Included in the Pro Version:
 
-[🚀 Dashboards](https://mantisdashboard.io/dashboard/default) : Advanced dashboards with real-time insights and data visualizations for actionable metrics.
+[🚀 Dashboards](https://mantisdashboard.com/dashboard/default) : Advanced dashboards with real-time insights and data visualizations for actionable metrics.
 
-[📦 Widgets](https://mantisdashboard.io/widget/statistics) : A curated library of pre-built widgets for enhanced functionality and faster development.
+[📦 Widgets](https://mantisdashboard.com/widget/statistics) : A curated library of pre-built widgets for enhanced functionality and faster development.
 
-[🔧 Components](https://mantisdashboard.io/components-overview/buttons) : A rich collection of reusable and customizable UI components.
+[🔧 Components](https://mantisdashboard.com/components-overview/buttons) : A rich collection of reusable and customizable UI components.
 
-[📝 Forms](https://mantisdashboard.io/forms/wizard) : Dynamic and customizable forms with advanced validation features for a smooth user experience.
+[📝 Forms](https://mantisdashboard.com/forms/wizard) : Dynamic and customizable forms with advanced validation features for a smooth user experience.
 
-[📊 Tables](https://mantisdashboard.io/tables/react-table/basic) : Structured, interactive tables with sorting, filtering, and pagination options.
+[📊 Tables](https://mantisdashboard.com/tables/react-table/basic) : Structured, interactive tables with sorting, filtering, and pagination options.
 
-[📈 Charts](https://mantisdashboard.io/charts/apexchart) : Beautifully designed charts powered by modern data visualization libraries.
+[📈 Charts](https://mantisdashboard.com/charts/apexchart) : Beautifully designed charts powered by modern data visualization libraries.
 
-[🔒 Authentication](https://mantisdashboard.io/auth/login) : Secure pages for login, registration, and password recovery, ensuring robust user management.
+[🔒 Authentication](https://mantisdashboard.com/auth/login) : Secure pages for login, registration, and password recovery, ensuring robust user management.
 
-[🛒 E-commerce App](https://mantisdashboard.io/apps/e-commerce/products) : A complete e-commerce management system for handling products, inventory, and transactions.
+[🛒 E-commerce App](https://mantisdashboard.com/apps/e-commerce/products) : A complete e-commerce management system for handling products, inventory, and transactions.
 
-[💬 Chat Messages](https://mantisdashboard.io/apps/chat) : An integrated chat system to enhance communication within your application.
+[💬 Chat Messages](https://mantisdashboard.com/apps/chat) : An integrated chat system to enhance communication within your application.
 
-[👤 User Profile](https://mantisdashboard.io/apps/profiles/user/personal) : A sleek and customizable user profile page for managing user details and settings.
+[👤 User Profile](https://mantisdashboard.com/apps/profiles/user/personal) : A sleek and customizable user profile page for managing user details and settings.
 
 ## Why Upgrade to the Pro Version?
 
