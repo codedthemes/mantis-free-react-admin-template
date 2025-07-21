@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import jsconfigPaths from 'vite-jsconfig-paths';
-import { visualizer } from 'rollup-plugin-visualizer';
 import path from 'path';
 
 export default defineConfig(({ mode }) => {
@@ -21,7 +20,7 @@ export default defineConfig(({ mode }) => {
       host: true
     },
     define: {
-      global: 'window' // Only if you need it for legacy packages
+      global: 'window'
     },
     resolve: {
       alias: {
@@ -32,12 +31,6 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(),
       jsconfigPaths(),
-      visualizer({
-        filename: 'stats.html',
-        open: false, // Set to true if you want to auto-open after build
-        gzipSize: true,
-        brotliSize: true
-      })
     ],
     build: {
       chunkSizeWarningLimit: 1000,

@@ -10,12 +10,10 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "build-stage": "env-cmd -f .env.qa vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "knip": "knip"
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@ant-design/colors": "8.0.0",
@@ -32,7 +30,7 @@
     "@mui/material": "7.0.2",
     "@mui/system": "7.0.2",
     "@mui/x-charts": "8.1.0",
-    "@vitejs/plugin-react": "4.4.1",
+    "@vitejs/plugin-react": "4.6.0",
     "formik": "2.4.6",
     "framer-motion": "12.8.2",
     "lodash-es": "4.17.21",
@@ -77,10 +75,7 @@
     "eslint-plugin-prettier": "5.2.6",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "5.2.0",
-    "immutable": "4.3.7",
-    "prettier": "3.6.2",
-    "prettier-eslint-cli": "8.0.1",
-    "rollup-plugin-visualizer": "6.0.3"
+    "prettier": "3.6.2"
   },
   "packageManager": "yarn@4.9.1"
 }
