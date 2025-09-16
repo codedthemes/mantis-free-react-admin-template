@@ -48,9 +48,28 @@ const actionSX = {
   transform: 'none'
 };
 
+// hooks
+import useMixpanelTracking from 'hooks/useMixpanelTracking';
+
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 export default function DashboardDefault() {
+  const { trackClick } = useMixpanelTracking();
+
+  const handleViewAllOrders = () => {
+    trackClick('View All Orders', {
+      location: 'Dashboard',
+      section: 'Recent Orders'
+    });
+  };
+
+  const handleViewTransaction = () => {
+    trackClick('View Transaction', {
+      location: 'Dashboard',
+      section: 'Transactions'
+    });
+  };
+
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
@@ -158,6 +177,7 @@ export default function DashboardDefault() {
             <ListItem
               component={ListItemButton}
               divider
+              onClick={() => trackClick('Transaction Item', { order_id: '#002434', amount: '$1,430' })}
               secondaryAction={
                 <Stack sx={{ alignItems: 'flex-end' }}>
                   <Typography variant="subtitle1" noWrap>
@@ -179,6 +199,7 @@ export default function DashboardDefault() {
             <ListItem
               component={ListItemButton}
               divider
+              onClick={() => trackClick('Transaction Item', { order_id: '#984947', amount: '$302' })}
               secondaryAction={
                 <Stack sx={{ alignItems: 'flex-end' }}>
                   <Typography variant="subtitle1" noWrap>
@@ -199,6 +220,7 @@ export default function DashboardDefault() {
             </ListItem>
             <ListItem
               component={ListItemButton}
+              onClick={() => trackClick('Transaction Item', { order_id: '#988784', amount: '$682' })}
               secondaryAction={
                 <Stack sx={{ alignItems: 'flex-end' }}>
                   <Typography variant="subtitle1" noWrap>
@@ -241,7 +263,12 @@ export default function DashboardDefault() {
                 </AvatarGroup>
               </Grid>
             </Grid>
-            <Button size="small" variant="contained" sx={{ textTransform: 'capitalize' }}>
+            <Button
+              size="small"
+              variant="contained"
+              sx={{ textTransform: 'capitalize' }}
+              onClick={() => trackClick('Need Help', { location: 'Dashboard', section: 'Support Chat' })}
+            >
               Need Help?
             </Button>
           </Stack>

@@ -13,10 +13,14 @@ import MobileSection from './MobileSection';
 // project import
 import { GithubOutlined } from '@ant-design/icons';
 
+// hooks
+import useMixpanelTracking from 'hooks/useMixpanelTracking';
+
 // ==============================|| HEADER - CONTENT ||============================== //
 
 export default function HeaderContent() {
   const downLG = useMediaQuery((theme) => theme.breakpoints.down('lg'));
+  const { trackClick } = useMixpanelTracking();
 
   return (
     <>
@@ -30,6 +34,7 @@ export default function HeaderContent() {
         color="secondary"
         title="Download Free Version"
         sx={{ color: 'text.primary', bgcolor: 'grey.100' }}
+        onClick={() => trackClick('GitHub Link', { location: 'Header' })}
       >
         <GithubOutlined />
       </IconButton>
