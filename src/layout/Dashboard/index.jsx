@@ -14,11 +14,17 @@ import Breadcrumbs from 'components/@extended/Breadcrumbs';
 
 import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 
+// hooks
+import useMixpanelTracking from 'hooks/useMixpanelTracking';
+
 // ==============================|| MAIN LAYOUT ||============================== //
 
 export default function DashboardLayout() {
   const { menuMasterLoading } = useGetMenuMaster();
   const downXL = useMediaQuery((theme) => theme.breakpoints.down('xl'));
+
+  // Initialize Mixpanel tracking
+  useMixpanelTracking();
 
   // set media wise responsive drawer
   useEffect(() => {

@@ -34,6 +34,7 @@
     "formik": "2.4.6",
     "framer-motion": "12.8.2",
     "lodash-es": "4.17.21",
+    "mixpanel-browser": "^2.70.0",
     "react": "19.1.0",
     "react-device-detect": "2.2.3",
     "react-dom": "19.1.0",
