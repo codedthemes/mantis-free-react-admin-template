@@ -14,6 +14,7 @@ import Box from '@mui/material/Box';
 
 // project imports
 import MainCard from 'components/MainCard';
+import ActivationChecklist from 'components/ActivationChecklist';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 import MonthlyBarChart from 'sections/dashboard/default/MonthlyBarChart';
 import ReportAreaChart from 'sections/dashboard/default/ReportAreaChart';
@@ -75,6 +76,9 @@ export default function DashboardDefault() {
       {/* row 1 */}
       <Grid sx={{ mb: -2.25 }} size={12}>
         <Typography variant="h5">Dashboard</Typography>
+      </Grid>
+      <Grid size={12}>
+        <ActivationChecklist />
       </Grid>
       <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
         <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
