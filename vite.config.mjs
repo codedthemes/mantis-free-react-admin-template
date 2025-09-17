@@ -5,7 +5,8 @@ import path from 'path';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_URL = env.VITE_APP_BASE_NAME || '/';
+  // Use '/' for production (Netlify), '/free' for development
+  const API_URL = process.env.NETLIFY ? '/' : (env.VITE_APP_BASE_NAME || '/');
   const PORT = 3000;
 
   return {
