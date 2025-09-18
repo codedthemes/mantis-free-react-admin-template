@@ -127,7 +127,7 @@ export default function ActivationChecklist() {
     }
   }, [isFullyCompleted]);
 
-  if (!isVisible) return null;
+  return null;
 
   return (
     <Collapse in={isVisible}>
