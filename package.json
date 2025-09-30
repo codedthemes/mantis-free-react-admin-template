@@ -1,7 +1,7 @@
 {
-  "name": "mantis-material-free-react",
+  "name": "mantis-material-react",
   "version": "1.6.0",
-  "homepage": "https://mantisdashboard.com/free",
+  "homepage": "https://mantisdashboard.com/",
   "author": {
     "name": "CodedThemes",
     "email": "codedthemes@gmail.com",
@@ -21,6 +21,7 @@
     "@emotion/cache": "11.14.0",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
+    "@fluentui/react-components": "^9.70.0",
     "@fontsource/inter": "5.2.6",
     "@fontsource/poppins": "5.2.6",
     "@fontsource/public-sans": "5.2.6",
