@@ -92,7 +92,7 @@ const AvatarStyle = styled(MuiAvatar, { shouldForwardProp: (prop) => prop !== 'c
       {
         props: { size: 'badge' },
         style: {
-          borderColor: theme.palette.background.default
+          borderColor: theme.vars.palette.background.default
         }
       }
     ]

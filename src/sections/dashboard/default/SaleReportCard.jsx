@@ -32,7 +32,7 @@ export default function SaleReportCard() {
 
   return (
     <>
-      <Grid container alignItems="center" justifyContent="space-between">
+      <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
         <Grid>
           <Typography variant="h5">Sales Report</Typography>
         </Grid>
@@ -43,7 +43,7 @@ export default function SaleReportCard() {
             select
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            sx={{ '& .MuiInputBase-input': { py: 0.75, fontSize: '0.875rem' } }}
+            slotProps={{ htmlInput: { sx: { py: 0.75, fontSize: '0.875rem' } } }}
           >
             {status.map((option) => (
               <MenuItem key={option.value} value={option.value}>

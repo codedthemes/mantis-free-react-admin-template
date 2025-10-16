@@ -5,11 +5,11 @@ export default function TableHead(theme) {
     MuiTableHead: {
       styleOverrides: {
         root: {
-          backgroundColor: theme.palette.grey[50],
+          backgroundColor: theme.vars.palette.grey[50],
           borderTop: '1px solid',
-          borderTopColor: theme.palette.divider,
+          borderTopColor: theme.vars.palette.divider,
           borderBottom: '2px solid',
-          borderBottomColor: theme.palette.divider
+          borderBottomColor: theme.vars.palette.divider
         }
       }
     }

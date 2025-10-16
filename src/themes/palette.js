@@ -1,17 +1,15 @@
-// material-ui
-import { createTheme } from '@mui/material/styles';
-
 // third-party
 import { presetPalettes } from '@ant-design/colors';
 
 // project imports
 import ThemeOption from './theme';
+import { extendPaletteWithChannels } from 'utils/colorUtils';
 
-// ==============================|| DEFAULT THEME - PALETTE ||============================== //
+const greyAscent = ['#fafafa', '#bfbfbf', '#434343', '#1f1f1f'];
 
-export default function Palette(mode, presetColor) {
-  const colors = presetPalettes;
+// ==============================|| GREY COLORS BUILDER ||============================== //
 
+function buildGrey() {
   let greyPrimary = [
     '#ffffff',
     '#fafafa',
@@ -25,34 +23,38 @@ export default function Palette(mode, presetColor) {
     '#141414',
     '#000000'
   ];
-  let greyAscent = ['#fafafa', '#bfbfbf', '#434343', '#1f1f1f'];
   let greyConstant = ['#fafafb', '#e6ebf1'];
 
-  colors.grey = [...greyPrimary, ...greyAscent, ...greyConstant];
+  return [...greyPrimary, ...greyAscent, ...greyConstant];
+}
 
-  const paletteColor = ThemeOption(colors, presetColor, mode);
+// ==============================|| DEFAULT THEME - PALETTE ||============================== //
 
-  return createTheme({
-    palette: {
-      mode,
-      common: {
-        black: '#000',
-        white: '#fff'
-      },
-      ...paletteColor,
+export function buildPalette(presetColor) {
+  const lightColors = { ...presetPalettes, grey: buildGrey() };
+  const lightPaletteColor = ThemeOption(lightColors, presetColor);
+
+  const commonColor = { common: { black: '#000', white: '#fff' } };
+
+  const extendedLight = extendPaletteWithChannels(lightPaletteColor);
+  const extendedCommon = extendPaletteWithChannels(commonColor);
+
+  return {
+    light: {
+      mode: 'light',
+      ...extendedCommon,
+      ...extendedLight,
       text: {
-        primary: paletteColor.grey[700],
-        secondary: paletteColor.grey[500],
-        disabled: paletteColor.grey[400]
+        primary: extendedLight.grey[700],
+        secondary: extendedLight.grey[500],
+        disabled: extendedLight.grey[400]
       },
-      action: {
-        disabled: paletteColor.grey[300]
-      },
-      divider: paletteColor.grey[200],
+      action: { disabled: extendedLight.grey[300] },
+      divider: extendedLight.grey[200],
       background: {
-        paper: paletteColor.grey[0],
-        default: paletteColor.grey.A50
+        paper: extendedLight.grey[0],
+        default: extendedLight.grey.A50
       }
     }
-  });
+  };
 }
