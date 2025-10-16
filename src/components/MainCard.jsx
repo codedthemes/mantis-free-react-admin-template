@@ -72,19 +72,11 @@ export default function MainCard({
       {content && (
         <CardContent
           sx={contentSX}
-          {...(modal && {
-            slotProps: {
-              root: { sx: { overflowY: 'auto', minHeight: 'auto', maxHeight: `calc(100vh - 200px)` } }
-            }
-          })}
         >
           {children}
         </CardContent>
       )}
       {!content && children}
-
-      {/* card footer - clipboard & highlighter */}
-      {codeString && <Divider sx={{ borderStyle: 'dashed' }} />}
     </Card>
   );
 }

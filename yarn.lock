@@ -747,31 +747,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/inter@npm:5.2.8":
-  version: 5.2.8
-  resolution: "@fontsource/inter@npm:5.2.8"
-  checksum: 10c0/f737dd50005e4809887ba55ae0c9b7174216d6d14875d17a4fbb9a0ad75dec4265928b805a43fe16a23f14a878f1974a398bbfc84ad65c79fc4d4b9c3ea154e1
-  languageName: node
-  linkType: hard
-
-"@fontsource/poppins@npm:5.2.7":
-  version: 5.2.7
-  resolution: "@fontsource/poppins@npm:5.2.7"
-  checksum: 10c0/22a317488c1aee2a8eca1a2082599482fae38fa51c72a08ce45836aeceb0272cc71e8e7cc02e4466a8e6b22f77de3a659fc4bbfc7a1f5788fdb91960d9a21415
-  languageName: node
-  linkType: hard
-
 "@fontsource/public-sans@npm:5.2.7":
   version: 5.2.7
   resolution: "@fontsource/public-sans@npm:5.2.7"
   checksum: 10c0/7089c2edd3965b659e9450a3ec3a603a075b62c7b6488199c40beb4e8d277c0b43fab5d39962c3768d22b8f485ef57d833500a7e2dc6ff717616638b0fde37c3
-  languageName: node
-  linkType: hard
-
-"@fontsource/roboto@npm:5.2.8":
-  version: 5.2.8
-  resolution: "@fontsource/roboto@npm:5.2.8"
-  checksum: 10c0/b215a7e08d65063e9e1714e39c023f0a1f2d33f0d48f06edf4e0d09a8945f682dd39ca7089efb83a48ceffa20d92d65392297831198e9a694b5be8a96b1a40cd
   languageName: node
   linkType: hard
 
@@ -3871,10 +3850,7 @@ __metadata:
     "@eslint/compat": "npm:1.4.0"
     "@eslint/eslintrc": "npm:3.3.1"
     "@eslint/js": "npm:9.37.0"
-    "@fontsource/inter": "npm:5.2.8"
-    "@fontsource/poppins": "npm:5.2.7"
     "@fontsource/public-sans": "npm:5.2.7"
-    "@fontsource/roboto": "npm:5.2.8"
     "@mui/base": "npm:5.0.0-beta.70"
     "@mui/lab": "npm:7.0.1-beta.18"
     "@mui/material": "npm:7.3.4"

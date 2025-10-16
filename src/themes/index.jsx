@@ -6,7 +6,6 @@ import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/
 import CssBaseline from '@mui/material/CssBaseline';
 
 // project imports
-import { CSS_VAR_PREFIX, DEFAULT_THEME_MODE } from 'config';
 import useConfig from 'hooks/useConfig';
 import CustomShadows from './custom-shadows';
 import componentsOverride from './overrides';
@@ -49,7 +48,7 @@ export default function ThemeCustomization({ children }) {
         }
       },
       cssVariables: {
-        cssVarPrefix: CSS_VAR_PREFIX,
+        cssVarPrefix: '',
         colorSchemeSelector: 'data-color-scheme'
       }
     }),
@@ -61,7 +60,7 @@ export default function ThemeCustomization({ children }) {
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider disableTransitionOnChange theme={themes} modeStorageKey="theme-mode" defaultMode={DEFAULT_THEME_MODE}>
+      <ThemeProvider disableTransitionOnChange theme={themes} modeStorageKey="theme-mode" defaultMode='light'>
         <CssBaseline enableColorScheme />
         {children}
       </ThemeProvider>
