@@ -23,7 +23,7 @@ export default function OutlinedInput(theme) {
     MuiOutlinedInput: {
       styleOverrides: {
         input: { padding: '10.5px 14px 10.5px 12px' },
-        notchedOutline: { borderColor: theme.palette.grey[300] },
+        notchedOutline: { borderColor: theme.vars.palette.grey[300] },
         root: { ...getColor({ variant: 'primary', theme }), '&.Mui-error': { ...getColor({ variant: 'error', theme }) } },
         inputSizeSmall: { padding: '7.5px 8px 7.5px 12px' },
         inputMultiline: { padding: 0 },

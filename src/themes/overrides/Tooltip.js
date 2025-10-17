@@ -5,7 +5,7 @@ export default function Tooltip(theme) {
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          color: theme.palette.background.paper
+          color: theme.vars.palette.background.paper
         }
       }
     }

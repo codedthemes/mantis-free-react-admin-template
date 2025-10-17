@@ -6,13 +6,14 @@ import Box from '@mui/material/Box';
 // project imports
 import getColors from 'utils/getColors';
 
-export default function Dot({ color, size, variant, sx }) {
+export default function Dot({ color, size, variant, sx, ...rest }) {
   const theme = useTheme();
   const colors = getColors(theme, color || 'primary');
   const { main } = colors;
 
   return (
     <Box
+      {...rest}
       sx={{
         width: size || 8,
         height: size || 8,
@@ -24,4 +25,4 @@ export default function Dot({ color, size, variant, sx }) {
   );
 }
 
-Dot.propTypes = { color: PropTypes.any, size: PropTypes.number, variant: PropTypes.string, sx: PropTypes.any };
+Dot.propTypes = { color: PropTypes.any, size: PropTypes.number, variant: PropTypes.string, sx: PropTypes.any, rest: PropTypes.any };

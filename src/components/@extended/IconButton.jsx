@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import MuiIconButton from '@mui/material/IconButton';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 // project imports
 import getColors from 'utils/getColors';
 import getShadow from 'utils/getShadow';
+import { withAlpha } from 'utils/colorUtils';
 
 function getColorStyle({ variant, theme, color }) {
   const colors = getColors(theme, color);
@@ -17,10 +18,10 @@ function getColorStyle({ variant, theme, color }) {
 
   const commonShadow = {
     '&::after': {
-      boxShadow: `0 0 6px 6px ${alpha(main, 0.9)}`
+      boxShadow: `0 0 6px 6px ${withAlpha(main, 0.9)}`
     },
     '&:active::after': {
-      boxShadow: `0 0 0 0 ${alpha(main, 0.9)}`
+      boxShadow: `0 0 0 0 ${withAlpha(main, 0.9)}`
     },
     '&:focus-visible': {
       outline: `2px solid ${dark}`,
@@ -43,7 +44,7 @@ function getColorStyle({ variant, theme, color }) {
         color: main,
         background: lighter,
         '&:hover': {
-          background: alpha(light, 0.5)
+          background: withAlpha(light, 0.5)
         },
         ...commonShadow
       };
@@ -81,7 +82,7 @@ function getColorStyle({ variant, theme, color }) {
       return {
         '&:hover': {
           color: dark,
-          background: color === 'secondary' ? alpha(light, 0.1) : lighter
+          background: color === 'secondary' ? withAlpha(light, 0.1) : lighter
         },
         ...commonShadow
       };
@@ -142,10 +143,10 @@ const IconButtonStyle = styled(MuiIconButton, { shouldForwardProp: (prop) => pro
         props: ({ variant }) => variant !== 'text',
         style: {
           '&.Mui-disabled': {
-            background: theme.palette.grey[200],
+            background: theme.vars.palette.grey[200],
             '&:hover': {
-              background: theme.palette.grey[200],
-              color: theme.palette.grey[300],
+              background: theme.vars.palette.grey[200],
+              color: theme.vars.palette.grey[300],
               borderColor: 'inherit'
             }
           }

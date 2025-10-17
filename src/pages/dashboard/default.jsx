@@ -1,13 +1,18 @@
+import { useState } from 'react';
+
 // material-ui
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -22,6 +27,7 @@ import SaleReportCard from 'sections/dashboard/default/SaleReportCard';
 import OrdersTable from 'sections/dashboard/default/OrdersTable';
 
 // assets
+import EllipsisOutlined from '@ant-design/icons/EllipsisOutlined';
 import GiftOutlined from '@ant-design/icons/GiftOutlined';
 import MessageOutlined from '@ant-design/icons/MessageOutlined';
 import SettingOutlined from '@ant-design/icons/SettingOutlined';
@@ -51,22 +57,39 @@ const actionSX = {
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 export default function DashboardDefault() {
+  const [orderMenuAnchor, setOrderMenuAnchor] = useState(null);
+  const [analyticsMenuAnchor, setAnalyticsMenuAnchor] = useState(null);
+
+  const handleOrderMenuClick = (event) => {
+    setOrderMenuAnchor(event.currentTarget);
+  };
+  const handleOrderMenuClose = () => {
+    setOrderMenuAnchor(null);
+  };
+
+  const handleAnalyticsMenuClick = (event) => {
+    setAnalyticsMenuAnchor(event.currentTarget);
+  };
+  const handleAnalyticsMenuClose = () => {
+    setAnalyticsMenuAnchor(null);
+  };
+
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
       {/* row 1 */}
       <Grid sx={{ mb: -2.25 }} size={12}>
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
         <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
         <AnalyticEcommerce title="Total Users" count="78,250" percentage={70.5} extra="8,900" />
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
         <AnalyticEcommerce title="Total Order" count="18,800" percentage={27.4} isLoss color="warning" extra="1,943" />
       </Grid>
-      <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+      <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
         <AnalyticEcommerce title="Total Sales" count="35,078" percentage={27.4} isLoss color="warning" extra="20,395" />
       </Grid>
       <Grid sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} size={{ md: 8 }} />
@@ -75,7 +98,7 @@ export default function DashboardDefault() {
         <UniqueVisitorCard />
       </Grid>
       <Grid size={{ xs: 12, md: 5, lg: 4 }}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
           <Grid>
             <Typography variant="h5">Income Overview</Typography>
           </Grid>
@@ -95,22 +118,56 @@ export default function DashboardDefault() {
       </Grid>
       {/* row 3 */}
       <Grid size={{ xs: 12, md: 7, lg: 8 }}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
           <Grid>
             <Typography variant="h5">Recent Orders</Typography>
           </Grid>
-          <Grid />
+          <Grid>
+            <IconButton onClick={handleOrderMenuClick}>
+              <EllipsisOutlined style={{ fontSize: '1.25rem' }} />
+            </IconButton>
+            <Menu
+              id="fade-menu"
+              slotProps={{ list: { 'aria-labelledby': 'fade-button' } }}
+              anchorEl={orderMenuAnchor}
+              onClose={handleOrderMenuClose}
+              open={Boolean(orderMenuAnchor)}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+              <MenuItem onClick={handleOrderMenuClose}>Export as CSV</MenuItem>
+              <MenuItem onClick={handleOrderMenuClose}>Export as Excel</MenuItem>
+              <MenuItem onClick={handleOrderMenuClose}>Print Table</MenuItem>
+            </Menu>
+          </Grid>
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
           <OrdersTable />
         </MainCard>
       </Grid>
       <Grid size={{ xs: 12, md: 5, lg: 4 }}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
           <Grid>
             <Typography variant="h5">Analytics Report</Typography>
           </Grid>
-          <Grid />
+          <Grid>
+            <IconButton onClick={handleAnalyticsMenuClick}>
+              <EllipsisOutlined style={{ fontSize: '1.25rem' }} />
+            </IconButton>
+            <Menu
+              id="fade-menu"
+              slotProps={{ list: { 'aria-labelledby': 'fade-button' } }}
+              anchorEl={analyticsMenuAnchor}
+              open={Boolean(analyticsMenuAnchor)}
+              onClose={handleAnalyticsMenuClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+              <MenuItem onClick={handleAnalyticsMenuClose}>Weekly</MenuItem>
+              <MenuItem onClick={handleAnalyticsMenuClose}>Monthly</MenuItem>
+              <MenuItem onClick={handleAnalyticsMenuClose}>Yearly</MenuItem>
+            </Menu>
+          </Grid>
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
           <List sx={{ p: 0, '& .MuiListItemButton-root': { py: 2 } }}>
@@ -135,7 +192,7 @@ export default function DashboardDefault() {
         <SaleReportCard />
       </Grid>
       <Grid size={{ xs: 12, md: 5, lg: 4 }}>
-        <Grid container alignItems="center" justifyContent="space-between">
+        <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
           <Grid>
             <Typography variant="h5">Transaction History</Typography>
           </Grid>
@@ -221,7 +278,7 @@ export default function DashboardDefault() {
         </MainCard>
         <MainCard sx={{ mt: 2 }}>
           <Stack sx={{ gap: 3 }}>
-            <Grid container justifyContent="space-between" alignItems="center">
+            <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Grid>
                 <Stack>
                   <Typography variant="h5" noWrap>

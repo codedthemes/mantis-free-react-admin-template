@@ -51,7 +51,6 @@ export default function MobileSection() {
           sx={(theme) => ({
             color: 'text.primary',
             bgcolor: open ? 'grey.300' : 'grey.100',
-            ...theme.applyStyles('dark', { bgcolor: open ? 'grey.200' : 'background.default' })
           })}
           aria-label="open more menu"
           ref={anchorRef}

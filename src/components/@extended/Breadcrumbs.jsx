@@ -45,7 +45,7 @@ export default function Breadcrumbs({
     marginLeft: 0,
     width: '1rem',
     height: '1rem',
-    color: theme.palette.secondary.main
+    color: theme.vars.palette.secondary.main
   };
 
   let customLocation = location.pathname;
@@ -128,9 +128,8 @@ export default function Breadcrumbs({
           <Grid
             container
             direction={rightAlign ? 'row' : 'column'}
-            justifyContent={rightAlign ? 'space-between' : 'flex-start'}
-            alignItems={rightAlign ? 'center' : 'flex-start'}
             spacing={1}
+            sx={{ justifyContent: rightAlign ? 'space-between' : 'flex-start', alignItems: rightAlign ? 'center' : 'flex-start' }}
           >
             <Grid>
               <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
@@ -214,9 +213,8 @@ export default function Breadcrumbs({
           <Grid
             container
             direction={rightAlign ? 'row' : 'column'}
-            justifyContent={rightAlign ? 'space-between' : 'flex-start'}
-            alignItems={rightAlign ? 'center' : 'flex-start'}
             spacing={1}
+            sx={{ justifyContent: rightAlign ? 'space-between' : 'flex-start', alignItems: rightAlign ? 'center' : 'flex-start' }}
           >
             {title && !titleBottom && (
               <Grid>

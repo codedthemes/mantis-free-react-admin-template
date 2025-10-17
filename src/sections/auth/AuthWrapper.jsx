@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 
 // project imports
@@ -18,11 +19,11 @@ export default function AuthWrapper({ children }) {
   return (
     <Box sx={{ minHeight: '100vh' }}>
       <AuthBackground />
-      <Grid container direction="column" justifyContent="flex-end" sx={{ minHeight: '100vh' }}>
-        <Grid sx={{ px: 3, mt: 3 }} size={12}>
+      <Stack sx={{ minHeight: '100vh', justifyContent: 'flex-end' }}>
+        <Box sx={{ px: 3, mt: 3 }} size={12}>
           <Logo to="/" />
-        </Grid>
-        <Grid size={12}>
+        </Box>
+        <Box size={12}>
           <Grid
             container
             justifyContent="center"
@@ -33,11 +34,11 @@ export default function AuthWrapper({ children }) {
               <AuthCard>{children}</AuthCard>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid sx={{ p: 3 }} size={12}>
+        </Box>
+        <Box sx={{ p: 3 }} size={12}>
           <AuthFooter />
-        </Grid>
-      </Grid>
+        </Box>
+      </Stack>
     </Box>
   );
 }

@@ -40,7 +40,6 @@ export default function Header() {
         sx={(theme) => ({
           color: 'text.primary',
           bgcolor: drawerOpen ? 'transparent' : 'grey.100',
-          ...theme.applyStyles('dark', { bgcolor: drawerOpen ? 'transparent' : 'background.default' }),
           ml: { xs: 0, lg: -2 }
         })}
       >
