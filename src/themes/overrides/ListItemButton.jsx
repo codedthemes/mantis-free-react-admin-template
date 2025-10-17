@@ -6,10 +6,9 @@ export default function ListItemButton(theme) {
       styleOverrides: {
         root: {
           '&.Mui-selected': {
-            color: theme.palette.primary.main,
-            ...theme.applyStyles('dark', { color: theme.palette.primary.darker }),
+            color: theme.vars.palette.primary.main,
             '& .MuiListItemIcon-root': {
-              color: theme.palette.primary.main
+              color: theme.vars.palette.primary.main
             }
           }
         }

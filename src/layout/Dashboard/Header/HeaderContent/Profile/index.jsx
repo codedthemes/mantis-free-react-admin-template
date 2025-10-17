@@ -71,29 +71,23 @@ export default function Profile() {
   };
 
   return (
-    <Box sx={{ flexShrink: 0, ml: 0.75 }}>
-      <ButtonBase
-        sx={(theme) => ({
-          p: 0.25,
-          bgcolor: open ? 'grey.100' : 'transparent',
-          borderRadius: 1,
-          '&:hover': { bgcolor: 'secondary.lighter' },
-          '&:focus-visible': { outline: `2px solid ${theme.palette.secondary.dark}`, outlineOffset: 2 },
-          ...theme.applyStyles('dark', { bgcolor: open ? 'background.default' : 'transparent', '&:hover': { bgcolor: 'secondary.light' } })
-        })}
-        aria-label="open profile"
-        ref={anchorRef}
-        aria-controls={open ? 'profile-grow' : undefined}
-        aria-haspopup="true"
-        onClick={handleToggle}
-      >
-        <Stack direction="row" sx={{ gap: 1.25, alignItems: 'center', p: 0.5 }}>
-          <Avatar alt="profile user" src={avatar1} size="sm" />
-          <Typography variant="subtitle1" sx={{ textTransform: 'capitalize' }}>
-            John Doe
-          </Typography>
-        </Stack>
-      </ButtonBase>
+    <Box sx={{ flexShrink: 0, ml: 'auto' }}>
+      <Tooltip title="Profile" disableInteractive>
+        <ButtonBase
+          sx={(theme) => ({
+            p: 0.25,
+            borderRadius: 1,
+            '&:focus-visible': { outline: `2px solid ${theme.vars.palette.secondary.dark}`, outlineOffset: 2 }
+          })}
+          aria-label="open profile"
+          ref={anchorRef}
+          aria-controls={open ? 'profile-grow' : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+        >
+          <Avatar alt="profile user" src={avatar1} size="sm" sx={{ '&:hover': { outline: '1px solid', outlineColor: 'primary.main' } }} />
+        </ButtonBase>
+      </Tooltip>
       <Popper
         placement="bottom-end"
         open={open}
@@ -114,11 +108,11 @@ export default function Profile() {
       >
         {({ TransitionProps }) => (
           <Transitions type="grow" position="top-right" in={open} {...TransitionProps}>
-            <Paper sx={(theme) => ({ boxShadow: theme.customShadows.z1, width: 290, minWidth: 240, maxWidth: { xs: 250, md: 290 } })}>
+            <Paper sx={(theme) => ({ boxShadow: theme.vars.customShadows.z1, width: 290, minWidth: 240, maxWidth: { xs: 250, md: 290 } })}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard elevation={0} border={false} content={false}>
                   <CardContent sx={{ px: 2.5, pt: 3 }}>
-                    <Grid container justifyContent="space-between" alignItems="center">
+                    <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
                       <Grid>
                         <Stack direction="row" sx={{ gap: 1.25, alignItems: 'center' }}>
                           <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />

@@ -69,14 +69,13 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
             pl: drawerOpen ? `${level * 28}px` : 1.5,
             py: !drawerOpen && level === 1 ? 1.25 : 1,
             ...(drawerOpen && {
-              '&:hover': { bgcolor: 'primary.lighter', ...theme.applyStyles('dark', { bgcolor: 'divider' }) },
+              '&:hover': { bgcolor: 'primary.lighter' },
               '&.Mui-selected': {
                 bgcolor: 'primary.lighter',
-                ...theme.applyStyles('dark', { bgcolor: 'divider' }),
                 borderRight: '2px solid',
                 borderColor: 'primary.main',
                 color: iconSelectedColor,
-                '&:hover': { color: iconSelectedColor, bgcolor: 'primary.lighter', ...theme.applyStyles('dark', { bgcolor: 'divider' }) }
+                '&:hover': { color: iconSelectedColor, bgcolor: 'primary.lighter' }
               }
             }),
             ...(!drawerOpen && {
@@ -97,14 +96,13 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                   height: 36,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  '&:hover': { bgcolor: 'secondary.lighter', ...theme.applyStyles('dark', { bgcolor: 'secondary.light' }) }
+                  '&:hover': { bgcolor: 'secondary.lighter' }
                 }),
                 ...(!drawerOpen &&
                   isSelected && {
-                    bgcolor: 'primary.lighter',
-                    ...theme.applyStyles('dark', { bgcolor: 'primary.900' }),
-                    '&:hover': { bgcolor: 'primary.lighter', ...theme.applyStyles('dark', { bgcolor: 'primary.darker' }) }
-                  })
+                  bgcolor: 'primary.lighter',
+                  '&:hover': { bgcolor: 'primary.lighter' }
+                })
               })}
             >
               {itemIcon}

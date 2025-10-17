@@ -10,26 +10,21 @@ const labels = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export default function ReportAreaChart() {
   const theme = useTheme();
-  const axisFonstyle = { fill: theme.palette.text.secondary };
 
   return (
     <LineChart
       hideLegend
       grid={{ horizontal: true }}
-      xAxis={[{ data: labels, scaleType: 'point', disableLine: true, disableTicks: true, tickLabelStyle: axisFonstyle }]}
-      yAxis={[{ position: 'none', tickMaxStep: 10 }]}
-      series={[
-        {
-          data,
-          showMark: false,
-          id: 'ReportAreaChart',
-          color: theme.palette.warning.main,
-          label: 'Series 1'
-        }
-      ]}
+      xAxis={[{ data: labels, scaleType: 'point', disableLine: true, tickSize: 7 }]}
+      yAxis={[{ tickMaxStep: 20, position: 'none' }]}
+      series={[{ data, showMark: false, id: 'ReportAreaChart', color: theme.vars.palette.warning.main, label: 'Series 1' }]}
       height={340}
       margin={{ top: 30, bottom: 25, left: 20, right: 20 }}
-      sx={{ '& .MuiLineElement-root': { strokeWidth: 1 }, [`& .${chartsGridClasses.line}`]: { strokeDasharray: '5 3' } }}
+      sx={{
+        '& .MuiLineElement-root': { strokeWidth: 1 },
+        [`& .${chartsGridClasses.line}`]: { strokeDasharray: '4 4' },
+        '& .MuiChartsAxis-root.MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: 'transparent' }
+      }}
     />
   );
 }

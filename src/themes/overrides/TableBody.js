@@ -3,7 +3,7 @@
 export default function TableBody(theme) {
   const hoverStyle = {
     '&:hover': {
-      backgroundColor: theme.palette.secondary.lighter
+      backgroundColor: theme.vars.palette.action.hover
     }
   };
 
@@ -11,12 +11,7 @@ export default function TableBody(theme) {
     MuiTableBody: {
       styleOverrides: {
         root: {
-          '&.striped .MuiTableRow-root': {
-            '&:nth-of-type(even)': {
-              backgroundColor: theme.palette.grey[50]
-            },
-            ...hoverStyle
-          },
+          backgroundColor: theme.vars.palette.background.paper,
           '& .MuiTableRow-root': {
             ...hoverStyle
           }

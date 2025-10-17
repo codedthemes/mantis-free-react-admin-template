@@ -1,5 +1,5 @@
-// material-ui
-import { alpha } from '@mui/material/styles';
+// project imports
+import { withAlpha } from 'utils/colorUtils';
 
 // ==============================|| OVERRIDES - TAB ||============================== //
 
@@ -9,15 +9,15 @@ export default function Tab(theme) {
       styleOverrides: {
         root: {
           minHeight: 46,
-          color: theme.palette.text.primary,
+          color: theme.vars.palette.text.primary,
           borderRadius: 4,
           '&:hover': {
-            backgroundColor: alpha(theme.palette.primary.lighter, 0.6),
-            color: theme.palette.primary.main
+            backgroundColor: withAlpha(theme.vars.palette.primary.lighter, 0.6),
+            color: theme.vars.palette.primary.main
           },
           '&:focus-visible': {
             borderRadius: 4,
-            outline: `2px solid ${theme.palette.secondary.dark}`,
+            outline: `2px solid ${theme.vars.palette.secondary.dark}`,
             outlineOffset: -3
           }
         }

@@ -6,18 +6,20 @@ import { createTheme, StyledEngineProvider, ThemeProvider } from '@mui/material/
 import CssBaseline from '@mui/material/CssBaseline';
 
 // project imports
-import Palette from './palette';
-import Typography from './typography';
-import CustomShadows from './shadows';
+import useConfig from 'hooks/useConfig';
+import CustomShadows from './custom-shadows';
 import componentsOverride from './overrides';
+import { buildPalette } from './palette';
+import Typography from './typography';
 
 // ==============================|| DEFAULT THEME - MAIN ||============================== //
 
 export default function ThemeCustomization({ children }) {
-  const theme = Palette('light', 'default');
+  const { state } = useConfig();
 
-  const themeTypography = Typography(`'Public Sans', sans-serif`);
-  const themeCustomShadows = useMemo(() => CustomShadows(theme), [theme]);
+  const themeTypography = useMemo(() => Typography(state.fontFamily), [state.fontFamily]);
+
+  const palette = useMemo(() => buildPalette(state.presetColor), [state.presetColor]);
 
   const themeOptions = useMemo(
     () => ({
@@ -38,11 +40,19 @@ export default function ThemeCustomization({ children }) {
           paddingBottom: 8
         }
       },
-      palette: theme.palette,
-      customShadows: themeCustomShadows,
-      typography: themeTypography
+      typography: themeTypography,
+      colorSchemes: {
+        light: {
+          palette: palette.light,
+          customShadows: CustomShadows(palette.light, 'light')
+        }
+      },
+      cssVariables: {
+        cssVarPrefix: '',
+        colorSchemeSelector: 'data-color-scheme'
+      }
     }),
-    [theme, themeTypography, themeCustomShadows]
+    [themeTypography, palette]
   );
 
   const themes = createTheme(themeOptions);
@@ -50,7 +60,7 @@ export default function ThemeCustomization({ children }) {
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={themes}>
+      <ThemeProvider disableTransitionOnChange theme={themes} modeStorageKey="theme-mode" defaultMode='light'>
         <CssBaseline enableColorScheme />
         {children}
       </ThemeProvider>
