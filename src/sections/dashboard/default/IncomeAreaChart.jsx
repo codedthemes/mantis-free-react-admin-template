@@ -2,12 +2,15 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 // material-ui
-import { alpha, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import { LineChart } from '@mui/x-charts/LineChart';
+
+// project imports
+import { withAlpha } from 'utils/colorUtils';
 
 // Sample data
 const monthlyLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -29,7 +32,7 @@ function Legend({ items, onToggle }) {
           sx={{ gap: 1.25, alignItems: 'center', cursor: 'pointer' }}
           onClick={() => onToggle(item.label)}
         >
-          <Box sx={{ width: 12, height: 12, bgcolor: item.visible ? item.color : 'grey.500', borderRadius: '50%' }} />
+          <Box sx={{ width: 12, height: 12, bgcolor: item.visible ? item.color : 'text.secondary', borderRadius: '50%' }} />
           <Typography variant="body2" color="text.primary">
             {item.label}
           </Typography>
@@ -53,7 +56,7 @@ export default function IncomeAreaChart({ view }) {
   const data1 = view === 'monthly' ? monthlyData1 : weeklyData1;
   const data2 = view === 'monthly' ? monthlyData2 : weeklyData2;
 
-  const line = theme.palette.divider;
+  const line = theme.vars.palette.divider;
 
   const toggleVisibility = (label) => {
     setVisibility((prev) => ({ ...prev, [label]: !prev[label] }));
@@ -65,8 +68,8 @@ export default function IncomeAreaChart({ view }) {
       label: 'Page views',
       showMark: false,
       area: true,
-      id: 'Germany',
-      color: theme.palette.primary.main || '',
+      id: 'page-views',
+      color: theme.vars.palette.primary.main || '',
       visible: visibility['Page views']
     },
     {
@@ -74,21 +77,19 @@ export default function IncomeAreaChart({ view }) {
       label: 'Sessions',
       showMark: false,
       area: true,
-      id: 'UK',
-      color: theme.palette.primary[700] || '',
+      id: 'sessions',
+      color: theme.vars.palette.primary[700] || '',
       visible: visibility['Sessions']
     }
   ];
-
-  const axisFonstyle = { fontSize: 10, fill: theme.palette.text.secondary };
 
   return (
     <>
       <LineChart
         hideLegend
-        grid={{ horizontal: true }}
-        xAxis={[{ scaleType: 'point', data: labels, disableLine: true, tickLabelStyle: axisFonstyle }]}
-        yAxis={[{ disableLine: true, disableTicks: true, tickLabelStyle: axisFonstyle }]}
+        grid={{ horizontal: true, vertical: false }}
+        xAxis={[{ scaleType: 'point', data: labels, tickSize: 7, disableLine: true }]}
+        yAxis={[{ tickSize: 7, disableLine: true }]}
         height={450}
         margin={{ top: 40, bottom: -5, right: 20, left: 5 }}
         series={visibleSeries
@@ -105,19 +106,21 @@ export default function IncomeAreaChart({ view }) {
             strokeWidth: 2
           }))}
         sx={{
-          '& .MuiAreaElement-series-Germany': { fill: "url('#myGradient1')", strokeWidth: 2, opacity: 0.8 },
-          '& .MuiAreaElement-series-UK': { fill: "url('#myGradient2')", strokeWidth: 2, opacity: 0.8 },
-          '& .MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: line }
+          '& .MuiChartsGrid-line': { strokeDasharray: '4 4', stroke: line },
+          '& .MuiAreaElement-series-page-views': { fill: "url('#myGradient1')", strokeWidth: 2, opacity: 0.8 },
+          '& .MuiAreaElement-series-sessions': { fill: "url('#myGradient2')", strokeWidth: 2, opacity: 0.8 },
+          '& .MuiChartsAxis-root.MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: 'transparent' },
+          '& .MuiChartsAxis-root.MuiChartsAxis-directionY .MuiChartsAxis-tick': { stroke: 'transparent' }
         }}
       >
         <defs>
           <linearGradient id="myGradient1" gradientTransform="rotate(90)">
-            <stop offset="10%" stopColor={alpha(theme.palette.primary.main, 0.4)} />
-            <stop offset="90%" stopColor={alpha(theme.palette.background.default, 0.4)} />
+            <stop offset="10%" stopColor={withAlpha(theme.vars.palette.primary.main, 0.4)} />
+            <stop offset="90%" stopColor={withAlpha(theme.vars.palette.background.default, 0.4)} />
           </linearGradient>
           <linearGradient id="myGradient2" gradientTransform="rotate(90)">
-            <stop offset="10%" stopColor={alpha(theme.palette.primary[700], 0.4)} />
-            <stop offset="90%" stopColor={alpha(theme.palette.background.default, 0.4)} />
+            <stop offset="10%" stopColor={withAlpha(theme.vars.palette.primary[700], 0.4)} />
+            <stop offset="90%" stopColor={withAlpha(theme.vars.palette.background.default, 0.4)} />
           </linearGradient>
         </defs>
       </LineChart>

@@ -23,7 +23,6 @@ function getColorStyle({ color, theme }) {
     color: main,
     backgroundColor: lighter,
     borderColor: light,
-    ...theme.applyStyles('dark', { color: darker }),
     '& .MuiChip-deleteIcon': {
       color: main,
       '&:hover': {

@@ -22,7 +22,7 @@ export default function AnalyticEcommerce({ color = 'primary', title, count, per
         <Typography variant="h6" color="text.secondary">
           {title}
         </Typography>
-        <Grid container alignItems="center">
+        <Grid container sx={{ alignItems: 'center' }}>
           <Grid>
             <Typography variant="h4" color="inherit">
               {count}

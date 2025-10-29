@@ -174,7 +174,7 @@ export default function ComponentTypography() {
           </MainCard>
           <MainCard title="Link">
             <Stack sx={{ gap: 1.5 }}>
-              <Link href="#">mantisdashboard.com</Link>
+              <Link href="#!">mantisdashboard.com</Link>
               <Breadcrumbs aria-label="breadcrumb">
                 <Typography variant="h6">Size: 12px</Typography>
                 <Typography variant="h6">Weight: Regular</Typography>
