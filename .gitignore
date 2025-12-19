@@ -108,3 +108,5 @@ dist
 
 # wincompare file
 .bak
+
+!package-lock.json

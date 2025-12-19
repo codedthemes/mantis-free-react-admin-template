@@ -41,14 +41,16 @@ export default function MainDrawer({ window }) {
           open={drawerOpen}
           onClose={() => handlerDrawerOpen(!drawerOpen)}
           ModalProps={{ keepMounted: true }}
-          sx={{
-            display: { xs: drawerOpen ? 'block' : 'none', lg: 'none' },
-            '& .MuiDrawer-paper': {
-              boxSizing: 'border-box',
-              width: DRAWER_WIDTH,
-              borderRight: '1px solid',
-              borderRightColor: 'divider',
-              boxShadow: 'inherit'
+          sx={{ display: { xs: drawerOpen ? 'block' : 'none', lg: 'none' } }}
+          slotProps={{
+            paper: {
+              sx: {
+                boxSizing: 'border-box',
+                width: DRAWER_WIDTH,
+                borderRight: '1px solid',
+                borderRightColor: 'divider',
+                boxShadow: 'inherit'
+              }
             }
           }}
         >

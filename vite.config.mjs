@@ -28,10 +28,7 @@ export default defineConfig(({ mode }) => {
         // Add more aliases as needed
       }
     },
-    plugins: [
-      react(),
-      jsconfigPaths(),
-    ],
+    plugins: [react(), jsconfigPaths()],
     build: {
       chunkSizeWarningLimit: 1000,
       sourcemap: true,

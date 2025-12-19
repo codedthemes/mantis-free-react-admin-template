@@ -100,9 +100,9 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                 }),
                 ...(!drawerOpen &&
                   isSelected && {
-                  bgcolor: 'primary.lighter',
-                  '&:hover': { bgcolor: 'primary.lighter' }
-                })
+                    bgcolor: 'primary.lighter',
+                    '&:hover': { bgcolor: 'primary.lighter' }
+                  })
               })}
             >
               {itemIcon}

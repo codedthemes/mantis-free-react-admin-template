@@ -6,7 +6,7 @@ import { ConfigContext } from 'contexts/ConfigContext';
 export default function useConfig() {
   const context = use(ConfigContext);
 
-  if (!context) throw new Error('useSConfig must be use inside ConfigProvider');
+  if (!context) throw new Error('useConfig must be use inside ConfigProvider');
 
   return context;
 }
