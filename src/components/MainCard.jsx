@@ -69,13 +69,7 @@ export default function MainCard({
       {title && divider && <Divider />}
 
       {/* card content */}
-      {content && (
-        <CardContent
-          sx={contentSX}
-        >
-          {children}
-        </CardContent>
-      )}
+      {content && <CardContent sx={contentSX}>{children}</CardContent>}
       {!content && children}
     </Card>
   );

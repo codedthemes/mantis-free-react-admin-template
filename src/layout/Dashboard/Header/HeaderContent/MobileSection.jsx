@@ -48,9 +48,9 @@ export default function MobileSection() {
     <>
       <Box sx={{ flexShrink: 0, ml: 0.75 }}>
         <IconButton
-          sx={(theme) => ({
+          sx={() => ({
             color: 'text.primary',
-            bgcolor: open ? 'grey.300' : 'grey.100',
+            bgcolor: open ? 'grey.300' : 'grey.100'
           })}
           aria-label="open more menu"
           ref={anchorRef}

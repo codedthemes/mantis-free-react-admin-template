@@ -35,9 +35,7 @@ export default function AuthWrapper({ children }) {
             </Grid>
           </Grid>
         </Box>
-        <Box sx={{ p: 3 }} size={12}>
-          <AuthFooter />
-        </Box>
+        <AuthFooter />
       </Stack>
     </Box>
   );
