@@ -71,7 +71,7 @@ export default function Notification() {
         variant="light"
         sx={(theme) => ({
           color: 'text.primary',
-          bgcolor: open ? 'grey.100' : 'transparent',
+          bgcolor: open ? 'grey.100' : 'transparent'
         })}
         aria-label="open profile"
         ref={anchorRef}
