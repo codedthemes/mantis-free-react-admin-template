@@ -16,14 +16,17 @@ export default function Footer() {
         </Link>
       </Typography>
       <Stack direction="row" sx={{ gap: 1.5, alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="https://codedthemes.com/about-us/" target="_blank" variant="caption" color="text.primary">
-          About us
+        <Link href="https://codedthemes.com/hire-us/" target="_blank" variant="caption" color="text.primary">
+          Hire us
         </Link>
-        <Link href="https://mui.com/legal/privacy/" target="_blank" variant="caption" color="text.primary">
-          Privacy
+        <Link href="https://mui.com/store/license/" target="_blank" variant="caption" color="text.primary">
+          License
         </Link>
         <Link href="https://mui.com/store/terms/" target="_blank" variant="caption" color="text.primary">
           Terms
+        </Link>
+        <Link href="https://links.codedthemes.com/dAAOP" target="_blank" variant="caption" color="text.primary">
+          Figma Design System
         </Link>
       </Stack>
     </Stack>

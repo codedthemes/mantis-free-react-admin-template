@@ -17,7 +17,10 @@ export default defineConfig(({ mode }) => {
     },
     preview: {
       open: true,
-      host: true
+      host: true,
+      fs: {
+        allow: ['..']
+      }
     },
     define: {
       global: 'window'

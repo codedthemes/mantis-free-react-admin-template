@@ -1,4 +1,4 @@
-import { fixupConfigRules } from '@eslint/compat';
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import prettier from 'eslint-plugin-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -23,7 +23,7 @@ export default [
     plugins: {
       prettier,
       react,
-      'react-hooks': reactHooks,
+      'react-hooks': fixupPluginRules(reactHooks),
       'jsx-a11y': jsxA11y
     },
 
