@@ -60,7 +60,7 @@ export default function ThemeCustomization({ children }) {
 
   return (
     <StyledEngineProvider injectFirst>
-      <ThemeProvider disableTransitionOnChange theme={themes} modeStorageKey="theme-mode" defaultMode='light'>
+      <ThemeProvider disableTransitionOnChange theme={themes} modeStorageKey="theme-mode" defaultMode="light">
         <CssBaseline enableColorScheme />
         {children}
       </ThemeProvider>
