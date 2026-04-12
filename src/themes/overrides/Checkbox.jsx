@@ -77,14 +77,14 @@ export default function Checkbox(theme) {
           },
           '&.size-large': {
             ...checkboxStyle('large')
-          }
-        },
-        colorPrimary: getColorStyle({ color: 'primary', theme }),
-        colorSecondary: getColorStyle({ color: 'secondary', theme }),
-        colorSuccess: getColorStyle({ color: 'success', theme }),
-        colorWarning: getColorStyle({ color: 'warning', theme }),
-        colorInfo: getColorStyle({ color: 'info', theme }),
-        colorError: getColorStyle({ color: 'error', theme })
+          },
+          '&.MuiCheckbox-colorPrimary': getColorStyle({ color: 'primary', theme }),
+          '&.MuiCheckbox-colorSecondary': getColorStyle({ color: 'secondary', theme }),
+          '&.MuiCheckbox-colorSuccess': getColorStyle({ color: 'success', theme }),
+          '&.MuiCheckbox-colorWarning': getColorStyle({ color: 'warning', theme }),
+          '&.MuiCheckbox-colorInfo': getColorStyle({ color: 'info', theme }),
+          '&.MuiCheckbox-colorError': getColorStyle({ color: 'error', theme })
+        }
       }
     }
   };

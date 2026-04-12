@@ -122,7 +122,34 @@ export default function Button(theme) {
             top: 0,
             opacity: 1,
             transition: '0s'
-          }
+          },
+
+          variants: [
+            { props: { variant: 'contained', color: 'primary' }, style: getColorStyle({ variant: 'contained', color: 'primary', theme }) },
+            {
+              props: { variant: 'contained', color: 'secondary' },
+              style: getColorStyle({ variant: 'contained', color: 'secondary', theme })
+            },
+            { props: { variant: 'contained', color: 'error' }, style: getColorStyle({ variant: 'contained', color: 'error', theme }) },
+            { props: { variant: 'contained', color: 'success' }, style: getColorStyle({ variant: 'contained', color: 'success', theme }) },
+            { props: { variant: 'contained', color: 'info' }, style: getColorStyle({ variant: 'contained', color: 'info', theme }) },
+            { props: { variant: 'contained', color: 'warning' }, style: getColorStyle({ variant: 'contained', color: 'warning', theme }) },
+            { props: { variant: 'outlined', color: 'primary' }, style: getColorStyle({ variant: 'outlined', color: 'primary', theme }) },
+            {
+              props: { variant: 'outlined', color: 'secondary' },
+              style: getColorStyle({ variant: 'outlined', color: 'secondary', theme })
+            },
+            { props: { variant: 'outlined', color: 'error' }, style: getColorStyle({ variant: 'outlined', color: 'error', theme }) },
+            { props: { variant: 'outlined', color: 'success' }, style: getColorStyle({ variant: 'outlined', color: 'success', theme }) },
+            { props: { variant: 'outlined', color: 'info' }, style: getColorStyle({ variant: 'outlined', color: 'info', theme }) },
+            { props: { variant: 'outlined', color: 'warning' }, style: getColorStyle({ variant: 'outlined', color: 'warning', theme }) },
+            { props: { variant: 'text', color: 'primary' }, style: getColorStyle({ variant: 'text', color: 'primary', theme }) },
+            { props: { variant: 'text', color: 'secondary' }, style: getColorStyle({ variant: 'text', color: 'secondary', theme }) },
+            { props: { variant: 'text', color: 'error' }, style: getColorStyle({ variant: 'text', color: 'error', theme }) },
+            { props: { variant: 'text', color: 'success' }, style: getColorStyle({ variant: 'text', color: 'success', theme }) },
+            { props: { variant: 'text', color: 'info' }, style: getColorStyle({ variant: 'text', color: 'info', theme }) },
+            { props: { variant: 'text', color: 'warning' }, style: getColorStyle({ variant: 'text', color: 'warning', theme }) }
+          ]
         },
         contained: {
           '&.Mui-disabled': {
@@ -180,24 +207,6 @@ export default function Button(theme) {
             backgroundColor: `${theme.vars.palette.grey[200]} !important`
           }
         },
-        containedPrimary: getColorStyle({ variant: 'contained', color: 'primary', theme }),
-        containedSecondary: getColorStyle({ variant: 'contained', color: 'secondary', theme }),
-        containedError: getColorStyle({ variant: 'contained', color: 'error', theme }),
-        containedSuccess: getColorStyle({ variant: 'contained', color: 'success', theme }),
-        containedInfo: getColorStyle({ variant: 'contained', color: 'info', theme }),
-        containedWarning: getColorStyle({ variant: 'contained', color: 'warning', theme }),
-        outlinedPrimary: getColorStyle({ variant: 'outlined', color: 'primary', theme }),
-        outlinedSecondary: getColorStyle({ variant: 'outlined', color: 'secondary', theme }),
-        outlinedError: getColorStyle({ variant: 'outlined', color: 'error', theme }),
-        outlinedSuccess: getColorStyle({ variant: 'outlined', color: 'success', theme }),
-        outlinedInfo: getColorStyle({ variant: 'outlined', color: 'info', theme }),
-        outlinedWarning: getColorStyle({ variant: 'outlined', color: 'warning', theme }),
-        textPrimary: getColorStyle({ variant: 'text', color: 'primary', theme }),
-        textSecondary: getColorStyle({ variant: 'text', color: 'secondary', theme }),
-        textError: getColorStyle({ variant: 'text', color: 'error', theme }),
-        textSuccess: getColorStyle({ variant: 'text', color: 'success', theme }),
-        textInfo: getColorStyle({ variant: 'text', color: 'info', theme }),
-        textWarning: getColorStyle({ variant: 'text', color: 'warning', theme }),
         sizeExtraSmall: {
           minWidth: 56,
           fontSize: '0.625rem',

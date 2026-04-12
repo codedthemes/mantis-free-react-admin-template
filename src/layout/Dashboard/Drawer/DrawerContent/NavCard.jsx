@@ -17,9 +17,9 @@ import AnimateButton from 'components/@extended/AnimateButton';
 export default function NavCard() {
   return (
     <MainCard sx={{ bgcolor: 'grey.50', m: 3 }}>
-      <Stack alignItems="center" spacing={2.5}>
+      <Stack spacing={2.5} sx={{ alignItems: 'center' }}>
         <CardMedia component="img" image={avatar} sx={{ width: 112 }} />
-        <Stack alignItems="center">
+        <Stack sx={{ alignItems: 'center' }}>
           <Typography variant="h5">Mantis Pro</Typography>
           <Typography variant="h6" color="secondary">
             Checkout pro features
