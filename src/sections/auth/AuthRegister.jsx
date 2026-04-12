@@ -194,12 +194,12 @@ export default function AuthRegister() {
                   </FormHelperText>
                 )}
                 <FormControl fullWidth sx={{ mt: 2 }}>
-                  <Grid container spacing={2} alignItems="center">
+                  <Grid container spacing={2} sx={{ alignItems: 'center' }}>
                     <Grid>
                       <Box sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }} />
                     </Grid>
                     <Grid>
-                      <Typography variant="subtitle1" fontSize="0.75rem">
+                      <Typography variant="subtitle1" sx={{ fontSize: '0.75rem' }}>
                         {level?.label}
                       </Typography>
                     </Grid>

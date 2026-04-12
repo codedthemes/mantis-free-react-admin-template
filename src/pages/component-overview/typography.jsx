@@ -138,11 +138,11 @@ export default function ComponentTypography() {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
-            <Typography variant="body2" textAlign="center" gutterBottom>
+            <Typography variant="body2" sx={{ textAlign: 'center' }} gutterBottom>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
-            <Typography variant="body2" textAlign="right">
+            <Typography variant="body2" sx={{ textAlign: 'right' }}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
