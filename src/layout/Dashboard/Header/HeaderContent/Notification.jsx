@@ -94,7 +94,9 @@ export default function Notification() {
       >
         {({ TransitionProps }) => (
           <Transitions type="grow" position={downMD ? 'top' : 'top-right'} in={open} {...TransitionProps}>
-            <Paper sx={(theme) => ({ boxShadow: theme.customShadows.z1, width: '100%', minWidth: 285, maxWidth: { xs: 285, md: 420 } })}>
+            <Paper
+              sx={(theme) => ({ boxShadow: theme.vars.customShadows.z1, width: '100%', minWidth: 285, maxWidth: { xs: 285, md: 420 } })}
+            >
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard
                   title="Notification"
