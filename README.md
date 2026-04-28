@@ -74,6 +74,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 - Support React19.
 - Professional user interface.
 - Material UI React components(MUI v7).
+- Prompt Library for centralized access to prebuilt AI prompts.
 - Fully responsive, all modern browser supported.
 - Easy to use code structure
 - Flexible & high-Performance code
@@ -83,18 +84,25 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 The [Pro version](https://mantisdashboard.com/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase, AWS, Supabase), advance components, form plugins, layouts, widgets, and more.
 
-| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis](https://mantisdashboard.com/)                                            |
-| ---------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
-| **7** Demo pages                                                                                     | **85+** demo pages                                                                |
-| -                                                                                                    | ✓ Multi-language                                                                  |
-| -                                                                                                    | ✓ Dark/Light Mode 🌓                                                              |
-| -                                                                                                    | ✓ TypeScript version                                                              |
-| -                                                                                                    | ✓ Design files (Figma)                                                            |
-| -                                                                                                    | ✓ Multiple color options                                                          |
-| -                                                                                                    | ✓ RTL                                                                             |
-| -                                                                                                    | ✓ JWT authentications                                                             |
-| -                                                                                                    | ✓ [More components](https://mantisdashboard.com/components-overview/autocomplete) |
-| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE) | ✓ [Pro License](https://mui.com/store/license/)                                   |
+| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis](https://mantisdashboard.com/)                                                |
+| ---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| **7** Demo pages                                                                                     | **100+** demo pages                                                                   |
+| -                                                                                                    | ✓ Multi-language                                                                      |
+| -                                                                                                    | ✓ Dark/Light Mode 🌓                                                                  |
+| -                                                                                                    | ✓ TypeScript version                                                                  |
+| -                                                                                                    | ✓ Next JS                                                                             |
+| -                                                                                                    | ✓ Design files (Figma)                                                                |
+| -                                                                                                    | ✓ Multiple color options                                                              |
+| -                                                                                                    | ✓ RTL                                                                                 |
+| -                                                                                                    | ✓ **5+** Applications                                                                 |
+| -                                                                                                    | ✓ Form Validation                                                                     |
+| -                                                                                                    | ✓ **11+** Layout                                                                      |
+| -                                                                                                    | ✓ **9+** Plugins                                                                      |
+| -                                                                                                    | ✓ **21+** React Table                                                                 |
+| -                                                                                                    | ✓ ApexChart + MUI Chart                                                               |
+| -                                                                                                    | ✓ Authentications ( JWT, Auth0, Supabase, AWS, Firebase )                             |
+| -                                                                                                    | ✓ [**299+** components](https://mantisdashboard.com/components-overview/autocomplete) |
+| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE) | ✓ [Pro License](https://mui.com/store/license/)                                       |
 
 ## Documentation
 
@@ -102,7 +110,13 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 
 ## Browser support
 
-<img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" > <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" height="45" >
+<div style="display:flex; gap:10px">
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" alt="Chrome">
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" alt="Edge">
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" alt="Safari">
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" alt="Firefox">
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" height="45" alt="Opera">
+</div>
 
 ## Technology Stack
 
@@ -114,12 +128,13 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 - Support for Vite.
 - Code splitting.
 - CSS-in-JS.
+- Next JS.
 
 ## Mantis Figma UI Kit
 
-| FREE                                                                                                                        | PRO                                                                                                                       |
-| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-|  <a href="https://codedthemes.com/item/mantis-free-figma-ui-kit/" traget="_blank"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Figma_Free_Mantis.png" width="450" alt="Figma Free"></a> | <a href="https://codedthemes.com/item/mantis-figma-ui-kit/" traget="_blank"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Figma_Pro_Mantis.png" width="450" alt="Figma Pro"></a> |
+| FREE                                                                                                                                                                                                             | PRO                                                                                                                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a href="https://codedthemes.com/item/mantis-free-figma-ui-kit/" traget="_blank"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Figma_Free_Mantis.png" width="450" alt="Figma Free"></a> | <a href="https://codedthemes.com/item/mantis-figma-ui-kit/" traget="_blank"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Figma_Pro_Mantis.png" width="450" alt="Figma Pro"></a> |
 
 ## Other Technologies
 
@@ -129,15 +144,11 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 | <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Bootstrap.png" width="30" height="30"></p> | [**Free**](https://codedthemes.com/item/mantis-bootstrap-free-admin-template/)     | [**Pro**](https://codedthemes.com/item/mantis-bootstrap-admin-dashboard/) |
 | <p align="center"><img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Vue.png" width="25" height="25"></p>       | [**Free**](https://codedthemes.com/item/mantis-free-vuetify-vuejs-admin-template/) | [**Pro**](https://codedthemes.com/item/mantis-vue-admin-template/)        |
 
-## Save more with Big Bundle
-
-[![bundle-image](https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Bundle+banner.png)](https://links.codedthemes.com/jhFBJ)
-
-## More React Dashboard Templates
+## More React Dashboard Templates from CodedThemes
 
 | Dashboard                                                                                                                                                          | FREE                                                                                | PRO                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry%20with%20name.png"  height="30" style="display:inline-block; vertical-align:middle;">   | [**Free**](https://codedthemes.com/item/berry-mui-free-react-admin-template/)       | [**Pro**](https://codedthemes.com/item/berry-material-react-admin-template/)</span>   |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry%20with%20name.png"  height="30" style="display:inline-block; vertical-align:middle;">   | [**Free**](https://github.com/codedthemes/berry-free-react-admin-template)          | [**Pro**](https://mui.com/store/items/berry-react-material-admin)</span>              |
 | <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;">    | [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/)      | [**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)</span>       |
 | <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) | [**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/)</span> |
 
@@ -150,20 +161,11 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 - Licensed under [MIT](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)
 - Copyright © [CodedThemes](https://codedthemes.com/)
 
-## Contributor
+## Community and Support
 
-**CodedThemes Team**
-
-- https://x.com/codedthemes
-- https://github.com/codedthemes
-
-**Rakesh Nakrani**
-
-- https://x.com/rakesh_nakrani
-
-**Brijesh Dobariya**
-
-- https://x.com/dobaria_brijesh
+- <b>GitHub Discussion </b> - [Ask questions and share ideas](https://github.com/codedthemes/mantis-free-react-admin-template/discussions)
+- <b>X/Twitter</b> — [@codedthemes](https://x.com/codedthemes), [@rakesh_nakrani](https://x.com/rakesh_nakrani) [@dobaria_brijesh](https://x.com/dobaria_brijesh)
+- <b>Join Discord</b> – [Connect with the community](https://discord.com/invite/dW9cBZMJ)
 
 ## Useful Resources
 
@@ -174,15 +176,9 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 - [Affiliate Program](https://codedthemes.com/affiliate/)
 - [Blogs](https://blog.codedthemes.com/)
 
-## Community
-
-- 👥Follow [@codedThemes](https://x.com/codedthemes)
-- 🔗Join [Discord](https://discord.com/invite/p2E2WhCb6s)
-- 🔔Subscribe to [CodedTheme Blogs](https://blog.codedthemes.com/)
-
 ## Follow Us
 
-- [Twitter](https://twitter.com/codedthemes) 🐦
+- [X/Twitter](https://twitter.com/codedthemes) 🐦
 - [Dribbble](https://dribbble.com/codedthemes) 🏀
 - [Github](https://github.com/codedthemes) 🐙
 - [LinkedIn](https://www.linkedin.com/company/codedthemes/) 💼
