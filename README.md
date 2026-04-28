@@ -1,9 +1,11 @@
 # Mantis Free React Material UI Dashboard Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Get%20Mantis%20Free%20React%20-%20The%20Most%20Beautiful%20Material-UI%20Designed%20Admin%20Dashboard%20Template%20&url=https://mantisdashboard.com/free&via=codedthemes&hashtags=react,materialui,nextjs,webdev,developers,typescript)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE)
-[![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template)](https://github.com/codedthemes/mantis-free-react-admin-template/)
-[![Download ZIP](https://img.shields.io/badge/Download-ZIP-blue?style=flat-square&logo=github)](https://codedthemes.com/item/mantis-free-mui-admin-template/)
+[![React: 19](https://img.shields.io/badge/React-19-skyblue.svg)](https://react.dev)
+[![Material: 7](https://img.shields.io/badge/Material_UI-9-blue.svg)](https://mui.com/material-ui)
+[![Next: 16](https://img.shields.io/badge/NextJS-16-black.svg)](https://nextjs.org)
+[![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template?color=lightgrey)](https://github.com/codedthemes/mantis-free-react-admin-template/)
+[![Download ZIP](https://img.shields.io/badge/Download-ZIP-green?style=flat-square&logo=github)](https://codedthemes.com/item/mantis-free-mui-admin-template/)
 [![Join Discord](https://img.shields.io/badge/Join-Discord-5865F2?style=flat-square&logo=discord&logoColor=white)](https://discord.com/invite/p2E2WhCb6s)
 
 Mantis is a free and open source React dashboard template made using the Material UI React component library with aim of flexibility and better customizability.
@@ -29,13 +31,11 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 - [Technology Stack](#technology-stack)
 - [Mantis Figma UI Kit](#mantis-figma-ui-kit)
 - [Other Technologies](#other-technologies)
-- 💰[Save more with Big Bundle](#save-more-with-big-bundle)💰
 - [More React Dashboard Templates](#more-react-dashboard-templates)
 - [Issues?](#issues)
 - [License](#license)
-- [Contributor](#contributor)
+- [Community and Support](#community-and-support)
 - [Useful Resources](#useful-resources)
-- [Community](#community)
 - [Follow us](#follow-us)
 
 ## Getting Started
@@ -163,9 +163,9 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 
 ## Community and Support
 
-- <b>GitHub Discussion </b> - [Ask questions and share ideas](https://github.com/codedthemes/mantis-free-react-admin-template/discussions)
-- <b>X/Twitter</b> — [@codedthemes](https://x.com/codedthemes), [@rakesh_nakrani](https://x.com/rakesh_nakrani) [@dobaria_brijesh](https://x.com/dobaria_brijesh)
-- <b>Join Discord</b> – [Connect with the community](https://discord.com/invite/dW9cBZMJ)
+- **GitHub Discussion** - [Ask questions and share ideas](https://github.com/codedthemes/mantis-free-react-admin-template/discussions)
+- **X/Twitter** — [@codedthemes](https://x.com/codedthemes), [@rakesh_nakrani](https://x.com/rakesh_nakrani) [@dobaria_brijesh](https://x.com/dobaria_brijesh)
+- **Join Discord** – [Connect with the community](https://discord.com/invite/dW9cBZMJ)
 
 ## Useful Resources
 
