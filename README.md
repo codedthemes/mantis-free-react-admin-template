@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React: 19](https://img.shields.io/badge/React-19-skyblue.svg)](https://react.dev)
-[![Material: 7](https://img.shields.io/badge/Material_UI-9-blue.svg)](https://mui.com/material-ui)
+[![Material: 9](https://img.shields.io/badge/Material_UI-9-blue.svg)](https://mui.com/material-ui)
 [![Next: 16](https://img.shields.io/badge/NextJS-16-black.svg)](https://nextjs.org)
 [![GitHub package version](https://img.shields.io/github/package-json/v/codedthemes/mantis-free-react-admin-template?color=lightgrey)](https://github.com/codedthemes/mantis-free-react-admin-template/)
 [![Download ZIP](https://img.shields.io/badge/Download-ZIP-green?style=flat-square&logo=github)](https://codedthemes.com/item/mantis-free-mui-admin-template/)
@@ -31,7 +31,7 @@ Mantis has Ant Design principal on top of the Material UI React component librar
 - [Technology Stack](#technology-stack)
 - [Mantis Figma UI Kit](#mantis-figma-ui-kit)
 - [Other Technologies](#other-technologies)
-- [More React Dashboard Templates](#more-react-dashboard-templates)
+- [More React Dashboard Templates from CodedThemes](#more-react-dashboard-templates-from-codedthemes)
 - [Issues?](#issues)
 - [License](#license)
 - [Community and Support](#community-and-support)
@@ -84,25 +84,25 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 The [Pro version](https://mantisdashboard.com/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase, AWS, Supabase), advance components, form plugins, layouts, widgets, and more.
 
-| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis](https://mantisdashboard.com/)                                                |
-| ---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| **7** Demo pages                                                                                     | **100+** demo pages                                                                   |
-| -                                                                                                    | ✓ Multi-language                                                                      |
-| -                                                                                                    | ✓ Dark/Light Mode 🌓                                                                  |
-| -                                                                                                    | ✓ TypeScript version                                                                  |
-| -                                                                                                    | ✓ Next JS                                                                             |
-| -                                                                                                    | ✓ Design files (Figma)                                                                |
-| -                                                                                                    | ✓ Multiple color options                                                              |
-| -                                                                                                    | ✓ RTL                                                                                 |
-| -                                                                                                    | ✓ **5+** Applications                                                                 |
-| -                                                                                                    | ✓ Form Validation                                                                     |
-| -                                                                                                    | ✓ **11+** Layout                                                                      |
-| -                                                                                                    | ✓ **9+** Plugins                                                                      |
-| -                                                                                                    | ✓ **21+** React Table                                                                 |
-| -                                                                                                    | ✓ ApexChart + MUI Chart                                                               |
-| -                                                                                                    | ✓ Authentications ( JWT, Auth0, Supabase, AWS, Firebase )                             |
-| -                                                                                                    | ✓ [**299+** components](https://mantisdashboard.com/components-overview/autocomplete) |
-| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE) | ✓ [Pro License](https://mui.com/store/license/)                                       |
+| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis](https://mantisdashboard.com/)                                            |
+| ---------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
+| **7** Demo pages                                                                                     | Demo pages (100+)                                                                 |
+| -                                                                                                    | ✓ Multi-language                                                                  |
+| -                                                                                                    | ✓ Dark/Light Mode 🌓                                                              |
+| -                                                                                                    | ✓ TypeScript version                                                              |
+| -                                                                                                    | ✓ Next JS 16                                                                      |
+| -                                                                                                    | ✓ Design files (Figma)                                                            |
+| -                                                                                                    | ✓ Multiple color options                                                          |
+| -                                                                                                    | ✓ RTL                                                                             |
+| -                                                                                                    | Applications (5+)                                                                 |
+| -                                                                                                    | ✓ Form Validation                                                                 |
+| -                                                                                                    | Layout (11+)                                                                      |
+| -                                                                                                    | Plugins (9+)                                                                      |
+| -                                                                                                    | React Table (21+)                                                                 |
+| -                                                                                                    | ✓ ApexChart + MUI Chart                                                           |
+| -                                                                                                    | ✓ Authentications ( JWT, Auth0, Supabase, AWS, Firebase )                         |
+| -                                                                                                    | [Components](https://mantisdashboard.com/components-overview/autocomplete) (299+) |
+| ✓ [MIT License](https://github.com/codedthemes/mantis-free-react-admin-template/blob/master/LICENSE) | ✓ [Pro License](https://mui.com/store/license/)                                   |
 
 ## Documentation
 
@@ -110,17 +110,19 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 
 ## Browser support
 
-<div style="display:flex; gap:10px">
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" alt="Chrome">
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" alt="Edge">
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" alt="Safari">
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" alt="Firefox">
+<p>
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" alt="Chrome" style="margin-right:10px" >
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" alt="Edge" style="margin-right:10px" >
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" alt="Safari" style="margin-right:10px" >
+  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" alt="Firefox" style="margin-right:10px" >
   <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" height="45" alt="Opera">
-</div>
+</p>
 
 ## Technology Stack
 
-- Material UI V7
+- [Material UI V7](https://material-ui.com/)
+- [React 19.2](https://react.dev/)
+- [Next JS 16](https://nextjs.org/)
 - Built with React Hooks API.
 - React context API for state management.
 - SWR.
@@ -128,7 +130,6 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 - Support for Vite.
 - Code splitting.
 - CSS-in-JS.
-- Next JS.
 
 ## Mantis Figma UI Kit
 
@@ -146,11 +147,11 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 
 ## More React Dashboard Templates from CodedThemes
 
-| Dashboard                                                                                                                                                          | FREE                                                                                | PRO                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry%20with%20name.png"  height="30" style="display:inline-block; vertical-align:middle;">   | [**Free**](https://github.com/codedthemes/berry-free-react-admin-template)          | [**Pro**](https://mui.com/store/items/berry-react-material-admin)</span>              |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;">    | [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/)      | [**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)</span>       |
-| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) | [**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/)</span> |
+| Dashboard                                                                                                                                                          | FREE                                                                                | PRO                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Berry%20with%20name.png"  height="30" style="display:inline-block; vertical-align:middle;">   | [**Free**](https://github.com/codedthemes/berry-free-react-admin-template)          | [**Pro**](https://mui.com/store/items/berry-react-material-admin)              |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Datta%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;">    | [**Free**](https://codedthemes.com/item/datta-able-react-free-admin-template/)      | [**Pro**](https://codedthemes.com/item/datta-able-react-admin-template/)       |
+| <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/Gradient%20with%20name.png" height="30" style="display:inline-block; vertical-align:middle;"> | [**Free**](https://codedthemes.com/item/gradient-able-reactjs-free-admin-template/) | [**Pro**](https://codedthemes.com/item/gradient-able-reactjs-admin-dashboard/) |
 
 ## Issues
 
