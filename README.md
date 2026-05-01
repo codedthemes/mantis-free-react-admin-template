@@ -109,12 +109,26 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 
 ## Browser support
 
-<p>
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" height="45" alt="Chrome" style="margin-right:10px" >
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" height="45" alt="Edge" style="margin-right:10px" >
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" height="45" alt="Safari" style="margin-right:10px" >
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" height="45" alt="Firefox" style="margin-right:10px" >
-  <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" height="45" alt="Opera">
+<p align="left">
+  <picture>
+    <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/chrome.png" width="45" alt="Chrome">
+  </picture>
+  &nbsp;
+  <picture>
+    <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/edge.png" width="45" alt="Edge">
+  </picture>
+  &nbsp;
+  <picture>
+    <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/safari.png" width="45" alt="Safari">
+  </picture>
+  &nbsp;
+  <picture>
+    <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/firefox.png" width="45" alt="Firefox">
+  </picture>
+  &nbsp;
+  <picture>
+    <img src="https://org-public-assets.s3.us-west-2.amazonaws.com/logos/opera.png" width="45" alt="Opera">
+  </picture>
 </p>
 
 ## Technology Stack
