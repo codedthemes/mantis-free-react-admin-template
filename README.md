@@ -194,7 +194,7 @@ Please generate a [Github issue](https://github.com/codedthemes/mantis-free-reac
 ## Follow Us
 
 - [X/Twitter](https://twitter.com/codedthemes) 🐦
-- [Dribbble](https://dribbble.com/codedthemes) 🏀
+- [Dribbble](https://l1nq.com/4hxyjrt) 🏀
 - [Github](https://github.com/codedthemes) 🐙
 - [LinkedIn](https://www.linkedin.com/company/codedthemes/) 💼
 - [Instagram](https://www.instagram.com/codedthemes/) 📷
