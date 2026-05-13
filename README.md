@@ -83,7 +83,7 @@ Mantis offers everything needed to build an advanced dashboard application. In t
 
 The [Pro version](https://mantisdashboard.com/) of Mantis react template includes features such as TypeScript, apps, authentication methods (i.e. JWT, Auth0, Firebase, AWS, Supabase), advance components, form plugins, layouts, widgets, and more.
 
-| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis](https://mantisdashboard.com/)                                            |
+| [Mantis Free](https://mantisdashboard.com/free/)                                                     | [Mantis Pro](https://mantisdashboard.com/)                                            |
 | ---------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |
 | **7** Demo pages                                                                                     | Demo pages (100+)                                                                 |
 | -                                                                                                    | ✓ [Components](https://mantisdashboard.com/components-overview/autocomplete) (299+) |
@@ -133,9 +133,10 @@ The [Pro version](https://mantisdashboard.com/) of Mantis react template include
 
 ## Technology Stack
 
-- [Material UI V7](https://material-ui.com/)
+- [Material UI V9](https://material-ui.com/)
 - [React 19.2](https://react.dev/)
 - [Next JS 16](https://nextjs.org/)
+- [Typescript 6](https://www.typescriptlang.org/)
 - Built with React Hooks API.
 - React context API for state management.
 - SWR.
