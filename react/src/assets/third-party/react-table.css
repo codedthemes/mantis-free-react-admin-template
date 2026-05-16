@@ -1,0 +1,35 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.sticky-header {
+  margin: 0;
+  position: sticky;
+  top: -1px;
+  z-index: 1;
+}
+
+.resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+.resizer.isResizing {
+  opacity: 1;
+}
+
+.MuiTableContainer-root {
+  border-radius: 0px !important;
+}
