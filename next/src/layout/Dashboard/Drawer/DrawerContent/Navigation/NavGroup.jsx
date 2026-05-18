@@ -1,4 +1,7 @@
+'use client';
+
 import PropTypes from 'prop-types';
+
 // material-ui
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';

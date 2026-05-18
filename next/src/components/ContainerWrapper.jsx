@@ -1,4 +1,7 @@
+'use client';
+
 import PropTypes from 'prop-types';
+
 // project imports
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Container from '@mui/material/Container';

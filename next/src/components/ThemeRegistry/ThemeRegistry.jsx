@@ -6,7 +6,7 @@ import ThemeCustomization from 'themes';
 
 export default function ThemeRegistry({ children }) {
   return (
-    <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+    <AppRouterCacheProvider>
       <ThemeCustomization>
         {children}
       </ThemeCustomization>

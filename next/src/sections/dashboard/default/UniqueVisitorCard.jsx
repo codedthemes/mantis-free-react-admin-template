@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 // material-ui
@@ -18,7 +20,7 @@ export default function UniqueVisitorCard() {
 
   return (
     <>
-      <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+      <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
         <Grid>
           <Typography variant="h5">Unique Visitor</Typography>
         </Grid>

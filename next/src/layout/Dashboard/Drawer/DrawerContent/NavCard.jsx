@@ -8,8 +8,7 @@ import Typography from '@mui/material/Typography';
 // project import
 import MainCard from 'components/MainCard';
 
-// assets
-import avatar from 'assets/images/users/avatar-group.png';
+const avatar = '/assets/images/users/avatar-group.png';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION CARD ||============================== //

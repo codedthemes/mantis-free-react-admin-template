@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 // material-ui
@@ -43,7 +45,7 @@ export default function SaleReportCard() {
             select
             value={value}
             onChange={(e) => setValue(e.target.value)}
-            slotProps={{ htmlInput: { sx: { py: 0.75, fontSize: '0.875rem' } } }}
+            sx={{ '& .MuiInputBase-input': { py: 0.75, fontSize: '0.875rem' } }}
           >
             {status.map((option) => (
               <MenuItem key={option.value} value={option.value}>
@@ -53,7 +55,7 @@ export default function SaleReportCard() {
           </TextField>
         </Grid>
       </Grid>
-      <SalesChart />
+      <SalesChart filter={value} />
     </>
   );
 }

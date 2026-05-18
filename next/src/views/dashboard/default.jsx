@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 // material-ui
@@ -32,10 +34,10 @@ import GiftOutlined from '@ant-design/icons/GiftOutlined';
 import MessageOutlined from '@ant-design/icons/MessageOutlined';
 import SettingOutlined from '@ant-design/icons/SettingOutlined';
 
-import avatar1 from 'assets/images/users/avatar-1.png';
-import avatar2 from 'assets/images/users/avatar-2.png';
-import avatar3 from 'assets/images/users/avatar-3.png';
-import avatar4 from 'assets/images/users/avatar-4.png';
+const avatar1 = '/assets/images/users/avatar-1.png';
+const avatar2 = '/assets/images/users/avatar-2.png';
+const avatar3 = '/assets/images/users/avatar-3.png';
+const avatar4 = '/assets/images/users/avatar-4.png';
 
 // avatar style
 const avatarSX = {
@@ -107,7 +109,7 @@ export default function DashboardDefault() {
         <MainCard sx={{ mt: 2 }} content={false}>
           <Box sx={{ p: 3, pb: 0 }}>
             <Stack sx={{ gap: 2 }}>
-              <Typography variant="h6" color="text.secondary">
+              <Typography variant="h6" sx={{ color: 'text.secondary' }}>
                 This Week Statistics
               </Typography>
               <Typography variant="h3">$7,650</Typography>
@@ -220,7 +222,7 @@ export default function DashboardDefault() {
                   <Typography variant="subtitle1" noWrap>
                     + $1,430
                   </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
+                  <Typography variant="h6" sx={{ color: 'secondary.main' }} noWrap>
                     78%
                   </Typography>
                 </Stack>
@@ -241,7 +243,7 @@ export default function DashboardDefault() {
                   <Typography variant="subtitle1" noWrap>
                     + $302
                   </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
+                  <Typography variant="h6" sx={{ color: 'secondary.main' }} noWrap>
                     8%
                   </Typography>
                 </Stack>
@@ -261,7 +263,7 @@ export default function DashboardDefault() {
                   <Typography variant="subtitle1" noWrap>
                     + $682
                   </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
+                  <Typography variant="h6" sx={{ color: 'secondary.main' }} noWrap>
                     16%
                   </Typography>
                 </Stack>
@@ -278,13 +280,13 @@ export default function DashboardDefault() {
         </MainCard>
         <MainCard sx={{ mt: 2 }}>
           <Stack sx={{ gap: 3 }}>
-            <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+            <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
               <Grid>
                 <Stack>
                   <Typography variant="h5" noWrap>
                     Help & Support Chat
                   </Typography>
-                  <Typography variant="caption" color="secondary" noWrap>
+                  <Typography variant="caption" sx={{ color: 'secondary.main' }} noWrap>
                     Typical replay within 5 min
                   </Typography>
                 </Stack>

@@ -1,3 +1,5 @@
+'use client';
+
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
@@ -7,6 +9,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import { axisClasses, chartsGridClasses, lineClasses } from '@mui/x-charts';
 import { LineChart } from '@mui/x-charts/LineChart';
 
 // project imports
@@ -33,7 +36,7 @@ function Legend({ items, onToggle }) {
           onClick={() => onToggle(item.label)}
         >
           <Box sx={{ width: 12, height: 12, bgcolor: item.visible ? item.color : 'text.secondary', borderRadius: '50%' }} />
-          <Typography variant="body2" color="text.primary">
+          <Typography variant="body2" sx={{ color: 'text.primary' }}>
             {item.label}
           </Typography>
         </Stack>
@@ -106,11 +109,13 @@ export default function IncomeAreaChart({ view }) {
             strokeWidth: 2
           }))}
         sx={{
-          '& .MuiChartsGrid-line': { strokeDasharray: '4 4', stroke: line },
-          '& .MuiAreaElement-series-page-views': { fill: "url('#myGradient1')", strokeWidth: 2, opacity: 0.8 },
-          '& .MuiAreaElement-series-sessions': { fill: "url('#myGradient2')", strokeWidth: 2, opacity: 0.8 },
-          '& .MuiChartsAxis-root.MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: 'transparent' },
-          '& .MuiChartsAxis-root.MuiChartsAxis-directionY .MuiChartsAxis-tick': { stroke: 'transparent' }
+          [`& .${chartsGridClasses.line}`]: { strokeDasharray: '4 4', stroke: line },
+          [`& .${lineClasses.area}`]: {
+            '&[data-series-id="page-views"]': { fill: "url('#myGradient1')", strokeWidth: 2, opacity: 0.8 },
+            '&[data-series-id="sessions"]': { fill: "url('#myGradient2')", strokeWidth: 2, opacity: 0.8 }
+          },
+          [`& .${axisClasses.root}.${axisClasses.directionX} .${axisClasses.tick}`]: { stroke: 'transparent' },
+          [`& .${axisClasses.root}.${axisClasses.directionY} .${axisClasses.tick}`]: { stroke: 'transparent' }
         }}
       >
         <defs>
