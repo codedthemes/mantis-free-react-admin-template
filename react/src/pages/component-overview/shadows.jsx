@@ -27,7 +27,7 @@ function CustomShadowBox({ shadow, label, color, bgcolor }) {
   return (
     <MainCard border={false} shadow={shadow} boxShadow sx={{ bgcolor: bgcolor || 'inherit' }}>
       <Stack sx={{ gap: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Typography variant="subtitle1" color={color}>
+        <Typography variant="subtitle1" sx={{ color }}>
           {label}
         </Typography>
       </Stack>

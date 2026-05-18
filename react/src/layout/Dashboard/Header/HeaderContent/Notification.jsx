@@ -237,7 +237,7 @@ export default function Notification() {
                     <ListItemButton sx={{ textAlign: 'center', py: `${12}px !important` }}>
                       <ListItemText
                         primary={
-                          <Typography variant="h6" color="primary">
+                          <Typography variant="h6" sx={{ color: 'primary.main' }}>
                             View All
                           </Typography>
                         }

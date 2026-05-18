@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { useState, useMemo } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -7,7 +8,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-import { BarChart } from '@mui/x-charts';
+import { axisClasses, barClasses, BarChart, chartsGridClasses } from '@mui/x-charts';
 
 // project imports
 import MainCard from 'components/MainCard';
@@ -15,26 +16,29 @@ import { withAlpha } from 'utils/colorUtils';
 
 // ==============================|| SALES COLUMN CHART ||============================== //
 
-export default function SalesChart() {
+export default function SalesChart({ filter = 'today' }) {
   const theme = useTheme();
   const downSM = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const [seriesVisibility, setSeriesVisibility] = useState({
-    Income: true,
-    'Cost of Sales': true
-  });
+  const [seriesVisibility, setSeriesVisibility] = useState({ Income: true, 'Cost of Sales': true });
+  const [highlightedItem, setHighlightedItem] = useState({ seriesId: 'Income' });
 
-  const [highlightedItem, setHighlightedItem] = useState(null);
-
-  const toggleSeriesVisibility = (seriesLabel) => {
-    setSeriesVisibility((prev) => ({ ...prev, [seriesLabel]: !prev[seriesLabel] }));
+  const toggleSeriesVisibility = (seriesId, seriesLabel) => {
+    setSeriesVisibility((prev) => {
+      const isNowHidden = prev[seriesLabel];
+      if (isNowHidden && highlightedItem?.seriesId === seriesId) {
+        setHighlightedItem(null);
+      }
+      return { ...prev, [seriesLabel]: !prev[seriesLabel] };
+    });
   };
 
-  const handleHighlight = (seriesId) => {
-    if (seriesId) {
-      setHighlightedItem({ seriesId });
-    } else {
-      setHighlightedItem(null);
+  const handleHighLightedSeries = (newHighLightedSeries) => {
+    if (newHighLightedSeries !== null) {
+      setHighlightedItem((prev) => ({
+        ...prev,
+        seriesId: newHighLightedSeries
+      }));
     }
   };
 
@@ -44,27 +48,49 @@ export default function SalesChart() {
   const warningColor = theme.vars.palette.warning.main;
   const warningLightColor = theme.vars.palette.warning.lighter;
 
-  const labels = ['07.06', '08.06', '09.06', '10.06', '11.06', '12.06', '13.06'];
+  // ==============================|| MEMOIZED CHART DATA ||============================== //
+
+  const chartData = useMemo(() => {
+    let labels = [];
+    let incomeData = [];
+    let income2Data = [];
+    let cosData = [];
+    let cos2Data = [];
+
+    switch (filter) {
+      case 'month':
+        labels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
+        incomeData = [400, 300, 500, 450];
+        income2Data = [50, 80, 60, 90];
+        cosData = [200, 150, 250, 200];
+        cos2Data = [100, 120, 90, 110];
+        break;
+      case 'year':
+        labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        incomeData = [120, 150, 180, 160, 200, 220, 250, 230, 210, 260, 280, 300];
+        income2Data = [30, 40, 50, 45, 60, 70, 80, 75, 65, 85, 95, 100];
+        cosData = [80, 100, 120, 110, 140, 150, 170, 160, 150, 180, 190, 200];
+        cos2Data = [40, 50, 60, 55, 70, 80, 90, 85, 75, 95, 105, 110];
+        break;
+      case 'today':
+      default:
+        labels = ['07.06', '08.06', '09.06', '10.06', '11.06', '12.06', '13.06'];
+        incomeData = [180, 90, 135, 114, 120, 200, 145];
+        income2Data = [20, 110, 65, 86, 80, 0, 55];
+        cosData = [120, 45, 78, 150, 168, 145, 99];
+        cos2Data = [80, 155, 122, 50, 32, 55, 101];
+        break;
+    }
+    return { labels, incomeData, income2Data, cosData, cos2Data };
+  }, [filter]);
+
+  const { labels, incomeData, income2Data, cosData, cos2Data } = chartData;
 
   const initialSeries = [
-    { id: 'Income', data: [180, 90, 135, 114, 120, 200, 145], stack: 'income', label: 'Income', color: warningColor, valueFormatter },
-    { id: 'Income2', data: [20, 110, 65, 86, 80, 0, 55], stack: 'income', label: 'Income', color: warningLightColor, valueFormatter },
-    {
-      id: 'CostOfSales',
-      data: [120, 45, 78, 150, 168, 145, 99],
-      stack: 'cos',
-      label: 'Cost of Sales',
-      color: primaryColor,
-      valueFormatter
-    },
-    {
-      id: 'CostOfSales2',
-      data: [80, 155, 122, 50, 32, 55, 101],
-      stack: 'cos',
-      label: 'Cost of Sales',
-      color: primaryLightColor,
-      valueFormatter
-    }
+    { id: 'Income', data: incomeData, stack: 'income', label: 'Income', color: warningColor, valueFormatter },
+    { id: 'Income2', data: income2Data, stack: 'income', label: 'Income', color: warningLightColor, valueFormatter },
+    { id: 'CostOfSales', data: cosData, stack: 'cos', label: 'Cost of Sales', color: primaryColor, valueFormatter },
+    { id: 'CostOfSales2', data: cos2Data, stack: 'cos', label: 'Cost of Sales', color: primaryLightColor, valueFormatter }
   ];
 
   const initialSeriesCopy = [...initialSeries.slice(0, 1), ...initialSeries.slice(2, 3)];
@@ -74,7 +100,7 @@ export default function SalesChart() {
       <Box sx={{ p: 2.5, pb: 0 }}>
         <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
           <Box>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
               Net Profit
             </Typography>
             <Typography variant="h4">$1560</Typography>
@@ -85,9 +111,9 @@ export default function SalesChart() {
               <Stack
                 key={series.label}
                 direction="row"
-                onClick={() => toggleSeriesVisibility(series.label)}
-                onMouseEnter={() => handleHighlight(series.id)}
-                onMouseLeave={() => handleHighlight(null)}
+                onClick={() => toggleSeriesVisibility(series.id, series.label)}
+                onMouseEnter={() => handleHighLightedSeries(series.id)}
+                onMouseLeave={() => setHighlightedItem(null)}
                 sx={{
                   gap: 1,
                   alignItems: 'center',
@@ -126,14 +152,16 @@ export default function SalesChart() {
           axisHighlight={{ x: 'none' }}
           margin={{ top: 30, left: -5, bottom: 25, right: 10 }}
           sx={{
-            '& .MuiBarElement-root:hover': { opacity: 0.6 },
-            '& .MuiChartsGrid-line': { strokeDasharray: '4 4', stroke: theme.vars.palette.divider },
+            [`& .${barClasses.element}:hover`]: { opacity: 0.6 },
+            [`& .${chartsGridClasses.line}`]: { strokeDasharray: '4 4', stroke: theme.vars.palette.divider },
             '& .MuiBarElement-series-auto-generated-id-0, & .MuiBarElement-series-auto-generated-id-1': { width: 15 },
-            '& .MuiChartsAxis-root.MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: 'transparent' },
-            '& .MuiChartsAxis-root.MuiChartsAxis-directionY .MuiChartsAxis-tick': { stroke: 'transparent' }
+            [`& .${axisClasses.root}.${axisClasses.directionX} .${axisClasses.tick}`]: { stroke: 'transparent' },
+            [`& .${axisClasses.root}.${axisClasses.directionY} .${axisClasses.tick}`]: { stroke: 'transparent' }
           }}
         />
       </Box>
     </MainCard>
   );
 }
+
+SalesChart.propTypes = { filter: PropTypes.any };

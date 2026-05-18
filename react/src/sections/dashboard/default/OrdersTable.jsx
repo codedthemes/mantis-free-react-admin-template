@@ -49,7 +49,7 @@ function getComparator(order, orderBy) {
 }
 
 function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+  const stabilizedThis = [...array.map((el, index) => [el, index])];
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
     if (order !== 0) {
@@ -178,7 +178,7 @@ export default function OrderTable() {
                   key={row.tracking_no}
                 >
                   <TableCell component="th" id={labelId} scope="row">
-                    <Link color="secondary">{row.tracking_no}</Link>
+                    <Link sx={{ color: 'secondary.main' }}>{row.tracking_no}</Link>
                   </TableCell>
                   <TableCell>{row.name}</TableCell>
                   <TableCell align="right">{row.fat}</TableCell>

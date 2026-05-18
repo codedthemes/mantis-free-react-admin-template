@@ -15,7 +15,7 @@ export default function AuthFooter() {
         direction={{ xs: 'column', sm: 'row' }}
         sx={{ gap: 2, justifyContent: { xs: 'center', sm: 'space-between' }, textAlign: { xs: 'center', sm: 'inherit' }, py: 2 }}
       >
-        <Typography variant="subtitle2" color="secondary">
+        <Typography variant="subtitle2" sx={{ color: 'secondary.main' }}>
           © Made with love by Team{' '}
           <Link href="https://codedthemes.com/" target="_blank" underline="hover">
             CodedThemes
