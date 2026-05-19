@@ -11,6 +11,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Loader from 'components/Loader';
 import Breadcrumbs from 'components/@extended/Breadcrumbs';
+import ScrollTop from 'components/ScrollTop';
 
 import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 
@@ -29,6 +30,7 @@ export default function DashboardLayout() {
 
   return (
     <Box sx={{ display: 'flex', width: '100%' }}>
+      <ScrollTop />
       <Header />
       <Drawer />
 

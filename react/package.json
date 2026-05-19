@@ -28,7 +28,7 @@
     "@mui/x-charts": "9.2.0",
     "@vitejs/plugin-react": "6.0.2",
     "formik": "2.4.9",
-    "framer-motion": "12.38.0",
+    "framer-motion": "12.39.0",
     "lodash-es": "4.18.1",
     "react": "19.2.6",
     "react-device-detect": "2.2.3",

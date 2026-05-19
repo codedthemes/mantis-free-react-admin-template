@@ -18,7 +18,7 @@ export default function NavCard() {
   return (
     <MainCard sx={{ bgcolor: 'grey.50', m: 3 }}>
       <Stack sx={{ gap: 2.5, alignItems: 'center' }}>
-        <CardMedia component="img" image={avatar} />
+        <CardMedia component="img" image={avatar} sx={{ width: 112 }} />
         <Stack sx={{ alignItems: 'center' }}>
           <Typography variant="h5">Mantis Pro</Typography>
           <Typography variant="h6" sx={{ color: 'secondary.main' }}>

@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import MuiBreadcrumbs from '@mui/material/Breadcrumbs';
 
@@ -108,8 +108,7 @@ export default function Breadcrumbs({
       <Typography
         {...(main.url && { component: Link, to: main.url })}
         variant={window.location.pathname === main.url ? 'subtitle1' : 'h6'}
-        sx={{ textDecoration: 'none' }}
-        color={window.location.pathname === main.url ? 'text.primary' : 'text.secondary'}
+        sx={{ textDecoration: 'none', color: window.location.pathname === main.url ? 'text.primary' : 'text.secondary' }}
       >
         {icons && <CollapseIcon style={iconSX} />}
         {main?.title}
@@ -125,28 +124,24 @@ export default function Breadcrumbs({
           content={card}
           shadow="none"
         >
-          <Grid
-            container
+          <Stack
             direction={rightAlign ? 'row' : 'column'}
-            spacing={1}
-            sx={{ justifyContent: rightAlign ? 'space-between' : 'flex-start', alignItems: rightAlign ? 'center' : 'flex-start' }}
+            sx={{ gap: 1, justifyContent: rightAlign ? 'space-between' : 'flex-start', alignItems: rightAlign ? 'center' : 'flex-start' }}
           >
-            <Grid>
-              <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
-                <Typography component={Link} to="/" color="text.secondary" variant="h6" sx={{ textDecoration: 'none' }}>
-                  {icons && <HomeOutlined style={iconSX} />}
-                  {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
-                  {(!icon || icons) && 'Home'}
-                </Typography>
-                {mainContent}
-              </MuiBreadcrumbs>
-            </Grid>
+            <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
+              <Typography component={Link} to="/" variant="h6" sx={{ color: 'text.secondary', textDecoration: 'none' }}>
+                {icons && <HomeOutlined style={iconSX} />}
+                {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
+                {(!icon || icons) && 'Home'}
+              </Typography>
+              {mainContent}
+            </MuiBreadcrumbs>
             {title && titleBottom && (
-              <Grid sx={{ mt: card === false ? 0.25 : 1 }}>
-                <Typography variant="h2">{main.title}</Typography>
-              </Grid>
+              <Typography variant="h2" sx={{ mt: card === false ? 0.25 : 1 }}>
+                {main.title}
+              </Typography>
             )}
-          </Grid>
+          </Stack>
           {card === false && divider !== false && <Divider sx={{ mt: 2 }} />}
         </MainCard>
       );
@@ -159,7 +154,7 @@ export default function Breadcrumbs({
 
     ItemIcon = item?.icon ? item.icon : ApartmentOutlined;
     itemContent = (
-      <Typography variant="subtitle1" color="text.primary">
+      <Typography variant="subtitle1" sx={{ color: 'text.primary' }}>
         {icons && <ItemIcon style={iconSX} />}
         {itemTitle}
       </Typography>
@@ -167,7 +162,7 @@ export default function Breadcrumbs({
 
     let tempContent = (
       <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
-        <Typography component={Link} to="/" color="text.secondary" variant="h6" sx={{ textDecoration: 'none' }}>
+        <Typography component={Link} to="/" variant="h6" sx={{ color: 'text.secondary', textDecoration: 'none' }}>
           {icons && <HomeOutlined style={iconSX} />}
           {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
           {(!icon || icons) && 'Home'}
@@ -188,8 +183,7 @@ export default function Breadcrumbs({
                 key={index}
                 {...(link.to && { component: Link, to: link.to })}
                 variant={!link.to ? 'subtitle1' : 'h6'}
-                sx={{ textDecoration: 'none' }}
-                color={!link.to ? 'text.primary' : 'text.secondary'}
+                sx={{ textDecoration: 'none', color: !link.to ? 'text.primary' : 'text.secondary' }}
               >
                 {link.icon && <CollapseIcon style={iconSX} />}
                 {link.title}
@@ -210,24 +204,18 @@ export default function Breadcrumbs({
           content={card}
           shadow="none"
         >
-          <Grid
-            container
+          <Stack
             direction={rightAlign ? 'row' : 'column'}
-            spacing={1}
-            sx={{ justifyContent: rightAlign ? 'space-between' : 'flex-start', alignItems: rightAlign ? 'center' : 'flex-start' }}
+            sx={{ gap: 1, justifyContent: rightAlign ? 'space-between' : 'flex-start', alignItems: rightAlign ? 'center' : 'flex-start' }}
           >
-            {title && !titleBottom && (
-              <Grid>
-                <Typography variant="h2">{custom ? heading : item?.title}</Typography>
-              </Grid>
-            )}
-            <Grid>{tempContent}</Grid>
+            {title && !titleBottom && <Typography variant="h2">{custom ? heading : item?.title}</Typography>}
+            {tempContent}
             {title && titleBottom && (
-              <Grid sx={{ mt: card === false ? 0.25 : 1 }}>
-                <Typography variant="h2">{custom ? heading : item?.title}</Typography>
-              </Grid>
+              <Typography variant="h2" sx={{ mt: card === false ? 0.25 : 1 }}>
+                {custom ? heading : item?.title}
+              </Typography>
             )}
-          </Grid>
+          </Stack>
           {card === false && divider !== false && <Divider sx={{ mt: 2 }} />}
         </MainCard>
       );

@@ -26,9 +26,15 @@ export default function AuthWrapper({ children }) {
         <Box size={12}>
           <Grid
             container
-            justifyContent="center"
-            alignItems="center"
-            sx={{ minHeight: { xs: 'calc(100vh - 210px)', sm: 'calc(100vh - 134px)', md: 'calc(100vh - 132px)' } }}
+            sx={{
+              minHeight: {
+                xs: 'calc(100vh - 210px)',
+                sm: 'calc(100vh - 134px)',
+                md: 'calc(100vh - 132px)',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }
+            }}
           >
             <Grid>
               <AuthCard>{children}</AuthCard>
