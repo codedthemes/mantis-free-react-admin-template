@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 // material-ui
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
@@ -18,7 +19,7 @@ export default function NavGroup({ item }) {
     switch (menuItem.type) {
       case 'collapse':
         return (
-          <Typography key={menuItem.id} variant="caption" color="error" sx={{ p: 2.5 }}>
+          <Typography key={menuItem.id} variant="caption" sx={{ p: 2.5, color: 'error.main' }}>
             collapse - only available in paid version
           </Typography>
         );
@@ -26,7 +27,7 @@ export default function NavGroup({ item }) {
         return <NavItem key={menuItem.id} item={menuItem} level={1} />;
       default:
         return (
-          <Typography key={menuItem.id} variant="h6" color="error" align="center">
+          <Typography key={menuItem.id} variant="h6" sx={{ color: 'error.main', textAlign: 'center' }}>
             Fix - Group Collapse or Items
           </Typography>
         );
@@ -39,7 +40,7 @@ export default function NavGroup({ item }) {
         item.title &&
         drawerOpen && (
           <Box sx={{ pl: 3, mb: 1.5 }}>
-            <Typography variant="subtitle2" color="textSecondary">
+            <Typography variant="subtitle2" sx={{ color: 'text.secondary' }}>
               {item.title}
             </Typography>
             {/* only available in paid version */}

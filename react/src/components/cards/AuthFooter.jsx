@@ -15,7 +15,7 @@ export default function AuthFooter() {
         direction={{ xs: 'column', sm: 'row' }}
         sx={{ gap: 2, justifyContent: { xs: 'center', sm: 'space-between' }, textAlign: { xs: 'center', sm: 'inherit' }, py: 2 }}
       >
-        <Typography variant="subtitle2" color="secondary">
+        <Typography variant="subtitle2" sx={{ color: 'secondary.main' }}>
           © Made with love by Team{' '}
           <Link href="https://codedthemes.com/" target="_blank" underline="hover">
             CodedThemes
@@ -25,21 +25,21 @@ export default function AuthFooter() {
         <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ gap: { xs: 1, sm: 3 }, textAlign: { xs: 'center', sm: 'inherit' } }}>
           <Typography
             variant="subtitle2"
-            color="secondary"
             component={Link}
             href="https://mui.com/store/terms/"
             target="_blank"
             underline="hover"
+            sx={{ color: 'secondary.main' }}
           >
             Terms and Conditions
           </Typography>
           <Typography
             variant="subtitle2"
-            color="secondary"
             component={Link}
             href="https://mui.com/legal/privacy/"
             target="_blank"
             underline="hover"
+            sx={{ color: 'secondary.main' }}
           >
             Privacy Policy
           </Typography>

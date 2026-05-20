@@ -107,7 +107,7 @@ export default function DashboardDefault() {
         <MainCard sx={{ mt: 2 }} content={false}>
           <Box sx={{ p: 3, pb: 0 }}>
             <Stack sx={{ gap: 2 }}>
-              <Typography variant="h6" color="text.secondary">
+              <Typography variant="h6" sx={{ color: 'text.secondary' }}>
                 This Week Statistics
               </Typography>
               <Typography variant="h3">$7,650</Typography>
@@ -220,7 +220,7 @@ export default function DashboardDefault() {
                   <Typography variant="subtitle1" noWrap>
                     + $1,430
                   </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
+                  <Typography variant="h6" sx={{ color: 'secondary.main' }} noWrap>
                     78%
                   </Typography>
                 </Stack>
@@ -241,7 +241,7 @@ export default function DashboardDefault() {
                   <Typography variant="subtitle1" noWrap>
                     + $302
                   </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
+                  <Typography variant="h6" sx={{ color: 'secondary.main' }} noWrap>
                     8%
                   </Typography>
                 </Stack>
@@ -261,7 +261,7 @@ export default function DashboardDefault() {
                   <Typography variant="subtitle1" noWrap>
                     + $682
                   </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
+                  <Typography variant="h6" sx={{ color: 'secondary.main' }} noWrap>
                     16%
                   </Typography>
                 </Stack>
@@ -284,7 +284,7 @@ export default function DashboardDefault() {
                   <Typography variant="h5" noWrap>
                     Help & Support Chat
                   </Typography>
-                  <Typography variant="caption" color="secondary" noWrap>
+                  <Typography variant="caption" sx={{ color: 'secondary.main' }} noWrap>
                     Typical replay within 5 min
                   </Typography>
                 </Stack>

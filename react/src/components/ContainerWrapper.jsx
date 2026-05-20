@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-// project imports
+
+// material-ui
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';

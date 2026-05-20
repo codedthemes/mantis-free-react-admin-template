@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
 // material-ui
-import MuiIconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
+import MuiIconButton from '@mui/material/IconButton';
 
 // project imports
 import getColors from 'utils/getColors';

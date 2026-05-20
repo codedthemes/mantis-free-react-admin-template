@@ -138,11 +138,11 @@ export default function ComponentTypography() {
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
-            <Typography variant="body2" textAlign="center" gutterBottom>
+            <Typography variant="body2" sx={{ textAlign: 'center' }} gutterBottom>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
-            <Typography variant="body2" textAlign="right">
+            <Typography variant="body2" sx={{ textAlign: 'right' }}>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </Typography>
@@ -183,25 +183,25 @@ export default function ComponentTypography() {
             </Stack>
           </MainCard>
           <MainCard title="Colors">
-            <Typography variant="h6" color="text.primary" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ color: 'text.primary' }}>
               This is a textPrimary text color.
             </Typography>
-            <Typography variant="h6" color="text.secondary" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ color: 'text.secondary' }}>
               This is a textSecondary text color.
             </Typography>
-            <Typography variant="h6" color="primary" gutterBottom>
+            <Typography variant="h6" sx={{ color: 'primary.main' }} gutterBottom>
               This is a primary text color.
             </Typography>
-            <Typography variant="h6" color="secondary" gutterBottom>
+            <Typography variant="h6" sx={{ color: 'secondary.main' }} gutterBottom>
               This is a secondary text color.
             </Typography>
-            <Typography variant="h6" color="success" gutterBottom>
+            <Typography variant="h6" sx={{ color: 'success.main' }} gutterBottom>
               This is a success text color.
             </Typography>
             <Typography variant="h6" sx={{ color: 'warning.main' }} gutterBottom>
               This is a warning text color.
             </Typography>
-            <Typography variant="h6" color="error" gutterBottom>
+            <Typography variant="h6" sx={{ color: 'error.main' }} gutterBottom>
               This is a error text color.
             </Typography>
           </MainCard>

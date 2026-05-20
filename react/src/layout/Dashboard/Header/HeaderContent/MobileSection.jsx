@@ -46,7 +46,7 @@ export default function MobileSection() {
 
   return (
     <>
-      <Box sx={{ flexShrink: 0, ml: 0.75 }}>
+      <Box sx={{ flexShrink: 0 }}>
         <IconButton
           sx={() => ({
             color: 'text.primary',
@@ -84,7 +84,7 @@ export default function MobileSection() {
       >
         {({ TransitionProps }) => (
           <Transitions type="fade" in={open} {...TransitionProps}>
-            <Paper sx={(theme) => ({ boxShadow: theme.customShadows.z1 })}>
+            <Paper sx={(theme) => ({ boxShadow: theme.vars.customShadows.z1 })}>
               <ClickAwayListener onClickAway={handleClose}>
                 <AppBar color="inherit">
                   <Toolbar>

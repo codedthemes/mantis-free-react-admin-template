@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 export default function Footer() {
+  const footerLinkProps = { target: '_blank', variant: 'caption', sx: { color: 'text.primary' } };
   return (
     <Stack
       direction={{ xs: 'column', sm: 'row' }}
@@ -16,16 +17,16 @@ export default function Footer() {
         </Link>
       </Typography>
       <Stack direction="row" sx={{ gap: 1.5, alignItems: 'center', justifyContent: 'space-between' }}>
-        <Link href="https://codedthemes.com/hire-us/" target="_blank" variant="caption" color="text.primary">
+        <Link href="https://codedthemes.com/hire-us/" {...footerLinkProps}>
           Hire us
         </Link>
-        <Link href="https://mui.com/store/license/" target="_blank" variant="caption" color="text.primary">
+        <Link href="https://mui.com/store/license/" {...footerLinkProps}>
           License
         </Link>
-        <Link href="https://mui.com/store/terms/" target="_blank" variant="caption" color="text.primary">
+        <Link href="https://mui.com/store/terms/" {...footerLinkProps}>
           Terms
         </Link>
-        <Link href="https://links.codedthemes.com/dAAOP" target="_blank" variant="caption" color="text.primary">
+        <Link href="https://links.codedthemes.com/dAAOP" {...footerLinkProps}>
           Figma Design System
         </Link>
       </Stack>

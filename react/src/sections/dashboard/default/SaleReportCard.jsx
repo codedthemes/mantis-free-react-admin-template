@@ -53,7 +53,7 @@ export default function SaleReportCard() {
           </TextField>
         </Grid>
       </Grid>
-      <SalesChart />
+      <SalesChart filter={value} />
     </>
   );
 }

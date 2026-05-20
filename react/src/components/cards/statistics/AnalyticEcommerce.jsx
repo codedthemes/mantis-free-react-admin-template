@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+
 // material-ui
 import Chip from '@mui/material/Chip';
-import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -19,31 +19,27 @@ export default function AnalyticEcommerce({ color = 'primary', title, count, per
   return (
     <MainCard contentSX={{ p: 2.25 }}>
       <Stack sx={{ gap: 0.5 }}>
-        <Typography variant="h6" color="text.secondary">
+        <Typography variant="h6" sx={{ color: 'text.secondary' }}>
           {title}
         </Typography>
-        <Grid container sx={{ alignItems: 'center' }}>
-          <Grid>
-            <Typography variant="h4" color="inherit">
-              {count}
-            </Typography>
-          </Grid>
+        <Stack direction="row" sx={{ alignItems: 'center' }}>
+          <Typography variant="h4" sx={{ color: 'inherit' }}>
+            {count}
+          </Typography>
           {percentage && (
-            <Grid>
-              <Chip
-                variant="combined"
-                color={color}
-                icon={isLoss ? <FallOutlined style={iconSX} /> : <RiseOutlined style={iconSX} />}
-                label={`${percentage}%`}
-                sx={{ ml: 1.25, pl: 1 }}
-                size="small"
-              />
-            </Grid>
+            <Chip
+              variant="combined"
+              color={color}
+              icon={isLoss ? <FallOutlined style={iconSX} /> : <RiseOutlined style={iconSX} />}
+              label={`${percentage}%`}
+              sx={{ ml: 1.25, pl: 1 }}
+              size="small"
+            />
           )}
-        </Grid>
+        </Stack>
       </Stack>
       <Box sx={{ pt: 2.25 }}>
-        <Typography variant="caption" color="text.secondary">
+        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
           You made an extra{' '}
           <Typography variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
             {extra}

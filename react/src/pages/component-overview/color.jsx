@@ -36,7 +36,7 @@ function ColorBox({ bgcolor, title, data, dark, main }) {
               )}
             </Grid>
             <Grid>
-              <Typography variant="subtitle1" color="inherit">
+              <Typography variant="subtitle1" sx={{ color: 'inherit' }}>
                 {title}
               </Typography>
             </Grid>

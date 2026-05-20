@@ -1,6 +1,8 @@
 // project imports
 import getColors from 'utils/getColors';
 
+const CHIP_COLORS = ['primary', 'secondary', 'error', 'info', 'success', 'warning'];
+
 // ==============================|| CHIP - COLORS ||============================== //
 
 function getColor({ color, theme }) {
@@ -17,12 +19,13 @@ function getColor({ color, theme }) {
 
 function getColorStyle({ color, theme }) {
   const colors = getColors(theme, color);
-  const { light, lighter, main } = colors;
+  const { light, lighter, main, darker } = colors;
 
   return {
     color: main,
     backgroundColor: lighter,
     borderColor: light,
+    ...theme.applyStyles('dark', { color: darker }),
     '& .MuiChip-deleteIcon': {
       color: main,
       '&:hover': {
@@ -32,10 +35,30 @@ function getColorStyle({ color, theme }) {
   };
 }
 
+/**
+ * Generate color variant styles for a given variant type
+ * @param theme - MUI theme object
+ * @param variantType - Type of variant ('root' or 'light' or 'combined')
+ * @returns Object with color-specific selectors and their styles
+ */
+function generateColorVariants(theme, variantType) {
+  const styleBuilder = variantType === 'root' ? getColor : getColorStyle;
+
+  return CHIP_COLORS.reduce((acc, color) => {
+    acc[`&.MuiChip-color${color.charAt(0).toUpperCase() + color.slice(1)}`] = styleBuilder({
+      color: color,
+      theme
+    });
+    return acc;
+  }, {});
+}
+
 // ==============================|| OVERRIDES - CHIP ||============================== //
 
 export default function Chip(theme) {
   const defaultLightChip = getColorStyle({ color: 'secondary', theme });
+  const colorVariants = generateColorVariants(theme, 'light');
+
   return {
     MuiChip: {
       styleOverrides: {
@@ -44,12 +67,7 @@ export default function Chip(theme) {
           '&:active': {
             boxShadow: 'none'
           },
-          '&.MuiChip-colorPrimary': getColor({ color: 'primary', theme }),
-          '&.MuiChip-colorSecondary': getColor({ color: 'secondary', theme }),
-          '&.MuiChip-colorError': getColor({ color: 'error', theme }),
-          '&.MuiChip-colorInfo': getColor({ color: 'info', theme }),
-          '&.MuiChip-colorSuccess': getColor({ color: 'success', theme }),
-          '&.MuiChip-colorWarning': getColor({ color: 'warning', theme })
+          ...generateColorVariants(theme, 'root')
         },
         sizeLarge: {
           fontSize: '1rem',
@@ -57,22 +75,12 @@ export default function Chip(theme) {
         },
         light: {
           ...defaultLightChip,
-          '&.MuiChip-lightPrimary': getColorStyle({ color: 'primary', theme }),
-          '&.MuiChip-lightSecondary': getColorStyle({ color: 'secondary', theme }),
-          '&.MuiChip-lightError': getColorStyle({ color: 'error', theme }),
-          '&.MuiChip-lightInfo': getColorStyle({ color: 'info', theme }),
-          '&.MuiChip-lightSuccess': getColorStyle({ color: 'success', theme }),
-          '&.MuiChip-lightWarning': getColorStyle({ color: 'warning', theme })
+          ...colorVariants
         },
         combined: {
           border: '1px solid',
           ...defaultLightChip,
-          '&.MuiChip-combinedPrimary': getColorStyle({ color: 'primary', theme }),
-          '&.MuiChip-combinedSecondary': getColorStyle({ color: 'secondary', theme }),
-          '&.MuiChip-combinedError': getColorStyle({ color: 'error', theme }),
-          '&.MuiChip-combinedInfo': getColorStyle({ color: 'info', theme }),
-          '&.MuiChip-combinedSuccess': getColorStyle({ color: 'success', theme }),
-          '&.MuiChip-combinedWarning': getColorStyle({ color: 'warning', theme })
+          ...colorVariants
         }
       }
     }

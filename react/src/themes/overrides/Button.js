@@ -3,6 +3,9 @@ import { withAlpha } from 'utils/colorUtils';
 import getColors from 'utils/getColors';
 import getShadow from 'utils/getShadow';
 
+const BUTTON_COLORS = ['primary', 'secondary', 'error', 'info', 'success', 'warning'];
+const BUTTON_VARIANTS = ['contained', 'outlined', 'text', 'dashed', 'shadow'];
+
 function getColorStyle({ variant, color, theme }) {
   const colors = getColors(theme, color);
   const { lighter, main, dark, darker, contrastText } = colors;
@@ -76,23 +79,45 @@ function getColorStyle({ variant, color, theme }) {
   }
 }
 
+/**
+ * Generate color variant styles for a given variant type
+ * @param theme - MUI theme object
+ * @param variantType - Type of variant (e.g., 'contained', 'outlined', 'text', 'dashed', 'shadow')
+ * @returns Object with color-specific selectors and their styles
+ */
+function generateColorVariants(theme, variantType) {
+  return BUTTON_COLORS.reduce((acc, color) => {
+    const capitalizedColor = color.charAt(0).toUpperCase() + color.slice(1);
+    const className = `&.MuiButton-${variantType}${capitalizedColor}`;
+
+    acc[className] = getColorStyle({ variant: variantType, color: color, theme });
+    return acc;
+  }, {});
+}
+
 // ==============================|| OVERRIDES - BUTTON ||============================== //
 
 export default function Button(theme) {
-  const primaryDashed = getColorStyle({ variant: 'dashed', color: 'primary', theme });
-  const primaryShadow = getColorStyle({ variant: 'shadow', color: 'primary', theme });
-
   const disabledStyle = {
     backgroundColor: theme.vars.palette.grey[200],
     '&:hover': {
       backgroundColor: theme.vars.palette.grey[200]
     }
   };
+
   const iconStyle = {
     '&>*:nth-of-type(1)': {
       fontSize: 'inherit'
     }
   };
+
+  // Generate variants array programmatically
+  const variants = BUTTON_VARIANTS.flatMap((variant) =>
+    BUTTON_COLORS.map((color) => ({
+      props: { variant, color },
+      style: getColorStyle({ variant: variant, color: color, theme })
+    }))
+  );
 
   return {
     MuiButton: {
@@ -122,7 +147,9 @@ export default function Button(theme) {
             top: 0,
             opacity: 1,
             transition: '0s'
-          }
+          },
+
+          variants
         },
         contained: {
           '&.Mui-disabled': {
@@ -153,13 +180,7 @@ export default function Button(theme) {
         },
         dashed: {
           border: '1px dashed',
-          ...primaryDashed,
-          '&.MuiButton-dashedPrimary': getColorStyle({ variant: 'dashed', color: 'primary', theme }),
-          '&.MuiButton-dashedSecondary': getColorStyle({ variant: 'dashed', color: 'secondary', theme }),
-          '&.MuiButton-dashedError': getColorStyle({ variant: 'dashed', color: 'error', theme }),
-          '&.MuiButton-dashedSuccess': getColorStyle({ variant: 'dashed', color: 'success', theme }),
-          '&.MuiButton-dashedInfo': getColorStyle({ variant: 'dashed', color: 'info', theme }),
-          '&.MuiButton-dashedWarning': getColorStyle({ variant: 'dashed', color: 'warning', theme }),
+          ...generateColorVariants(theme, 'dashed'),
           '&.Mui-disabled': {
             color: `${theme.vars.palette.grey[300]} !important`,
             borderColor: `${theme.vars.palette.grey[400]} !important`,
@@ -167,37 +188,13 @@ export default function Button(theme) {
           }
         },
         shadow: {
-          ...primaryShadow,
-          '&.MuiButton-shadowPrimary': getColorStyle({ variant: 'shadow', color: 'primary', theme }),
-          '&.MuiButton-shadowSecondary': getColorStyle({ variant: 'shadow', color: 'secondary', theme }),
-          '&.MuiButton-shadowError': getColorStyle({ variant: 'shadow', color: 'error', theme }),
-          '&.MuiButton-shadowSuccess': getColorStyle({ variant: 'shadow', color: 'success', theme }),
-          '&.MuiButton-shadowInfo': getColorStyle({ variant: 'shadow', color: 'info', theme }),
-          '&.MuiButton-shadowWarning': getColorStyle({ variant: 'shadow', color: 'warning', theme }),
+          ...generateColorVariants(theme, 'shadow'),
           '&.Mui-disabled': {
             color: `${theme.vars.palette.grey[300]} !important`,
             borderColor: `${theme.vars.palette.grey[400]} !important`,
             backgroundColor: `${theme.vars.palette.grey[200]} !important`
           }
         },
-        containedPrimary: getColorStyle({ variant: 'contained', color: 'primary', theme }),
-        containedSecondary: getColorStyle({ variant: 'contained', color: 'secondary', theme }),
-        containedError: getColorStyle({ variant: 'contained', color: 'error', theme }),
-        containedSuccess: getColorStyle({ variant: 'contained', color: 'success', theme }),
-        containedInfo: getColorStyle({ variant: 'contained', color: 'info', theme }),
-        containedWarning: getColorStyle({ variant: 'contained', color: 'warning', theme }),
-        outlinedPrimary: getColorStyle({ variant: 'outlined', color: 'primary', theme }),
-        outlinedSecondary: getColorStyle({ variant: 'outlined', color: 'secondary', theme }),
-        outlinedError: getColorStyle({ variant: 'outlined', color: 'error', theme }),
-        outlinedSuccess: getColorStyle({ variant: 'outlined', color: 'success', theme }),
-        outlinedInfo: getColorStyle({ variant: 'outlined', color: 'info', theme }),
-        outlinedWarning: getColorStyle({ variant: 'outlined', color: 'warning', theme }),
-        textPrimary: getColorStyle({ variant: 'text', color: 'primary', theme }),
-        textSecondary: getColorStyle({ variant: 'text', color: 'secondary', theme }),
-        textError: getColorStyle({ variant: 'text', color: 'error', theme }),
-        textSuccess: getColorStyle({ variant: 'text', color: 'success', theme }),
-        textInfo: getColorStyle({ variant: 'text', color: 'info', theme }),
-        textWarning: getColorStyle({ variant: 'text', color: 'warning', theme }),
         sizeExtraSmall: {
           minWidth: 56,
           fontSize: '0.625rem',
