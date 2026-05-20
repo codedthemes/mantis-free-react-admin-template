@@ -1,8 +1,11 @@
+'use client';
+
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 
-import useMediaQuery from '@mui/material/useMediaQuery';
+// material-ui
 import Drawer from '@mui/material/Drawer';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 
 // project imports

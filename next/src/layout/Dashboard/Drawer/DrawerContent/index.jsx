@@ -1,3 +1,5 @@
+'use client';
+
 // project imports
 import NavCard from './NavCard';
 import Navigation from './Navigation';

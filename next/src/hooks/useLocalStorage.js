@@ -1,22 +1,23 @@
+'use client';
+
 import { useState, useEffect, useCallback } from 'react';
 
 // ==============================|| LOCAL STORAGE HOOKS ||============================== //
 
 export function useLocalStorage(key, defaultValue) {
-  // Load initial state from localStorage or fallback to default
-  const readValue = () => {
-    if (typeof window === 'undefined') return defaultValue;
+  const [state, setState] = useState(defaultValue);
 
+  // Load initial state from localStorage after mount to be hydration-safe
+  useEffect(() => {
     try {
       const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : defaultValue;
+      if (item) {
+        setState(JSON.parse(item));
+      }
     } catch (err) {
       console.warn(`Error reading localStorage key “${key}”:`, err);
-      return defaultValue;
     }
-  };
-
-  const [state, setState] = useState(readValue);
+  }, [key]);
 
   // Sync to localStorage whenever state changes
   useEffect(() => {

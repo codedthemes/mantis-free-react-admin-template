@@ -1,7 +1,9 @@
+'use client';
+
 // material-ui
 import { useTheme } from '@mui/material/styles';
 
-import { chartsGridClasses, LineChart } from '@mui/x-charts';
+import { axisClasses, chartsGridClasses, LineChart, lineClasses } from '@mui/x-charts';
 
 const data = [58, 115, 28, 83, 63, 75, 35];
 const labels = ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -21,9 +23,9 @@ export default function ReportAreaChart() {
       height={340}
       margin={{ top: 30, bottom: 25, left: 20, right: 20 }}
       sx={{
-        '& .MuiLineElement-root': { strokeWidth: 1 },
+        [`& .${lineClasses.line}`]: { strokeWidth: 1 },
         [`& .${chartsGridClasses.line}`]: { strokeDasharray: '4 4' },
-        '& .MuiChartsAxis-root.MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: 'transparent' }
+        [`& .${axisClasses.root}.${axisClasses.directionX} .${axisClasses.tick}`]: { stroke: 'transparent' }
       }}
     />
   );

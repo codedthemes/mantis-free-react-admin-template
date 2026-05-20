@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 // material-ui
@@ -53,7 +55,7 @@ export default function SaleReportCard() {
           </TextField>
         </Grid>
       </Grid>
-      <SalesChart />
+      <SalesChart filter={value} />
     </>
   );
 }

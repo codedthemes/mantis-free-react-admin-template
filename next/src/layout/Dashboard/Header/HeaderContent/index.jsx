@@ -1,3 +1,5 @@
+'use client';
+
 // material-ui
 import useMediaQuery from '@mui/material/useMediaQuery';
 import IconButton from '@mui/material/IconButton';

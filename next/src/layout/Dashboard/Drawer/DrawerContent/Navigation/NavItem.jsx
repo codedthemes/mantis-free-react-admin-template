@@ -144,9 +144,9 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                     callAction();
                   }
                 })}
-                  component={Link}
-                  href={action.url}
-                  target={action.target ? '_blank' : '_self'}
+                component={Link}
+                href={action.url}
+                target={action.target ? '_blank' : '_self'}
                 color="secondary"
                 variant="outlined"
                 sx={{

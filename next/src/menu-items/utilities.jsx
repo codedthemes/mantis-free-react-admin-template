@@ -43,7 +43,7 @@ const utilities = {
       id: 'util-shadow',
       title: 'Shadow',
       type: 'item',
-      url: '/shadow',
+      url: '/shadows',
       icon: icons.BarcodeOutlined
     }
   ]
