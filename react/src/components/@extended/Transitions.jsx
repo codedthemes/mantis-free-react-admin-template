@@ -50,14 +50,7 @@ export default function Transitions({ children, position = 'top-left', type = 'g
   return (
     <Box ref={ref}>
       {type === 'grow' && (
-        <Grow
-          {...others}
-          timeout={{
-            appear: 0,
-            enter: 150,
-            exit: 150
-          }}
-        >
+        <Grow {...others} timeout={{ appear: 0, enter: 150, exit: 150 }}>
           <Box sx={positionSX}>{children}</Box>
         </Grow>
       )}

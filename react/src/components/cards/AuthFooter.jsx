@@ -25,21 +25,21 @@ export default function AuthFooter() {
         <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ gap: { xs: 1, sm: 3 }, textAlign: { xs: 'center', sm: 'inherit' } }}>
           <Typography
             variant="subtitle2"
-            color="secondary"
             component={Link}
             href="https://mui.com/store/terms/"
             target="_blank"
             underline="hover"
+            sx={{ color: 'secondary.main' }}
           >
             Terms and Conditions
           </Typography>
           <Typography
             variant="subtitle2"
-            color="secondary"
             component={Link}
             href="https://mui.com/legal/privacy/"
             target="_blank"
             underline="hover"
+            sx={{ color: 'secondary.main' }}
           >
             Privacy Policy
           </Typography>
