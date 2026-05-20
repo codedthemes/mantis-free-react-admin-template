@@ -1,5 +1,3 @@
-'use client';
-
 import { use } from 'react';
 import { ConfigContext } from 'contexts/ConfigContext';
 

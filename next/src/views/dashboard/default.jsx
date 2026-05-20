@@ -280,7 +280,7 @@ export default function DashboardDefault() {
         </MainCard>
         <MainCard sx={{ mt: 2 }}>
           <Stack sx={{ gap: 3 }}>
-            <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Grid>
                 <Stack>
                   <Typography variant="h5" noWrap>

@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 
 // project imports
 import AuthWrapper from 'sections/auth/AuthWrapper';
-import AuthRegister from 'sections/auth/AuthRegister';
+import AuthRegister from 'sections/auth/auth-forms/AuthRegister';
 
 // ================================|| REGISTER ||================================ //
 
@@ -22,13 +22,7 @@ export default function Register() {
         <Grid size={12}>
           <Stack direction="row" sx={{ alignItems: 'baseline', justifyContent: 'space-between', mb: { xs: -0.5, sm: 0.5 } }}>
             <Typography variant="h3">Sign up</Typography>
-            <Link
-              component={NextLink}
-              href="/login"
-              variant="body1"
-              color="primary"
-              sx={{ textDecoration: 'none' }}
-            >
+            <Link component={NextLink} href="/login" variant="body1" underline="none" sx={{ color: 'primary.main' }}>
               Already have an account?
             </Link>
           </Stack>
@@ -40,4 +34,3 @@ export default function Register() {
     </AuthWrapper>
   );
 }
-

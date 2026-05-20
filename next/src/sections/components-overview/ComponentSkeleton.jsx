@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-// project-imports
+// project imports
 import MainCard from 'components/MainCard';
 const GRID_COMMON_SPACING = { xs: 2, md: 2.5 };
 import ComponentWrapper from 'sections/components-overview/ComponentWrapper';

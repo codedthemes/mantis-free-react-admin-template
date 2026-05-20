@@ -15,7 +15,7 @@ export default function Navigation() {
         return <NavGroup key={item.id} item={item} />;
       default:
         return (
-          <Typography key={item.id} variant="h6" color="error" align="center">
+          <Typography key={item.id} variant="h6" sx={{ color: 'error.main', textAlign: 'center' }}>
             Fix - Navigation Group
           </Typography>
         );

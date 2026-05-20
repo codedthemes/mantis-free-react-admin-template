@@ -6,21 +6,21 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 // project import
+import AnimateButton from 'components/@extended/AnimateButton';
 import MainCard from 'components/MainCard';
 
 const avatar = '/assets/images/users/avatar-group.png';
-import AnimateButton from 'components/@extended/AnimateButton';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION CARD ||============================== //
 
 export default function NavCard() {
   return (
     <MainCard sx={{ bgcolor: 'grey.50', m: 3 }}>
-      <Stack alignItems="center" spacing={2.5}>
+      <Stack alignItems="center" sx={{ gap: 2.5, alignItems: 'center' }}>
         <CardMedia component="img" image={avatar} sx={{ width: 112 }} />
         <Stack alignItems="center">
           <Typography variant="h5">Mantis Pro</Typography>
-          <Typography variant="h6" color="secondary">
+          <Typography variant="h6" sx={{ color: 'secondary.main' }}>
             Checkout pro features
           </Typography>
         </Stack>

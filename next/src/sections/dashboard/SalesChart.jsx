@@ -155,7 +155,7 @@ export default function SalesChart({ filter = 'today' }) {
           axisHighlight={{ x: 'none' }}
           margin={{ top: 30, left: -5, bottom: 25, right: 10 }}
           sx={{
-            [`& .${barClasses}:hover`]: { opacity: 0.6 },
+            [`& .${barClasses.element}:hover`]: { opacity: 0.6 },
             [`& .${chartsGridClasses.line}`]: { strokeDasharray: '4 4', stroke: theme.vars.palette.divider },
             '& .MuiBarElement-series-auto-generated-id-0, & .MuiBarElement-series-auto-generated-id-1': { width: 15 },
             [`& .${axisClasses.root}.${axisClasses.directionX} .${axisClasses.tick}`]: { stroke: 'transparent' },

@@ -1,8 +1,8 @@
-// project-imports
-import ComponentTypography from 'views/components-overview/Typography';
+// project imports
+import ComponentTypography from 'views/components-overview/typography';
 
 // ==============================|| COMPONENTS - TYPOGRAPHY ||============================== //
 
-export default function ComponentTypographyPage() {
+export default function TypographyPage() {
   return <ComponentTypography />;
 }

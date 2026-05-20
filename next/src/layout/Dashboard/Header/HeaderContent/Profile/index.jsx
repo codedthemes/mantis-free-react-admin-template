@@ -8,7 +8,6 @@ import { useTheme } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
 import CardContent from '@mui/material/CardContent';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import Stack from '@mui/material/Stack';
@@ -114,26 +113,22 @@ export default function Profile() {
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard elevation={0} border={false} content={false}>
                   <CardContent sx={{ px: 2.5, pt: 3 }}>
-                    <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Grid>
-                        <Stack direction="row" sx={{ gap: 1.25, alignItems: 'center' }}>
-                          <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-                          <Stack>
-                            <Typography variant="h6">John Doe</Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              UI/UX Designer
-                            </Typography>
-                          </Stack>
+                    <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Stack direction="row" sx={{ gap: 1.25, alignItems: 'center' }}>
+                        <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
+                        <Stack>
+                          <Typography variant="h6">John Doe</Typography>
+                          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                            UI/UX Designer
+                          </Typography>
                         </Stack>
-                      </Grid>
-                      <Grid>
-                        <Tooltip title="Logout">
-                          <IconButton size="large" sx={{ color: 'text.primary' }}>
-                            <LogoutOutlined />
-                          </IconButton>
-                        </Tooltip>
-                      </Grid>
-                    </Grid>
+                      </Stack>
+                      <Tooltip title="Logout">
+                        <IconButton size="large" sx={{ color: 'text.primary' }}>
+                          <LogoutOutlined />
+                        </IconButton>
+                      </Tooltip>
+                    </Stack>
                   </CardContent>
 
                   <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -162,9 +157,7 @@ export default function Profile() {
                           alignItems: 'center',
                           textTransform: 'capitalize',
                           gap: 1.25,
-                          '& .MuiTab-icon': {
-                            marginBottom: 0
-                          }
+                          '& .MuiTab-icon': { marginBottom: 0 }
                         }}
                         icon={<SettingOutlined />}
                         label="Setting"

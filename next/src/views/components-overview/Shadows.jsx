@@ -43,7 +43,6 @@ export default function ComponentShadow() {
   const theme = useTheme();
 
   return (
-
     <Grid container spacing={3}>
       <Grid size={12}>
         <MainCard title="Basic Shadow">
@@ -190,11 +189,7 @@ export default function ComponentShadow() {
               <CustomShadowBox color={theme.vars.palette.primary.main} shadow={theme.vars.customShadows.primary} label="primary" />
             </Grid>
             <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
-              <CustomShadowBox
-                color={theme.vars.palette.secondary.main}
-                shadow={theme.vars.customShadows.secondary}
-                label="secondary"
-              />
+              <CustomShadowBox color={theme.vars.palette.secondary.main} shadow={theme.vars.customShadows.secondary} label="secondary" />
             </Grid>
             <Grid size={{ xs: 6, sm: 4, md: 3, lg: 2 }}>
               <CustomShadowBox color={theme.vars.palette.success.main} shadow={theme.vars.customShadows.success} label="success" />

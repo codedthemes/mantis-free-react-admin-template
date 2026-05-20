@@ -1,8 +1,8 @@
-// project-imports
-import ComponentShadow from 'views/components-overview/Shadows';
+// project imports
+import ComponentShadow from 'views/components-overview/shadows';
 
 // ============================|| COMPONENTS - SHADOW ||============================ //
 
-export default function ComponentShadowPage() {
+export default function ShadowPage() {
   return <ComponentShadow />;
 }

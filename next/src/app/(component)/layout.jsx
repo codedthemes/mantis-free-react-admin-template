@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-// project-imports
+// project imports
 import DashboardLayout from 'layout/Dashboard';
 
 // ==============================|| COMPONENT - LAYOUT ||============================== //

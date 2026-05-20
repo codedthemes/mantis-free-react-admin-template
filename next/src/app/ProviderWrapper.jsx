@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-// project-imports
+// project imports
 import { ConfigProvider } from 'contexts/ConfigContext';
 import ScrollTop from 'components/ScrollTop';
 import ThemeCustomization from '../../themes';
@@ -11,9 +11,7 @@ export default function ProviderWrapper({ children }) {
   return (
     <ConfigProvider>
       <ThemeCustomization>
-        <ScrollTop>
-          {children}
-        </ScrollTop>
+        <ScrollTop>{children}</ScrollTop>
       </ThemeCustomization>
     </ConfigProvider>
   );

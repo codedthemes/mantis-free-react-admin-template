@@ -13,7 +13,6 @@ export default function MainCard({
   subheader,
   content = true,
   contentSX = {},
-  darkTitle,
   divider = true,
   elevation,
   secondary,
@@ -52,11 +51,11 @@ export default function MainCard({
       {...others}
     >
       {/* card header and action */}
-      {!darkTitle && title && (
+      {title && (
         <CardHeader
           sx={{ p: 2.5 }}
           slotProps={{
-            title: { variant: darkTitle ? 'h4' : 'subtitle1' },
+            title: { variant: 'subtitle1' },
             action: { sx: { m: '0px auto', alignSelf: 'center' } }
           }}
           title={title}
@@ -79,16 +78,15 @@ MainCard.propTypes = {
   border: PropTypes.bool,
   boxShadow: PropTypes.bool,
   children: PropTypes.node,
-  subheader: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  subheader: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   content: PropTypes.bool,
   contentSX: PropTypes.object,
-  darkTitle: PropTypes.bool,
   divider: PropTypes.bool,
   elevation: PropTypes.number,
   secondary: PropTypes.any,
   shadow: PropTypes.string,
   sx: PropTypes.object,
-  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   codeHighlight: PropTypes.bool,
   codeString: PropTypes.string,
   modal: PropTypes.bool,

@@ -3,7 +3,7 @@
 // material-ui
 import { useTheme } from '@mui/material/styles';
 
-import { BarChart } from '@mui/x-charts/BarChart';
+import { axisClasses, barClasses, BarChart } from '@mui/x-charts';
 
 const data = [80, 95, 70, 42, 65, 55, 78];
 const xLabels = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
@@ -25,8 +25,8 @@ export default function MonthlyBarChart() {
       margin={{ left: 20, right: 20 }}
       colors={[theme.vars.palette.info.light]}
       sx={{
-        '& .MuiBarElement-root:hover': { opacity: 0.6 },
-        '& .MuiChartsAxis-root.MuiChartsAxis-directionX .MuiChartsAxis-tick': { stroke: 'transparent' }
+        [`& .${barClasses.element}:hover`]: { opacity: 0.6 },
+        [`& .${axisClasses.root}.${axisClasses.directionX} .${axisClasses.tick}`]: { stroke: 'transparent' }
       }}
     />
   );

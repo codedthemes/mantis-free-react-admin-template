@@ -112,8 +112,8 @@ Transitions.propTypes = {
   children: PropTypes.node,
   position: PropTypes.string,
   type: PropTypes.string,
-  ref: PropTypes.any,
   direction: PropTypes.oneOf(['up', 'right', 'left', 'down']),
+  ref: PropTypes.any,
   others: PropTypes.any
 };
 

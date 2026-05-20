@@ -5,7 +5,7 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@ant-design/colors@npm:^8.0.1":
+"@ant-design/colors@npm:8.0.1, @ant-design/colors@npm:^8.0.1":
   version: 8.0.1
   resolution: "@ant-design/colors@npm:8.0.1"
   dependencies:
@@ -28,7 +28,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ant-design/icons@npm:^6.2.3":
+"@ant-design/icons@npm:6.2.3":
   version: 6.2.3
   resolution: "@ant-design/icons@npm:6.2.3"
   dependencies:
@@ -506,28 +506,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource/inter@npm:^5.2.8":
+"@fontsource/inter@npm:5.2.8":
   version: 5.2.8
   resolution: "@fontsource/inter@npm:5.2.8"
   checksum: 10c0/f737dd50005e4809887ba55ae0c9b7174216d6d14875d17a4fbb9a0ad75dec4265928b805a43fe16a23f14a878f1974a398bbfc84ad65c79fc4d4b9c3ea154e1
   languageName: node
   linkType: hard
 
-"@fontsource/poppins@npm:^5.2.7":
+"@fontsource/poppins@npm:5.2.7":
   version: 5.2.7
   resolution: "@fontsource/poppins@npm:5.2.7"
   checksum: 10c0/22a317488c1aee2a8eca1a2082599482fae38fa51c72a08ce45836aeceb0272cc71e8e7cc02e4466a8e6b22f77de3a659fc4bbfc7a1f5788fdb91960d9a21415
   languageName: node
   linkType: hard
 
-"@fontsource/public-sans@npm:^5.2.7":
+"@fontsource/public-sans@npm:5.2.7":
   version: 5.2.7
   resolution: "@fontsource/public-sans@npm:5.2.7"
   checksum: 10c0/7089c2edd3965b659e9450a3ec3a603a075b62c7b6488199c40beb4e8d277c0b43fab5d39962c3768d22b8f485ef57d833500a7e2dc6ff717616638b0fde37c3
   languageName: node
   linkType: hard
 
-"@fontsource/roboto@npm:^5.2.10":
+"@fontsource/roboto@npm:5.2.10":
   version: 5.2.10
   resolution: "@fontsource/roboto@npm:5.2.10"
   checksum: 10c0/abadfcaefbe2196bbd36d9258b336063f721894a3624a9639da00792583c565bfd0748ef978f91a38c3c0de8d247615c9be92a763184c085c630fa43f04b1cd9
@@ -853,7 +853,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/lab@npm:^9.0.0-beta.3":
+"@mui/lab@npm:9.0.0-beta.3":
   version: 9.0.0-beta.3
   resolution: "@mui/lab@npm:9.0.0-beta.3"
   dependencies:
@@ -884,7 +884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material-nextjs@npm:^9.0.1":
+"@mui/material-nextjs@npm:9.0.1":
   version: 9.0.1
   resolution: "@mui/material-nextjs@npm:9.0.1"
   dependencies:
@@ -1226,7 +1226,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-charts@npm:^9.2.0":
+"@mui/x-charts@npm:9.2.0":
   version: 9.2.0
   resolution: "@mui/x-charts@npm:9.2.0"
   dependencies:
@@ -1256,7 +1256,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-date-pickers@npm:^9.2.0":
+"@mui/x-date-pickers@npm:9.2.0":
   version: 9.2.0
   resolution: "@mui/x-date-pickers@npm:9.2.0"
   dependencies:
@@ -3926,7 +3926,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.21, lodash@npm:^4.18.1":
+"lodash@npm:4.18.1, lodash@npm:^4.17.21":
   version: 4.18.1
   resolution: "lodash@npm:4.18.1"
   checksum: 10c0/757228fc68805c59789e82185135cf85f05d0b2d3d54631d680ca79ec21944ec8314d4533639a14b8bcfbd97a517e78960933041a5af17ecb693ec6eecb99a27
@@ -3957,25 +3957,25 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mantis-material-next-js@workspace:."
   dependencies:
-    "@ant-design/colors": "npm:^8.0.1"
-    "@ant-design/icons": "npm:^6.2.3"
+    "@ant-design/colors": "npm:8.0.1"
+    "@ant-design/icons": "npm:6.2.3"
     "@emotion/cache": "npm:11.14.0"
     "@emotion/react": "npm:11.14.0"
     "@emotion/styled": "npm:11.14.1"
     "@eslint/compat": "npm:2.0.3"
     "@eslint/eslintrc": "npm:3.3.5"
     "@eslint/js": "npm:10.0.1"
-    "@fontsource/inter": "npm:^5.2.8"
-    "@fontsource/poppins": "npm:^5.2.7"
-    "@fontsource/public-sans": "npm:^5.2.7"
-    "@fontsource/roboto": "npm:^5.2.10"
-    "@mui/lab": "npm:^9.0.0-beta.3"
+    "@fontsource/inter": "npm:5.2.8"
+    "@fontsource/poppins": "npm:5.2.7"
+    "@fontsource/public-sans": "npm:5.2.7"
+    "@fontsource/roboto": "npm:5.2.10"
+    "@mui/lab": "npm:9.0.0-beta.3"
     "@mui/material": "npm:7.3.9"
-    "@mui/material-nextjs": "npm:^9.0.1"
+    "@mui/material-nextjs": "npm:9.0.1"
     "@mui/system": "npm:7.3.9"
-    "@mui/utils": "npm:^9.0.1"
-    "@mui/x-charts": "npm:^9.2.0"
-    "@mui/x-date-pickers": "npm:^9.2.0"
+    "@mui/utils": "npm:9.0.1"
+    "@mui/x-charts": "npm:9.2.0"
+    "@mui/x-date-pickers": "npm:9.2.0"
     apexcharts: "npm:5.10.4"
     eslint: "npm:10.1.0"
     eslint-config-next: "npm:16.1.6"
@@ -3986,16 +3986,16 @@ __metadata:
     eslint-plugin-react-hooks: "npm:7.0.1"
     formik: "npm:2.4.9"
     framer-motion: "npm:12.36.0"
-    lodash: "npm:^4.18.1"
+    lodash: "npm:4.18.1"
     next: "npm:16.1.6"
     prettier: "npm:3.8.1"
     prop-types: "npm:15.8.1"
     react: "npm:19.2.4"
     react-apexcharts: "npm:2.1.0"
-    react-copy-to-clipboard: "npm:^5.1.1"
-    react-device-detect: "npm:^2.2.3"
+    react-copy-to-clipboard: "npm:5.1.1"
+    react-device-detect: "npm:2.2.3"
     react-dom: "npm:19.2.4"
-    react-number-format: "npm:^5.4.5"
+    react-number-format: "npm:5.4.5"
     simplebar-react: "npm:3.3.2"
     styled-jsx: "npm:5.1.7"
     swr: "npm:2.4.1"
@@ -4461,7 +4461,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-copy-to-clipboard@npm:^5.1.1":
+"react-copy-to-clipboard@npm:5.1.1":
   version: 5.1.1
   resolution: "react-copy-to-clipboard@npm:5.1.1"
   dependencies:
@@ -4473,7 +4473,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-device-detect@npm:^2.2.3":
+"react-device-detect@npm:2.2.3":
   version: 2.2.3
   resolution: "react-device-detect@npm:2.2.3"
   dependencies:
@@ -4524,7 +4524,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-number-format@npm:^5.4.5":
+"react-number-format@npm:5.4.5":
   version: 5.4.5
   resolution: "react-number-format@npm:5.4.5"
   peerDependencies:

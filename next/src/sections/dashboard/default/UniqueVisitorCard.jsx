@@ -20,7 +20,7 @@ export default function UniqueVisitorCard() {
 
   return (
     <>
-      <Grid container sx={{ alignItems: 'center', justifyContent: 'space-between' }}>
+      <Grid container sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <Grid>
           <Typography variant="h5">Unique Visitor</Typography>
         </Grid>

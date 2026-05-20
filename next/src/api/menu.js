@@ -15,6 +15,7 @@ const endpoints = {
 
 export function useGetMenuMaster() {
   const { data, isLoading } = useSWR(endpoints.key + endpoints.master, () => initialState, {
+    fallbackData: initialState,
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false
@@ -22,7 +23,7 @@ export function useGetMenuMaster() {
 
   const memoizedValue = useMemo(
     () => ({
-      menuMaster: data,
+      menuMaster: data || initialState,
       menuMasterLoading: isLoading
     }),
     [data, isLoading]

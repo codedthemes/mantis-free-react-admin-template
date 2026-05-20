@@ -1,8 +1,8 @@
-// project-imports
-import ComponentColor from 'views/components-overview/Color';
+// project imports
+import ComponentColor from 'views/components-overview/color';
 
 // ===============================|| COMPONENTS - COLOR ||=============================== //
 
-export default function ComponentColorPage() {
+export default function ColorPage() {
   return <ComponentColor />;
 }

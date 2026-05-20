@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-// project-imports
+// project imports
 import SimpleLayout from 'layout/Simple';
 
 // ================================|| SIMPLE LAYOUT ||================================ //

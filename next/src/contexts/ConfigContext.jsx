@@ -14,7 +14,7 @@ export const ConfigContext = createContext(undefined);
 // ==============================|| CONFIG PROVIDER ||============================== //
 
 export function ConfigProvider({ children }) {
-  const { state, setState, setField, resetState } = useLocalStorage('mantis-react-free-config', config);
+  const { state, setState, setField, resetState } = useLocalStorage('mantis-react-js-config', config);
 
   const memoizedValue = useMemo(() => ({ state, setState, setField, resetState }), [state, setField, setState, resetState]);
 

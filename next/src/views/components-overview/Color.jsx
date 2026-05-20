@@ -71,18 +71,8 @@ export default function ComponentColor() {
               title="primary.lighter"
               dark
             />
-            <ColorBox
-              bgcolor="primary.100"
-              data={{ label: 'Blue-2', color: `${currentPalette.primary[100]}` }}
-              title="primary[100]"
-              dark
-            />
-            <ColorBox
-              bgcolor="primary.200"
-              data={{ label: 'Blue-3', color: `${currentPalette.primary[200]}` }}
-              title="primary[200]"
-              dark
-            />
+            <ColorBox bgcolor="primary.100" data={{ label: 'Blue-2', color: `${currentPalette.primary[100]}` }} title="primary[100]" dark />
+            <ColorBox bgcolor="primary.200" data={{ label: 'Blue-3', color: `${currentPalette.primary[200]}` }} title="primary[200]" dark />
             <ColorBox
               bgcolor="primary.light"
               data={{ label: 'Blue-4', color: `${currentPalette.primary.light}` }}
@@ -146,11 +136,7 @@ export default function ComponentColor() {
               title="secondary.main"
               main
             />
-            <ColorBox
-              bgcolor="secondary.600"
-              data={{ label: 'Grey-7', color: `${currentPalette.secondary[600]}` }}
-              title="secondary.600"
-            />
+            <ColorBox bgcolor="secondary.600" data={{ label: 'Grey-7', color: `${currentPalette.secondary[600]}` }} title="secondary.600" />
             <ColorBox
               bgcolor="secondary.dark"
               data={{ label: 'Grey-8', color: `${currentPalette.secondary.dark}` }}
@@ -212,11 +198,7 @@ export default function ComponentColor() {
               title="success.main"
               main
             />
-            <ColorBox
-              bgcolor="success.dark"
-              data={{ label: 'Green-8', color: `${currentPalette.success.dark}` }}
-              title="success.dark"
-            />
+            <ColorBox bgcolor="success.dark" data={{ label: 'Green-8', color: `${currentPalette.success.dark}` }} title="success.dark" />
             <ColorBox
               bgcolor="success.darker"
               data={{ label: 'Green-10', color: `${currentPalette.success.darker}` }}
@@ -234,12 +216,7 @@ export default function ComponentColor() {
               title="error.lighter"
               dark
             />
-            <ColorBox
-              bgcolor="error.light"
-              data={{ label: 'Red-4', color: `${currentPalette.error.light}` }}
-              title="error.light"
-              dark
-            />
+            <ColorBox bgcolor="error.light" data={{ label: 'Red-4', color: `${currentPalette.error.light}` }} title="error.light" dark />
             <ColorBox bgcolor="error.main" data={{ label: 'Red-6', color: `${currentPalette.error.main}` }} title="error.main" main />
             <ColorBox bgcolor="error.dark" data={{ label: 'Red-8', color: `${currentPalette.error.dark}` }} title="error.dark" />
             <ColorBox bgcolor="error.darker" data={{ label: 'Red-10', color: `${currentPalette.error.darker}` }} title="error.darker" />

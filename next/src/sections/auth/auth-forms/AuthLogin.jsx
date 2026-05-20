@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
 import Grid from '@mui/material/Grid';
 import InputAdornment from '@mui/material/InputAdornment';
 import InputLabel from '@mui/material/InputLabel';
@@ -20,12 +21,13 @@ import Stack from '@mui/material/Stack';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
-// project-imports
+// project imports
 import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
 
 // assets
-import { Eye, EyeSlash } from '@wandersonalwes/iconsax-react';
+import EyeOutlined from '@ant-design/icons/EyeOutlined';
+import EyeInvisibleOutlined from '@ant-design/icons/EyeInvisibleOutlined';
 
 export default function AuthLogin() {
   const [checked, setChecked] = useState(false);
@@ -42,7 +44,7 @@ export default function AuthLogin() {
     <>
       <Formik
         initialValues={{
-          email: 'info@phoenixcoded.co',
+          email: 'info@codedthemes.com',
           password: '123456',
           submit: null
         }}
@@ -72,6 +74,11 @@ export default function AuthLogin() {
                     error={Boolean(touched.email && errors.email)}
                   />
                 </Stack>
+                {touched.email && errors.email && (
+                  <FormHelperText error id="standard-weight-helper-text-email-login">
+                    {errors.email}
+                  </FormHelperText>
+                )}
               </Grid>
               <Grid size={12}>
                 <Stack sx={{ gap: 1 }}>
@@ -79,7 +86,7 @@ export default function AuthLogin() {
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
-                    id="-password-login"
+                    id="password-login"
                     type={showPassword ? 'text' : 'password'}
                     value={values.password}
                     name="password"
@@ -94,17 +101,22 @@ export default function AuthLogin() {
                           edge="end"
                           color="secondary"
                         >
-                          {showPassword ? <Eye /> : <EyeSlash />}
+                          {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
                         </IconButton>
                       </InputAdornment>
                     }
                     placeholder="Enter password"
                   />
                 </Stack>
+                {touched.password && errors.password && (
+                  <FormHelperText error id="standard-weight-helper-text-password-login">
+                    {errors.password}
+                  </FormHelperText>
+                )}
               </Grid>
 
               <Grid sx={{ mt: -1 }} size={12}>
-                <Stack direction="row" sx={{ gap: 2, justifyContent: 'space-between', alignItems: 'center' }}>
+                <Stack direction="row" sx={{ gap: 2, justifyContent: 'space-between', alignItems: 'baseline' }}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -118,7 +130,7 @@ export default function AuthLogin() {
                     label={<Typography variant="h6">Keep me sign in</Typography>}
                   />
 
-                  <Links variant="h6" component={Link} href={'/forgot-password'} color="text.primary">
+                  <Links variant="h6" component={Link} href="/forgot-password" sx={{ color: 'text.primary' }} underline="none">
                     Forgot Password?
                   </Links>
                 </Stack>
