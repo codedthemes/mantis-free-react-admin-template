@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noUncheckedSideEffectImports": false,
+    "paths": {
+      "*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["src", "**/*.js", "**/*.jsx", "src/**/*"],
+  "references": [{ "path": "./jsconfig.node.json" }]
+}
