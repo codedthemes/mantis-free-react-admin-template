@@ -1,5 +1,5 @@
 // project imports
-import ComponentColor from 'views/components-overview/color';
+import ComponentColor from "views/components-overview/Color";
 
 // ===============================|| COMPONENTS - COLOR ||=============================== //
 

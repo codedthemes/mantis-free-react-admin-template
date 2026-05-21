@@ -31,6 +31,7 @@
     "formik": "2.4.9",
     "framer-motion": "12.36.0",
     "lodash": "4.18.1",
+    "lodash-es": "4.18.1",
     "next": "16.1.6",
     "prop-types": "15.8.1",
     "react": "19.2.4",
@@ -60,5 +61,5 @@
   "overrides": {
     "eslint": "10.1.0"
   },
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "yarn@4.14.1"
 }
