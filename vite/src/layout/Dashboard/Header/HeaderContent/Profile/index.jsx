@@ -122,7 +122,7 @@ export default function Profile() {
                         </Stack>
                       </Stack>
                       <Tooltip title="Logout">
-                        <IconButton size="large" sx={{ color: 'text.primary' }} onClick={handleLogout}>
+                        <IconButton size="large" sx={{ color: 'text.primary' }}>
                           <LogoutOutlined />
                         </IconButton>
                       </Tooltip>
